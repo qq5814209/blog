@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/sweetalert.css">
+    <!--<link rel="stylesheet" type="text/css" href="../css/login.css" />-->
+    <!--<link rel="stylesheet" type="text/css" href="../css/animate-custom.css" />-->
+    <script type="text/javascript" src="../js/angular.js"></script>
+    <script type="text/javascript" src="../js/angular-route.js"></script>
+    <script type="text/javascript" src="../js/app.js"></script>
+    <script type="text/javascript" src="../js/RegisterController.js"></script>
+    <script type="text/javascript" src="../js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+
+</head>
+<body>
+<div id="register" class="animate form" ng-app="JianShu" ng-controller="RegisterController" >
+    <form  action="#" autocomplete="on">
+        <h1> 加入简书 </h1>
+        <p>
+            <label for="nickname" class="uname" data-icon="u">昵称</label>
+            <input id="nickname" name="nickname" required="required" type="text" placeholder="在此输入您的昵称" ng-model="user.nickname"/>
+        </p>
+        <p>
+            <label for="account" class="youmail" data-icon="e" > 邮件</label>
+            <input id="account" name="account" required="required" type="email" placeholder="在此输入您的邮箱" ng-model="user.account"/>
+        </p>
+        <p>
+            <label for="password" class="youpasswd" data-icon="p">密码 </label>
+            <input id="password" name="password" required="required" type="password" placeholder="在此输入您的密码" ng-model="user.password"/>
+        </p>
+        <p>
+            <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">请在此确认密码 </label>
+            <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="在此再次输入您的密码"1ng-model="user.password"/>
+        </p>
+        <p class="signin button">
+            <input type="submit" value="Sign up" ng-click="registerIn(user)"/>
+        </p>
+        <p class="change_link">
+            Already a member ?
+            <a href="#tologin" class="to_register"> Go and log in </a>
+        </p>
+    </form>
+</div>
+
+</body>
+</html>

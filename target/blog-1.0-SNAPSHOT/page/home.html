@@ -1,0 +1,455 @@
+<script type="text/javascript">
+    var oBox = document.getElementById("L-box");
+    var oUl = document.getElementById("L-inner-box");
+    var oLeft = document.getElementById("L-left");
+    var oRight = document.getElementById("L-right");
+    var cur = 0; //定义一个变量用于设置left值
+    var timer = null; //定义一个计时器
+    var target = 0;
+    var timer1 = null;
+    var i = 0;
+    timer = setInterval(autoPlay, 2000); // 定义计时器每25毫秒执行一次
+    function autoPlay() { //执行每次执行函数，left值减1
+        if (target <= -400) {
+            cur = 0;
+            target = -100;
+        } else {
+            target -= 100;
+        }
+        sport(target);
+
+
+        btnBottom();
+    }
+
+    oRight.onclick = function  (argument) {
+        if (target <= -400) {
+            cur = 0;
+            target = -100;
+        } else {
+            target -= 100;
+        }
+        sport(target);
+        btnBottom();
+    }
+
+    oLeft.onclick = function  (argument) {
+        if (target > -100) {
+            cur -= 400;
+            target = -300;
+
+        } else{
+            target += 100;
+        }
+        sport(target);
+
+
+        btnBottom();
+    }
+
+    function sport(tar) {
+        clearInterval(timer1);
+        timer1 = setInterval(autoPlay, 30); //设置定时器每30毫秒执行一次
+        function autoPlay() {
+            if (cur == tar) {
+                clearInterval(timer1) //大于目标值时，清空计时器
+            } else {
+                speed = (tar - cur) / 7; //计算速度
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed); //取整
+                cur = cur + speed;
+                oUl.style.left = cur + "%";
+            }
+        }
+    }
+    oBox.onmouseover = function() { //移出时清除计时器
+        clearInterval(timer);
+    }
+    oBox.onmouseout = function() { //移入时开始计时器
+        timer = setInterval(autoPlay, 2000);
+    }
+
+</script>
+
+<!--首页轮播-->
+<div class="L-box carousel slide " id="myCarousel">
+    <div id="" class="carousel-inner">
+        <div class="item active">
+            <img class="L-img" src="../img/lunbo/L1.jpg" alt="First slide">
+        </div>
+        <div class="item">
+            <img class="L-img" src="../img/lunbo/L2.jpg" alt="Second slide">
+        </div>
+        <div class="item">
+            <img class="L-img" src="../img/lunbo/L3.jpg" alt="Third slide">
+        </div>
+        <div class="item">
+            <img class="L-img" src="../img/lunbo/L4.jpg" alt="Second slide">
+        </div>
+    </div>
+    <!-- 轮播（Carousel）指标 -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+    <!-- 轮播（Carousel）导航 -->
+    <a class="carousel-control left" href="#myCarousel"
+       data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel"
+       data-slide="next">&rsaquo;</a>
+    <!--<div class="L-btn">-->
+        <!--<span class="L-left" id="L-left"><</span>-->
+        <!--<span class="L-right" id="L-right">></span>-->
+    <!--</div>-->
+</div>
+<!--首页内容区域----左侧-->
+<div class="col-md-8 ">
+    <div class="list-container"  style="margin-top: 10px;;">
+        <ul class="sort-nav">
+            <li class="active"><a href="#">热门</a></li>
+            <li><a href="#">新上榜</a></li>
+            <li><a href="#">连载</a></li>
+            <li><a href="#">生活家</a></li>
+            <li><a href="#">世间事</a></li>
+            <li><a href="#">@IT</a></li>
+            <li><a href="#">市集</a></li>
+            <li><a href="#">七日热门</a></li>
+            <li><a href="#">三十日热门</a></li>
+        </ul>
+        <ul class="category-nav">
+            <li class="have-img" ng-repeat="question in questions">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../img/home/{{question.thumbnail}}" /></a></div>
+                    <p class="list-top"><a class="author">{{question.nickname}}</a><em>·</em><span class="time">{{question.questionTime}}</span></p>
+                    <h4 class="title"><a href="#/question/{{question.questionId}}">{{question.title}}</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 {{question.answersCount}} </a>
+                        <a href="#">·   评论 84</a>
+                        <a href="#">·   喜欢 {{question.collectionsCount}}</a>
+                        <a href="#">·   打赏 2</a>
+                    </div>
+                </div>
+            </li>
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../images/wrap-img2.png" /></a></div>
+                    <p class="list-top"><a class="author">睡午觉的猫_时间习惯和自己</a><em>·</em><span class="time">1天之前</span></p>
+                    <h4 class="title"><a href="#">跑步是如何改变了我的生活</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 3434 </a>
+                        <a href="#">·   评论 40</a>
+                        <a href="#">·   喜欢 177</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../images/wrap-img3.jpg" /></a></div>
+                    <p class="list-top"><a class="author">江寒园</a><em>·</em><span class="time">1天之前</span></p>
+                    <h4 class="title"><a href="#">电影学者懂这么多，为什么不自己拍电影？</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 3434 </a>
+                        <a href="#">·   评论 40</a>
+                        <a href="#">·   喜欢 177</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../images/wrap-img4.jpg" /></a></div>
+                    <p class="list-top"><a class="author">茹果君</a><em>·</em><span class="time">1天之前</span></p>
+                    <h4 class="title"><a href="#">从西门庆遇到潘金莲论开放社区的可行性</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 3434 </a>
+                        <a href="#">·   评论 40</a>
+                        <a href="#">·   喜欢 177</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../images/wrap-img5.jpg" /></a></div>
+                    <p class="list-top"><a class="author">剑神弹棉花</a><em>·</em><span class="time">1天之前</span></p>
+                    <h4 class="title"><a href="#">电影《龙虾》：孤独或不独孤都是可耻的</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 3434 </a>
+                        <a href="#">·   评论 40</a>
+                        <a href="#">·   喜欢 177</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../images/wrap-img6.jpg" /></a></div>
+                    <p class="list-top"><a class="author">叶上清之宿雨</a><em>·</em><span class="time">1天之前</span></p>
+                    <h4 class="title"><a href="#">分手后请别再与前任联系</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 3434 </a>
+                        <a href="#">·   评论 40</a>
+                        <a href="#">·   喜欢 177</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../images/1786150-9c7e9035eff51791.png" /></a></div>
+                    <p class="list-top"><a class="author">杨何</a><em>·</em><span class="time">1天之前</span></p>
+                    <h4 class="title"><a href="#">有一本书，它会教你如何将知识管理和个人管理做到极致</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 5654 </a>
+                        <a href="#">·   评论 40</a>
+                        <a href="#">·   喜欢 399</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../images/1365368-9fa7d32a2bfc0b38.jpg" /></a></div>
+                    <p class="list-top"><a class="author">庭想</a><em>·</em><span class="time">1天之前</span></p>
+                    <h4 class="title"><a href="#">这些剧，适合单纯的你来学英语</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 6808 </a>
+                        <a href="#">·   评论 40</a>
+                        <a href="#">·   喜欢 499</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../images/732853-fa005cf8c342c20d.jpg" /></a></div>
+                    <p class="list-top"><a class="author">我是葱哥</a><em>·</em><span class="time">大约24小时之前</span></p>
+                    <h4 class="title"><a href="#">读了这5本书，你也会写故事</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 3721 </a>
+                        <a href="#">·   评论 44</a>
+                        <a href="#">·   喜欢 274</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="category_more">
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../images/1487291-e5295650c75431ea.jpg" /></a></div>
+                    <p class="list-top"><a class="author">夏知凉</a><em>·</em><span class="time">大约20小时之前</span></p>
+                    <h4 class="title"><a href="#">我也想做一只妖孽去为祸人间</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 3434 </a>
+                        <a href="#">·   评论 117</a>
+                        <a href="#">·   喜欢 173</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../images/1861995-b9f1e1e1cdd3410a.jpg" /></a></div>
+                    <p class="list-top"><a class="author">忽然百味声色</a><em>·</em><span class="time">1天之前</span></p>
+                    <h4 class="title"><a href="#">我们看武侠，到底是在看什么？</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 3434 </a>
+                        <a href="#">·   评论 40</a>
+                        <a href="#">·   喜欢 177</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../images/wrap-img6.jpg" /></a></div>
+                    <p class="list-top"><a class="author">叶上清之宿雨</a><em>·</em><span class="time">1天之前</span></p>
+                    <h4 class="title"><a href="#">分手后请别再与前任联系</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 3434 </a>
+                        <a href="#">·   评论 40</a>
+                        <a href="#">·   喜欢 177</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../images/1890381-36950a4f270cc0fa.jpg" /></a></div>
+                    <p class="list-top"><a class="author">树獭先生</a><em>·</em><span class="time">大约24小时之前</span></p>
+                    <h4 class="title"><a href="#">我愿为你倾尽所有力气</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 3434 </a>
+                        <a href="#">·   评论 40</a>
+                        <a href="#">·   喜欢 177</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../images/2205031-bb75d45388010402.jpg" /></a></div>
+                    <p class="list-top"><a class="author">亚历山小小</a><em>·</em><span class="time">大约11小时之前</span></p>
+                    <h4 class="title"><a href="#">4招教你治愈逃避型人格</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 3434 </a>
+                        <a href="#">·   评论 40</a>
+                        <a href="#">·   喜欢 177</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="category_more">
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../images/wrap-img5.jpg" /></a></div>
+                    <p class="list-top"><a class="author">剑神弹棉花</a><em>·</em><span class="time">1天之前</span></p>
+                    <h4 class="title"><a href="#">电影《龙虾》：孤独或不独孤都是可耻的</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 3434 </a>
+                        <a href="#">·   评论 40</a>
+                        <a href="#">·   喜欢 177</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"></a></div>
+                    <p class="list-top"><a class="author">简书</a><em>·</em><span class="time">24天之前</span></p>
+                    <h4 class="title"><a href="#">既见君子，云胡不喜？</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 26576 </a>
+                        <a href="#">·  评论 29</a>
+                        <a href="#">·   喜欢 177</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../images/wrap-img6.jpg" /></a></div>
+                    <p class="list-top"><a class="author">叶上清之宿雨</a><em>·</em><span class="time">1天之前</span></p>
+                    <h4 class="title"><a href="#">分手后请别再与前任联系</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 3434 </a>
+                        <a href="#">·   评论 40</a>
+                        <a href="#">·   喜欢 177</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../images/966036-0c38befe394c2bc8.jpg" /></a></div>
+                    <p class="list-top"><a class="author">迷路的指南针</a><em>·</em><span class="time">大约13小时之前</span></p>
+                    <h4 class="title"><a href="#">大学不教，但社会必考的3堂课</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 3434 </a>
+                        <a href="#">·   评论 40</a>
+                        <a href="#">·   喜欢 177</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+            <li class="have-img">
+                <div>
+                    <div class="wrap-img"><a  href="#"> <img src="../images/wrap-img6.jpg" /></a></div>
+                    <p class="list-top"><a class="author">叶上清之宿雨</a><em>·</em><span class="time">1天之前</span></p>
+                    <h4 class="title"><a href="#">分手后请别再与前任联系</a></h4>
+                    <div class="list-footer">
+                        <a href="#">阅读 3434 </a>
+                        <a href="#">·   评论 40</a>
+                        <a href="#">·   喜欢 177</a>
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+
+    </div>
+    <span class="btn_more">点击查看更多</span>
+</div>
+<!--主题内容区域----右侧-->
+<div class="col-md-4">
+    <!--右上 图片链接-->
+    <div>
+        <a href=""><img class="suoXiao" src="../img/right/banners-1.png"> </a>
+        <a href=""><img class="suoXiao" src="../img/right/banners-2.png"> </a>
+        <a href=""><img class="suoXiao" src="../img/right/banners-3.png"> </a>
+        <a href=""><img class="suoXiao" src="../img/right/banners-4.png"> </a>
+        <a href=""><img class="suoXiao" src="../img/right/banners-5.png"> </a>
+        <div class="dropdown">
+            <a href=""><img class="suoXiao " src="../img/right/banners-6.jpg"> </a>
+            <div class="dropdown-content">
+                <a href=""><img src="../img/icon/erweima.png" style="margin-right: 20px" alt="扫码下载简书APP"></a>
+            </div>
+        </div>
+    </div>
+    <!--右中 -->
+    <div class="media suoXiao" >
+        <h4 style="float: left;color: #969696">
+            <strong>简书日报</strong>
+        </h4>
+        <a href="#">
+            <h5 style=" float: right;font-size: 17px;color: #969696" >
+                查看往期
+            </h5>
+        </a>
+    </div>
+    <div class="panel-heading">
+        <img alt="Brand" src="../img/right/daiyuzaodu.png" style="float:left; width: 55px;height: 55px;border-radius: 2px">
+        <span><a href="#" style="">黛玉早报171110 —— 《在美国为什么我从来就没担心过孩子在幼儿园...</a></span>
+    </div>
+    <div class="panel-heading">
+        <img alt="Brand" src="../img/right/pengranxindong.png" style="float:left;width: 55px;height: 55px;border-radius: 2px">
+        <span><a href="#">【怦然心动】专刊——我们的前半生被父母毁了，后半生被孩子毁了</a></span>
+
+    </div>
+    <!--右下 -->
+    <div class="media suoXiao"  >
+        <h4 style="float: left;color: #969696">
+            <strong>推荐作者</strong>
+        </h4>
+        <a href="#">
+            <img src="../img/icon/huanyihuan.png" style="float: left;margin-left: 150px;margin-top: 10px;">
+            <h5 style=" float: right;font-size: 17px;color: #969696" >
+                换一批
+            </h5>
+        </a>
+    </div>
+    <div class="media ">
+        <div class="panel-heading">
+            <img alt="Brand" src="../img/writer/wp.jpg" class="topic-pic" style="float: left;border-radius: 50%;width: 68px;height: 68px">
+            <div style="float: left">
+                <a href="#" style="">王佩</a>
+                <font color="#999999"size="3px"  style="position: relative;right: -100px">+ 加关注</font>
+            </div>
+            <div style="float: left;margin-top:25px">
+                <font color="#999999"size="3px" style="">写了411.8k字</font>
+                <font color="#999999"size="3px" style="">· 15.4k喜欢</font>
+            </div>
+        </div>
+    </div>
+    <div class="media ">
+        <div class="panel-heading">
+            <img alt="Brand" src="../img/writer/wp.jpg" class="topic-pic" style="float: left;border-radius: 50%;width: 68px;height: 68px">
+            <div style="float: left">
+                <a href="#" style="">王佩</a>
+                <font color="#999999"size="3px"  style="position: relative;right: -100px">+ 加关注</font>
+            </div>
+            <div style="float: left;margin-top:25px">
+                <font color="#999999"size="3px" style="">写了411.8k字</font>
+                <font color="#999999"size="3px" style="">· 15.4k喜欢</font>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

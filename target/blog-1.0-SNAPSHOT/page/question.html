@@ -1,0 +1,133 @@
+<!--<script type="text/javascript" src="../js/showdown.min.js"></script>-->
+<!--<script type="text/javascript">-->
+    <!--function compile(){-->
+        <!--var text = document.getElementById("content").value;-->
+        <!--var converter = new showdown.Converter();-->
+        <!--var html = converter.makeHtml(text);-->
+        <!--document.getElementById("result").innerHTML = html;-->
+    <!--}-->
+<!--</script>-->
+<style>
+    ul li {
+        line-height: 24px;
+    }
+    blockquote {
+        border-left:#eee solid 5px;
+        padding-left:20px;
+    }
+    code {
+        color:#D34B62;
+        background: #F9F2F4;
+    }
+</style>
+<div class="container" onkeyup="compile()">
+    <div  class="white " >
+        <div>
+            <p style="font-size: 20px;font-family: '隶书'" ><strong>{{question.question.title}}</strong></p>
+            <div id="content" >{{question.question.content}}</div>
+            <div id="result" ></div>
+
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> {{question.question.answersCount}}个回答
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>{{question.question.collectionsCount}}个收藏
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>{{question.question.likeCount}}个喜欢
+        </div>
+    </div>
+    <div class="col-lg-4 ">
+        <div style="height:120px;padding-top: 20px;" >
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="" class="btn btn-success" ng-if="!question.isCollected" ng-click="collectionQuestion(qCollection)">
+                <i class="fa fa-plus"></i>
+                收藏文章
+            </a>
+            <a href="" class="btn btn-default" ng-if="question.isCollected" ng-click="cancelCollection(qCollection)">
+                <i class="fa fa-close"></i>
+                取消收藏
+            </a>
+            <h4>{{question.question.collectionsCount}}<span class="greyFont">人收藏了文章</span> </h4>
+            <hr>
+            &nbsp;&nbsp;&nbsp;
+            <!--<input type="button"  class="btn btn-default test" value="写评论">-->
+        </div>
+
+    </div>
+</div>
+
+<div class="container">
+
+</div>
+
+<br/>
+<!--回答区-->
+<hr/>
+<div class="container">
+    <div class="col-lg-8">
+
+        <div class="white"  ng-repeat="ans in question.answers" style="clear: both;margin-bottom: 50px" ng-if="ans">
+            <ul class="nav navbar-nav myNav">
+                <li>
+                    <img src="../img/{{ans.profile}}"  style="width: 80px;height: 80px ;border-radius: 50%"/>
+                </li>
+                <ul class="nav navbar-nav">
+                    <li><h5><strong>{{ans.nickname}}</strong></h5></li>
+                    <li><h6>{{ans.introduce}}</h6></li>
+                    <li style="clear: both">
+                        <textarea disabled style="background-color:#eeeeee;width: 400px;;overflow:auto;word-break:break-all;; border-radius:10px;float: left">{{ans.answerContent}}</textarea>
+                    </li>
+                </ul>
+            </ul>
+            <br/>
+            <br/>
+        </div>
+        <div ng-if="!ans" >
+            <h2 style="color:#b8b8b8">评论空空的，快来填满它</h2>
+            <img src="../img/icon/kong.gif">
+            <!--<h4 style="color:#b8b8b8">这里空空的</h4>-->
+        </div>
+        <hr/>
+        <!--我的回答区-->
+        <div id="MyAnswer">
+            <input type="text" class="form-control" placeholder="写下你的评论..."
+                   style="height: 100px;background-color: #f8f8f8"
+                   ng-model="answer.answerContent">
+            <hr/>
+            <button class="btn btn-primary" ng-click="answerQuestion(answer)">发送</button>
+        </div>
+    </div>
+    <div class="col-lg-4 " >
+        <div class="white">
+            <h4><strong>关于作者</strong></h4>
+            <table>
+                <tr>
+                    <td>
+                        <img src="../img/{{question.question.profile}}" class="aboutAuthor" >
+                    </td>
+                    <td>
+                        <h3><strong>{{question.question.nickname}}</strong></h3>
+                    </td>
+                </tr>
+            </table>
+            <br>
+        </div>
+        <hr/>
+        <div class="white">
+            &nbsp;
+            <h4><strong>被收藏了43次</strong></h4>
+            <img src="../img/coll.jpg">
+
+        </div>
+        <hr/>
+        <div class="white">
+            &nbsp;
+            <h4><strong>相关文章</strong></h4>
+            <img src="../img/icon/nocontent.png" style="width: 150px;height: 100px">
+            <h4 style="color:#b8b8b8">暂时没有相关的推荐啊</h4>
+        </div>
+        <hr/>
+
+
+    </div>
+</div>
+
+
+
+
