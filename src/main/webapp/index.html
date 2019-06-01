@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DBB博客-首页</title>
+    <link rel="stylesheet" href="static/plugins/layui/css/layui.css">
+    <link rel="stylesheet" href="static/css/style/index.css">
+</head>
+<body class="zhuti" style="background-color: #f5f6f7">
+<div class="daohang layui-container layui-row layui-col-md12">
+            <ul class="dbdh01 layui-nav" lay-filter="">
+                <li class="layui-nav-item"><img src="static/imgs/uimgs/logo.png"></li>
+                <li class="layui-nav-item"><a href="">首页</a></li>
+                <li class="layui-nav-item"><a href="/bk_bknr.html">博客</a></li>
+                <li class="layui-nav-item"><a href="">学院</a></li>
+                <li class="layui-nav-item"><a href="">下载</a></li>
+                <li class="layui-nav-item"><a href="">论坛</a></li>
+                <li class="layui-nav-item"><a href="">问答</a></li>
+                <li class="layui-nav-item"><a href="">GitChat</a></li>
+                <li class="layui-nav-item"><a href="">招聘</a></li>
+                <li class="layui-nav-item"><a href="">活动</a></li>
+                <li class="layui-nav-item">
+                  <a href="javascript:;"><i class="layui-icon layui-icon-more" style="font-size: 18px;color: #3f3f3f"></i></a>
+                    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                        <dd><a href="">TinyMind</a></dd>
+                        <dd><a href="">ITeye</a></dd>
+                        <dd><a href="">CSTO</a></dd>
+                    </dl>
+                </li>
+            </ul>
+            <ul class="dbdh02 layui-nav layui-layout-right" lay-filter="">
+                <li class="layui-nav-item" id="sousuo">
+                    <input type="text" name="sousuo" class="layui-input" placeholder="请输入搜索内容" autocomplete="off">
+                   <a href="">
+                       <i class="layui-icon layui-icon-search" style="color: #3f3f3f"></i>
+                   </a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href=""><i class="layui-icon layui-icon-edit" style="font-size: 18px;"></i>写博客</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href=""><i class="layui-icon layui-icon-release" style="font-size: 18px;"></i> 发Chat</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href=""><img src="static/imgs/uimgs/1_mdxiaohu.jpg" class="layui-nav-img">我</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="bk_list.html">我的博客</a></dd>
+                        <dd><a href="bk_wzgl.html">博客管理</a></dd>
+                        <dd><a href="javascript:;">消息</a></dd>
+                        <dd><a href="javascript:;">账号设置</a></dd>
+                        <dd><a href="javascript:;">反馈</a></dd>
+                        <dd><a href="javascript:;">帮助</a></dd>
+                        <dd><a href="javascript:;">退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
+</div>
+<div class="zuobian layui-container layui-row">
+    <div class="cebian layui-col-md1">
+        <ul class="cbdaohang">
+            <li class="zbli"><a class="cbiana" href="">推荐</a></li>
+            <li class=""><a class="cbiana" href="">最新文章</a></li>
+            <li class=""><a class="cbiana" href="">资讯</a></li>
+            <li class=""><a class="cbiana" href="">人工智能</a></li>
+            <li class=""><a class="cbiana" href="">云计算/大数据</a></li>
+            <li class=""><a class="cbiana" href="">区块链</a></li>
+            <li class=""><a class="cbiana" href="">数据库</a></li>
+            <li class=""><a class="cbiana" href="">程序人生</a></li>
+            <li class=""><a class="cbiana" href="">游戏开发</a></li>
+            <li class=""><a class="cbiana" href="">研发管理</a></li>
+            <li class=""><a class="cbiana" href="">前端</a></li>
+            <li class=""><a class="cbiana" href="">移动开发</a></li>
+            <li class=""><a class="cbiana" href="">物联网</a></li>
+            <li class=""><a class="cbiana" href="">运维</a></li>
+            <li class=""><a class="cbiana" href="">计算机基础</a></li>
+            <li class=""><a class="cbiana" href="">编程语言</a></li>
+            <li class=""><a class="cbiana" href="">架构</a></li>
+            <li class=""><a class="cbiana" href="">音视频开发</a></li>
+            <li class=""><a class="cbiana" href="">安全</a></li>
+            <li class=""><a class="cbiana" href="">其他</a></li>
+        </ul>
+    </div>
+    <div class="zhongjian layui-col-md7">
+        <div>
+          <div class="gg01">
+           <img src="static/imgs/uimgs/zj_gg_01.png" alt="广告01">
+          </div>
+        <div class="layui-carousel" id="test1">
+            <div carousel-item>
+                <img src="static/imgs/uimgs/lun01.png" alt="">
+                <img src="static/imgs/uimgs/lun02.png" alt="">
+                <img src="static/imgs/uimgs/lun03.png" alt="">
+                <img src="static/imgs/uimgs/lun04.png" alt="">
+                <img src="static/imgs/uimgs/lun05.png" alt="">
+            </div>
+        </div>
+        </div>
+        <ul class="wxbd01">
+        <li class="tuisong01">
+            <h2 class="tuisongbt">ASP.NET三层架构及短信发送案例（一）</h2>
+            <div class="tongsongnr">
+                首先，我讲述的是ASP.NET三层架构。所谓ASP.NET三层架构主要包括：
+                界面层（UI）：通俗说就是用户使用某系统时的操作界面。业务逻辑层(BLL)：
+                对具体问题的操作、对数据层的操作。数据访问层（DAL）：对数据库进行操作，
+                主要是进行数据的增、删、改、查。
+            </div>
+            <div class="boke01">
+              <div class="boke02">
+                <div class="boke05 layui-breadcrumb" lay-separator="·">
+                    <a class="bokexf01" href=""><img src="static/imgs/uimgs/1_mdxiaohu.jpg" class="layui-nav-img">mdxiaohu</a>
+                    <a class="buyao01">06月23日</a>
+                    <a href="" class="fenlei01 bokexf01">程序人生</a>
+                </div>
+              </div>
+                <div class="boke04">
+                    <div class="boke03 layui-breadcrumb" lay-separator="·">
+                    <a href="" class="bokexf01"><span class="nu">500</span> 阅读</a>
+                    <a href="" class="bokexf01"><span class="nu" >0</span> 评论</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+            <li class="tuisong01">
+                <h2 class="tuisongbt">ASP.NET三层架构及短信发送案例（二）</h2>
+                <div class="tongsongnr">
+                    在上一篇，简单说明了下ASP.NET的三层架构和案例准备。
+                    下来，就进入主题。如何利用模板，来生成三层框架。
+                    我们，需要一个工具，Codesmith。
+                    CodeSmith是一种语法类似于asp.net的基于模板的代码生成器，
+                    程序可以自定义模板，作为开发人员工具，
+                    它可以减少重复编码的劳动量，提高效率。
+                </div>
+                <div class="boke01">
+                    <div class="boke02">
+                        <div class="boke05 layui-breadcrumb" lay-separator="·">
+                            <a class="bokexf01" href=""><img src="static/imgs/uimgs/1_mdxiaohu.jpg" class="layui-nav-img">mdxiaohu</a>
+                            <a class="buyao01">06月23日</a>
+                            <a href="" class="fenlei01 bokexf01">程序人生</a>
+                        </div>
+                    </div>
+                    <div class="boke04">
+                        <div class="boke03 layui-breadcrumb" lay-separator="·">
+                            <a href="" class="bokexf01"><span class="nu">170</span> 阅读</a>
+                            <a href="" class="bokexf01"><span class="nu" >0</span> 评论</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="tuisong01">
+                <h2 class="tuisongbt">ASP.NET三层架构及短信发送案例（三）</h2>
+                <div class="tongsongnr">
+                    第三步，将生成的代码，拷贝到VS工程里面对应的位置。
+                    具体看操作。先拷贝Model类。选择Model类，右键添加类，
+                    这里主要是名称要和Codesmith生成的一样。
+                    然后只需将生成的代码粘贴到页面上即可。
+                </div>
+                <div class="boke01">
+                    <div class="boke02">
+                        <div class="boke05 layui-breadcrumb" lay-separator="·">
+                            <a class="bokexf01" href=""><img src="static/imgs/uimgs/1_mdxiaohu.jpg" class="layui-nav-img">mdxiaohu</a>
+                            <a class="buyao01">06月23日</a>
+                            <a href="" class="fenlei01 bokexf01">程序人生</a>
+                        </div>
+                    </div>
+                    <div class="boke04">
+                        <div class="boke03 layui-breadcrumb" lay-separator="·">
+                            <a href="" class="bokexf01"><span class="nu">162</span> 阅读</a>
+                            <a href="" class="bokexf01"><span class="nu" >0</span> 评论</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="tuisong01">
+                <h2 class="tuisongbt">ASP.NET三层架构及短信发送案例（四）</h2>
+                <div class="tongsongnr">
+                    接下来，要做的事情就是，实现短信发送功能了。
+                    要想在ASP.NET页面实现短信发送，
+                    首先需要一个第三方的接口。
+                    市面上有很多大公司都提供短信业务，都是需要付费的，
+                    好多是一次性打包上千上万条卖，大家百度即可。
+                </div>
+                <div class="boke01">
+                    <div class="boke02">
+                        <div class="boke05 layui-breadcrumb" lay-separator="·">
+                            <a class="bokexf01" href=""><img src="static/imgs/uimgs/1_mdxiaohu.jpg" class="layui-nav-img">mdxiaohu</a>
+                            <a class="buyao01">06月23日</a>
+                            <a href="" class="fenlei01 bokexf01">程序人生</a>
+                        </div>
+                    </div>
+                    <div class="boke04">
+                        <div class="boke03 layui-breadcrumb" lay-separator="·">
+                            <a href="" class="bokexf01"><span class="nu">158</span> 阅读</a>
+                            <a href="" class="bokexf01"><span class="nu" >0</span> 评论</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="tuisong01">
+                <h2 class="tuisongbt">ASP.NET三层架构及短信发送案例（五）</h2>
+                <div class="tongsongnr">
+                    前几天，我们已经完成了短信发送的案例。
+                    因为时间关系，有些功能没有补充。在这里一并说了。
+                    功能一，网页查询功能的实现。
+                    首先，我们先看下本系统中，所采用的控件。
+                </div>
+                <div class="boke01">
+                    <div class="boke02">
+                        <div class="boke05 layui-breadcrumb" lay-separator="·">
+                            <a class="bokexf01" href=""><img src="static/imgs/uimgs/1_mdxiaohu.jpg" class="layui-nav-img">mdxiaohu</a>
+                            <a class="buyao01">06月27日</a>
+                            <a href="" class="fenlei01 bokexf01">程序人生</a>
+                        </div>
+                    </div>
+                    <div class="boke04">
+                        <div class="boke03 layui-breadcrumb" lay-separator="·">
+                            <a href="" class="bokexf01"><span class="nu">780</span> 阅读</a>
+                            <a href="" class="bokexf01"><span class="nu" >0</span> 评论</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="right0 layui-col-md3">
+        <div class="right-tuisong">
+            <div class="right-caini">
+                <ul class="caini01">
+                    <li  class="caini01">
+                        <div class="heti"><span class="xiantiao"></span><span class="ziti">今日推荐</span></div>
+                    </li>
+                    <li class="caini02">
+                        <img src="static/imgs/uimgs/tuijian01.png"><a href="">ASP.NET三层架构及短信发送案例（一）</a>
+                    </li>
+                    <li class="caini02">
+                        <img src="static/imgs/uimgs/tuijian02.png"><a href="">ASP.NET三层架构及短信发送案例（二）</a>
+                    </li>
+                    <li class="caini02">
+                        <img src="static/imgs/uimgs/tuijian03.png"><a href="">ASP.NET三层架构及短信发送案例（三）</a>
+                    </li>
+                    <li class="caini02">
+                        <img src="static/imgs/uimgs/tuijian04.jpg"><a href="">ASP.NET三层架构及短信发送案例（四）</a>
+                    </li>
+                    <li class="caini02">
+                        <img src="static/imgs/uimgs/tuijian05.png"><a href="">ASP.NET三层架构及短信发送案例（五）</a>
+                    </li>
+                    <li class="caini02">
+                        <img src="static/imgs/uimgs/tuijian06.png"><a href="">19个超赞的数据科学和机器学习工具，编程小白必看！（附资料）</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="lianxi">
+            <h2>联系我们</h2>
+            <div class="lianxi03">
+                <div class="lianxi02"><img src="static/imgs/uimgs/ewm1.jpg" alt="二维码"></div>
+                <div class="lianxi01">
+                    <h4>扫描二维码联系客服</h4>
+                    <p><i class="icon iconfont">&#xe50d;</i> mdxiaohu</p>
+                    <p><i class="icon iconfont">&#xe609;</i> 400-888-6660</p>
+                    <p><i class="icon iconfont">&#xe64c;</i> 317108332</p>
+                </div>
+            </div>
+            <div id="peixun00" class="peixun01 layui-breadcrumb" lay-separator="·">
+                <a href="" class="zihao01">关于</a>
+                <a href="" class="zihao01">招聘</a>
+                <a href="" class="zihao01">广告服务</a>
+                <a href="" class="zihao01">培训</a>
+            </div>
+            <div class="suoyou01">©2018 DBB博客版权所有 mdxiaohu</div>
+        </div>
+        </div>
+    </div>
+
+<script src="static/plugins/layui/layui.js"></script>
+    <script>
+        //注意：导航 依赖 element 模块，否则无法进行功能性操作
+        layui.use('element', function(){
+            var element = layui.element;
+            //…
+        });
+        layui.use('carousel', function(){
+            var carousel = layui.carousel;
+            //建造实例
+            carousel.render({
+                elem: '#test1'
+                ,width: '100%' //设置容器宽度
+                ,height:'200px'
+                ,arrow: 'hover' //始终显示箭头
+                //,anim: 'updown' //切换动画方式
+                ,interval:'3000'
+            });
+        });
+    </script>
+</body>
+</html>

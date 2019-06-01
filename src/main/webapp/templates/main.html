@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Expires" content="0" />
+    <title>思源后台管理系统</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/plugins/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <iframe src="/templates/fragments/header.html"></iframe>
+        <content class="layui-row">
+            <div class="center layui-col-lg8 layui-col-lg-offset2 layui-col-md12 layui-col-ms12 layui-col-xs12">
+                <div class="layui-col-lg12">
+                    <fieldset class="layui-elem-field layui-field-title" style="margin:0;height: 32px;width:100%">
+                        <legend>快捷菜单</legend>
+                    </fieldset>
+                </div>
+                <div class="layui-col-lg12 layui-col-md12 layui-col-sm12 layui-col-xs12">
+                    <div each="m:${session.menus}">
+                        <div class="module layui-col-lg12 layui-col-sm12 layui-col-xs12 layui-col-md12" text="${m.name}"></div>
+                        <div class="page layui-col-lg1 layui-col-xs4 layui-col-sm2 " each="mm :${m.submenus}">
+                            <a href="${mm.uri}" text="${mm.name}"></a>
+                        </div>
+                    </div>
+                </div>
+                <!--占位-->
+                <div class="layui-col-lg12">&nbsp;</div>
+            </div>
+
+        </content>
+
+        <iframe src="/templates/fragments/footer.html"></iframe>
+    </div>
+
+
+
+<script src="/static/plugins/layui/layui.js"></script>
+<script>
+    //一般直接写在一个js文件中
+    layui.use('element',function () {
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/layout(title='用户管理-列表')">
+<div class="right" th:fragment="right">
+            <!--面包屑-->
+            <div class="breadcrumb layui-bg-gray">
+                <span class="layui-breadcrumb" lay-separator=">">
+                    <a href="">首页</a>
+                    <a href="">博客管理</a>
+                    <a href="">分类管理</a>
+                    <a><cite>新增</cite></a>
+                </span>
+            </div>
+
+            <!--主体内容区-->
+            <div class="form-content layui-container">
+                    <form class="layui-form" th:action="@{/fenlei/save}" method="post">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">分类名称</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="name"   lay-verify="required" placeholder="请输入分类名称" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">排序权值</label>
+                            <div class="layui-input-block">
+                                <input type="number" step="any" name="sortNo" value="1" placeholder="排序权值(越大越前)" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
+                                <a th:href="@{/fenlei/ui/list}" class="layui-btn layui-btn-primary">返回</a>
+                            </div>
+                        </div>
+                    </form>
+
+            </div>
+        </div>
+</html>

@@ -1,0 +1,46 @@
+.tu01 > img{
+    width: 160px;
+    height: 55px;
+    /*margin-top: 5px;*/
+}
+
+.tu01{
+    text-align: center;
+    top:10px;
+}
+
+.tou01{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.biao01 .biaodan01{
+    width: 334px!important;
+}
+
+.biao01{
+    width: 334px;
+    margin: 0 auto;
+}
+.paiban01 > input {
+    width: 200px;
+}
+
+.btn_zc01{
+    text-align: center;
+}
+
+.xieyi > a{
+    color: #428bca;
+}
+
+.xieyi{
+    text-align: center;
+    justify-content: center;
+}
+
+.bibian{
+    text-align: center;
+    color: #c2c2c2;
+    margin-top: 10px;
+}

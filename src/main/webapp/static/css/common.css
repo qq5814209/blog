@@ -1,0 +1,58 @@
+content {
+    display: flex;
+}
+content .left{
+    width: 200px;
+    overflow: auto hidden;
+}
+
+content .left .module{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    padding: 10px 0;
+    border-top:solid 1px white;
+    border-bottom:solid 1px white;
+}
+content .left .page {
+    border-bottom:solid 1px #00F7DE;
+}
+
+content .left .page >a{
+    font-size:16px!important;
+}
+
+content .right{
+    flex: 1;
+    overflow: auto!important;
+}
+
+content .right .breadcrumb{
+    border-top:solid 1px white;
+    border-left:solid 1px white;
+    padding: 5px;
+}
+
+content .right .page-content{
+    padding: 10px!important;
+    overflow-x: auto!important;
+}
+
+content .right .form-content{
+    padding: 10px!important;
+}
+
+/*文件上传框*/
+.layui-upload-img {
+    width: 92px;
+    height: 92px;
+    margin: 0 10px 10px 0;
+}
+
+/*页面按钮权限控制*/
+[auth]{
+    display: none;
+}
+
+

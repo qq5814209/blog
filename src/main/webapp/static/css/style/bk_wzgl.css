@@ -1,0 +1,68 @@
+.zuodao02{
+    border-right: solid 1px #bbb;
+}
+.ytzuo02{
+    margin-top: 50px;
+}
+.layui-tab-brief>.layui-tab-title .layui-this{
+    color: #C92027!important;
+}
+
+.diyika .diyisou > form{
+    display: flex;
+    padding: 0px 5px;
+    padding-top: 15px;
+    background-color: #f2f5f7;
+}
+.bianti01{
+    float: left;
+    display: block;
+    padding: 9px 0px;
+    padding-right: 9px;
+    width: 56px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: right;
+}
+#daxiao01{
+    width: 100px;
+}
+#daxiao02{
+    width: 100px;
+}
+#daxiao03{
+    width: 100px;
+}
+.anyan0{
+    background-color: #C92027;
+    color: #fff;
+    margin-left: 10px;
+}
+/*数据开始*/
+.tuisong01{
+    border-bottom: solid 1px #bbb;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+.piaofu0{
+    margin-left: 350px;
+}
+.wxbd01 .tuisong01 .boke01 .piaofu0 > button{
+    border: none;
+    color: #349EDF;
+}
+.wxbd01 .tuisong01 .boke01 .piaofu0 > .shanc{
+    color: #CA0C16;
+}
+.wxbd01 .tuisong01 .boke01 .boke02 .boke05 > a:hover{
+    color: #CA0C16!important;
+}
+.wxbd01 .tuisong01 .boke01 .boke04 .boke03 > a:hover{
+    color: #CA0C16!important;
+}
+/*数据结束*/
+#demo3{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}

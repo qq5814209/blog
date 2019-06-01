@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DBB博客-文章管理</title>
+    <link rel="stylesheet" href="static/plugins/layui/css/layui.css">
+    <link rel="stylesheet" href="static/css/style/bk_grfl.css">
+    <link rel="stylesheet" href="static/css/style/bk_list.css">
+    <link rel="stylesheet" href="static/css/style/bk_wzgl.css">
+</head>
+<body class="bjcolor">
+<header class="toubu01">
+    <div class="tuzi01">
+        <a class="tu08" href=""><img src="static/imgs/uimgs/biaoti01.png" alt=""></a>
+        <span class="chuang0">
+         <a href="">创作中心</a>
+        </span>
+    </div>
+    <div class="tuzi02">
+        <div class="xie0">
+        <a href="" class="layui-btn layui-btn-normal"><i class="layui-icon layui-icon-survey" style="font-size: 20px;"></i> 写博客</a>
+        </div>
+            <div class="tuzi03">
+                <a class="tui04" href=""><img src="static/imgs/uimgs/1_mdxiaohu.jpg" alt=""></a>
+            <a href="" class="tiao01">mdxiaohu</a>
+            <a href="" class="tuichu00">退出</a>
+        </div>
+    </div>
+</header>
+<div class="layui-container xia">
+    <div class="layui-row">
+        <div class="zuodao02 layui-col-md2">
+            <div class="zuo02">
+                <div class="zi03">
+                    <h3>内容</h3>
+                </div>
+            <ul class="item0">
+                <li class="li01 gr01">
+                          <a href="">文章管理</a>
+                </li>
+                <li class="li01">
+                        <a href="">专栏管理</a>
+                </li>
+                <li class="li01">
+                        <a href="">评论管理</a>
+                </li>
+                <li class="li01">
+                        <a href="">个人分类管理</a>
+                </li>
+                <li class="li01">
+                        <a href="">Chat快问</a>
+                </li>
+                <li class="li01">
+                        <a href="">博客搬家</a>
+                </li>
+                </ul>
+                <div class="zi03">
+                    <h3>设置</h3>
+                </div>
+                <ul class="item0">
+                    <li class="li01">
+                            <a href="">博客设置</a>
+                    </li>
+                    <li class="li01">
+                            <a href="">栏目管理</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="layui-col-md10" id="you01">
+            <div class="youtou01">
+                <div class="ytzuo02">
+                    <div class="xian04"></div>
+                    <div class="flming00">文章管理</div>
+                </div>
+            </div>
+            <div class="ss00">
+                <!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">-->
+                    <!--<legend>简洁风格的Tab</legend>-->
+                <!--</fieldset>-->
+                <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this">全部<span>（5）</span></li>
+                        <li>已发表<span>（5）</span></li>
+                        <li>私密<span>（0）</span></li>
+                        <li><i class="layui-icon layui-icon-delete" style="font-size: 15px;"></i> 草稿箱<span>（0）</span></li>
+                    </ul>
+                    <div class="layui-tab-content diyika" style="min-height: 360px;">
+                        <div class="layui-tab-item layui-show diyisou">
+                            <form class="layui-form" action="">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label bianti01">发布时间</label>
+                                    <div class="layui-input-inline " id="daxiao01">
+                                        <select name="quiz1">
+                                            <option value="">选择年份</option>
+                                            <option value="2018">2018</option>
+                                            <option value="2017">2017</option>
+                                        </select>
+                                    </div>
+                                    <div class="layui-input-inline" id="daxiao02">
+                                        <select name="quiz2">
+                                            <option value="">选择月份</option>
+                                            <option value="7">7</option>
+                                            <option value="6">6</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                  <div class="layui-form-item">
+                                    <div class="layui-input-inline" id="daxiao03">
+                                     <select name="city" lay-verify="required">
+                                       <option value="">文章类型</option>
+                                       <option value="1">原创</option>
+                                        <option value="2">转载</option>
+                                        <option value="3">翻译</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <select name="city" lay-verify="required">
+                                            <option value="">个人分类</option>
+                                            <option value="1">程序人生</option>
+                                            <option value="2">Python</option>
+                                            <option value="3">大数据</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="只支持标题关键词搜索" class="layui-input">
+                                    </div>
+                                </div>
+                                <a href="" class="anyan0 layui-btn layui-btn-radius layui-btn-primary">搜 索</a>
+                            </form>
+
+                            <ul class="wxbd01">
+                                <li class="tuisong01">
+                                    <h2 class="tuisongbt"><a href="">ASP.NET三层架构及短信发送案例（一）</a></h2>
+                                    <div class="tongsongnr">
+                                        首先，我讲述的是ASP.NET三层架构。所谓ASP.NET三层架构主要包括：
+                                        界面层（UI）：通俗说就是用户使用某系统时的操作界面。业务逻辑层(BLL)：
+                                        对具体问题的操作、对数据层的操作。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。
+                                    </div>
+                                    <div class="boke01">
+                                        <div class="boke02">
+                                            <div class="boke05 layui-breadcrumb" lay-separator="·">
+                                                <a class="buyao01">06月23日</a>
+                                                <a href="" class="fenlei01 bokexf01">程序人生</a>
+                                            </div>
+                                        </div>
+                                        <div class="boke04">
+                                            <div class="boke03 layui-breadcrumb" lay-separator="·">
+                                                <a href="" class="bokexf01"><span class="nu">500</span> 阅读</a>
+                                                <a href="" class="bokexf01"><span class="nu" >0</span> 评论</a>
+                                            </div>
+                                        </div>
+                                        <div class="piaofu0">
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs chakan">查看</button>
+                                            <span class="gang">|</span>
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs jplun">禁止评论</button>
+                                            <span class="gang">|</span>
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs zhid">置顶</button>
+                                            <span class="gang">|</span>
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs shanc">删除</button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="tuisong01">
+                                    <h2 class="tuisongbt"><a href="">ASP.NET三层架构及短信发送案例（一）</a></h2>
+                                    <div class="tongsongnr">
+                                        首先，我讲述的是ASP.NET三层架构。所谓ASP.NET三层架构主要包括：
+                                        界面层（UI）：通俗说就是用户使用某系统时的操作界面。业务逻辑层(BLL)：
+                                        对具体问题的操作、对数据层的操作。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。
+                                    </div>
+                                    <div class="boke01">
+                                        <div class="boke02">
+                                            <div class="boke05 layui-breadcrumb" lay-separator="·">
+                                                <a class="buyao01">06月23日</a>
+                                                <a href="" class="fenlei01 bokexf01">程序人生</a>
+                                            </div>
+                                        </div>
+                                        <div class="boke04">
+                                            <div class="boke03 layui-breadcrumb" lay-separator="·">
+                                                <a href="" class="bokexf01"><span class="nu">500</span> 阅读</a>
+                                                <a href="" class="bokexf01"><span class="nu" >0</span> 评论</a>
+                                            </div>
+                                        </div>
+                                        <div class="piaofu0">
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs chakan">查看</button>
+                                            <span class="gang">|</span>
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs jplun">禁止评论</button>
+                                            <span class="gang">|</span>
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs zhid">置顶</button>
+                                            <span class="gang">|</span>
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs shanc">删除</button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="tuisong01">
+                                    <h2 class="tuisongbt"><a href="">ASP.NET三层架构及短信发送案例（一）</a></h2>
+                                    <div class="tongsongnr">
+                                        首先，我讲述的是ASP.NET三层架构。所谓ASP.NET三层架构主要包括：
+                                        界面层（UI）：通俗说就是用户使用某系统时的操作界面。业务逻辑层(BLL)：
+                                        对具体问题的操作、对数据层的操作。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。
+                                    </div>
+                                    <div class="boke01">
+                                        <div class="boke02">
+                                            <div class="boke05 layui-breadcrumb" lay-separator="·">
+                                                <a class="buyao01">06月23日</a>
+                                                <a href="" class="fenlei01 bokexf01">程序人生</a>
+                                            </div>
+                                        </div>
+                                        <div class="boke04">
+                                            <div class="boke03 layui-breadcrumb" lay-separator="·">
+                                                <a href="" class="bokexf01"><span class="nu">500</span> 阅读</a>
+                                                <a href="" class="bokexf01"><span class="nu" >0</span> 评论</a>
+                                            </div>
+                                        </div>
+                                        <div class="piaofu0">
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs chakan">查看</button>
+                                            <span class="gang">|</span>
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs jplun">禁止评论</button>
+                                            <span class="gang">|</span>
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs zhid">置顶</button>
+                                            <span class="gang">|</span>
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs shanc">删除</button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="tuisong01">
+                                    <h2 class="tuisongbt"><a href="">ASP.NET三层架构及短信发送案例（一）</a></h2>
+                                    <div class="tongsongnr">
+                                        首先，我讲述的是ASP.NET三层架构。所谓ASP.NET三层架构主要包括：
+                                        界面层（UI）：通俗说就是用户使用某系统时的操作界面。业务逻辑层(BLL)：
+                                        对具体问题的操作、对数据层的操作。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。
+                                    </div>
+                                    <div class="boke01">
+                                        <div class="boke02">
+                                            <div class="boke05 layui-breadcrumb" lay-separator="·">
+                                                <a class="buyao01">06月23日</a>
+                                                <a href="" class="fenlei01 bokexf01">程序人生</a>
+                                            </div>
+                                        </div>
+                                        <div class="boke04">
+                                            <div class="boke03 layui-breadcrumb" lay-separator="·">
+                                                <a href="" class="bokexf01"><span class="nu">500</span> 阅读</a>
+                                                <a href="" class="bokexf01"><span class="nu" >0</span> 评论</a>
+                                            </div>
+                                        </div>
+                                        <div class="piaofu0">
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs chakan">查看</button>
+                                            <span class="gang">|</span>
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs jplun">禁止评论</button>
+                                            <span class="gang">|</span>
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs zhid">置顶</button>
+                                            <span class="gang">|</span>
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs shanc">删除</button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="tuisong01">
+                                    <h2 class="tuisongbt"><a href="">ASP.NET三层架构及短信发送案例（一）</a></h2>
+                                    <div class="tongsongnr">
+                                        首先，我讲述的是ASP.NET三层架构。所谓ASP.NET三层架构主要包括：
+                                        界面层（UI）：通俗说就是用户使用某系统时的操作界面。业务逻辑层(BLL)：
+                                        对具体问题的操作、对数据层的操作。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。数据访问层（DAL）：对数据库进行操作，
+                                        主要是进行数据的增、删、改、查。
+                                    </div>
+                                    <div class="boke01">
+                                        <div class="boke02">
+                                            <div class="boke05 layui-breadcrumb" lay-separator="·">
+                                                <a class="buyao01">06月23日</a>
+                                                <a href="" class="fenlei01 bokexf01">程序人生</a>
+                                            </div>
+                                        </div>
+                                        <div class="boke04">
+                                            <div class="boke03 layui-breadcrumb" lay-separator="·">
+                                                <a href="" class="bokexf01"><span class="nu">500</span> 阅读</a>
+                                                <a href="" class="bokexf01"><span class="nu" >0</span> 评论</a>
+                                            </div>
+                                        </div>
+                                        <div class="piaofu0">
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs chakan">查看</button>
+                                            <span class="gang">|</span>
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs jplun">禁止评论</button>
+                                            <span class="gang">|</span>
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs zhid">置顶</button>
+                                            <span class="gang">|</span>
+                                            <button class="layui-btn layui-btn-primary layui-btn-xs shanc">删除</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div id="demo3"></div>
+                        </div>
+                        <div class="layui-tab-item">内容2</div>
+                        <div class="layui-tab-item">内容3</div>
+                        <div class="layui-tab-item">内容4</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="static/plugins/layui/layui.js"></script>
+<script>
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function(){
+        var element = layui.element;
+
+        //…
+    });
+    //Demo
+    layui.use('form', function(){
+          var form = layui.form;
+
+          //监听提交
+         form.on('submit(formDemo)', function(data){
+               layer.msg(JSON.stringify(data.field));
+               return false;
+              });
+        });
+    layui.use('laypage', function(){
+        var laypage = layui.laypage;
+
+        //自定义样式
+        laypage.render({
+            elem: 'demo3'
+            ,count: 100
+            ,theme: '#CA0C16'
+        });
+    });
+</script>
+</body>
+</html>
