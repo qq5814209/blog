@@ -26,5 +26,12 @@ public class TestController {
         return s;
     }
 
+    @ResponseBody
+    @RequestMapping("testsq")
+    public String selectAllsq(){
+        String s = Service.selectAll();
+        return s;
+    }
+
 
 }
