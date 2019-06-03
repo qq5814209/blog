@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/layout(title='资源管理-编辑',jsPaths='/static/js/system/resources/add.js')">
+
+            <div class="right" th:fragment="right">
+                <!--面包屑-->
+                <div class="breadcrumb layui-bg-gray">
+                    <span class="layui-breadcrumb" lay-separator=">">
+                        <a href="/">首页</a>
+                        <a href="">系統管理</a>
+                        <a href="">轮播图管理</a>
+                        <a><cite>编辑</cite></a>
+                    </span>
+                </div>
+
+                <!--主体内容区-->
+                <div class="form-content layui-container">
+                        <form class="layui-form" th:action="@{/resources/update}" method="post">
+                            <input type="hidden" name="id" th:value="${resources.id}">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">资源名称</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="name"  th:value="${resources.name}"  lay-verify="required" placeholder="请输入资源名称" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">资源类型</label>
+                                <div class="layui-input-block">
+                                    <select name="type" lay-verify="required" lay-filter="type">
+                                        <option value=""></option>
+                                        <option value="1" th:selected="(${resources.type} eq 1)"  >模块</option>
+                                        <option value="2" th:selected="(${resources.type} eq 2)" >主页面</option>
+                                        <option value="3" th:selected="(${resources.type} eq 3)" >附属页面</option>
+                                        <option value="9" th:selected="(${resources.type} eq 9)" >操作</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item" id="url" th:style="'display:' + @{(${resources.type} eq 1 ? 'none' : 'block')} + ''">
+                                <label class="layui-form-label">访问URL</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="url" th:value="${resources.url}"  lay-verify="required" placeholder="请输入URL" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">资源标识码</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="code" th:value="${resources.code}"  lay-verify="required" placeholder="请输入资源标识码" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" id="ssmk"  th:style="'display:' + @{(${resources.type} eq 1 ? 'none' : 'block')} + ''">
+                                <label class="layui-form-label">所属模块</label>
+                                <div class="layui-input-block">
+                                    <select id="mokuai" name="parentModule" lay-filter="mokuai" lay-verify="required">
+                                        <option th:if="${resources.type} != 1" th:each="m:${modules}"  th:value="${m.code}" th:selected="(${m.code} eq ${resources.parentModule})" th:text="${m.name}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item" id="ssym"  th:style="'display:' + @{(${resources.type} lt 3 ? 'none' : 'block')} + ''" >
+                                <label class="layui-form-label">所属页面</label>
+                                <div class="layui-input-block">
+                                    <select id="yemian" name="parentPage" lay-filter="yemian">
+                                        <option th:if="(${resources.type} eq 3 or ${resources.type} eq 9)"  th:each="p:${pages}"  th:value="${p.code}" th:selected="(${p.code} eq ${resources.parentPage})"  th:text="${p.name}" ></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">排序权值</label>
+                                <div class="layui-input-block">
+                                    <input type="number" step="any" name="sortNo" th:value="${resources.sortNo}" placeholder="排序权值(越大越前)" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="formDemo">修改</button>
+                                    <a th:href="@{/resources/ui/list}" class="layui-btn layui-btn-primary">返回</a>
+                                </div>
+                            </div>
+                        </form>
+                </div>
+            </div>
+</html>

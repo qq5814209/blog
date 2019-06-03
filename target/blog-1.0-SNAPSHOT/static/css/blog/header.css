@@ -1,0 +1,143 @@
+header{
+    color: #333;
+    line-height: 1.5em;
+    background: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
+    min-width: 1200px;
+    width: 100%;
+    height: 50px;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+/*设置头部为两边对齐*/
+header .container{
+    height: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/*logo样式*/
+header .logo{
+    width: 84px;
+    height: 22px;
+    font-size: 18px;
+}
+
+header .logo >a {
+    color: orange;
+}
+
+header .right{
+    display: flex;
+}
+/*搜索框样式*/
+header .search_bar{
+    background: #fafafa;
+    width: 160px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding-top: 1px;
+    position:relative ;
+}
+header .search_bar i{
+    position: absolute;
+    right: 6px;
+    top:5px;
+    cursor:pointer;
+}
+
+header .input_search{
+    background-color: #fafafa;
+    font-size: 14px;
+    color: #778087;
+    display: block;
+    width: 110px;
+    padding: 5px 10px;
+    border: 0;
+    height: 18px;
+    border-radius: 10px;
+
+}
+
+/*发博客*/
+header .write-bolg-btn{
+    padding: 0 25px;
+    line-height: 33px;
+}
+
+header .write-bolg-btn a{
+    font-size: 14px;
+    color: #999;
+}
+
+header .write-bolg-btn a:hover{
+    color: red;
+}
+
+header .login{
+    line-height: 33px;
+    padding-top: 1px;
+
+
+}
+/*登录注册*/
+
+header .login a{
+    font-size: 14px;
+    color: #999;
+    margin: 0 10px;
+}
+
+header .login a:hover{
+    color: #4f4f4f;
+}
+/*用户中心*/
+header .user-center{
+    position: relative;
+    /*display: none;*/
+}
+
+header .user-center img{
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+}
+
+header .user-center .user-control:hover,header .user-center>a:hover + .user-control  {
+    display: block;
+}
+
+/*快速连接*/
+header .user-center .user-control{
+    display: none;
+    position: absolute;
+    right: -20px;
+    top: 33px;
+    width: 130px;
+    z-index: 99999;
+    background-color: #fff;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.1);
+    padding-top: 15px;
+}
+
+header .user-center .user-control > div{
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+}
+header .user-center .user-control  a {
+    height: 32px;
+    padding-left: 32px;
+    padding-right: 32px;
+    color: #4f4f4f;
+    font-size: 16px;
+}
+
+header .user-center .user-control  a:hover {
+    color:red;
+}

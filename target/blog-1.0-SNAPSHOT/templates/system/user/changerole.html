@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/static/plugins/layui/css/layui.css}">
+    <style>
+        .layui-form-select dl{
+            height: 110px!important;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-row"  style="padding-top: 10px;">
+    <div class="layui-col-xs10">
+        <form class="layui-form" method="post" id="form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-block">
+                    <input type="text" th:value="${user.userName}"  readonly  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input layui-disabled">
+                    <input type="hidden" name="id" th:value="${user.id}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">角色</label>
+                <div class="layui-input-block">
+                    <select id="roleId" name="roleId" lay-filter="roleId" lay-search="true" lay-verify="required">
+                        <option value="">无</option>
+                        <option th:each="role:${roles}"   th:value="${role.id}" th:selected="(${user.roleId} eq ${role.id})" th:text="${role.name}" ></option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<script th:src="@{/static/plugins/layui/layui.js}"></script>
+<script>
+    layui.use(['element','form'],function () {
+
+    });
+</script>
+
+</body>
+</html>

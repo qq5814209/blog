@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/layout(title='角色管理-新增',
+      cssPaths='/static/plugins/zTree/css/zTreeStyle/zTreeStyle.css',
+      jsPaths='/static/plugins/zTree/js/jquery.ztree.core.js,/static/plugins/zTree/js/jquery.ztree.excheck.js,/static/js/system/role/add.js')">
+    <div class="right" th:fragment="right">
+        <!--面包屑-->
+        <div class="breadcrumb layui-bg-gray">
+                <span class="layui-breadcrumb" lay-separator=">">
+                    <a href="">首页</a>
+                    <a href="">平台管理</a>
+                    <a href="">角色管理</a>
+                    <a><cite>编辑</cite></a>
+                </span>
+        </div>
+
+        <!--主体内容区-->
+        <div class="form-content layui-container layui-row">
+            <div class="layui-col-lg6">
+                <form class="layui-form" th:action="@{/role/update}" method="post">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">角色名称</label>
+                        <div class="layui-input-block">
+                            <input type="hidden" name="id" th:value="${role.id}" id="id">
+                            <input type="text" name="name" th:value="${role.name}"   lay-verify="required" placeholder="请输入角色名称" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">备注</label>
+                        <div class="layui-input-block">
+                            <textarea name="remark" placeholder="请输入备注" class="layui-textarea" th:text="${role.remark}"></textarea>
+                        </div>
+                    </div>
+                    <!--权限-->
+                    <input type="hidden" name="resourcesCodes" id="resourcesCodes">
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formSubmit">修改</button>
+                            <a th:href="@{/role/ui/list}" class="layui-btn layui-btn-primary">返回</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-col-lg5 layui-col-lg-offset1">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">拥有权限</label>
+                    <div class="layui-input-block">
+                        <ul id="resourcesTree" class="ztree"></ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</html>
