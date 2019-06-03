@@ -19,4 +19,12 @@ public class pojotest {
     public void setAge(int age) {
         this.age = age;
     }
+
+    @Override
+    public String toString() {
+        return "pojotest{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
