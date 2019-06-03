@@ -17,4 +17,14 @@ public class TestController {
         String s = Service.selectAll();
         return s;
     }
+
+
+    @ResponseBody
+    @RequestMapping("tests")
+    public String selectAlls(){
+        String s = Service.selectAll();
+        return s;
+    }
+
+
 }
