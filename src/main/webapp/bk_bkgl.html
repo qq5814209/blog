@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)https://mp.csdn.net/comment/list -->
+<html lang="en">
+<head>
+    <title>评论管理-CSDN博客</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="referrer" content="always">
+    <link rel="stylesheet" href="css/content_toolbar.css">
+    <link href="css/commons.11fa3e4.css" rel="stylesheet">
+    <script type="text/javascript">
+        var blog_address = "https://blog.csdn.net/";
+        var mall_vip_url = 'https://mall.csdn.net/vip';
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/check-adb.css">
+    <style type="text/css"></style>
+</head>
+<body>
+<div id="csdn-toolbar" class="csdn-toolbar tb_disnone  csdn-toolbar-skin-black ">
+</div>
+<link href="css/commentList.11fa3e4.css" rel="stylesheet">
+<!--Main Container -->
+<main role="main" class="container">
+    <div class="row row-offcanvas row-offcanvas-right main-wrapper">
+        <div id="left-menu">
+            <!--<div class="col-6 col-md-2 sidebar-offcanvas" id="sidebar">
+                <div class="list-group has-bdb edit-btn-box">
+                    <a href="https://mp.csdn.net/mdeditor?not_checkout=1" class="list-group-item editArticle " target="">
+                        <svg class="icon icon-pencil">
+                            <use xlink:href="#pencil"></use>
+                        </svg>
+                        Markdown编辑器
+                    </a>
+                    <a href="https://mp.csdn.net/postedit?not_checkout=1" class="list-group-item editArticle " target="">
+                        <svg class="icon icon-pencil">
+                            <use xlink:href="#pencil"></use>
+                        </svg>
+                        富文本编辑器
+                    </a>
+                </div>
+                <div class="list-group has-bdb">
+                    <a href="https://blog.csdn.net/weixin_42449733" class="list-group-item" target="_blank">查看主页</a>
+                </div>
+                <div class="list-group-item list-group-title">内容</div>
+                <div class="list-group">
+                    <a href="#" class="list-group-item " data-title="article" target="">文章管理</a>
+                    <a href="#" class="list-group-item ">专栏管理</a>
+                    <a href="#" class="list-group-item active" data-title="comment" target="">评论管理</a>
+                    <a href="#" class="list-group-item " target="">个人分类管理</a>
+                    <a href="#" class="list-group-item " target="">博客搬家</a>
+                </div>
+                <div class="list-group-item list-group-title">数据</div>
+                <div class="list-group">
+                    <a href="https://mp.csdn.net/data/baidukeyword" class="list-group-item " data-title="date" target="">百度关键词</a>
+                </div>
+                <div class="list-group-item list-group-title">设置</div>
+                <div class="list-group has-bdb">
+                    <a href="https://mp.csdn.net/configure" class="list-group-item " data-title="blogsetting"
+                       target="">博客设置</a>
+
+
+                    <a href="https://mp.csdn.net/subdomain/index" class="list-group-item " data-title="blogsetting"
+                       target="">自定义域名
+
+                        <span class="flag">new</span>
+                    </a>
+
+                    <a href="https://mp.csdn.net/column/list" class="list-group-item " data-title="blogsetting" target="">博客模块管理</a>
+                </div>
+                <div class="list-group qq-chat-box">
+                    <div class="img-box text-center">
+                        <a target="_blank"
+                           href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&amp;key=XzgwMDE4MDEwNl80ODc3MzVfODAwMTgwMTA2XzJf">
+                            <img src="image/csdn-kf.png" alt="">
+                            <p class="qq-qrcode-title text-center">
+                                QQ客服
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+        <div class="col-12 col-md-10" id="content-body">
+            <div class="main-nav-tabs">
+                <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a href="https://mp.csdn.net/comment/list/in" class="nav-link active" role="tab">我的文章评论</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://mp.csdn.net/comment/list/out" class="nav-link " role="tab">我发表的评论</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show article-list active" id="pills-home" role="tabpanel"
+                     aria-labelledby="pills-home">
+                    <div class="article-list-item">
+                        <!--没有内容的显示 使用需去除d-none begin-->
+                        <p class="no-content text-center">当前没有任何评论</p>
+                        <!--没有内容的显示 end-->
+                    </div>
+
+                    <!--分页页码 begin-->
+                    <div class="pagination-wrapper">
+                        <nav aria-label="Page navigation example">
+                        </nav>
+                    </div>
+                    <!--分页页码 end-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+<div style="position:fixed; top:0; left:0; overflow:hidden;"><input style="position:absolute; left:-300px;" type="text" value="" id="focus_retriever" readonly="true"></div>
+<div class="confirm-mask"></div>
+<div class="confirm-box"><p class="confirm-title">确定要置顶该文章？</p>
+    <div class="confirm-button-box">
+        <div class="confirm-button false">取消</div>
+        <div class="confirm-button true">确定</div>
+    </div>
+</div>
+<div class="notice-box"><i class="mr8 notice-icon type-success"></i>
+    <div class="pacman hide">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <span class="notice">文章发布成功</span></div>
+<div id="bdSug_1559553772110" class="bdSug_wpr" style="display: none;"></div>
+</body>
+<script src="/jquery/jquery-2.1.1.min.js"></script>
+<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+<script>
+    $("#left-menu").load("/bk_bkgl_left_menu.html");
+    $("#csdn-toolbar").load("/bk_header.html");
+</script>
+</html>

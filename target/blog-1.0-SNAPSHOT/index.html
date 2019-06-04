@@ -1,295 +1,890 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
 <head>
-    <meta charset="UTF-8">
-    <title>DBB博客-首页</title>
-    <link rel="stylesheet" href="static/plugins/layui/css/layui.css">
-    <link rel="stylesheet" href="static/css/style/index.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="referrer" content="always">
+    <meta name="msvalidate.01" content="3189512127C34C46BC74BED5852D45E4">
+    <link ref="canonical" href="#">
+    <link rel="stylesheet" href="/css/content_toolbar.css">
+    <link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/avatar.css">
+    <link href="/css/csdn_feed.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/check-adb.css">
 </head>
-<body class="zhuti" style="background-color: #f5f6f7">
-<div class="daohang layui-container layui-row layui-col-md12">
-            <ul class="dbdh01 layui-nav" lay-filter="">
-                <li class="layui-nav-item"><img src="static/imgs/uimgs/logo.png"></li>
-                <li class="layui-nav-item"><a href="">首页</a></li>
-                <li class="layui-nav-item"><a href="/bk_bknr.html">博客</a></li>
-                <li class="layui-nav-item"><a href="">学院</a></li>
-                <li class="layui-nav-item"><a href="">下载</a></li>
-                <li class="layui-nav-item"><a href="">论坛</a></li>
-                <li class="layui-nav-item"><a href="">问答</a></li>
-                <li class="layui-nav-item"><a href="">GitChat</a></li>
-                <li class="layui-nav-item"><a href="">招聘</a></li>
-                <li class="layui-nav-item"><a href="">活动</a></li>
-                <li class="layui-nav-item">
-                  <a href="javascript:;"><i class="layui-icon layui-icon-more" style="font-size: 18px;color: #3f3f3f"></i></a>
-                    <dl class="layui-nav-child"> <!-- 二级菜单 -->
-                        <dd><a href="">TinyMind</a></dd>
-                        <dd><a href="">ITeye</a></dd>
-                        <dd><a href="">CSTO</a></dd>
-                    </dl>
+<body data-category="home" data-host_type="www">
+<div id="csdn-toolbar" class="csdn-toolbar tb_disnone  csdn-toolbar-skin-black ">
+   <!-- <div class="container row center-block ">
+        <ul class="pull-left left-menu clearfix" id="nav-left-menu">
+            <li><a href="#" title="CSDN首页" class="">
+                <svg class="toolbar-icon" aria-hidden="true">
+                    <use xlink:href="#gonggong_csdnlogo_"></use>
+                </svg>
+            </a></li>
+            <li><a href="#" class="active" title="首页" style="margin-left:0">首页</a></li>
+            <li><a href="#" class="toolbar_to_feed" title="博客">博客</a></li>
+            <li class="app-control app-edu"><a class="link-title" href="#" title="学院">学院</a>
+                <div class="appControl"><span class="eduwx">
+                    <img src="/image/eduwxfix.png"><em>CSDN学院</em></span>
+                </div>
+            </li>
+            <li><a href="#" title="下载">下载</a></li>
+            <li><a href="#" title="论坛">论坛</a></li>
+            <li class="app-control app-app">
+                <a class="link-title" href="#" title="APP">APP</a>
+                <div class="appControl"><span><img src="/image/csdnqr@2x.png"><em>CSDN</em></span></div>
+            </li>
+            <li><a href="#" title="问答">问答</a></li>
+            <li><a href="#" target="_blank" title="商城">商城</a></li>
+            <li><a href="#" title="活动">活动</a></li>
+            <li class="vip-caise"><a href="#" title="VIP会员">VIP会员</a>
+                <span class="vip-totast"><img src="/image/vipimg.png"></span></li>
+            <li><a href="#" title="招聘">招聘</a></li>
+            <li><a href="#" title="ITeye">ITeye</a></li>
+            <li><a href="#" title="GitChat">GitChat</a></li>
+        </ul>
+        <div class="pull-right login-wrap unlogin">
+            <ul class="btns">
+                <li class="toolbar-tracking csdn-tracking-statistics tracking-click" data-mod="popu_369">
+                    <a href="#" style="padding:0"></a></li>
+                <li>
+                    <div class="search_bar csdn-tracking-statistics tracking-click" data-mod="popu_366">
+                        <input type="text" class="input_search" name="" value="疯狂Python精讲" id="toolber-keyword"
+                               placeholder="搜CSDN" autocomplete="off">
+                        <a href="#" target="_blank" class="btn-nobg-noborder btn-search">
+                            <svg class="toolbar-icon" aria-hidden="true">
+                                <use xlink:href="#sousuo"></use>
+                            </svg>
+                        </a></div>
+                </li>
+                <li class="write-bolg-btn csdn-tracking-statistics tracking-click" data-mod="popu_370">
+                    <a class="" href="#" target="_blank" id="blogClick">
+                        <svg class="toolbar-icon" aria-hidden="true">
+                            <use xlink:href="#xieboke1"></use>
+                        </svg>
+                        <span>写博客</span></a></li>
+                <li class="gitChat upload msgBox" id="msgBox"><a target="_blank" class=""
+                                                                 href="#"><img
+                        src="/image/message-icon.png" alt="" class="message"><span>消息</span>
+                    <div class="toolbar-circle" id="msg-circle"></div>
+                </a>
+                    <div class="msgList" id="msgList"><a href="#">评论<em
+                            class="comment"></em></a> <a href="#">关注<em
+                            class="follow"></em></a> <a href="#">点赞<em
+                            class="thumb_up"></em></a> <a href="#">回答<em
+                            class="invitation"></em></a> <a href="#">系统通知<em
+                            class="system"></em></a></div>
+                </li>
+                <li class="userinfo">
+                    <a href="#" target="_blank">登录</a><span></span>
+                    <a href="#" target="_blank">注册</a></li>
+                <li class="userLogin">
+                    <div class="loginCenter"><a href="https://i.csdn.net/" target="_blank">
+                        <img class="login_img" src="/image/100x100.jpg"></a>
+                    </div>
+                    <div class="userControl">
+                        <div class="bord">
+                            <div><i class="pull_icon pull_icon1"></i>
+                                <a href="#" target="_blank">我的关注</a></div>
+                            <div><i class="pull_icon pull_icon2"></i>
+                                <a href="#" target="_blank">我的收藏</a></div>
+                            <div><i class="pull_icon pull_icon4"></i>
+                                <a href="#" target="_blank">个人中心</a></div>
+                            <div><i class="pull_icon pull_icon7"></i>
+                                <a href="#" target="_blank">帐号设置</a></div>
+                        </div>
+                        <div class="bord">
+                            <div><i class="pull_icon pull_icon5"></i>
+                                <a href="#" target="_blank">我的博客</a>
+                            </div>
+                            <div><i class="pull_icon pull_icon6"></i>
+                                <a href="#" target="_blank">管理博客</a></div>
+                            <div><i class="pull_icon pull_icon12"></i>
+                                <a href="#" target="_blank">我的学院</a></div>
+                            <div><i class="pull_icon pull_icon13"></i>
+                                <a href="#" target="_blank">我的下载</a></div>
+                        </div>
+                        <div class="bord">
+                            <div><i class="pull_icon pull_icon8"></i>
+                                <a href="#" target="_blank">我的C币</a></div>
+                            <div><i class="pull_icon pull_icon9"></i>
+                                <a href="#" target="_blank">订单中心</a></div>
+                        </div>
+                        <div class="bord">
+                            <div><i class="pull_icon pull_icon10"></i>
+                                <a href="#" target="_blank">帮助</a></div>
+                            <div><i class="pull_icon pull_icon11"></i>
+                                <a href="#" class="logout">退出</a></div>
+                        </div>
+                    </div>
+                    <div class="guo_tip_box">关注和收藏在这里</div>
                 </li>
             </ul>
-            <ul class="dbdh02 layui-nav layui-layout-right" lay-filter="">
-                <li class="layui-nav-item" id="sousuo">
-                    <input type="text" name="sousuo" class="layui-input" placeholder="请输入搜索内容" autocomplete="off">
-                   <a href="">
-                       <i class="layui-icon layui-icon-search" style="color: #3f3f3f"></i>
-                   </a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href=""><i class="layui-icon layui-icon-edit" style="font-size: 18px;"></i>写博客</a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href=""><i class="layui-icon layui-icon-release" style="font-size: 18px;"></i> 发Chat</a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href=""><img src="static/imgs/uimgs/1_mdxiaohu.jpg" class="layui-nav-img">我</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="bk_list.html">我的博客</a></dd>
-                        <dd><a href="bk_wzgl.html">博客管理</a></dd>
-                        <dd><a href="javascript:;">消息</a></dd>
-                        <dd><a href="javascript:;">账号设置</a></dd>
-                        <dd><a href="javascript:;">反馈</a></dd>
-                        <dd><a href="javascript:;">帮助</a></dd>
-                        <dd><a href="javascript:;">退出</a></dd>
-                    </dl>
-                </li>
-            </ul>
+        </div>
+    </div>-->
 </div>
-<div class="zuobian layui-container layui-row">
-    <div class="cebian layui-col-md1">
-        <ul class="cbdaohang">
-            <li class="zbli"><a class="cbiana" href="">推荐</a></li>
-            <li class=""><a class="cbiana" href="">最新文章</a></li>
-            <li class=""><a class="cbiana" href="">资讯</a></li>
-            <li class=""><a class="cbiana" href="">人工智能</a></li>
-            <li class=""><a class="cbiana" href="">云计算/大数据</a></li>
-            <li class=""><a class="cbiana" href="">区块链</a></li>
-            <li class=""><a class="cbiana" href="">数据库</a></li>
-            <li class=""><a class="cbiana" href="">程序人生</a></li>
-            <li class=""><a class="cbiana" href="">游戏开发</a></li>
-            <li class=""><a class="cbiana" href="">研发管理</a></li>
-            <li class=""><a class="cbiana" href="">前端</a></li>
-            <li class=""><a class="cbiana" href="">移动开发</a></li>
-            <li class=""><a class="cbiana" href="">物联网</a></li>
-            <li class=""><a class="cbiana" href="">运维</a></li>
-            <li class=""><a class="cbiana" href="">计算机基础</a></li>
-            <li class=""><a class="cbiana" href="">编程语言</a></li>
-            <li class=""><a class="cbiana" href="">架构</a></li>
-            <li class=""><a class="cbiana" href="">音视频开发</a></li>
-            <li class=""><a class="cbiana" href="">安全</a></li>
-            <li class=""><a class="cbiana" href="">其他</a></li>
-        </ul>
-    </div>
-    <div class="zhongjian layui-col-md7">
-        <div>
-          <div class="gg01">
-           <img src="static/imgs/uimgs/zj_gg_01.png" alt="广告01">
-          </div>
-        <div class="layui-carousel" id="test1">
-            <div carousel-item>
-                <img src="static/imgs/uimgs/lun01.png" alt="">
-                <img src="static/imgs/uimgs/lun02.png" alt="">
-                <img src="static/imgs/uimgs/lun03.png" alt="">
-                <img src="static/imgs/uimgs/lun04.png" alt="">
-                <img src="static/imgs/uimgs/lun05.png" alt="">
+<div class="container clearfix" id="container">
+    <nav id="nav" class="clearfix">
+        <!--<div class="clearfix">
+            <div class="nav_com">
+                <ul>
+                    <li class="active"><a href="#">推荐</a></li>
+
+
+                    <li class=""><a href="#">关注</a></li>
+
+                    <li><a href="#">专题</a></li>
+
+
+                    <li class=""><a href="#">程序人生</a></li>
+
+
+                    <li class=""><a href="#">前端</a></li>
+
+
+                    <li class=""><a href="#">架构</a></li>
+
+
+                    <li class=""><a href="#">区块链</a></li>
+
+
+                    <li class=""><a href="#">编程语言</a></li>
+
+
+                    <li class=""><a href="#">数据库</a></li>
+
+
+                    <li class=""><a href="#">游戏开发</a></li>
+
+
+                    <li class=""><a href="#">移动开发</a></li>
+
+
+                    <li class=""><a href="#">运维</a></li>
+
+
+                    <li class=""><a href="#">人工智能</a></li>
+
+
+                    <li class=""><a href="#">安全</a></li>
+
+
+                    <li class=""><a href="#">云计算/大数据</a></li>
+
+
+                    <li class=""><a href="#">研发管理</a></li>
+
+
+                    <li class=""><a href="#">物联网</a></li>
+
+
+                    <li class=""><a href="#">计算机基础</a></li>
+
+
+                    <li class=""><a href="#">音视频开发</a></li>
+
+
+                    <li class=""><a href="#">其他</a></li>
+
+                </ul>
+
             </div>
-        </div>
-        </div>
-        <ul class="wxbd01">
-        <li class="tuisong01">
-            <h2 class="tuisongbt">ASP.NET三层架构及短信发送案例（一）</h2>
-            <div class="tongsongnr">
-                首先，我讲述的是ASP.NET三层架构。所谓ASP.NET三层架构主要包括：
-                界面层（UI）：通俗说就是用户使用某系统时的操作界面。业务逻辑层(BLL)：
-                对具体问题的操作、对数据层的操作。数据访问层（DAL）：对数据库进行操作，
-                主要是进行数据的增、删、改、查。
+        </div>-->
+    </nav>
+    <div class="fixed_content">
+
+        <main>
+
+            <div class="carousel">
+                <div class="carousel-left">
+                    <div id="myCarousel" class="slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+                            <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                            <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="3" class=""></li>
+                            <li data-target="#myCarousel" data-slide-to="4" class=""></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+
+                            <div class="carousel-item"
+                                 data-track-click="{&quot;mod&quot;:&quot;popu_465&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/dQCFKyQDXYm3F8rB0/article/details/90745713,&quot;}">
+                                <a href="#" target="_blank">
+                                    <img src="/image/081418422067240e1dd4f065f0b60a29.jpg">
+                                </a>
+                                <a href="#" target="_blank">
+                                    <div class="carousel-caption">
+                                        “爱装X”开源组织：“教科书级”AI知识树究竟长什么样？
+                                    </div>
+                                </a>
+                                <a href="#"
+                                   target="_blank" style="display:block;">
+                                    <div class="cover"></div>
+                                </a>
+                            </div>
+
+                            <div class="carousel-item  trackviewed"
+                                 data-track-click="{&quot;mod&quot;:&quot;popu_465&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/Blockchain_lemon/article/details/90482789,&quot;}">
+                                <a href="#" target="_blank">
+                                    <img src="/image/0e36975c84e6e3fb0e576556a1168330.png">
+                                </a>
+                                <a href="#" target="_blank">
+                                    <div class="carousel-caption">
+                                        中国开发者地位渐高? V神二度来京, 竟是为了……
+                                    </div>
+                                </a>
+                                <a href="#" target="_blank" style="display:block;">
+                                    <div class="cover"></div>
+                                </a>
+                            </div>
+
+                            <div class="carousel-item  trackviewed active"
+                                 data-track-click="{&quot;mod&quot;:&quot;popu_465&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/csdnnews/article/details/90653406,&quot;}">
+                                <a href="#" target="_blank">
+                                    <img src="/image/f4d178caf74bbb6e1b7d8f4c59a0cc66.png">
+                                </a>
+                                <a href="#" target="_blank">
+                                    <div class="carousel-caption">
+                                        从华为事件，看 Google Android 的独断专制！
+                                    </div>
+                                </a>
+                                <a href="#" target="_blank"
+                                   style="display:block;">
+                                    <div class="cover"></div>
+                                </a>
+                            </div>
+
+                            <div class="carousel-item "
+                                 data-track-click="{&quot;mod&quot;:&quot;popu_465&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/dQCFKyQDXYm3F8rB0/article/details/90702537,&quot;}">
+                                <a href="#" target="_blank">
+                                    <img src="/image/f97c6f9255aea3010e6c72f41fb124dd.jpg">
+                                </a>
+                                <a href="#" target="_blank">
+                                    <div class="carousel-caption">
+                                        各方最新回应！如何看待IEEE官方声明“学术禁令”？
+                                    </div>
+                                </a>
+                                <a href="#" target="_blank" style="display:block;">
+                                    <div class="cover"></div>
+                                </a>
+                            </div>
+
+                            <div class="carousel-item "
+                                 data-track-click="{&quot;mod&quot;:&quot;popu_465&quot;,&quot;con&quot;:&quot;,https://tangxiaoyin.blog.csdn.net/article/details/90668519,&quot;}">
+                                <a href="#" target="_blank">
+                                    <img src="/image/5a9faa7f9dd1caad63c553bc9569d2dc.jpg">
+                                </a>
+                                <a href="#" target="_blank">
+                                    <div class="carousel-caption">
+                                        百年 IBM 如何用代码拯救生命
+                                    </div>
+                                </a>
+                                <a href="#" target="_blank"
+                                   style="display:block;">
+                                    <div class="cover"></div>
+                                </a>
+                            </div>
+                        </div>
+                        <a class="left carousel-control" href="#" role="button"
+                           data-slide="prev">
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#" role="button"
+                           data-slide="next">
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel-right">
+                    <div class="carousel-right-u"
+                         data-track-click="{&quot;mod&quot;:&quot;popu_616&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/dQCFKyQDXYm3F8rB0/article/details/90735265,&quot;}">
+                        <a href="#" target="_blank">
+                            <img src="/image/9c30d50f37aa8aeb46e5036eaa9bb34e.jpg">
+                        </a>
+                        <a href="#" target="_blank">
+                            <p class="carousel-right-caption">
+                                <span>MNIST重生，测试集增加至60000张！</span>
+                            </p>
+                        </a>
+                        <a href="#" target="_blank" style="display:block;">
+                            <div class="cover"></div>
+                        </a>
+                    </div>
+                    <div class="carousel-right-u"
+                         data-track-click="{&quot;mod&quot;:&quot;popu_616&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/dQCFKyQDXYm3F8rB0/article/details/90708923,&quot;}">
+                        <a href="#" target="_blank">
+                            <img src="/image/f6b1aabf75deab30a4f381d464bdcb80.jpg">
+                        </a>
+                        <a href="#" target="_blank">
+                            <p class="carousel-right-caption">
+                                <span>亮风台新提端到端AR投影光学补偿算法 | CVPR 2019 Oral</span>
+                            </p>
+                        </a>
+                        <a href="#" target="_blank"
+                           style="display:block;">
+                            <div class="cover"></div>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="boke01">
-              <div class="boke02">
-                <div class="boke05 layui-breadcrumb" lay-separator="·">
-                    <a class="bokexf01" href=""><img src="static/imgs/uimgs/1_mdxiaohu.jpg" class="layui-nav-img">mdxiaohu</a>
-                    <a class="buyao01">06月23日</a>
-                    <a href="" class="fenlei01 bokexf01">程序人生</a>
+            <div class="feed-loading-box">
+                <div class="loader-inner ball-clip-rotate-pulse">
+                    <div></div>
                 </div>
-              </div>
-                <div class="boke04">
-                    <div class="boke03 layui-breadcrumb" lay-separator="·">
-                    <a href="" class="bokexf01"><span class="nu">500</span> 阅读</a>
-                    <a href="" class="bokexf01"><span class="nu" >0</span> 评论</a>
+                <span class="loading-txt">在奔跑中</span>
+            </div>
+            <div>
+                <div class="msg-tooltip">
+                    <div class="update_counts"></div>
+                </div>
+            </div>
+            <div class="feed-fix-box">
+                <div class="scroll-fixbar clearfix csdn-tracking-statistics" data-mod="popu_463" data-dsm="post"
+                     style="left: 0px; width: 760px;">
+                    <a class="txt txt-refrash-new">您有新的推荐内容，点击查看</a>
+                    <button class="btn btn-nobg-noborder btn-nobg-noborder btn-close-fixbar">
+                        <i class="icon-close"></i>
+                    </button>
+                </div>
+            </div>
+            <ul class="feedlist_mod home" id="feedlist_id" shown-offset="1559560459948099">
+                <li class="clearfix" data-type="blog" data-id="90632901" shown-time="1559560460">
+                    <div class="list_con">
+                        <div class="title">
+                            <h2>
+                                <a href="#" target="_blank"
+                                   data-track-click="{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901,career,index_0&quot;}">
+                                    面试经验：求职面试时的835守则 </a>
+                            </h2>
+                            <div class="close_tag">
+                                <div class="unin_reason_dialog_wrapper">
+                                    <i class="icon-close"></i>
+                                    <div class="unin_reason_dialog">
+                                        <h3>选择理由，精准屏蔽</h3>
+                                        <ul>
+                                            <li class="unin_item csdn-tracking-statistics" data-poputype="feed"
+                                                data-feed-show="false" data-dsm="post" data-mod="popu_462">
+                                                <a>推荐不准: 最新文章</a>
+                                            </li>
+                                            <br>
+                                            <li class="unin_item csdn-tracking-statistics" data-poputype="feed"
+                                                data-feed-show="false" data-dsm="post" data-mod="popu_462">
+                                                <a> 旧闻、重复 </a>
+                                            </li>
+                                            <br>
+                                            <li class="unin_item csdn-tracking-statistics" data-poputype="feed"
+                                                data-feed-show="false" data-dsm="post" data-mod="popu_462">
+                                                <a> 内容质量差 </a>
+                                            </li>
+                                            <br>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="summary oneline">
+                            大学生现在就业困难，很大一部分原因是：现在绝大多数大学生在找工作时往往眼高手低的、好高骛远。导致的后果就是别人都有工作了，自己还是在那里徘徊不定。这是大学生找工作时犯的最大也是最致命的毛病！
+                            求职免不了面试这一环节，大学生在面试中则显得很被动，没有敏锐的识别能力也不能维护好自己的权益。面试的时候很能体现出问题来，为此，有关人士为大学生研究了这“835守则”。
+                            八不为：
+                            1.不临时随街上陌生招聘人...
+                        </div>
+                        <dl class="list_userbar">
+
+                            <dt>
+                                <a href="#" target="_blank" class="user_img">
+                                    <img src="/image/1_mijuoffer" alt="mijuoffer" title="mijuoffer">
+                                </a>
+                            </dt>
+                            <dd class="name">
+                                <a href="#" target="_blank">
+                                    mijuoffer </a>
+                            </dd>
+                            <div class="interval"></div>
+                            <dd class="tag">
+                                <a href="#" target="_blank">
+                                    程序人生 </a>
+                            </dd>
+                            <div class="interval"></div>
+                            <dd class="time">
+                                6天前
+                            </dd>
+                            <div class="interactive floatR">
+                                <!--阅读 begin-->
+                                <dd class="read_num">
+                                    <a href="#"
+                                       data-track-click="{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901,career,index_0&quot;}">
+                                        <span class="text">阅读数</span>
+                                        <span class="num">1246</span>
+                                    </a>
+                                </dd>
+                                <div class="interval"></div>
+                                <!--阅读 end-->
+                                <!--新增评论数+阅读 begin-->
+                                <dd class="common_num ">
+                                    <a href="#"
+                                       target="_blank"
+                                       data-track-click="{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901#commentBox,career,index_0&quot;}">
+                                        <span class="text">评论数 </span>
+                                        <span class="num">4</span>
+                                    </a>
+                                </dd>
+                                <!--新增评论数+阅读 end-->
+                            </div>
+                        </dl>
+                    </div>
+                </li>
+                <li class="clearfix" data-type="blog" data-id="90725644" shown-time="1559560460">
+                    <div class="list_con">
+                        <div class="title">
+                            <h2>
+                                <a href="#" target="_blank"
+                                   data-track-click="{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/rx3oyuyi/article/details/90725644,recommend,index_1&quot;}">
+                                    为应对美国禁令 华为遣返在深圳总部工作的美国员工 </a>
+                            </h2>
+                            <div class="close_tag">
+                                <div class="unin_reason_dialog_wrapper">
+                                    <i class="icon-close"></i>
+                                    <div class="unin_reason_dialog">
+                                        <h3>选择理由，精准屏蔽</h3>
+                                        <ul>
+                                            <li class="unin_item csdn-tracking-statistics" data-poputype="feed"
+                                                data-feed-show="false" data-dsm="post" data-mod="popu_462">
+                                                <a>推荐不准: 运营精选</a>
+                                            </li>
+                                            <br>
+                                            <li class="unin_item csdn-tracking-statistics" data-poputype="feed"
+                                                data-feed-show="false" data-dsm="post" data-mod="popu_462">
+                                                <a> 旧闻、重复 </a>
+                                            </li>
+                                            <br>
+                                            <li class="unin_item csdn-tracking-statistics" data-poputype="feed"
+                                                data-feed-show="false" data-dsm="post" data-mod="popu_462">
+                                                <a> 内容质量差 </a>
+                                            </li>
+                                            <br>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="summary oneline">
+                            【TechWeb】5月31日消息，据国外媒体报道，为应对美国禁令，华为已经下令员工取消与美国联络人的技术会议，并遣返在其深圳总部工作的美国人。
+
+                            华为
+                            华为首席战略架构师党文栓表示，在美国政府将华为及其68家关联企业列入黑名单后，在华为总部从事研发工作的美国公民已经于两周前被送回了美国。
+                            党文栓近日接受外媒采访时表示，“我们不知道...
+                        </div>
+                        <dl class="list_userbar">
+
+                            <dt>
+                                <a href="#" target="_blank" class="user_img">
+                                    <img src="/image/1_rx3oyuyi" alt="rx3oyuyi" title="rx3oyuyi">
+                                </a>
+                            </dt>
+                            <dd class="name">
+                                <a href="#" target="_blank">
+                                    csdn头条 </a>
+                            </dd>
+                            <div class="interval"></div>
+                            <dd class="time">
+                                2天前
+                            </dd>
+                            <div class="interactive floatR">
+                                <!--阅读 begin-->
+                                <dd class="read_num">
+                                    <a href="#"
+                                       data-track-click="{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/rx3oyuyi/article/details/90725644,recommend,index_1&quot;}">
+                                        <span class="text">阅读数</span>
+                                        <span class="num">8216</span>
+                                    </a>
+                                </dd>
+                                <div class="interval"></div>
+                                <!--阅读 end-->
+                                <!--新增评论数+阅读 begin-->
+                                <dd class="common_num ">
+                                    <a href="#"
+                                       target="_blank"
+                                       data-track-click="{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/rx3oyuyi/article/details/90725644#commentBox,recommend,index_1&quot;}">
+                                        <span class="text">评论</span>
+                                    </a>
+                                </dd>
+                                <!--新增评论数+阅读 end-->
+                            </div>
+                        </dl>
+                    </div>
+                </li>
+            </ul>
+        </main>
+
+        <aside>
+            <!-- 右侧轮播广告 begin -->
+            <div class="slide-outer right_top" style="position:relative; z-index:998">
+                <div class="box hot">
+                    <div adsid="home08a" class="swapbox1">
+                        <div id="kp_box_428" data-pid="428"
+                             data-track-click="{&quot;mod&quot;:&quot;kp_popu_428-1159&quot;,&quot;con&quot;:&quot;,,&quot;}">
+                            <iframe class="J_adv" data-swapimg="true" src="/saved_resource/saved_resource(8).html"
+                                    frameborder="0" width="300px" height="200px" scrolling="no"
+                                    style="display: none;"></iframe>
+                        </div>
+                    </div>
+                    <div adsid="home08b" class="swapbox2">
+                        <div id="kp_box_429" data-pid="429"
+                             data-track-click="{&quot;mod&quot;:&quot;kp_popu_429-1091&quot;,&quot;con&quot;:&quot;,,&quot;}">
+                            <iframe class="J_adv" data-swapimg="true" src="/saved_resource/saved_resource(9).html"
+                                    frameborder="0" width="300px" height="200px" scrolling="no"
+                                    style="display: none;"></iframe>
+                        </div>
+                    </div>
+                    <div adsid="home08c" class="swapbox3">
+                        <div id="kp_box_430" data-pid="430"
+                             data-track-click="{&quot;mod&quot;:&quot;kp_popu_430-542&quot;,&quot;con&quot;:&quot;,,&quot;}">
+                            <!-- 广告位开始 -->
+                            <div class="J_adv" data-view="true" data-mod="ad_popu_133" data-mtp="4" data-order="1055"
+                                 data-swapimg="true" data-con="ad_content_4853"
+                                 style="width: 300px; height: 200px; display: none;"><a
+                                    href="#">
+                                <img width="300" height="200" src="/image/201902281738399905.jpg"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div adsid="home08d" class="swapbox4">
+                        <div id="kp_box_431" data-pid="431"
+                             data-track-click="{&quot;mod&quot;:&quot;kp_popu_431-543&quot;,&quot;con&quot;:&quot;,,&quot;}">
+                            <!-- 广告位开始 -->
+                            <div class="J_adv" data-view="true" data-mod="ad_popu_134" data-mtp="4" data-order="1055"
+                                 data-swapimg="true" data-con="ad_content_4854"
+                                 style="width: 300px; height: 200px; display: none;"><a href="#">
+                                <img width="300" height="200" src="/image/201902281740116853.jpg"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div adsid="home08e" class="swapbox5">
+                        <div id="kp_box_432" data-pid="432"
+                             data-track-click="{&quot;mod&quot;:&quot;kp_popu_432-544&quot;,&quot;con&quot;:&quot;,,&quot;}">
+                            <!-- 广告位开始 -->
+                            <div class="J_adv" data-view="true" data-mod="ad_popu_135" data-mtp="4" data-order="1055"
+                                 data-swapimg="true" data-con="ad_content_4844"
+                                 style="width: 300px; height: 200px; display: list-item;"><a
+                                    href="#"><img
+                                    width="300" height="200" src="/image/201905131352496001.png"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div adsid="home08f" class="swapbox6">
+                        <div id="kp_box_433" data-pid="433"
+                             data-track-click="{&quot;mod&quot;:&quot;kp_popu_433-545&quot;,&quot;con&quot;:&quot;,,&quot;}">
+                            <!-- 广告位开始 -->
+                            <div class="J_adv" data-view="true" data-mod="ad_popu_136" data-mtp="4" data-order="1055"
+                                 data-swapimg="true" data-con="ad_content_4845"
+                                 style="width: 300px; height: 200px; opacity: 0; display: none;"><a
+                                    href="#"><img
+                                    width="300" height="200" src="/image/201905291410413154.jpg"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="js-tagRoot">
+                    <li class=""></li>
+                    <li class=""></li>
+                    <li class=""></li>
+                    <li class=""></li>
+                    <li class="current"></li>
+                    <li></li>
+                </ul>
+                <img src="/image/201608021757063065.png" alt="" class="icon-ad">
+            </div>
+            <!-- 右侧轮播广告 end -->
+            <div class="right_box">
+                <h3 class="feed_new_tit">
+                    <span class="line"></span><span class="txt">今日推荐</span>
+                </h3>
+                <div class="feed_company csdn-tracking-statistics" data-mod="popu_474" data-dsm="post">
+                    <ul class="company_list">
+                        <li>
+                            <div class="img_box"><a
+                                    href="#"
+                                    target="_blank"><img
+                                    src="/image/e39541edde7907566d5db64bc6828d73.png" alt=""></a></div>
+                            <div class="content">
+                                <h3 class="company_name"><a
+                                        href="#"
+                                        target="_blank">“2019以太坊技术及应用大会”首批嘉宾名单曝光!</a></h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img_box"><a
+                                    href="#"
+                                    target="_blank"><img
+                                    src="/image/b1dfda57c340b3f6de2c21914315cf68.png" alt=""></a></div>
+                            <div class="content">
+                                <h3 class="company_name"><a
+                                        href="#"
+                                        target="_blank">3个维度，20大应用场景，这才是真实的区块链！</a></h3>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <div class="other_company clearfix">
+                        <a href="#" target="_blank">百度云技术专区</a>
+                        <a href="#" target="_blank">快应用大赛</a>
+                        <a href="#" target="_blank">华为云&nbsp;</a>
+                        <a href="#" target="_blank">英特尔开发人员专区</a>
+                        <a href="#" target="_blank">腾讯云技术社区</a>
+                        <a href="#" target="_blank">普元云计算</a>
+                        <a href="#" target="_blank">PowerLinux技术社区</a>
                     </div>
                 </div>
             </div>
-        </li>
-            <li class="tuisong01">
-                <h2 class="tuisongbt">ASP.NET三层架构及短信发送案例（二）</h2>
-                <div class="tongsongnr">
-                    在上一篇，简单说明了下ASP.NET的三层架构和案例准备。
-                    下来，就进入主题。如何利用模板，来生成三层框架。
-                    我们，需要一个工具，Codesmith。
-                    CodeSmith是一种语法类似于asp.net的基于模板的代码生成器，
-                    程序可以自定义模板，作为开发人员工具，
-                    它可以减少重复编码的劳动量，提高效率。
+            <div class="right_box csdn-tracking-statistics" data-mod="popu_470" data-dsm="post">
+                <div class="feed_viewpoint" style="background-image: url(image/mod_viewpoint.png)">
+                    <a href="#" target="_blank">
+                        <img src="/image/mod_viewpoint.png" class="viewpoint_img" alt="csdn_viewpoint"
+                             title="csdn_viewpoint">
+                        <h3>中国学者退出 IEEE 组织，焉知非福？</h3>
+                    </a>
                 </div>
-                <div class="boke01">
-                    <div class="boke02">
-                        <div class="boke05 layui-breadcrumb" lay-separator="·">
-                            <a class="bokexf01" href=""><img src="static/imgs/uimgs/1_mdxiaohu.jpg" class="layui-nav-img">mdxiaohu</a>
-                            <a class="buyao01">06月23日</a>
-                            <a href="" class="fenlei01 bokexf01">程序人生</a>
-                        </div>
-                    </div>
-                    <div class="boke04">
-                        <div class="boke03 layui-breadcrumb" lay-separator="·">
-                            <a href="" class="bokexf01"><span class="nu">170</span> 阅读</a>
-                            <a href="" class="bokexf01"><span class="nu" >0</span> 评论</a>
-                        </div>
-                    </div>
+                <div class="feed_vote">
+                    <dl>
+                        <dt>冷静对待</dt>
+                        <dd>81%</dd>
+                    </dl>
+                    <a type="button" class="btn btn-border-red btn-lg30" href="#"
+                       target="_blank">投票参与</a>
+                    <dl>
+                        <dt>支持</dt>
+                        <dd>19%</dd>
+                    </dl>
                 </div>
-            </li>
-            <li class="tuisong01">
-                <h2 class="tuisongbt">ASP.NET三层架构及短信发送案例（三）</h2>
-                <div class="tongsongnr">
-                    第三步，将生成的代码，拷贝到VS工程里面对应的位置。
-                    具体看操作。先拷贝Model类。选择Model类，右键添加类，
-                    这里主要是名称要和Codesmith生成的一样。
-                    然后只需将生成的代码粘贴到页面上即可。
-                </div>
-                <div class="boke01">
-                    <div class="boke02">
-                        <div class="boke05 layui-breadcrumb" lay-separator="·">
-                            <a class="bokexf01" href=""><img src="static/imgs/uimgs/1_mdxiaohu.jpg" class="layui-nav-img">mdxiaohu</a>
-                            <a class="buyao01">06月23日</a>
-                            <a href="" class="fenlei01 bokexf01">程序人生</a>
-                        </div>
-                    </div>
-                    <div class="boke04">
-                        <div class="boke03 layui-breadcrumb" lay-separator="·">
-                            <a href="" class="bokexf01"><span class="nu">162</span> 阅读</a>
-                            <a href="" class="bokexf01"><span class="nu" >0</span> 评论</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="tuisong01">
-                <h2 class="tuisongbt">ASP.NET三层架构及短信发送案例（四）</h2>
-                <div class="tongsongnr">
-                    接下来，要做的事情就是，实现短信发送功能了。
-                    要想在ASP.NET页面实现短信发送，
-                    首先需要一个第三方的接口。
-                    市面上有很多大公司都提供短信业务，都是需要付费的，
-                    好多是一次性打包上千上万条卖，大家百度即可。
-                </div>
-                <div class="boke01">
-                    <div class="boke02">
-                        <div class="boke05 layui-breadcrumb" lay-separator="·">
-                            <a class="bokexf01" href=""><img src="static/imgs/uimgs/1_mdxiaohu.jpg" class="layui-nav-img">mdxiaohu</a>
-                            <a class="buyao01">06月23日</a>
-                            <a href="" class="fenlei01 bokexf01">程序人生</a>
-                        </div>
-                    </div>
-                    <div class="boke04">
-                        <div class="boke03 layui-breadcrumb" lay-separator="·">
-                            <a href="" class="bokexf01"><span class="nu">158</span> 阅读</a>
-                            <a href="" class="bokexf01"><span class="nu" >0</span> 评论</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="tuisong01">
-                <h2 class="tuisongbt">ASP.NET三层架构及短信发送案例（五）</h2>
-                <div class="tongsongnr">
-                    前几天，我们已经完成了短信发送的案例。
-                    因为时间关系，有些功能没有补充。在这里一并说了。
-                    功能一，网页查询功能的实现。
-                    首先，我们先看下本系统中，所采用的控件。
-                </div>
-                <div class="boke01">
-                    <div class="boke02">
-                        <div class="boke05 layui-breadcrumb" lay-separator="·">
-                            <a class="bokexf01" href=""><img src="static/imgs/uimgs/1_mdxiaohu.jpg" class="layui-nav-img">mdxiaohu</a>
-                            <a class="buyao01">06月27日</a>
-                            <a href="" class="fenlei01 bokexf01">程序人生</a>
-                        </div>
-                    </div>
-                    <div class="boke04">
-                        <div class="boke03 layui-breadcrumb" lay-separator="·">
-                            <a href="" class="bokexf01"><span class="nu">780</span> 阅读</a>
-                            <a href="" class="bokexf01"><span class="nu" >0</span> 评论</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div class="right0 layui-col-md3">
-        <div class="right-tuisong">
-            <div class="right-caini">
-                <ul class="caini01">
-                    <li  class="caini01">
-                        <div class="heti"><span class="xiantiao"></span><span class="ziti">今日推荐</span></div>
+                <ul class="feed_new_arrlist">
+                    <li class="clearfix">
+                        <span class="arr"><i class="icon CSDN_iconfont Feed-arrowup"></i></span>
+                        <span class="txt"><a href="#" target="_blank">科技自强，开源自立？中国是否需要发展自己的 Github？</a></span>
                     </li>
-                    <li class="caini02">
-                        <img src="static/imgs/uimgs/tuijian01.png"><a href="">ASP.NET三层架构及短信发送案例（一）</a>
-                    </li>
-                    <li class="caini02">
-                        <img src="static/imgs/uimgs/tuijian02.png"><a href="">ASP.NET三层架构及短信发送案例（二）</a>
-                    </li>
-                    <li class="caini02">
-                        <img src="static/imgs/uimgs/tuijian03.png"><a href="">ASP.NET三层架构及短信发送案例（三）</a>
-                    </li>
-                    <li class="caini02">
-                        <img src="static/imgs/uimgs/tuijian04.jpg"><a href="">ASP.NET三层架构及短信发送案例（四）</a>
-                    </li>
-                    <li class="caini02">
-                        <img src="static/imgs/uimgs/tuijian05.png"><a href="">ASP.NET三层架构及短信发送案例（五）</a>
-                    </li>
-                    <li class="caini02">
-                        <img src="static/imgs/uimgs/tuijian06.png"><a href="">19个超赞的数据科学和机器学习工具，编程小白必看！（附资料）</a>
+                    <li class="clearfix">
+                        <span class="arr"><i class="icon CSDN_iconfont Feed-arrowup"></i></span>
+                        <span class="txt"><a href="#" target="_blank">Flutter 这个坑，你跳还是不跳？</a></span>
                     </li>
                 </ul>
             </div>
-        </div>
-        <div class="lianxi">
-            <h2>联系我们</h2>
-            <div class="lianxi03">
-                <div class="lianxi02"><img src="static/imgs/uimgs/ewm1.jpg" alt="二维码"></div>
-                <div class="lianxi01">
-                    <h4>扫描二维码联系客服</h4>
-                    <p><i class="icon iconfont">&#xe50d;</i> mdxiaohu</p>
-                    <p><i class="icon iconfont">&#xe609;</i> 400-888-6660</p>
-                    <p><i class="icon iconfont">&#xe64c;</i> 317108332</p>
+            <div class="right_box magazine_box">
+                <h3 class="feed_new_tit">
+                    <span class="txt">GitChat极客书</span>
+                    <div class="opt-box">
+                        <a class="carousel-control" href="#" role="button"
+                           data-slide="prev">
+                            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16zm3-11.5L9.5 3l-5 5 5 5 1.5-1.5L7.5 8 11 4.5z" fill-rule="evenodd"></path></svg>
+                        </a>
+                        <a class="carousel-control" href="#" role="button"
+                           data-slide="next">
+                            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16zM5 4.5L8.5 8 5 11.5 6.5 13l5-5-5-5L5 4.5z" fill-rule="evenodd"></path></svg>
+                        </a>
+                    </div>
+                    <a href="#" class="how_to"
+                       target="_blank">我要订阅</a>
+                </h3>
+                <div class="carousel_magazine_box slide" id="magzCarousel" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="feed_devmagazine_box item carousel-item clearfix">
+                            <div class="img_box">
+                                <a href="#"
+                                   target="_blank">
+                                    <img src="/image/1920839328d5af411f7f9a1714ed297e.jpg"
+                                         alt="Python 基础教程（第3版）">
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h3 class="tit"><a
+                                        href="#"
+                                        target="_blank">Python 基础教程（第3版）</a></h3>
+                                <p class="txt">经典的 Python 入门教程，10 个实用项目，带你趣味编程</p>
+                            </div>
+                        </div>
+                        <div class="feed_devmagazine_box item carousel-item clearfix">
+                            <div class="img_box">
+                                <a href="#"
+                                   target="_blank">
+                                    <img src="/image/997befcd1101997809d65c3e29391db3.jpg"
+                                         alt="Java 并发编程的艺术">
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h3 class="tit"><a
+                                        href="#"
+                                        target="_blank">Java 并发编程的艺术</a></h3>
+                                <p class="txt">书中采用循序渐进的讲解方式，从并发编程的底层实现机制入手，逐步介绍了在设计 Java
+                                    并发程序时各种重要的技术、设计模式与应用，同时辅以丰富的示例代码，使得开发人员能够更快地领悟</p>
+                            </div>
+                        </div>
+                        <div class="feed_devmagazine_box item carousel-item clearfix active">
+                            <div class="img_box">
+                                <a href="#"
+                                   target="_blank">
+                                    <img src="/image/a69d35fa96c66d4af74841680a769f7c.jpg"
+                                         alt="跟老男孩学 Linux 运维：Web 集群实战">
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h3 class="tit"><a
+                                        href="#"
+                                        target="_blank">跟老男孩学 Linux 运维：Web 集群实战</a></h3>
+                                <p class="txt">老男孩系统讲解Web集群所涉及的各种技术，针对整个集群中的每个网络服务节点给出解决方案，并指导你细致掌握Web集群的运维规范和方法。</p>
+                            </div>
+                        </div>
+                        <div class="feed_devmagazine_box item carousel-item clearfix ">
+                            <div class="img_box">
+                                <a href="#"
+                                   target="_blank">
+                                    <img src="/image/24383a03ab199b0cd54cdfdde33a7d60.png"
+                                         alt="我的第一本算法书">
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h3 class="tit"><a
+                                        href="#"
+                                        target="_blank">我的第一本算法书</a></h3>
+                                <p class="txt">从零开始学算法，没有枯燥的理论和复杂的代码，易于理解；采用大量彩色图片，清晰直观，便于记忆；零基础也能轻松掌握，自学算法的好搭档</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div id="peixun00" class="peixun01 layui-breadcrumb" lay-separator="·">
-                <a href="" class="zihao01">关于</a>
-                <a href="" class="zihao01">招聘</a>
-                <a href="" class="zihao01">广告服务</a>
-                <a href="" class="zihao01">培训</a>
+            <!-- 右侧图片广告 -->
+            <div class="right_extension slide-outer">
             </div>
-            <div class="suoyou01">©2018 DBB博客版权所有 mdxiaohu</div>
-        </div>
-        </div>
-    </div>
+            <div class="right_box">
+                <h3 class="feed_new_tit">
+                    <span class="line"></span><span class="txt">活动日历</span>
+                </h3>
+                <div class="feed_activiey_calendar">
+                    <ul class="csdn-tracking-statistics" data-mod="popu_593" data-dsm="post">
+                        <li>
+                            <div class="date">
+                                <strong>06</strong>
+                                <p class="month">06月</p>
+                                <p></p>
+                            </div>
+                            <div class="content">
+                                <h3 class="activity_name"><a
+                                        href="#"
+                                        target="_blank">CSDN免费公开课：Pico VR SDK 快速开发实战</a></h3>
+                                <p class="status">线上-免费</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="date">
+                                <strong>18</strong>
+                                <p class="month">06月</p>
+                                <p></p>
+                            </div>
+                            <div class="content">
+                                <h3 class="activity_name"><a
+                                        href="#"
+                                        target="_blank">CSDN免费公开课：异构大数据平台，让多源异构数据融合贯通</a></h3>
+                                <p class="status">线上-免费</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="date">
+                                <strong>28</strong>
+                                <p class="month">06月</p>
+                                <p></p>
+                            </div>
+                            <div class="content">
+                                <h3 class="activity_name">
+                                    <a href="#" target="_blank">6月29-30日 以太坊开发者及应用峰会2019 北京</a></h3>
+                                <p class="status">北京</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-<script src="static/plugins/layui/layui.js"></script>
-    <script>
-        //注意：导航 依赖 element 模块，否则无法进行功能性操作
-        layui.use('element', function(){
-            var element = layui.element;
-            //…
-        });
-        layui.use('carousel', function(){
-            var carousel = layui.carousel;
-            //建造实例
-            carousel.render({
-                elem: '#test1'
-                ,width: '100%' //设置容器宽度
-                ,height:'200px'
-                ,arrow: 'hover' //始终显示箭头
-                //,anim: 'updown' //切换动画方式
-                ,interval:'3000'
-            });
-        });
-    </script>
+            <div class="fixed24">
+                <!-- 广告位开始 -->
+                <div class="right_extension slide-outer">
+                </div>
+                <!-- 广告位结束 -->
+
+            </div>
+        </aside>
+    </div>
+</div>
+
+
+    <!--window.csdn.fixedSidebar({-->
+        <!--targetBox: $('nav'), //判断到达底部的元素-->
+        <!--mainBox: $("main"), //侧边栏旁边的主体元素-->
+        <!--sidebar: $("nav"), //侧边栏主体元素，可与判断到达底部的元素相同-->
+        <!--direction: 'left', //侧边栏浮动方向-->
+        <!--position: 'fixed',//定位方式-->
+        <!--top: -6,-->
+        <!--bottom: 0,-->
+        <!--zIndex: 99,-->
+        <!--sidebarRightMargin: 13,//direction为left,侧边栏距离mainbox的右边距-->
+        <!--sidebarLeftMargin: 15,//direction为right,侧边栏距离mainbox的左边距-->
+    <!--})-->
+    <!--window.csdn.fixedSidebar({-->
+        <!--targetBox: $('.persion_article'),-->
+        <!--mainBox: $("main"),-->
+        <!--sidebar: $("aside"),-->
+        <!--direction: 'right',-->
+        <!--position: 'fixed',-->
+        <!--bottom: 0,-->
+        <!--zIndex: 99,-->
+        <!--sidebarRightMargin: 8,-->
+        <!--sidebarLeftMargin: 15,-->
+    <!--})-->
+<!--</script>-->
+<link rel="stylesheet" type="text/css" href="/css/pub_footer_1.0.3.css">
+<link rel="stylesheet" type="text/css" href="/css/side-toolbar.css">
+<div class="csdn-side-toolbar">
+    <a class="option-box" data-type="app">
+        <img src="/image/qr.png" alt="" srcset="">
+        <span class="show-txt">手机看</span>
+        <div class="app-qr-box">
+            <div class="bg-box">
+
+                <div class="qr-item-box">
+                    <img src="/image/qr_wechat.png" alt="关注公众号">
+                    <p class="desc">关注公众号</p>
+                </div>
+
+                <div class="qr-item-box">
+                    <img src="/image/qr_app.png" alt="下载APP">
+                    <p class="desc">下载APP</p>
+                </div>
+
+            </div>
+        </div>
+    </a>
+
+
+    <a class="option-box" data-type="cs">
+        <img src="/image/kefu.png" alt="" srcset="">
+        <span class="show-txt">客服</span>
+    </a>
+
+
+    <a class="option-box go-top-hide" data-type="gotop">
+        <img src="/image/fanhuidingbucopy.png" alt="" srcset="">
+        <span class="show-txt">返回<br>顶部</span>
+    </a>
+
+</div>
+<link href="/css/indexSuperise.css" rel="stylesheet">
+<iframe class="bdSug_sd" style="display: none; position: absolute; border-width: 0px;"
+        src="/saved_resource/saved_resource(10).html"></iframe>
+<div id="bdSug_1559560462472" class="bdSug_wpr" style="display: none;"></div>
+<script src="/jquery/jquery-2.1.1.min.js"></script>
+<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+<script>
+    $("#csdn-toolbar").load("/bk_header.html");
+    $("#nav").load("/bk_left_menu.html");
+</script>
 </body>
 </html>
