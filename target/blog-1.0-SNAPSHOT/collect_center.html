@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="referrer" content="always">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="track" content="{&quot;pid&quot;:&quot;i&quot;,&quot;disabled&quot;:true}">
+    <link rel="stylesheet" href="./css/skeleton.css">
+    <link rel="stylesheet" href="./css/content_toolbar.css">
+    <link href="./css/app.f9fc3bdf5d6cce499d6893ef6119986f.css" rel="stylesheet">
+    <title>我的收藏-个人中心-CSDN</title>
+    <link rel="stylesheet" type="text/css" href="./css/check-adb.css">
+    <link href="./css/WdatePicker.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="./css/check-adb.css">
+</head>
+<body>
+
+<div id="head" class="csdn-toolbar tb_disnone  csdn-toolbar-skin-black "></div>
+
+<div id="app"><!---->
+    <div data-v-357a65ed="" class="container view">
+        <div data-v-357a65ed="" class="left_box" id="left"></div>
+        <div data-v-357a65ed="" class="view-container">
+            <div data-v-693a9050="" data-v-357a65ed="" class="collection clearfix view">
+                <div data-v-693a9050="" class="collection-tab">
+                    <h3 data-v-693a9050="">
+                        <div data-v-693a9050="" class="collection-head"><a data-v-693a9050="" href="#" tabindex="1"
+                                                                           class="tab-title active">我创建的收藏夹</a> <a
+                                data-v-693a9050="" href="#" tabindex="2" class="tab-title">我关注的收藏夹</a>
+                            <a data-v-693a9050="" href="#" class="collect-add" style=""><span
+                                    data-v-693a9050="">+</span>
+                                新建收藏夹
+                            </a></div>
+                        <a data-v-693a9050="" href="#" class="tab-title" style="display: none;">
+
+                            返回TA的收藏夹列表
+                        </a></h3>
+                </div>
+                <div data-v-693a9050="" class="collection-content">
+                    <ul data-v-198f248e="" data-v-693a9050="" class="collection-list">
+                        <li data-v-198f248e=""><span data-v-198f248e="" class="collection-dir"><!----> <em
+                                data-v-198f248e="" data-id="36868">我的收藏</em></span> <span data-v-198f248e=""
+                                                                                          class="collection-info"><b
+                                data-v-198f248e="" class="line">0条内容</b> <b data-v-198f248e="">0人关注</b></span> <a
+                                data-v-198f248e="" href="#" data-id="36868" class="collect-see">
+
+                        </a></li>
+                        <li data-v-198f248e=""><span data-v-198f248e="" class="collection-dir"><!----> <em
+                                data-v-198f248e="" data-id="36866">默认收藏夹</em></span> <span data-v-198f248e=""
+                                                                                           class="collection-info"><b
+                                data-v-198f248e="" class="line">2条内容</b> <b data-v-198f248e="">0人关注</b></span> <a
+                                data-v-198f248e="" href="#" data-id="36866" class="collect-see">
+
+                        </a></li>
+                    </ul>
+                </div> <!----></div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="./css/pub-footer.css">
+<div class="bottom-pub-footer footer-box pub_fo" id="foot"></div>
+
+</body>
+
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script>
+    $("#head").load("module/bk_header.html");
+    $("#left").load("module/personal_left.html",function () {
+        $("#collect").attr("class","router-link-exact-active router-link-active");
+    });
+    $("#foot").load("module/personal_foot.html");
+
+</script>
+</html>

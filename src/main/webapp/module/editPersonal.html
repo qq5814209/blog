@@ -1,0 +1,429 @@
+<div data-v-0d738edb="" class="dialog" id="editPersonal">
+    <div data-v-0d738edb="" class="dialog_cont">
+        <div data-v-0d738edb="" class="box"><h3 data-v-0d738edb="" class="title">修改资料</h3> <span
+                data-v-0d738edb="" class="close" onclick="editClose()">×</span></div>
+        <div data-v-0d738edb="" class="nick word"><span data-v-0d738edb="" class="nc">昵称：</span>
+            <form data-v-0d738edb="" class="el-form">
+                <div data-v-0d738edb="" class="el-form-item is-required">
+                    <div class="el-form-item__content">
+                        <div data-v-0d738edb="" class="nick_name el-input">
+                            <input type="text" autocomplete="off" minlength="2" maxlength="20" class="el-input__inner">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div data-v-0d738edb="" class="name word"><span data-v-0d738edb="" class="nc">实名：</span>
+            <form data-v-0d738edb="" class="el-form">
+                <div data-v-0d738edb="" class="el-form-item">
+                    <div class="el-form-item__content">
+                        <div data-v-0d738edb="" class="nick_name el-input">
+                            <input type="text" autocomplete="off" minlength="2" maxlength="10" class="el-input__inner">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div data-v-0d738edb="" class="word name"><span data-v-0d738edb="" class="nc">职位：</span>
+            <form data-v-0d738edb="" class="el-form">
+                <div data-v-0d738edb="" class="el-form-item"><!---->
+                    <div class="el-form-item__content">
+                        <div data-v-0d738edb="" class="nick_name el-input">
+                            <input type="text" autocomplete="off" maxlength="20" class="el-input__inner">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div data-v-0d738edb="" class="sex word"><span data-v-0d738edb="" class="nc">性别：</span>
+            <div data-v-0d738edb="" class="el-select sexing">
+                <div class="el-input el-input--suffix is-focus" >
+                    <input type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="el-input__inner">
+                    <span class="el-input__suffix"><span class="el-input__suffix-inner">
+                        <i class="el-select__caret el-input__icon el-icon-arrow-up">
+
+                        </i></span></span></div>
+                <div class="el-select-dropdown el-popper" style="display: none; min-width: 96px;">
+                    <div class="el-scrollbar" style="">
+                        <div class="el-select-dropdown__wrap el-scrollbar__wrap"
+                             style="margin-bottom: -17px; margin-right: -17px;">
+                            <ul class="el-scrollbar__view el-select-dropdown__list"><!---->
+                                <li data-v-0d738edb="" class="el-select-dropdown__item selected">
+                                    <span>男</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>女</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="el-scrollbar__bar is-horizontal">
+                            <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
+                        </div>
+                        <div class="el-scrollbar__bar is-vertical">
+                            <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
+                        </div>
+                    </div><!----></div>
+            </div>
+        </div>
+        <div data-v-0d738edb="" class="birth word"><span data-v-0d738edb="" class="nc">生日：</span>
+            <div data-v-0d738edb=""
+                 class="el-date-editor el-input el-input--prefix el-input--suffix el-date-editor--date">
+                <!----><input type="text" autocomplete="off" name="" placeholder="选择日期"
+                              class="el-input__inner"><span class="el-input__prefix"><i
+                    class="el-input__icon el-icon-date"></i><!----></span><span
+                    class="el-input__suffix"><span class="el-input__suffix-inner"><i
+                    class="el-input__icon"></i><!----><!----><!----><!----></span><!----></span><!---->
+                <!----></div>
+        </div>
+        <div data-v-0d738edb="" class="field word"><span data-v-0d738edb="" class="nc">行业：</span>
+            <div data-v-0d738edb="" class="el-select filing"><!---->
+                <div class="el-input el-input--suffix"><!----><input type="text" readonly="readonly"
+                                                                     autocomplete="off" placeholder="请选择"
+                                                                     class="el-input__inner"><!----><span
+                        class="el-input__suffix"><span class="el-input__suffix-inner"><i
+                        class="el-select__caret el-input__icon el-icon-arrow-up"></i><!----><!----><!---->
+                    <!----><!----></span><!----></span><!----><!----></div>
+                <div class="el-select-dropdown el-popper" style="display: none; min-width: 170px;">
+                    <div class="el-scrollbar" style="">
+                        <div class="el-select-dropdown__wrap el-scrollbar__wrap"
+                             style="margin-bottom: -17px; margin-right: -17px;">
+                            <ul class="el-scrollbar__view el-select-dropdown__list"><!---->
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>请选择</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>电子·微电子</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>通信(设备·运营·增值服务)</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>批发·零售</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>贸易·进出口</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>广告·会展·公关</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>专业服务(咨询·财会·法律等)</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>房地产开发·建筑与工程</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>娱乐·运动·休闲</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>快速消费品(食品·饮料·日化·烟酒等)</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>家电业</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>家居·室内设计·装潢</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>旅游·酒店·餐饮服务</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>交通·运输·物流</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item selected"><span>办公设备·用品</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>医疗设备·器械</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>汽车·摩托车(制造·维护·配件·销售·服务)</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>制药·生物工程</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>环保</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>印刷·包装·造纸</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>中介服务(人才·商标专利)</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>教育·培训·科研·院校</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>医疗·保健·美容·卫生服务</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>互联网·电子商务</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>仪器·仪表·工业自动化·电气</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>计算机软件</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>计算机硬件·网络设备</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>IT服务·系统集成</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>银行</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>保险</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>基金·证券·期货·投资</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>耐用消费品(服饰·纺织·家具）</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>机械制造·机电·重工</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>原材料及加工（金属·木材·橡胶·塑料·玻璃·陶瓷·建材）</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>政府·非营利机构</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>房地产服务(中介·物业管理·监理、设计院)</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>媒体·出版·文化传播</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>化工</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>采掘·冶炼</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>其他</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                    <span>能源（电力·石油）·水利</span></li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>软件外包</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>网络游戏</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>嵌入式</span>
+                                </li>
+                                <li data-v-0d738edb="" class="el-select-dropdown__item"><span>国防/军队</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="el-scrollbar__bar is-horizontal">
+                            <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
+                        </div>
+                        <div class="el-scrollbar__bar is-vertical">
+                            <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
+                        </div>
+                    </div><!----></div>
+            </div>
+        </div>
+        <div data-v-0d738edb="" class="place word"><span data-v-0d738edb="" class="nc">地区：</span>
+            <div data-v-0d738edb="" class="country">
+                <div data-v-0d738edb="" class="el-select countring"><!---->
+                    <div class="el-input el-input--suffix"><!----><input type="text" readonly="readonly"
+                                                                         autocomplete="off"
+                                                                         placeholder="请选择"
+                                                                         class="el-input__inner"><!----><span
+                            class="el-input__suffix"><span class="el-input__suffix-inner"><i
+                            class="el-select__caret el-input__icon el-icon-arrow-up"></i><!----><!---->
+                        <!----><!----><!----></span><!----></span><!----><!----></div>
+                    <div class="el-select-dropdown el-popper" style="display: none; min-width: 96px;">
+                        <div class="el-scrollbar" style="">
+                            <div class="el-select-dropdown__wrap el-scrollbar__wrap"
+                                 style="margin-bottom: -17px; margin-right: -17px;">
+                                <ul class="el-scrollbar__view el-select-dropdown__list"><!---->
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>请选择</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item selected">
+                                        <span>中国</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>美国</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>英国</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>法国</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>俄罗斯</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>加拿大</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>巴西</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>澳大利亚</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>印尼</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>泰国</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>马来西亚</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>新加坡</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>菲律宾</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>越南</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>印度</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>日本</span></li>
+                                </ul>
+                            </div>
+                            <div class="el-scrollbar__bar is-horizontal">
+                                <div class="el-scrollbar__thumb"
+                                     style="transform: translateX(0%);"></div>
+                            </div>
+                            <div class="el-scrollbar__bar is-vertical">
+                                <div class="el-scrollbar__thumb"
+                                     style="transform: translateY(0%);"></div>
+                            </div>
+                        </div><!----></div>
+                </div>
+            </div>
+            <div data-v-0d738edb="" class="province">
+                <div data-v-0d738edb="" class="el-select provincing"><!---->
+                    <div class="el-input el-input--suffix"><!----><input type="text" readonly="readonly"
+                                                                         autocomplete="off"
+                                                                         placeholder="请选择"
+                                                                         class="el-input__inner"><!----><span
+                            class="el-input__suffix"><span class="el-input__suffix-inner"><i
+                            class="el-select__caret el-input__icon el-icon-arrow-up"></i><!----><!---->
+                        <!----><!----><!----></span><!----></span><!----><!----></div>
+                    <div class="el-select-dropdown el-popper" style="display: none; min-width: 96px;">
+                        <div class="el-scrollbar" style="">
+                            <div class="el-select-dropdown__wrap el-scrollbar__wrap"
+                                 style="margin-bottom: -17px; margin-right: -17px;">
+                                <ul class="el-scrollbar__view el-select-dropdown__list"><!---->
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>请选择</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item selected">
+                                        <span>北京</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>天津</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>河北省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>山西省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>内蒙古</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>辽宁省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>吉林省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>黑龙江省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>上海</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>江苏省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>浙江省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>安徽省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>福建省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>江西省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>山东省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>河南省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>湖北省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>湖南省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>广东省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>广西</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>海南省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>重庆</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>四川省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>贵州省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>云南省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>西藏</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>陕西省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>甘肃省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>青海省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>宁夏</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>新疆</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>台湾省</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>香港</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>澳门</span></li>
+                                </ul>
+                            </div>
+                            <div class="el-scrollbar__bar is-horizontal">
+                                <div class="el-scrollbar__thumb"
+                                     style="transform: translateX(0%);"></div>
+                            </div>
+                            <div class="el-scrollbar__bar is-vertical">
+                                <div class="el-scrollbar__thumb"
+                                     style="transform: translateY(0%);"></div>
+                            </div>
+                        </div><!----></div>
+                </div>
+            </div>
+            <div data-v-0d738edb="" class="district">
+                <div data-v-0d738edb="" class="el-select districting"><!---->
+                    <div class="el-input el-input--suffix"><!----><input type="text" readonly="readonly"
+                                                                         autocomplete="off"
+                                                                         placeholder="请选择"
+                                                                         class="el-input__inner"><!----><span
+                            class="el-input__suffix"><span class="el-input__suffix-inner"><i
+                            class="el-select__caret el-input__icon el-icon-arrow-up"></i><!----><!---->
+                        <!----><!----><!----></span><!----></span><!----><!----></div>
+                    <div class="el-select-dropdown el-popper" style="display: none; min-width: 196px;">
+                        <div class="el-scrollbar" style="">
+                            <div class="el-select-dropdown__wrap el-scrollbar__wrap"
+                                 style="margin-bottom: -17px; margin-right: -17px;">
+                                <ul class="el-scrollbar__view el-select-dropdown__list"><!---->
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>请选择</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item selected">
+                                        <span>东城区</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>西城区</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>崇文区</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>宣武区</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>朝阳区</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>丰台区</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>石景山区</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>海淀区</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>门头沟区</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>房山区</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>通州区</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>顺义区</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>昌平区</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>大兴区</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>怀柔区</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>平谷区</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>密云县</span></li>
+                                    <li data-v-0d738edb="" class="el-select-dropdown__item">
+                                        <span>延庆县</span></li>
+                                </ul>
+                            </div>
+                            <div class="el-scrollbar__bar is-horizontal">
+                                <div class="el-scrollbar__thumb"
+                                     style="transform: translateX(0%);"></div>
+                            </div>
+                            <div class="el-scrollbar__bar is-vertical">
+                                <div class="el-scrollbar__thumb"
+                                     style="transform: translateY(0%);"></div>
+                            </div>
+                        </div><!----></div>
+                </div>
+            </div>
+        </div>
+        <div data-v-0d738edb="" class="word introduce"><span data-v-0d738edb=""
+                                                             class="tip nc">简介：</span>
+            <div data-v-0d738edb="" class="bao"><textarea data-v-0d738edb="" maxlength="300"
+                                                          placeholder="300字以内" class="area"></textarea>
+                <div data-v-0d738edb="" class="limit">296</div>
+            </div>
+        </div>
+        <div data-v-0d738edb="" class="btn_group">
+            <button data-v-0d738edb="" class="cancel" onclick="editClose()">取消</button>
+            <button data-v-0d738edb="" class="confirm">确定</button>
+        </div>
+    </div>
+</div>
+<script>
+    function editClose() {
+        $("#editPersonal").html("");
+    }
+</script>
