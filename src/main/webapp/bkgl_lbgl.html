@@ -144,7 +144,9 @@
 <script src="jquery/jquery-2.1.1.min.js"></script>
 <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
 <script>
-    $("#left-menu").load("module/bkgl_left_menu.html");
+    $("#left-menu").load("module/bkgl_left_menu.html",function () {
+        $("#bkgl_lbgl").attr("class","list-group-item active");
+    });
     $("#csdn-toolbar").load("module/bk_header.html");
 </script>
 </html>
