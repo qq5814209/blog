@@ -1,0 +1,10 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.mapper.UserInfoMapper">
+
+    <select id="selectUserInfo" parameterType="int" resultType="com.me.pojo.UserInfo">
+        SELECT * FROM userinfo WHERE user_id = #{userId}
+    </select>
+
+</mapper>
