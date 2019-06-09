@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -17,6 +18,22 @@ public class UserInfoController {
 
     @Autowired
     UserInfoService userInfoService;
+
+    /**
+     * 登录
+     * @param user
+     * @param password
+     * @return
+     */
+
+    @ResponseBody
+    @RequestMapping(value = "userLogin",method = RequestMethod.POST)
+    public Object login(String user,String password){
+        System.out.println(user + " : "+password);
+        UserInfo userInfo = userInfoService.login(user,password);
+        System.out.println(userInfo);
+        return userInfo;
+    }
 
     /**
      * 根据用户id查询用户信息，用于展示 personal_center.html 页面

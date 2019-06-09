@@ -8,6 +8,13 @@ import com.me.pojo.UserInfo;
 public interface UserInfoMapper {
 
     /**
+     * 登录
+     * @param userInfo
+     * @return
+     */
+    UserInfo login(UserInfo userInfo);
+
+    /**
      * 根据用户 id 查询用户信息
      * @param userId
      * @return

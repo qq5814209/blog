@@ -19,6 +19,20 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Autowired
     CareMapper careMapper;
+
+    /**
+     * 登录
+     * @param user
+     * @param password
+     * @return
+     */
+    public UserInfo login(String user, String password) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUser_name(user);
+        userInfo.setPassword(password);
+        return userInfoMapper.login(userInfo);
+    }
+
     /**
      * 根据用户id查询用户信息
      * @param userId

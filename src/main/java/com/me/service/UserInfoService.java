@@ -8,6 +8,13 @@ import com.me.vo.UserInfoVo;
  */
 public interface UserInfoService {
 
+    /**
+     * 登录
+     * @param user
+     * @param password
+     * @return
+     */
+    UserInfo login(String user, String password);
 
     /**
      * 根据用户id查询用户信息

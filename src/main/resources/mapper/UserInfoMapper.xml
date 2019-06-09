@@ -3,6 +3,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.me.mapper.UserInfoMapper">
 
+
+    <!--登录-->
+    <select id="login" resultType="com.me.pojo.UserInfo" parameterType="com.me.vo.UserInfoVo">
+        SELECT * FROM userinfo WHERE user_name = #{user_name} AND password = #{password}
+    </select>
+
     <select id="selectUserInfo" parameterType="int" resultType="com.me.pojo.UserInfo">
         SELECT * FROM userinfo WHERE user_id = #{userId}
     </select>

@@ -1,7 +1,14 @@
+com\me\vo\UserInfoVo.class
 com\me\mapper\Mapper.class
 com\me\util\test.class
+com\me\service\UserInfoService.class
+com\me\mapper\CareMapper.class
+com\me\pojo\UserInfo.class
 com\me\util\Md5.class
+com\me\mapper\UserInfoMapper.class
 com\me\pojo\pojotest.class
+com\me\service\impl\UserInfoServiceImpl.class
 com\me\controller\TestController.class
 com\me\service\impl\ServiceImpl.class
 com\me\service\Service.class
+com\me\controller\UserInfoController.class
