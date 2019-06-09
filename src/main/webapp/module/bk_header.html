@@ -1,4 +1,5 @@
 <!--<div id="csdn-toolbar" class="csdn-toolbar tb_disnone  csdn-toolbar-skin-black ">-->
+
 <div class="container row center-block ">
     <ul class="pull-left left-menu clearfix" id="nav-left-menu">
         <li><a href="#" title="CSDN首页" class="">
@@ -105,9 +106,9 @@
             <!--</li>-->
         <!--</ul>-->
     <!--</div>-->
-
+    <!--${message == null ? "style='display:none;'" : ""-->
     <!--登录后的div-->
-    <div class="pull-right login-wrap">
+    <div class="pull-right login-wrap unlogin" id="login">
         <!--unlogin 为未登录样式-->
         <ul class="btns">
             <li class="toolbar-tracking csdn-tracking-statistics tracking-click" data-mod="popu_369">
@@ -145,13 +146,13 @@
                     <a href="#">回答<em class="invitation"></em></a>
                     <a href="#">系统通知<em class="system"></em></a></div>
             </li>
-            <li class="userinfo"><a href="#" target="_blank">登录</a><span></span>
+            <li class="userinfo"><a href="login.html" target="_blank">登录</a><span></span>
                 <a href="#" target="_blank">注册</a></li>
             <li class="userLogin" id="loginBelowBox">
                 <div class="loginCenter"><a href="#" target="_blank">
                     <img class="login_img" src="image/2_qq_24224509"></a>
                 </div>
-                <div class="userControl" style="display: none" id="belowBox">
+                <div class="userControl"  id="belowBox">
                     <div class="bord">
                         <div><i class="pull_icon pull_icon1"></i>
                             <a href="attention_center.html" target="_blank">我的关注</a></div>
@@ -193,14 +194,29 @@
         </ul>
     </div>
 </div>
-
 <script>
-    var $belowBox = $("#belowBox");
-    $("#loginBelowBox").hover(function () {
-        $belowBox.css("display","block");
-    },
-    function () {
-        $belowBox.css("display","none");
+    //判断是否登录，如果已登录，当鼠标悬停事件触发时，把菜单显示出来
+    $(function () {
+        $.ajax({
+            type:'GET',
+            url:"islogin",
+            success:function (data) {
+                console.log(data);
+                if(data != null && data != ''){
+                    $("#login").attr("class","pull-right login-wrap");
+                    var $belowBox = $("#belowBox");
+                    $("#loginBelowBox").hover(function () {
+                            $belowBox.css("display","block");
+                        },
+                        function () {
+                            $belowBox.css("display","none");
+                        });
+                    console.log(1);
+                }else {
+                    console.log(2);
+                }
+            }
+        })
     })
 </script>
 <!--</div>-->

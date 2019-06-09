@@ -41,12 +41,11 @@
                                 </label>
 
                             </div>
-                            <button type="submit" onclick="login()" class="btn btn-primary btn-flat m-b-30 m-t-30">登录</button>
-
+                        </form>
+                            <button onclick="login()" class="btn btn-primary btn-flat m-b-30 m-t-30">登录</button>
                             <div class="register-link m-t-15 text-center">
                                 <p>还没有属于自己的博客账号？ <a href="regiester.html"> 注册一个</a></p>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -71,9 +70,8 @@
             },
             success:function (data) {
                 if(data != null){
-                    window.location.href = "www.baidu.com";
+                    window.location.href = "index.html";
                 }
-                alert(data)
             }
         })
     }
