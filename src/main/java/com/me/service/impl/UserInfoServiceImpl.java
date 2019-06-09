@@ -41,7 +41,6 @@ public class UserInfoServiceImpl implements UserInfoService {
     public UserInfoVo selectUserInfo(int userId) {
 
         UserInfo userInfo = userInfoMapper.selectUserInfo(userId);
-        System.out.println(userInfo);
         int fans = careMapper.selectCareByFans(userId);
         int attentions = careMapper.selectCareByAttentions(userId);
 
