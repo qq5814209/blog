@@ -1,0 +1,16 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.mapper.CareMapper">
+
+    <!--根据用户 id 查询粉丝数-->
+    <select id="selectCareByFans" parameterType="int" resultType="int">
+        SELECT COUNT(*) FROM care WHERE uf_id = #{userId}
+    </select>
+
+    <!--根据用户 id 查询关注数-->
+    <select id="selectCareByAttentions" parameterType="int" resultType="int">
+        SELECT COUNT(*) FROM care WHERE ut_id = #{userId}
+    </select>
+
+</mapper>

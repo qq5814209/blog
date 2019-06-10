@@ -22,9 +22,6 @@ public class UserInfoController {
     @Autowired
     UserInfoService userInfoService;
 
-    @Autowired
-    FavoritesService favoritesService;
-
     /**
      * 登录
      * @param user
@@ -88,7 +85,7 @@ public class UserInfoController {
     public Object selectFavoritesByUserId(HttpSession session) {
         UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
         int userId = userInfo.getUser_id();
-        return favoritesService.selectFavoritesByUserId(userId);
+        return userInfoService.selectFavoritesByUserId(userId);
     }
 
     /**
@@ -99,7 +96,30 @@ public class UserInfoController {
     @ResponseBody
     @RequestMapping(value = "/selectFavoritesByFavoritesId", method = RequestMethod.POST)
     public Object selectFavoritesByFavoritesId(@RequestParam int favorites_id) {
-        return favoritesService.selectFavoritesByFavoritesId(favorites_id);
+        return userInfoService.selectFavoritesByFavoritesId(favorites_id);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/selectCareByUserId",method = RequestMethod.GET)
+    public Object selectCareByUserId(HttpSession session){
+        UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        return null;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
