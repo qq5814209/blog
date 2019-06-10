@@ -3,47 +3,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.me.mapper.FavoritesMapper">
 
-    <!--根据用户id查询基础的收藏夹信息-->
-    <select id="selectFavoritesByUserId" parameterType="int" resultType="com.me.pojo.Favorites">
-        SELECT * FROM favorites WHERE user_id = #{userId}
-    </select>
 
-    <!--根据收藏夹id查询该收藏夹中收藏了多少条博客-->
-    <select id="selectFavoritesCollectByFavoritesId" parameterType="int" resultType="int">
-        SELECT COUNT(*) FROM favorites_collect WHERE favorites_id = #{favoritesId}
-    </select>
-
-    <!--根据收藏夹id查询收藏夹中内容-->
-    <select id="selectFavoritesByFavoritesId" parameterType="int" resultMap="selectFavoritesByFavoritesIdMap">
-        SELECT tb.favorites_id,tb.user_id,tb.favorites_desc,tb.favorites_title,tb.status f_status,c.collect_time,b.blog_id,b.blog_title,b.blog_content,b.bt_id,b.create_time,b.status b_status FROM
-        (SELECT * FROM favorites WHERE favorites_id = #{favoritesId}) tb
-        INNER JOIN favorites_collect fc ON tb.favorites_id=fc.favorites_id
-        INNER JOIN collect c ON fc.collect_id = c.collect_id
-        INNER JOIN bloginfo b WHERE b.blog_id = c.blog_id
-    </select>
-
-    <!--接收收藏夹中内容-->
-    <resultMap id="selectFavoritesByFavoritesIdMap" type="com.me.vo.FavoritesVo">
-        <association property="favorites" javaType="com.me.pojo.Favorites">
-            <result column="favorites_id" property="favorites_id"></result>
-            <result column="user_id" property="user_id"></result>
-            <result column="favorites_desc" property="favorites_desc"></result>
-            <result column="favorites_title" property="favorites_title"></result>
-            <result column="f_status" property="status"></result>
-        </association>
-        <collection property="collectVoList" ofType="com.me.vo.CollectVo">
-            <association property="blogInfo" javaType="com.me.pojo.BlogInfo">
-                <result column="blog_id" property="blog_id"></result>
-                <result column="blog_title" property="blog_title"></result>
-                <result column="blog_content" property="blog_content"></result>
-                <result column="bt_id" property="bt_id"></result>
-                <result column="create_time" property="create_time"></result>
-                <result column="b_status" property="status"></result>
-            </association>
-            <association property="collect" javaType="com.me.pojo.Collect">
-                <result column="collect_time" property="collect_time"></result>
-            </association>
-        </collection>
-    </resultMap>
 
 </mapper>
