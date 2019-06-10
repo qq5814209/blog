@@ -22,18 +22,11 @@ public class PersonalServiceImpl implements PersonalService {
      * @param userId
      * @return
      */
-    public UserInfoDto selectUserInfo(int userId) {
+    public UserInfoDto selectCareByAttentionsAndFans(int userId) {
 
-        UserInfo userInfo = personalMapper.selectUserInfo(userId);
-        int fans = personalMapper.selectCareByFans(userId);
-        int attentions = personalMapper.selectCareByAttentions(userId);
+        UserInfoDto userInfoDto = personalMapper.selectCareByAttentionsAndFans(userId);
 
-        UserInfoDto userInfoVo = new UserInfoDto();
-        userInfoVo.setUserInfo(userInfo);
-        userInfoVo.setFans(fans);
-        userInfoVo.setAttentions(attentions);
-
-        return userInfoVo;
+        return userInfoDto;
     }
 
     /**
