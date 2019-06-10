@@ -61,14 +61,9 @@ public class UserInfoController {
         return true;
     }
 
-<<<<<<< HEAD
 
     /**
      * 根据用户id查询用户信息，用于展示 personal_center.html页面
-=======
-    /**
-     * 根据用户id查询用户信息，用于展示 personal_center.html 页面
->>>>>>> c11d9ea0bd36f68260a90e2c2c469ad8c494eee1
      * @return
      */
     @ResponseBody
