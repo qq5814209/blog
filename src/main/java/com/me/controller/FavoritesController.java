@@ -1,10 +1,7 @@
 package com.me.controller;
 
-import com.me.pojo.BlogInfo;
-import com.me.pojo.Favorites;
 import com.me.pojo.UserInfo;
 import com.me.service.FavoritesService;
-import com.me.vo.FavoritesVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 /**
  * 查询收藏夹信息、收藏用controller
