@@ -1,11 +1,9 @@
 package com.me.controller;
 
 import com.me.pojo.UserInfo;
-import com.me.service.FavoritesService;
 import com.me.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,6 +45,7 @@ public class UserInfoController {
     @RequestMapping(value = "islogin",method = RequestMethod.GET)
     public Object islogin(HttpSession session){
         UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+
         return userInfo;
     }
 

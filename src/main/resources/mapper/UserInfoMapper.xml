@@ -9,7 +9,7 @@
         SELECT * FROM userinfo WHERE user_name = #{user_name} AND password = #{password}
     </select>
 
-    <!--根基id查找个人信息-->
+    <!--根据id查找个人信息-->
     <select id="selectUserInfo" parameterType="int" resultType="com.me.pojo.UserInfo">
         SELECT * FROM userinfo WHERE user_id = #{userId}
     </select>
