@@ -31,7 +31,7 @@ public class UserInfoController {
 
     @ResponseBody
     @RequestMapping(value = "userLogin",method = RequestMethod.POST)
-    public Object login(String user, String password,HttpSession session){
+    public Object login(String user, String password,HttpSession session,Model model){
         System.out.println(user + " : "+password);
         UserInfo userInfo = userInfoService.login(user,password);
         System.out.println(userInfo);
@@ -50,6 +50,13 @@ public class UserInfoController {
         UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
         return userInfo;
     }
+
+    @RequestMapping(value = "logout",method = RequestMethod.GET)
+    public String logout(){
+
+        return "index";
+    }
+
 
     /**
      * 根据用户id查询用户信息，用于展示 personal_center.html 页面

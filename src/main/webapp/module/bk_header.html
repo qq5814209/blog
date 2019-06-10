@@ -185,7 +185,7 @@
                         <div><i class="pull_icon pull_icon10"></i>
                             <a href="#" target="_blank">帮助</a></div>
                         <div><i class="pull_icon pull_icon11"></i>
-                            <a href="#" class="logout">退出</a>
+                            <button class="logout" onclick="logout()">退出</button>
                         </div>
                     </div>
                 </div>
@@ -211,13 +211,15 @@
                         function () {
                             $belowBox.css("display","none");
                         });
-                    console.log(1);
                 }else {
-                    console.log(2);
                 }
             }
         })
-    })
+    });
+
+    function logout() {
+
+    }
 </script>
 <!--</div>-->
 
