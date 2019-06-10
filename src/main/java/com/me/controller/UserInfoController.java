@@ -57,11 +57,10 @@ public class UserInfoController {
      */
     @ResponseBody
     @RequestMapping(value = "/selectUserInfo",method = RequestMethod.POST)
-    public Object selectUserInfo(){
-//        因不知 id 是 session 中取，还是直接传 int id ，故先写死
-        int userId = 1;
-        UserInfoVo userInfoVo = userInfoService.selectUserInfo(userId);
-        return userInfoVo;
+    public Object selectUserInfo(HttpSession session){
+        UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+        int userId = userInfo.getUser_id();
+        return userInfoService.selectUserInfo(userId);
     }
 
 }
