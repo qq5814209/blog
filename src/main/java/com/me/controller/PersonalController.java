@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class PersonalController {
@@ -53,8 +54,9 @@ public class PersonalController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/selectFavoritesByFavoritesId", method = RequestMethod.POST)
+    @RequestMapping(value = "/selectFavoritesByFavoritesId", method = RequestMethod.GET)
     public Object selectFavoritesByFavoritesId(@RequestParam int favorites_id) {
+        System.out.println(favorites_id);
         return personalService.selectFavoritesByFavoritesId(favorites_id);
     }
 
@@ -68,7 +70,21 @@ public class PersonalController {
     public Object selectCareByUserId(HttpSession session){
         UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
-        return null;
+        return personalService.selectCareByUserId(user_id);
+    }
+
+    /**
+     * 根据用户 id 查询该用户被那些用户关注，用于展示 fan_center.html 页面
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/selectCareByUserFromId",method = RequestMethod.GET)
+    public Object selectCareByUserFromId(HttpSession session){
+        UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        List<UserInfo> userInfoList = personalService.selectCareByUserFromId(user_id);
+        return userInfoList;
     }
 
 }

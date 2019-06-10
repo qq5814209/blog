@@ -22,9 +22,10 @@
     <select id="selectFavoritesByFavoritesId" parameterType="int" resultMap="selectFavoritesByFavoritesIdMap">
         SELECT tb.favorites_id,tb.user_id,tb.favorites_desc,tb.favorites_title,tb.status f_status,c.collect_time,b.blog_id,b.blog_title,b.blog_content,b.bt_id,b.create_time,b.status b_status FROM
         (SELECT * FROM favorites WHERE favorites_id = #{favoritesId}) tb
-        INNER JOIN favorites_collect fc ON tb.favorites_id=fc.favorites_id
-        INNER JOIN collect c ON fc.collect_id = c.collect_id
-        INNER JOIN bloginfo b WHERE b.blog_id = c.blog_id
+        LEFT JOIN favorites_collect fc ON tb.favorites_id=fc.favorites_id
+        LEFT JOIN collect c ON fc.collect_id = c.collect_id
+        LEFT JOIN bloginfo b ON b.blog_id = c.blog_id
+
     </select>
 
     <!--接收收藏夹中内容-->
@@ -54,7 +55,19 @@
     <!--根据用户 id 查询粉丝数、查询关注数-->
     <select id="selectCareByAttentionsAndFans" parameterType="int" resultType="com.me.dto.UserInfoDto">
         SELECT * FROM
-        (SELECT COUNT(*) AS attentions FROM care WHERE ut_id=1) b1,(SELECT COUNT(*) fans FROM care WHERE uf_id=1) b2
+        (SELECT COUNT(*) AS attentions FROM care WHERE ut_id=#{userId}) b1,
+        (SELECT COUNT(*) fans FROM care WHERE uf_id=#{userId}) b2
+    </select>
+
+    <!--根据用户id，查询该用户关注了那些用户-->
+    <select id="selectCareByUserId" parameterType="int" resultType="com.me.pojo.UserInfo">
+        SELECT user_id,name,url FROM userinfo WHERE user_id IN
+        (SELECT c.uf_id FROM care c WHERE c.ut_id = #{userId})
+    </select>
+
+    <select id="selectCareByUserFromId" parameterType="int" resultType="com.me.pojo.UserInfo">
+        SELECT user_id,name,url FROM userinfo WHERE user_id IN
+        (SELECT c.uf_id FROM care c WHERE c.uf_id = #{userId})
     </select>
 
 </mapper>

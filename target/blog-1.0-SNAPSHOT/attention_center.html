@@ -18,20 +18,22 @@
 <div id="head" class="csdn-toolbar tb_disnone  csdn-toolbar-skin-black "></div>
 
 <div id="app"><!---->
-    <div data-v-357a65ed="" class="container view" >
+    <div data-v-357a65ed="" class="container view">
         <div data-v-357a65ed="" class="left_box" id="left"></div>
         <div data-v-357a65ed="" class="view-container">
             <div data-v-0c56b7f6="" data-v-357a65ed="" class="content view" id="attentionShow">
-                <div data-v-0c56b7f6="" class="bar"><h3 data-v-0c56b7f6="" class="title">我的关注</h3> <span
-                        data-v-0c56b7f6="" class="num">共2人</span></div>
-                <ul data-v-0c56b7f6="" class="watch_list">
-                    <li data-v-0c56b7f6="" class="item_cont">
-                        <a data-v-0c56b7f6="" href="#" target="_blank" class="fans">
-                            <img data-v-0c56b7f6="" src="./image/3_csdnedu.jpg" alt="" class="header"></a>
-                        <a data-v-0c56b7f6="" href="#" title="CSDNedu" target="_blank" class="nick">CSDNedu</a>
-                        <a data-v-0c56b7f6="" href="#" class="watch_btn">取消关注</a>
-                    </li>
-                </ul> <!----> <!---->
+                <!--<div data-v-0c56b7f6="" class="bar"><h3 data-v-0c56b7f6="" class="title">我的关注</h3>-->
+                    <!--<span data-v-0c56b7f6="" class="num">共2人</span>-->
+                <!--</div>-->
+                <!--<ul data-v-0c56b7f6="" class="watch_list">-->
+                    <!--<li data-v-0c56b7f6="" class="item_cont">-->
+                        <!--<a data-v-0c56b7f6="" href="#" target="_blank" class="fans">-->
+                            <!--<img data-v-0c56b7f6="" src="./image/3_csdnedu.jpg" alt="" class="header">-->
+                        <!--</a>-->
+                        <!--<a data-v-0c56b7f6="" href="#" title="CSDNedu" target="_blank" class="nick">CSDNedu</a>-->
+                        <!--<a data-v-0c56b7f6="" href="#" class="watch_btn">取消关注</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
             </div>
         </div>
     </div>
@@ -42,17 +44,33 @@
 <script src="jquery/jquery-2.1.1.min.js"></script>
 <script>
     $("#head").load("module/bk_header.html");
-    $("#left").load("module/personal_left.html",function () {
-        $("#attention").attr("class","router-link-exact-active router-link-active");
+    $("#left").load("module/personal_left.html", function () {
+        $("#attention").attr("class", "router-link-exact-active router-link-active");
     });
     $("#foot").load("module/personal_foot.html");
 
     $(function () {
         var url = "selectCareByUserId";
-        $.get(url,function (data) {
-            console.log(data);
-        })
-    })
+        $.get(url, function (data) {
+            var innerHtml = "<div data-v-0c56b7f6=\"\" class=\"bar\"><h3 data-v-0c56b7f6=\"\" class=\"title\">我的关注</h3>" +
+                "                <span data-v-0c56b7f6=\"\" class=\"num\">共"+data.length+"人</span>" +
+                "            </div>"+
+                "   <ul data-v-0c56b7f6=\"\" class=\"watch_list\">";
+            $(data).each(function (index, item) {
+                innerHtml +=
+                    "                    <li data-v-0c56b7f6=\"\" class=\"item_cont\">" +
+                    "                        <a data-v-0c56b7f6=\"\" href=\"#\" target=\"_blank\" class=\"fans\">" +
+                    "                            <img data-v-0c56b7f6=\"\" src=\"./image/"+item.url+"\" alt=\"\" class=\"header\">" +
+                    "                        </a>" +
+                    "                        <a data-v-0c56b7f6=\"\" href=\"#\" title=\"CSDNedu\" target=\"_blank\" class=\"nick\">"+item.name+"</a>" +
+                    "                        <a data-v-0c56b7f6=\"\" href=\"#\" class=\"watch_btn\">取消关注</a>" +
+                    "                    </li>";
+            });
+            innerHtml += "                </ul>";
+            $("#attentionShow").append(innerHtml);
+        });
+
+    });
 
 </script>
 </html>

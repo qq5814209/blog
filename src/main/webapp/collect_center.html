@@ -121,15 +121,11 @@
     //    点击收藏夹事件
     function favoritesClick(favorites_id) {
         var url = "selectFavoritesByFavoritesId";
-        var data = {
+        var value = {
             "favorites_id": favorites_id
         };
-        $.ajaxSetup({
+        $.get(url, value, function (data) {
 
-        });
-
-        var innerHtml;
-        $.post(url, data, function (data) {
             $(data).each(function (index, item) {
                 var innerHtml = "<li data-v-7afe6b7e=\"\" data-parentid=\"36868\">" +
                     "                                    <span data-v-7afe6b7e=\"\" class=\"collection-dir collection-font collection-detail\"> " + item.favorites.favorites_title + " </span>" +
