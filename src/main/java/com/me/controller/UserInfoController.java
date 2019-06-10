@@ -4,6 +4,7 @@ import com.me.pojo.UserInfo;
 import com.me.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,8 +30,7 @@ public class UserInfoController {
 
     @ResponseBody
     @RequestMapping(value = "userLogin",method = RequestMethod.POST)
-    public Object login(String user, String password,HttpSession session,Model model){
-        System.out.println(user + " : "+password);
+    public Object login(String user, String password, HttpSession session){
         UserInfo userInfo = userInfoService.login(user,password);
         System.out.println(userInfo);
         session.setAttribute("userInfo",userInfo);
@@ -49,15 +49,21 @@ public class UserInfoController {
         return userInfo;
     }
 
+    /**
+     * 退出
+     * @param session
+     * @return
+     */
+    @ResponseBody
     @RequestMapping(value = "logout",method = RequestMethod.GET)
-    public String logout(){
-
-        return "index";
+    public boolean logout(HttpSession session){
+        session.invalidate();
+        return true;
     }
 
 
     /**
-     * 根据用户id查询用户信息，用于展示 personal_center.html 页面
+     * 根据用户id查询用户信息，用于展示 personal_center.html页面
      * @return
      */
     @ResponseBody

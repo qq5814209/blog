@@ -146,8 +146,8 @@
                     <a href="#">回答<em class="invitation"></em></a>
                     <a href="#">系统通知<em class="system"></em></a></div>
             </li>
-            <li class="userinfo"><a href="login.html" target="_blank">登录</a><span></span>
-                <a href="#" target="_blank">注册</a></li>
+            <li class="userinfo"><a href="login.html" >登录</a><span></span>
+                <a href="regiester.html" >注册</a></li>
             <li class="userLogin" id="loginBelowBox">
                 <div class="loginCenter"><a href="#" target="_blank">
                     <img class="login_img" src="image/2_qq_24224509"></a>
@@ -185,7 +185,7 @@
                         <div><i class="pull_icon pull_icon10"></i>
                             <a href="#" target="_blank">帮助</a></div>
                         <div><i class="pull_icon pull_icon11"></i>
-                            <a href="#" class="logout">退出</a>
+                            <a href="" class="logout" onclick="logout()">退出</a>
                         </div>
                     </div>
                 </div>
@@ -211,13 +211,23 @@
                         function () {
                             $belowBox.css("display","none");
                         });
-                    console.log(1);
                 }else {
-                    console.log(2);
                 }
             }
         })
-    })
+    });
+
+    function logout() {
+        $.ajax({
+            type:'GET',
+            url:"logout",
+            success:function (data) {
+                if(data == true){
+                    window.location.href = "index.html";
+                }
+            }
+        })
+    }
 </script>
 <!--</div>-->
 
