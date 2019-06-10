@@ -51,14 +51,10 @@
         </collection>
     </resultMap>
 
-    <!--根据用户 id 查询粉丝数-->
-    <select id="selectCareByFans" parameterType="int" resultType="int">
-        SELECT COUNT(*) FROM care WHERE uf_id = #{userId}
-    </select>
-
-    <!--根据用户 id 查询关注数-->
-    <select id="selectCareByAttentions" parameterType="int" resultType="int">
-        SELECT COUNT(*) FROM care WHERE ut_id = #{userId}
+    <!--根据用户 id 查询粉丝数、查询关注数-->
+    <select id="selectCareByAttentionsAndFans" parameterType="int" resultType="com.me.dto.UserInfoDto">
+        SELECT * FROM
+        (SELECT COUNT(*) AS attentions FROM care WHERE ut_id=1) b1,(SELECT COUNT(*) fans FROM care WHERE uf_id=1) b2
     </select>
 
 </mapper>

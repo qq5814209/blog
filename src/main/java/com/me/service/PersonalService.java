@@ -12,7 +12,7 @@ public interface PersonalService {
      * @param userId
      * @return
      */
-    UserInfoDto selectUserInfo(int userId);
+    UserInfoDto selectCareByAttentionsAndFans(int userId);
 
     /**
      * 根据用户id查询该用户的收藏夹信息

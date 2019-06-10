@@ -1,5 +1,6 @@
 package com.me.mapper;
 
+import com.me.dto.UserInfoDto;
 import com.me.pojo.Favorites;
 import com.me.pojo.UserInfo;
 import com.me.dto.FavoritesDto;
@@ -41,13 +42,13 @@ public interface PersonalMapper {
      * @param userId
      * @return
      */
-    int selectCareByFans(int userId);
+    UserInfoDto selectCareByAttentionsAndFans(int userId);
 
     /**
      * 根据用户 id 查询关注数
      * @param userId
      * @return
      */
-    int selectCareByAttentions(int userId);
+//    int selectCareByAttentions(int userId);
 
 }

@@ -30,83 +30,7 @@
         <li><a href="#" title="GitChat">GitChat</a></li>
     </ul>
 
-    <!--没登陆的div-->
-    <!--<div class="pull-right login-wrap unlogin">-->
-        <!--<ul class="btns">-->
-            <!--<li class="toolbar-tracking csdn-tracking-statistics tracking-click" data-mod="popu_369">-->
-                <!--<a href="#" style="padding:0"></a></li>-->
-            <!--<li>-->
-                <!--<div class="search_bar csdn-tracking-statistics tracking-click" data-mod="popu_366">-->
-                    <!--<input type="text" class="input_search" name="" value="疯狂Python精讲" id="toolber-keyword"-->
-                           <!--placeholder="搜CSDN" autocomplete="off">-->
-                    <!--<a href="#" target="_blank" class="btn-nobg-noborder btn-search">-->
-                        <!--<svg class="toolbar-icon" aria-hidden="true">-->
-                            <!--<use xlink:href="#sousuo"></use>-->
-                        <!--</svg>-->
-                    <!--</a></div>-->
-            <!--</li>-->
 
-            <!--<li class="gitChat upload msgBox" id="msgBox">-->
-                <!--<a target="_blank" class="" href="#">-->
-                    <!--<img src="image/message-icon.png" alt="" class="message">-->
-                    <!--<span>写博客</span>-->
-                <!--</a>-->
-                <!--<a target="_blank" class="" href="commentMessage.html">-->
-                    <!--<img src="image/message-icon.png" alt="" class="message">-->
-                    <!--<span>消息</span>-->
-                <!--</a>-->
-                <!--&lt;!&ndash;<div class="msgList" id="msgList"><a href="#">评论<em-->
-                <!--class="comment"></em></a> <a href="#">关注<em-->
-                <!--class="follow"></em></a> <a href="#">点赞<em-->
-                <!--class="thumb_up"></em></a> <a href="#">回答<em-->
-                <!--class="invitation"></em></a> <a href="#">系统通知<em-->
-                <!--class="system"></em></a>-->
-                <!--</div>&ndash;&gt;-->
-            <!--</li>-->
-            <!--<li class="userinfo">-->
-                <!--<a href="#" target="_blank">登录</a><span></span>-->
-                <!--<a href="#" target="_blank">注册</a></li>-->
-            <!--<li class="userLogin">-->
-                <!--<div class="userControl">-->
-                    <!--<div class="bord">-->
-                        <!--<div><i class="pull_icon pull_icon1"></i>-->
-                            <!--<a href="#" target="_blank">我的关注</a></div>-->
-                        <!--<div><i class="pull_icon pull_icon2"></i>-->
-                            <!--<a href="#" target="_blank">我的收藏</a></div>-->
-                        <!--<div><i class="pull_icon pull_icon4"></i>-->
-                            <!--<a href="#" target="_blank">个人中心</a></div>-->
-                        <!--<div><i class="pull_icon pull_icon7"></i>-->
-                            <!--<a href="#" target="_blank">帐号设置</a></div>-->
-                    <!--</div>-->
-                    <!--<div class="bord">-->
-                        <!--<div><i class="pull_icon pull_icon5"></i>-->
-                            <!--<a href="#" target="_blank">我的博客</a>-->
-                        <!--</div>-->
-                        <!--<div><i class="pull_icon pull_icon6"></i>-->
-                            <!--<a href="#" target="_blank">管理博客</a></div>-->
-                        <!--<div><i class="pull_icon pull_icon12"></i>-->
-                            <!--<a href="#" target="_blank">我的学院</a></div>-->
-                        <!--<div><i class="pull_icon pull_icon13"></i>-->
-                            <!--<a href="#" target="_blank">我的下载</a></div>-->
-                    <!--</div>-->
-                    <!--<div class="bord">-->
-                        <!--<div><i class="pull_icon pull_icon8"></i>-->
-                            <!--<a href="#" target="_blank">我的C币</a></div>-->
-                        <!--<div><i class="pull_icon pull_icon9"></i>-->
-                            <!--<a href="#" target="_blank">订单中心</a></div>-->
-                    <!--</div>-->
-                    <!--<div class="bord">-->
-                        <!--<div><i class="pull_icon pull_icon10"></i>-->
-                            <!--<a href="#" target="_blank">帮助</a></div>-->
-                        <!--<div><i class="pull_icon pull_icon11"></i>-->
-                            <!--<a href="#" class="logout">退出</a></div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="guo_tip_box">关注和收藏在这里</div>-->
-            <!--</li>-->
-        <!--</ul>-->
-    <!--</div>-->
-    <!--${message == null ? "style='display:none;'" : ""-->
     <!--登录后的div-->
     <div class="pull-right login-wrap unlogin" id="login">
         <!--unlogin 为未登录样式-->
@@ -149,7 +73,7 @@
             <li class="userinfo"><a href="login.html" target="_blank">登录</a><span></span>
                 <a href="regiester.html" target="_blank">注册</a></li>
             <li class="userLogin" id="loginBelowBox">
-                <div class="loginCenter"><a href="#" target="_blank">
+                <div class="loginCenter"><a href="personal_center.html" target="_blank">
                     <img class="login_img" src="image/2_qq_24224509"></a>
                 </div>
                 <div class="userControl"  id="belowBox">
@@ -201,7 +125,7 @@
             type:'GET',
             url:"islogin",
             success:function (data) {
-                console.log(data);
+                // console.log(data);
                 if(data != null && data != ''){
                     $("#login").attr("class","pull-right login-wrap");
                     var $belowBox = $("#belowBox");
@@ -211,9 +135,9 @@
                         function () {
                             $belowBox.css("display","none");
                         });
-                    console.log(1);
+                    // console.log(1);
                 }else {
-                    console.log(2);
+                    // console.log(2);
                 }
             }
         })
