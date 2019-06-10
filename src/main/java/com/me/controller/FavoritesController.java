@@ -1,9 +1,7 @@
 package com.me.controller;
 
-import com.me.pojo.BlogInfo;
-import com.me.pojo.Favorites;
+import com.me.pojo.UserInfo;
 import com.me.service.FavoritesService;
-import com.me.vo.FavoritesVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 /**
  * 查询收藏夹信息、收藏用controller
@@ -30,10 +28,9 @@ public class FavoritesController {
      */
     @ResponseBody
     @RequestMapping(value = "/selectFavoritesByUserId", method = RequestMethod.POST)
-    public Object selectFavoritesByUserId() {
-//        因不知 id 是 session 中取，还是直接传 int id ，故先写死
-        int userId = 1;
-
+    public Object selectFavoritesByUserId(HttpSession session) {
+        UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+        int userId = userInfo.getUser_id();
         return favoritesService.selectFavoritesByUserId(userId);
     }
 
@@ -46,7 +43,6 @@ public class FavoritesController {
     @RequestMapping(value = "/selectFavoritesByFavoritesId", method = RequestMethod.POST)
     public Object selectFavoritesByFavoritesId(@RequestParam int favorites_id) {
 
-        List<FavoritesVo> favoritesVoList = favoritesService.selectFavoritesByFavoritesId(favorites_id);
-        return favoritesVoList;
+        return favoritesService.selectFavoritesByFavoritesId(favorites_id);
     }
 }
