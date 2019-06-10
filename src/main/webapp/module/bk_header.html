@@ -185,7 +185,11 @@
                         <div><i class="pull_icon pull_icon10"></i>
                             <a href="#" target="_blank">帮助</a></div>
                         <div><i class="pull_icon pull_icon11"></i>
+<<<<<<< HEAD
                             <a href="" class="logout" onclick="logout()">退出</a>
+=======
+                            <a href="#" class="logout" onclick="logout()">退出</a>
+>>>>>>> c11d9ea0bd36f68260a90e2c2c469ad8c494eee1
                         </div>
                     </div>
                 </div>
@@ -216,13 +220,21 @@
             }
         })
     });
+<<<<<<< HEAD
 
+=======
+    //退出登录
+>>>>>>> c11d9ea0bd36f68260a90e2c2c469ad8c494eee1
     function logout() {
         $.ajax({
             type:'GET',
             url:"logout",
             success:function (data) {
+<<<<<<< HEAD
                 if(data == true){
+=======
+                if(data === true){
+>>>>>>> c11d9ea0bd36f68260a90e2c2c469ad8c494eee1
                     window.location.href = "index.html";
                 }
             }
