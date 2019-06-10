@@ -1,7 +1,6 @@
 package com.me.controller;
 
 import com.me.pojo.UserInfo;
-import com.me.service.FavoritesService;
 import com.me.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,6 +47,18 @@ public class UserInfoController {
     public Object islogin(HttpSession session){
         UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
         return userInfo;
+    }
+
+    /**
+     * 退出
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "logout",method = RequestMethod.GET)
+    public boolean logout(HttpSession session){
+        session.invalidate();
+        return true;
     }
 
     /**
