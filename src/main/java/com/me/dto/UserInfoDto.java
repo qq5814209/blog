@@ -1,11 +1,11 @@
-package com.me.vo;
+package com.me.dto;
 
 import com.me.pojo.UserInfo;
 
 /**
  * 用于展示 personal_center.html 页面
  */
-public class UserInfoVo {
+public class UserInfoDto {
 //    用户信息
     private UserInfo userInfo;
 //    用户粉丝数

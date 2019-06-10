@@ -1,4 +1,4 @@
-package com.me.vo;
+package com.me.dto;
 
 import com.me.pojo.BlogInfo;
 import com.me.pojo.Collect;
@@ -6,7 +6,7 @@ import com.me.pojo.Collect;
 /**
  * 用于展示 collect_center.html 页面
  */
-public class CollectVo {
+public class CollectDto {
     private BlogInfo blogInfo;
     private Collect collect;
 

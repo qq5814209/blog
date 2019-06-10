@@ -1,4 +1,4 @@
-package com.me.vo;
+package com.me.dto;
 
 
 import com.me.pojo.Favorites;
@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 用于展示 collect_center.html 页面
  */
-public class FavoritesVo {
+public class FavoritesDto {
 //    收藏夹基础信息
     private Favorites favorites;
 //    收藏夹中有几条内容
@@ -16,7 +16,7 @@ public class FavoritesVo {
 //    收藏夹中有多少关注
     private int attentions = 0;
 //    收藏时的信息
-    private List<CollectVo> collectVoList;
+    private List<CollectDto> collectVoList;
 
     public Favorites getFavorites() {
         return favorites;
@@ -42,11 +42,11 @@ public class FavoritesVo {
         this.attentions = attentions;
     }
 
-    public List<CollectVo> getCollectVoList() {
+    public List<CollectDto> getCollectVoList() {
         return collectVoList;
     }
 
-    public void setCollectVoList(List<CollectVo> collectVoList) {
+    public void setCollectVoList(List<CollectDto> collectVoList) {
         this.collectVoList = collectVoList;
     }
 
