@@ -25,7 +25,6 @@ public class UserInfoController {
      * @param password
      * @return
      */
-
     @ResponseBody
     @RequestMapping(value = "userLogin",method = RequestMethod.POST)
     public Object login(String user, String password, HttpSession session){
@@ -44,8 +43,21 @@ public class UserInfoController {
     @RequestMapping(value = "islogin",method = RequestMethod.GET)
     public Object islogin(HttpSession session){
         UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
-
         return userInfo;
+    }
+
+    /**
+     * 注册
+     * @param user_name
+     * @param email
+     * @param password
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "userRegiester",method = RequestMethod.POST)
+    public Object regiester(String user_name,String email,String password){
+        System.out.println(user_name + " : " + email + " : " + password);
+        return userInfoService.regiester(user_name,email,password);
     }
 
     /**
@@ -59,12 +71,6 @@ public class UserInfoController {
         session.invalidate();
         return true;
     }
-
-
-
-
-
-
 }
 
 

@@ -15,4 +15,12 @@ public interface UserInfoService {
      */
     UserInfo login(String user, String password);
 
+    /**
+     * 注册
+     * @param user_name
+     * @param email
+     * @param password
+     * @return
+     */
+    int regiester(String user_name, String email, String password);
 }
