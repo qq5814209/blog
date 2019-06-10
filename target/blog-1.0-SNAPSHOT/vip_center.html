@@ -166,7 +166,24 @@
 
         .iconby53-choujiang2:before {
             content: "\e9f7";
-        }</style>
+        }
+        .zhifubao input{
+            color: #fff;
+            background: #2aabd2;
+            border: #2aabd2 1px solid;
+        }
+        .zhifubao input:hover{
+            background: #33CCCC;
+        }
+        .vip_buy_top h6{
+            display:none;
+        }
+
+        #vips input{
+            display: none;
+        }
+
+        </style>
     </head>
 </head>
 <body>
@@ -177,53 +194,6 @@
     <div class="vip_card_buy vip_buy_top clearfix">
         <div class="vip_buy_t_l">
             <div style="padding:11px 0 0 10px" class="vip_buy_t_l_t clearfix">
-                <dl class="vip_card_wrap " order_source="6" flag="6" data-val="98.00" goods-id="2794" product-id="1553">
-                    <dt>
-                        <img src="./image/201904231007447498.png" alt="img">
-                        <img src="./image/cur_img.png" alt="img" class="cur_buy">
-                        <div class="card_mask"></div>
-                    </dt>
-                    <dd>
-                        <h5>VIP月卡：全站免广告+50个资源免积分下载+学院千门课程免费看+购课9折</h5>
-                        <h3>98.00元</h3>
-                    </dd>
-                </dl>
-                <dl class="vip_card_wrap " order_source="6" flag="6" data-val="198.00" goods-id="2791"
-                    product-id="1557">
-                    <dt>
-                        <img src="./image/201904231019404241.png" alt="img">
-                        <img src="./image/cur_img.png" alt="img" class="cur_buy">
-                        <div class="card_mask"></div>
-                    </dt>
-                    <dd>
-                        <h5>VIP季卡：全站免广告+150个资源免积分下载+学院千门课程免费看+购课9折</h5>
-                        <h3>198.00元</h3>
-                    </dd>
-                </dl>
-                <dl class="vip_card_wrap card_cur" order_source="6" flag="6" data-val="298.00" goods-id="2793"
-                    product-id="1554">
-                    <dt>
-                        <img src="./image/201904231010507944.png" alt="img">
-                        <img src="./image/cur_img.png" alt="img" class="cur_buy">
-                        <div class="card_mask"></div>
-                    </dt>
-                    <dd>
-                        <h5>VIP年卡：全站免广告+600个资源免积分下载+学院千门课程免费看+购课9折</h5>
-                        <h3>298.00元</h3>
-                    </dd>
-                </dl>
-                <dl class="vip_card_wrap " order_source="6" flag="6" data-val="398.00" goods-id="2792"
-                    product-id="1556">
-                    <dt>
-                        <img src="./image/201904231018151432.png" alt="img">
-                        <img src="./image/cur_img.png" alt="img" class="cur_buy">
-                        <div class="card_mask"></div>
-                    </dt>
-                    <dd>
-                        <h5>超级VIP年卡：全站免广告+600个资源免积分下载+千门课程免费看+免费兑换24次精品课+购课9折</h5>
-                        <h3>398.00元</h3>
-                    </dd>
-                </dl>
                 <dl class="vip_card_wrap " order_source="5" flag="5" data-val="119.00" goods-id="514" product-id="1">
                     <dt>
                         <img src="./image/C_little.png" alt="img">
@@ -231,8 +201,7 @@
                         <div class="card_mask"></div>
                     </dt>
                     <dd>
-                        <h5>100枚C币</h5>
-                        <h3>119.00元</h3>
+
                     </dd>
                 </dl>
                 <dl class="vip_card_wrap " order_source="5" flag="5" data-val="199.00" goods-id="516" product-id="1">
@@ -242,8 +211,7 @@
                         <div class="card_mask"></div>
                     </dt>
                     <dd>
-                        <h5>400枚C币</h5>
-                        <h3>199.00元</h3>
+
                     </dd>
                 </dl>
                 <dl class="vip_card_wrap " order_source="5" flag="5" data-val="299.00" goods-id="520" product-id="1">
@@ -253,8 +221,7 @@
                         <div class="card_mask"></div>
                     </dt>
                     <dd>
-                        <h5>1500枚C币</h5>
-                        <h3>299.00元</h3>
+
                     </dd>
                 </dl>
                 <dl class="vip_card_wrap " order_source="5" flag="5" data-val="399.00" goods-id="515" product-id="1">
@@ -264,22 +231,11 @@
                         <div class="card_mask"></div>
                     </dt>
                     <dd>
-                        <h5>4000枚C币</h5>
-                        <h3>399.00元</h3>
+
                     </dd>
                 </dl>
             </div>
-            <div class="vip_buy_qy">
-                <div class="dl_buy_box" style="padding: 0;">
-                    <div class="vip_table_t">
-                        <label><em>所有会员权益：</em></label>
-                        <label> <img src="./image/down-ad.png"><em>全站免广告</em></label>
-                        <label> <img src="./image/down-vip.png"><em>VIP身份标识 </em></label>
-                        <label><a href="#" target="_blank"> <img
-                                src="./image/down-xueyuan.png"><em>CSDN学院1000+免费课程 </em></a></label>
-                    </div>
-                </div>
-            </div>
+
         </div>
 
         <!--登录以后的页面布局 -->
@@ -287,68 +243,26 @@
             <div class="vip_pay">
                 <span>支付金额</span>
                 <p>
-                    <strong>298.00元</strong>
+                    <strong id="jinger">00.00元</strong>
                 </p>
                 <span class="discount_info" style="display: none;" goods-id="2793"></span>
             </div>
             <ul class="vip_pay_list">
-                <li class="vip_list_fir">
-                    <div class="pay_wrap">
-                        <div id="wechat_payment" class="pay_erweima grey_border"><img
-                                src="data:image/gif;base64,R0lGODdhgQCBAIAAAAAAAP///ywAAAAAgQCBAAAC/4yPqcvtD6OctNqLs968+w8B4kiW5mGeScqqyKi4aBm3NlDf7GznumyArWhDku9nLCKTAd1xiSs+p0po9CWaCC9bnhfUJGKvoaxU0q2kw9c1B8jWmsdysnr+jYPhbsZ625In6DfXRxdUiFfVlsiYMqjH5vKnuABYmZNnONnIw2kXGYgIaqiJeRZ6Ktk56ilG6fjpysS3M+p0y3qY+tiKKsr7CSt8Mwt5GftaiSybSys2y1zsfKwLDBttPb3KZGoFTeiYLf5rG2wO7P1d6nv+TNrYzE3c3b4ObqndGwnZgKy+jZ63cdjQLFOVyV68gMreAdzXL1zCCP8U/jBGzSLBg/+g/HH8NlCjSF4hSVoEuWhJyYomW7J8uRDKE5UjYZJzqW/lPTDcPN6s1eNkQ55v8OmsN2+oM5ZEMcA5OgxdTKYeNk01V+bdNYTtNkLsCnYXTYoNt3ZE5RXoxIljs0rbx47f0m0Rx6gtlwxp1ofVtOpyi6+gu7hsY/Z9W3cmx8J5CePFKLdnxsjjfHoFDC+vYrhYw0XVK/RrPqSIU0oVTcWu0dBPFzH+bLa16syMK0tkbXgk38mC+z60+vO0zde5I/eu2VnsVc26Q0M+Lnnw37BvYS+Xl/iBPLNrcWemxx3tHYdzb/ouvzntdMrjSysnP9v26Dq7k56Nfhf/x+WWDQb/9wuafqQV95l83TlgU3VcjRaeO0cdtpqD2kXoU4PuDUddcvVVuOBmGAr4oGn3ucchbc5NaJ5TSs1GInIj6hMXVVysKF9+MkK14I3trRfbYs3Nd2J8k+1VHnCylURfkM9RiFc6IhLJHoIw7sccWY1F6CSQUR54pH+18cZfhhehJ150GQh2YZjGIWGgmI5JaaKE0qVoH3gdesbjnWt+5+N7Ou5iAXZh9QfokGIueV92cMr4JnT51Rejnn+OleZ/bfq5XqCZFrnidlMGWGlRdKr334cKvlhlo9cJx1CclUaaKKcDXhlUnTS62KKWJWZ5ao+1okkgk1vKCmuxdHmJ56y//wlrbKy2Bkhoeo/JCmWJmGVZ7ZPTPpsti8fq+iOiy6Iq7qDEMtunkTmRqaWnqLZ123vW4oplsHQmWNyBkHG56qynnienbOqS2+S3dt776b5lKlzonED962aO61LQa56lBsamaygiiSy3h3rnIcbQuqgprYx+ap1oviY5rJXwggsiigJ1/Oau3/ILn81VQllzsrjAmVqz43YpZLtlZdxyyfjWihmhBzf4gbs/Nx3v06fxBJzTnbKq7LbYhmtulKGyy2u6an4Jc11j23cpsLRq7ezKJIMMZpwMEy0w1yHOWW7DD0sMqt5z8103zgXK3KfagOfqdrSGmvk4dIrO7Peme/8eXjTA+moM+Z6K8wl6alSzvXHV/TpedMXOIoq3Kkvn/S7KwrKOLsEOu447fFN3HLS9lCYe+cQ9N9y31ZzZHbylYXdb/NFjes753gPrzPDnovt8z5/Vk12v7dt7m/2o0WvbufXjMxh+zk39TDnHaS/M/eo7Hs+45ZPnLmgH7DuPNuqbk345K9AONRGTSZBeRaXfAQh2IfuVvQbYQLl5DGbZg5TvgAc0zn3If2HLH4SQl8HUTYyDYrtV5bpmpd4pL4T/82ABiaM7E36tZW5DCfHoFrAE5q5bqiub7SwkQw0t72PP8iHcXJg5EaVshjyrXY0Wh7/k2LBk3xvX/QLHtHNxjSyErXsbEVPWRNDBCnU1DCLCCCgv8pHQUWpqnBpNJ0bAkRGDa5Rj3fK3tBaKjGX/s+Dx0Pao86nKe3CEGPTk9LkltsqI3pFc8vaHRRvuDidZLKG/FhlFA04QRyrLZATz1ZRQinKUpCylKU+JylRyoAAAOw=="
-                                width="129" height="129"></div>
-                        <!--遮罩提示-->
-                        <div id="notify" class="pay_notify" style="display: none;">
-                        </div>
+                <li >
+                    <div style="padding: 20px" class="zhifubao">
+                        <input style="width: 120px;padding: 5px;margin-bottom:7px" type="button" id="tiao" value="支付宝支付"/>
+                        <input style="width: 120px;padding: 5px" type="button" value="微信支付"/>
                     </div>
-                    <p class="wechat_intro">
-                        <img class="wx_img" src="./image/wx.png" alt="img">
-                        <img class="zfb_img" src="./image/zfb.png" alt="img">
-                        <span class="pay_intro">扫码支付</span>
-                    </p>
-                </li>
-                <li style="height: 50px;">
-                    <p class="wechat_intro" id="vip_list_fir" style=""><span class="pay_intro"><a
-                            style="text-decoration:underline; color:#0301EA;" id="union_payment"
-                            href="#">银联购买</a></span>
-                    </p>
                 </li>
             </ul>
-            <div class="dl_buy_box" style="height: 137px;">
-                <div class="vip_table_t">
-                    <h3>会员兑换</h3>
-                    <div class="duihuan_Box">
-                        <div class="input_wrap ">
-                            <form name="myform" id="myform" action="https://mall.csdn.net/vip" method="post" enctype=""
-                                  class="ued0" onsubmit="return false;">
-                                <i class="icon_mes_eor"></i>
-                                <input type="text" name="redeem_code" id="redeem_code" placeholder="请输入兑换码"
-                                       class="input_box exchange_code">
-                                <input type="submit" class="red_btn" id="submit" value="兑换">
-                                <!--  loading -->
-                                <a href="#" class="loading_vip_dh hide">
-                                    <img src="./image/loading_dh.png" alt=""></a>
 
-                            </form>
-                        </div>
-
-                        <div class="suc_duihuan hide">
-                            <span><i class="icon_mes_suc"></i>兑换成功</span>
-                            <a href="#" id="again_redeem">再次兑换</a>
-                        </div>
-                    </div>
-                    <div class="vip_buy_card ">
-                        <a href="#" target="_blank">购买礼品卡&gt;</a>
-                    </div>
-                </div>
-            </div>
 
         </div>
     </div>
 
     <div class="mod_vip_table">
         <div class="vip-main">
-            <div class="vip-compare clearfix">
+            <div class="vip-compare clearfix" id="vips">
                 <dl>
                     <dt> 特权</dt>
                     <dd> 下载个数</dd>
@@ -356,89 +270,9 @@
                     <dd> 全站免广告</dd>
                     <dd> VIP身份标识</dd>
                     <dd> 千门免费课</dd>
-                    <dd> 博客自定义域名</dd>
                     <dd> 精品课兑换</dd>
                     <dd> 学院讲师答疑</dd>
                     <dd>价格</dd>
-                </dl>
-                <dl class="js_compare_list " goods-id="2794">
-                    <dt><p> VIP月卡 </p></dt>
-                    <dd> 50</dd>
-                    <dd> 30天</dd>
-                    <dd><img src="./image/down-yes@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-yes@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-yes@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-yes@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-no@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-no@2x.png" alt="">
-                    </dd>
-                    <dd>
-                        ¥98.00元
-                    </dd>
-                </dl>
-                <dl class="js_compare_list " goods-id="2791">
-                    <dt><p> VIP季卡 </p></dt>
-                    <dd> 150</dd>
-                    <dd> 90天</dd>
-                    <dd><img src="./image/down-yes@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-yes@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-yes@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-yes@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-no@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-no@2x.png" alt="">
-                    </dd>
-                    <dd>
-                        ¥198.00元
-                    </dd>
-                </dl>
-                <dl class="js_compare_list super-vip" goods-id="2793">
-                    <dt><p> VIP年卡 </p></dt>
-                    <dd> 600</dd>
-                    <dd> 365天</dd>
-                    <dd><img src="./image/down-yes@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-yes@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-yes@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-yes@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-no@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-no@2x.png" alt="">
-                    </dd>
-                    <dd>
-                        ¥298.00元
-                    </dd>
-                </dl>
-                <dl class="js_compare_list " goods-id="2792">
-                    <dt><p> 超级VIP年卡 </p></dt>
-                    <dd> 600</dd>
-                    <dd> 365天</dd>
-                    <dd><img src="./image/down-yes@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-yes@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-yes@2x.png" alt="">
-                    </dd>
-                    <dd><img src="./image/down-yes@2x.png" alt="">
-                    </dd>
-                    <dd> 24次</dd>
-                    <dd><img src="./image/down-yes@2x.png" alt="">
-                    </dd>
-                    <dd>
-                        ¥398.00元
-                    </dd>
                 </dl>
             </div>
         </div>
@@ -581,6 +415,102 @@
 <script src="jquery/jquery-2.1.1.min.js"></script>
 <script>
 
+    init();
+
+    var hrefs;
+
+    function init(){
+        $.ajax({
+            url: "getCbi",
+            type: "POST",
+            contentType:"application/json",
+            dataType:"json",
+            data:JSON.stringify({
+
+            }),
+            success:function(resp){
+                console.log(resp);
+                $(".vip_buy_top dd").empty("");
+                $(resp).each(function (index, item) {
+                    $(".vip_card_wrap:eq("+index+") dd").append("<h5>"+item.cbi_name+"</h5><h6>"+item.cbi_id+"</h6>" +
+                        "                        <h3><span>"+item.cbi_price+"</span>元</h3>")
+                })
+            },
+            error:function () {
+                alert("错误");
+            }
+        });
+
+        $.ajax({
+            url: "getVip",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            data:JSON.stringify({
+            }),
+            success:function(resp){
+                console.log(resp);
+                $(".js_compare_list").empty("");
+                $(resp).each(function (index, item) {
+                    $("#vips").append(" <dl class=\"js_compare_list \" goods-id=\"2794\">" +
+                        "                    <input type='text' value='"+item.vip_id+"'/>" +
+                        "                    <dt><p>"+item.vip_name+"</p></dt>\n" +
+                        "                    <dd> "+item.vip_down+"</dd>\n" +
+                        "                    <dd>"+item.vip_time+"天</dd>\n" +
+                        "                    <dd><img src=\"./image/down-yes@2x.png\" alt=\"\">\n" +
+                        "                    </dd>\n" +
+                        "                    <dd><img src=\"./image/down-yes@2x.png\" alt=\"\">\n" +
+                        "                    </dd>\n" +
+                        "                    <dd><img src=\"./image/down-yes@2x.png\" alt=\"\">\n" +
+                        "                    </dd>\n" +
+                        "                    <dd><img src=\"./image/down-yes@2x.png\" alt=\"\">\n" +
+                        "                    </dd>\n" +
+                        "                    <dd><img src=\"./image/down-yes@2x.png\" alt=\"\">\n" +
+                        "                    </dd>\n" +
+                        "                    <dd class='vip_puy'>\n" +
+                        "                        "+item.vip_price+"\n" +
+                        "                    </dd></dl>")
+                });
+                $(".js_compare_list").click(function () {
+                    $(".vip_card_wrap").removeClass('card_cur');
+                    $(".js_compare_list").removeClass('super-vip');
+                    $(this).addClass('super-vip');
+                    $("#jinger").html($(this).find(".vip_puy").html());
+                    alert($(this).find("input").val());
+                    hrefs="pay.html?vipId="+$(this).find("input").val()
+                });
+            },
+            error:function () {
+                alert("错误");
+            }
+        })
+
+
+
+    }
+
     $("#head").load("module/bk_header.html");
+
+
+
+
+
+    $(".vip_card_wrap").click(function() {
+        $(this).siblings('.vip_card_wrap').removeClass('card_cur');
+        $(this).addClass('card_cur');
+        $("#jinger").html($(this).find("span").html());
+        $(".vip-compare dl").removeClass("super-vip");
+        hrefs="pay2.html?CbiId="+$(this).find("h6").html()
+
+    });
+
+
+
+    $("#tiao").click(function () {
+        location.href=hrefs
+    });
+
+
+
 </script>
 </html>

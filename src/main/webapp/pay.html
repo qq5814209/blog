@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap 实例 - 带表格的面板</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <style type="text/css">
+
+        .panel{
+            width: 60%;
+            margin: 60px auto;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">订单确定</h3>
+    </div>
+    <div class="panel-body">
+        您购买的商品信息如下
+    </div>
+    <table class="table">
+        <input style="display: none;" value="12"/>
+        <th>购买人</th><th>username </th>
+        <tr><td>套餐名</td><td>超级VIP</td></tr>
+        <tr><td>价格</td><td>400</td></tr>
+        <tr><td>有限期</td><td><span>30</span>天</td></tr>
+        <tr><td>C币数量</td><td>0</td></tr>
+    </table>
+    <div class="panel-body" style="float: right">
+        <input type="button" value="结算">
+        <input type="button" value="结算">
+    </div>
+
+</div>
+
+</body>
+</html>

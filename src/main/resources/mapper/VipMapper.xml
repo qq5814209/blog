@@ -1,0 +1,23 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.mapper.VipMapper">
+
+
+
+    <!--获取VIP套餐-->
+    <select id="getVip" resultType="com.me.pojo.Vip" parameterType="com.me.pojo.Vip">
+        select * from  vip
+        <where>
+            <if test="vip_id != null and vip_id != ''">
+                and vip_id = #{vip_id}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="getVipById" resultType="com.me.pojo.Cbi" parameterType="String">
+        select * from  cbi where vip_id = #{vip_id}
+    </select>
+
+</mapper>

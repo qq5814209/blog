@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap 实例 - 带表格的面板</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <style type="text/css">
+        .panel{
+            width: 60%;
+            margin: 60px auto;
+        }
+        .panel-body input{
+            padding: 10px;
+            background: #2aabd2;
+            border: none;
+            color: #fff;
+        }
+        .panel-body input:first-of-type{
+            background: #CF2730;
+        }
+
+        .panel-body input:hover{
+            background: #2e98ff;
+        }
+
+        .panel-body input:first-of-type:hover{
+            background: #b81a25;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">订单确定</h3>
+    </div>
+    <div class="panel-body">
+        您购买的商品信息如下
+    </div>
+    <table class="table">
+        <th>购买人</th><th id="username">username </th>
+        <tr><td>套餐名</td><td id="cbi_name">超级VIP</td></tr>
+        <tr><td>价格</td><td id="cbi_price">400</td></tr>
+        <tr><td>C币数量</td><td id="cbi_number">0</td></tr>
+    </table>
+    <div class="panel-body" style="float: right">
+        <input type="button" id="jia" value="">
+        <input type="button" id="jie" value="结算">
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    var cbi_id = location.search.split("=")[1];
+    init(cbi_id);
+    function init(cbi_id){
+        $.ajax({
+            url:"getCbi",
+            type:"POST",
+            contentType:"application/json",
+            data: JSON.stringify({
+                "cbi_id": cbi_id,
+            }),
+            dataType:"json",
+            success:function(resp){
+                console.log(resp);
+                $(resp).each(function (index, item) {
+                    $("#cbi_name").html(item.cbi_name);
+                    $("#cbi_price").html(item.cbi_price);
+                    $("#cbi_number").html(item.cbi_number);
+                    $("#jia").val(item.cbi_price);
+                })
+            },
+            error:function () {
+                alert("错误");
+            }
+        });
+    }
+
+    $("#jie").click(function () {
+        location.href="setOrder?cbi_id="+cbi_id;
+    });
+
+</script>
+
+</body>
+</html>
