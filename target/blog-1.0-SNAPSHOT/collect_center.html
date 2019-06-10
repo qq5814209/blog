@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="referrer" content="always">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="track" content="{&quot;pid&quot;:&quot;i&quot;,&quot;disabled&quot;:true}">
+    <link rel="stylesheet" href="./css/skeleton.css">
+    <link rel="stylesheet" href="./css/content_toolbar.css">
+    <link href="./css/app.f9fc3bdf5d6cce499d6893ef6119986f.css" rel="stylesheet">
+    <title>我的收藏-个人中心-CSDN</title>
+    <link rel="stylesheet" type="text/css" href="./css/check-adb.css">
+    <link href="./css/WdatePicker.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="./css/check-adb.css">
+</head>
+<body>
+
+<div id="head" class="csdn-toolbar tb_disnone  csdn-toolbar-skin-black "></div>
+
+<div id="app"><!---->
+    <div data-v-357a65ed="" class="container view">
+        <div data-v-357a65ed="" class="left_box" id="left"></div>
+        <div data-v-357a65ed="" class="view-container">
+            <div data-v-693a9050="" data-v-357a65ed="" class="collection clearfix view">
+                <div data-v-693a9050="" class="collection-tab">
+                    <h3 data-v-693a9050="">
+                        <div data-v-693a9050="" class="collection-head" style="display: block" id="favoritesShow">
+                            <a data-v-693a9050="" href="#" tabindex="1" class="tab-title active">我创建的收藏夹</a>
+                            <a data-v-693a9050="" href="#" tabindex="2" class="tab-title">我关注的收藏夹</a>
+                            <a data-v-693a9050="" href="#" class="collect-add" style="">
+                                <span data-v-693a9050="">+</span>
+                                新建收藏夹
+                            </a>
+                        </div>
+                        <a data-v-693a9050="" href="collect_center.html" class="tab-title" style="display: none;" id="collectShow">
+                            返回收藏夹列表
+                        </a>
+                    </h3>
+                </div>
+                <div data-v-693a9050="" class="collection-content">
+                    <ul data-v-198f248e="" data-v-693a9050="" class="collection-list" id="favorites"
+                        style="display: block">
+
+                    </ul>
+                    <div data-v-7afe6b7e="" data-v-693a9050="" style="display: none">
+                        <div data-v-7afe6b7e="" class="list-wrap">
+                            <ul data-v-7afe6b7e="" class="collection-list">
+                                <li data-v-7afe6b7e="" data-parentid="36868">
+                                    <span data-v-7afe6b7e="" class="collection-dir collection-font collection-detail"> 我的收藏 </span>
+                                    <span data-v-7afe6b7e="" class="collection-info collection-detail">
+                                        <p data-v-7afe6b7e="" class="collection-text collection-detail">收藏夹描述：就是我的收藏</p>
+                                        <b data-v-7afe6b7e="" class="line">1条内容</b>
+                                        <b data-v-7afe6b7e="" class="line">0人关注</b>
+                                        <em data-v-7afe6b7e="" class="cursor line">编辑</em>
+                                        <em data-v-7afe6b7e="" class="cursor">删除</em>
+                                    </span>
+                                    <ul data-v-7afe6b7e="" class="collection-sublist">
+                                        <li data-v-7afe6b7e="" data-id="25518081" data-parentid="36866" class=""><!---->
+                                            <div data-v-7afe6b7e="" class="collection-con">
+                                                <span data-v-7afe6b7e="">
+                                                <span data-v-7afe6b7e="" class="collection-dir">
+                                                <a data-v-7afe6b7e="" href="#" target="_blank" class="subtitle">Jenkins基础：API：7：使用API对Job进行操作 - 知行合一 止于至善</a>
+                                                </span>
+                                                <a data-v-7afe6b7e="" href="" data-id="25518081"
+                                                   data-parentid="36866" class="collect-cancel">取消收藏</a>
+                                                </span>
+                                                <span data-v-7afe6b7e="" class="collection-info">
+                                                <em data-v-7afe6b7e="" class="line"></em>
+                                                <b data-v-7afe6b7e="">2019-06-08 12:20</b>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="./css/pub-footer.css">
+<div class="bottom-pub-footer footer-box pub_fo" id="foot"></div>
+
+</body>
+
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script>
+    $("#head").load("module/bk_header.html");
+    $("#left").load("module/personal_left.html", function () {
+        $("#collect").attr("class", "router-link-exact-active router-link-active");
+    });
+    $("#foot").load("module/personal_foot.html");
+
+    //请求收藏夹信息
+    $(function () {
+        var url = "selectFavoritesByUserId";
+        $.post(url, function (data) {
+            $(data).each(function (index, item) {
+                var innerHtml = "<li data-v-198f248e=\"\" onclick='favoritesClick(" + item.favorites.favorites_id + ")'>" +
+                    "                            <span data-v-198f248e=\"\" class=\"collection-dir\">" +
+                    "                            <em data-v-198f248e=\"\" data-id=\"36868\">" + item.favorites.favorites_title + "</em>" +
+                    "                            </span>" +
+                    "                            <span data-v-198f248e=\"\" class=\"collection-info\">" +
+                    "                                <b data-v-198f248e=\"\" class=\"line\">" + item.contents + "条内容</b>" +
+                    "                                <b data-v-198f248e=\"\">" + item.attentions + "人关注</b>" +
+                    "                            </span>" +
+                    "                            <button data-v-198f248e=\"\" href=\"#\" data-id=\"36868\" class=\"collect-see\" ></button>" +
+                    "                        </li>";
+                $("#favorites").append(innerHtml);
+            })
+        })
+    });
+
+    //    点击收藏夹事件
+    function favoritesClick(favorites_id) {
+        var url = "selectFavoritesByFavoritesId";
+        var data = {
+            "favorites_id": favorites_id
+        };
+        $.ajaxSetup({
+
+        });
+
+        var innerHtml;
+        $.post(url, data, function (data) {
+            $(data).each(function (index, item) {
+                var innerHtml = "<li data-v-7afe6b7e=\"\" data-parentid=\"36868\">" +
+                    "                                    <span data-v-7afe6b7e=\"\" class=\"collection-dir collection-font collection-detail\"> " + item.favorites.favorites_title + " </span>" +
+                    "                                    <span data-v-7afe6b7e=\"\" class=\"collection-info collection-detail\">\n" +
+                    "                                        <p data-v-7afe6b7e=\"\" class=\"collection-text collection-detail\">收藏夹描述： " + item.favorites.favorites_desc + "</p>" +
+                    "                                        <b data-v-7afe6b7e=\"\" class=\"line\">" + item.collectVoList.length + "条内容</b>" +
+                    "                                        <b data-v-7afe6b7e=\"\" class=\"line\">0人关注</b>" +
+                    "                                        <em data-v-7afe6b7e=\"\" class=\"cursor line\">编辑</em>" +
+                    "                                        <em data-v-7afe6b7e=\"\" class=\"cursor\">删除</em>" +
+                    "                                    </span>" +
+                    "                         <ul data-v-7afe6b7e=\"\" class=\"collection-sublist\">" +
+                    "                                        <li data-v-7afe6b7e=\"\" data-id=\"25518081\" data-parentid=\"36866\" class=\"\">";
+                $(item.collectVoList).each(function (index, values) {
+                    innerHtml += "                                   <div data-v-7afe6b7e=\"\" class=\"collection-con\">" +
+                        "                            <span data-v-7afe6b7e=\"\">" +
+                        "                            <span data-v-7afe6b7e=\"\" class=\"collection-dir\">" +
+                        "                            <a data-v-7afe6b7e=\"\" href=\"#\" target=\"_blank\" class=\"subtitle\">" + values.blogInfo.blog_title + "</a>" +
+                        "                            </span>" +
+                        "                            <a data-v-7afe6b7e=\"\" href=\"\" data-id=\"25518081\"" +
+                        "                               data-parentid=\"36866\" class=\"collect-cancel\">取消收藏</a>" +
+                        "                            </span>" +
+                        "                                                <span data-v-7afe6b7e=\"\" class=\"collection-info\">" +
+                        "                            <em data-v-7afe6b7e=\"\" class=\"line\"></em>" +
+                        "                            <b data-v-7afe6b7e=\"\">" + values.collect.collect_time + "</b>" +
+                        "                            </span>" +
+                        "                                            </div>";
+                });
+                innerHtml += "                                  </li>" +
+                    "                            </ul>" +
+                    "             </li>";
+
+                // alert(innerHtml);
+                $("#favoritesShow").css("display","none");
+                $("#collectShow").css("display","block");
+                $("#favorites").empty();
+                $("#favorites").append(innerHtml);
+            });
+
+
+        });
+    }
+</script>
+</html>
