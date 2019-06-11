@@ -13,4 +13,5 @@ public interface OrderService {
    public Object SetOrder(HttpServletRequest request, HttpServletResponse response);
 
 
+   public void upOrder(HttpServletRequest request, HttpServletResponse response);
 }

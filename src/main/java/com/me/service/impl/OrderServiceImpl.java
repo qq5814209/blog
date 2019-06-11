@@ -54,22 +54,25 @@ public class OrderServiceImpl implements OrderService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-       return null;
+       return "订单创建完成";
     }
 
+    public void upOrder(HttpServletRequest request, HttpServletResponse response) {
 
+    }
 
 
     public String getwayPay(HttpServletRequest request) {
         Order order = new Order();
         Date date = new Date();
         Random ra =new Random();
-        StringBuffer sb = new StringBuffer();
 
+        AlipayTradePagePayModel model = new AlipayTradePagePayModel();
+        StringBuffer sb = new StringBuffer();
+        String price=null;
 
         String productCode = "FAST_INSTANT_TRADE_PAY";
-        String price=null;
-        AlipayTradePagePayModel model = new AlipayTradePagePayModel();
+
         long time = date.getTime();
         sb.append(time);
         for (int i=0;i<4;i++){

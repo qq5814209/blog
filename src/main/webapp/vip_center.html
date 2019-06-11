@@ -493,8 +493,6 @@
 
 
 
-
-
     $(".vip_card_wrap").click(function() {
         $(this).siblings('.vip_card_wrap').removeClass('card_cur');
         $(this).addClass('card_cur');
@@ -507,6 +505,10 @@
 
 
     $("#tiao").click(function () {
+        if ($("#jinger").html()=="00.00"){
+            alert("请先选择商品");
+            return
+        }
         location.href=hrefs
     });
 

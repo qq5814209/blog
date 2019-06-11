@@ -37,7 +37,7 @@ public class OrderController {
     @RequestMapping(value ="callback",method = RequestMethod.GET)
     public void callback( HttpServletRequest request, HttpServletResponse response){
         System.out.println("---------支付正常-------------");
-
+        orderService.upOrder(request,response);
         try {
             response.setContentType("text/html; charset=utf-8");
             Enumeration enu = request.getParameterNames();
