@@ -19,7 +19,8 @@
     <select id="getVipById" resultType="com.me.pojo.Vip" parameterType="String">
         select * from  vip where vip_id = #{vip_id}
     </select>
-    
+
+    <!--添加用户成为会员-->
     <insert id="setUserVip" parameterType="com.me.dto.UserVipDto">
         insert into user_vip (user_id,vip_id,statr_time,end_time)
         values (#{user_id},#{vip_id},now(),DATE_SUB(now(),INTERVAL #{end_time} day));

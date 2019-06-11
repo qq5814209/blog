@@ -15,7 +15,7 @@
 
 
 
-
+    <!--通过id查c币套餐-->
     <select id="getCbiById" resultType="com.me.pojo.Cbi" parameterType="String">
         select * from  cbi where cbi_id = #{cbi_id}
     </select>
