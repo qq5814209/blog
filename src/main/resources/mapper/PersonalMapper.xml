@@ -64,7 +64,7 @@
         SELECT user_id,name,url FROM userinfo WHERE user_id IN
         (SELECT c.uf_id FROM care c WHERE c.ut_id = #{userId})
     </select>
-
+    <!--查询该用户有哪些粉丝-->
     <select id="selectCareByUserFromId" parameterType="int" resultType="com.me.pojo.UserInfo">
         SELECT user_id,name,url FROM userinfo WHERE user_id IN
         (SELECT c.ut_id FROM care c WHERE c.uf_id = #{userId})
