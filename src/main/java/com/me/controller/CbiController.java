@@ -26,7 +26,6 @@ public class CbiController {
     @ResponseBody
     @RequestMapping(value ="getCbi",method = RequestMethod.POST)
     public List<Cbi> getCbi(@RequestBody(required = false) Cbi cbi){
-        System.out.println(cbi);
         return cbiService.getCbi(cbi);
     }
 

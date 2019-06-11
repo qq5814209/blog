@@ -36,34 +36,18 @@ public class OrderController {
 
     @RequestMapping(value ="callback",method = RequestMethod.GET)
     public void callback( HttpServletRequest request, HttpServletResponse response){
-        System.out.println("---------支付正常-------------");
         orderService.upOrder(request,response);
-        try {
-            response.setContentType("text/html; charset=utf-8");
-            Enumeration enu = request.getParameterNames();
-            while(enu.hasMoreElements()){
-                String paraName=(String)enu.nextElement();
-                response.getWriter().write(paraName+": "+request.getParameter(paraName)+"<br>");
-            }
-            response.getWriter().close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 
     @ResponseBody
     @RequestMapping(value = "callback_nsync")
     public void callback_nsync(HttpServletRequest request,HttpServletResponse response){
-        System.out.println("-----------------------------------");
+
         try {
-            System.out.println("错误错误错误错误错误错误");
             response.setContentType("text/html; charset=utf-8");
-            Enumeration enu = request.getParameterNames();
-            while(enu.hasMoreElements()){
-                String paraName=(String)enu.nextElement();
-                System.out.println(paraName+": "+request.getParameter(paraName));
-            }
+            response.getWriter().write("<h1>支付失败，请重试！</h1>");
+            response.getWriter().write("<br/><a href='vip_center.html'>前往支付页面</a>");
             response.getWriter().close();
         } catch (IOException e) {
             e.printStackTrace();

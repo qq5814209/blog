@@ -8,6 +8,9 @@ public class Order {
     private String price;
     private int cbi_number;
     private String Vip_time;
+    private String order_time;
+    private int status;
+    private String order_number;
 
     public String getVip_time() {
         return Vip_time;
@@ -17,9 +20,6 @@ public class Order {
         Vip_time = vip_time;
     }
 
-    private String order_time;
-    private int status;
-    private String order_number;
 
     public int getOrder_id() {
         return order_id;
