@@ -14,7 +14,11 @@ public class VipServiceImpl implements VipService {
     @Autowired
     VipMapper vipMapper;
 
-
+    /**
+     * 获取vip套餐
+     * @param vip
+     * @return
+     */
     public List<Vip> getVip(Vip vip) {
         return vipMapper.getVip(vip);
     }
