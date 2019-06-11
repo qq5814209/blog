@@ -133,7 +133,7 @@
                                     <div class="el-input el-input--suffix">
                                         <input type="text"
                                                class="el-scrollbar__view el-select-dropdown__list el-input__inner"
-                                               placeholder="国家" id="county">
+                                               placeholder="国家" id="country">
                                     </div>
                                 </div>
                             </div>
@@ -151,7 +151,7 @@
                                     <div class="el-input el-input--suffix">
                                         <input type="text"
                                                class="el-scrollbar__view el-select-dropdown__list el-input__inner"
-                                               placeholder="区" town>
+                                               placeholder="区" id="town" >
                                     </div>
                                 </div>
                             </div>
@@ -193,6 +193,20 @@
 
     function editPersonal() {
         $("#editUserInfo").css("display", "block");
+        var url = "selectUserInfo";
+        $.post(url,function (data) {
+            var userInfo = data.userInfo;
+            $("#name").val(userInfo.name);
+            $("#job").val(userInfo.job);
+            $("#sex").val(userInfo.sex);
+            $("#year").val(userInfo.year);
+            $("#month").val(userInfo.month);
+            $("#day").val(userInfo.day);
+            $("#country").val(userInfo.country);
+            $("#city").val(userInfo.city);
+            $("#town").val(userInfo.town);
+            $("#brief").val(userInfo.brief);
+        })
     }
 
     function editPersonalUrl() {
