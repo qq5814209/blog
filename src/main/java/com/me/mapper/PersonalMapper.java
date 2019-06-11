@@ -78,4 +78,11 @@ public interface PersonalMapper {
      * @return
      */
     int updateUserInfoByUserIdToUrl(UserInfo userInfo);
+
+    /**
+     * 修改用户信息
+     * @param userInfo
+     * @return
+     */
+    int updateUserInfo(UserInfo userInfo);
 }

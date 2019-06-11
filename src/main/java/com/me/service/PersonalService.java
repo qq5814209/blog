@@ -63,4 +63,11 @@ public interface PersonalService {
      * @return
      */
     boolean updateUserInfoByUserIdToUrl(UserInfo userInfo);
+
+    /**
+     * 修改用户信息
+     * @param userInfo
+     * @return
+     */
+    boolean updateUserInfo(UserInfo userInfo);
 }

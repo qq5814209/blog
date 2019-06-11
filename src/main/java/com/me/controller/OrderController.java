@@ -26,20 +26,33 @@ public class OrderController {
     PayProperties payProperties;
 
 
-
-
+    /**
+     * 创建订单后支付
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value ="setOrder",method = RequestMethod.GET)
     public Object setOrder(HttpServletRequest request, HttpServletResponse response) {
         return orderService.SetOrder(request,response);
     }
 
-
+    /**
+     * 正常支付后请求
+     * @param request
+     * @param response
+     */
     @RequestMapping(value ="callback",method = RequestMethod.GET)
     public void callback( HttpServletRequest request, HttpServletResponse response){
         orderService.upOrder(request,response);
     }
 
 
+    /**
+     * 交易异常后请求
+     * @param request
+     * @param response
+     */
     @ResponseBody
     @RequestMapping(value = "callback_nsync")
     public void callback_nsync(HttpServletRequest request,HttpServletResponse response){
@@ -53,7 +66,6 @@ public class OrderController {
             e.printStackTrace();
         }
         System.out.println("错误完完完完");
-
 
     }
 
