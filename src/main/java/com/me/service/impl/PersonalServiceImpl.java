@@ -103,10 +103,20 @@ public class PersonalServiceImpl implements PersonalService {
      * @param uf_id
      */
     public void myCare(int user_id, String uf_id) {
-        CareVo careVo = new CareVo();
-        careVo.setUt_id(user_id);
-        careVo.setUf_id(Integer.parseInt(uf_id));
-        personalMapper.myCare(careVo);
+        //查询该用户已经关注了哪些人
+        List<UserInfo> userInfos = personalMapper.selectCareByUserId(user_id);
+        List<String> uf_ids = new ArrayList<String>();
+        for (UserInfo userInfo : userInfos) {
+            uf_ids.add(String.valueOf(userInfo.getUser_id()));
+            System.out.println(userInfo);
+        }
+        //判断是否有新增关注的人和已经关注的人是否有重复的，重复就不再执行添加操作
+        if(!uf_ids.contains(uf_id) || uf_ids.isEmpty()){
+            CareVo careVo = new CareVo();
+            careVo.setUt_id(user_id);
+            careVo.setUf_id(Integer.parseInt(uf_id));
+            personalMapper.myCare(careVo);
+        }
     }
 
     /**
