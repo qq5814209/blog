@@ -26,48 +26,15 @@
 
         <div data-v-357a65ed="" class="view-container">
             <div data-v-0d738edb="" data-v-357a65ed="" class="cont view">
-                <div data-v-0d738edb="" class="right_cont"><h3 data-v-0d738edb="" class="title">个人资料</h3>
-                    <div data-v-0d738edb="" class="user_info">
-                        <div data-v-0d738edb="" class="header"><img data-v-0d738edb=""
-                                                                    src="./image/1_qq_24224509" alt=""
-                                                                    class="head">
-                            <div data-v-0d738edb="" class="modify">修改头像</div></div> <!---->
-                        <div data-v-0d738edb="" class="right_c">
-                            <div data-v-0d738edb="" class="right_info">
-                                <div data-v-0d738edb="" class="id_card"><span data-v-0d738edb="" class="id_name">ID：qq_24224509</span>
-                                    <!----> <!----> <a data-v-0d738edb="" href="personalHomepage.html" target="_blank" class="user_home">个人主页</a>
-                                </div>
-                            </div>
-                            <div data-v-0d738edb="" class="csdn_info"><span data-v-0d738edb=""
-                                                                            style="margin-right: 16px; color: rgb(77, 77, 77); font-size: 14px;">关注 2</span>
-                                <span data-v-0d738edb=""
-                                      style="margin-right: 16px; color: rgb(77, 77, 77); font-size: 14px;">粉丝 0</span>
-                                <span data-v-0d738edb="" class="splits">|</span> <span data-v-0d738edb=""
-                                                                                       style="margin-right: 8px; color: rgb(77, 77, 77); font-size: 14px;">C币  0</span>
-                                <a data-v-0d738edb="" href="#" class="charge">充值</a></div>
-                            <div data-v-0d738edb="" class="line"></div>
-                            <div data-v-0d738edb="" class="nick"><span data-v-0d738edb="">昵称：qq_24224509</span> <span
-                                    data-v-0d738edb="" class="mod" onclick="editOnclick()">修改资料</span></div>
-                            <ul data-v-0d738edb="" class="self">
-                                <li data-v-0d738edb="" class="comon">实名：cc</li>
-                                <li data-v-0d738edb="" class="comon">性别：男 </li>
-                                <li data-v-0d738edb="" class="comon">生日：2019-06-04</li>
-                                <li data-v-0d738edb="" class="comon">地区：中国 北京 东城区</li>
-                                <li data-v-0d738edb="" class="comon">行业：办公设备·用品</li>
-                                <li data-v-0d738edb="" class="comon last">职位：student</li>
-                                <li data-v-0d738edb="" class="intro"><span data-v-0d738edb=""
-                                                                           class="noWid">简介：</span><span
-                                        data-v-0d738edb="" class="cont">嘿嘿嘿嘿</span></li>
-                            </ul>
-                        </div>
-                    </div>
+                <div data-v-0d738edb="" class="right_cont"  id="selectUserInfo">
+                    <!--个人信息-->
                 </div>
                 <!--修改信息页开始-->
                 <div id="editPersonal"></div>
 
-                <!--修改信息页结束-->
                 </div>
-            </div>
+                <!--修改信息页结束-->
+        </div>
         </div>
     </div>
 
@@ -87,7 +54,46 @@
         $("#editPersonal").load("module/editPersonal.html");
     }
 
-
+    $(function () {
+        var url = "selectUserInfo";
+        var $selectUserInfo = $("#selectUserInfo");
+        $.post(url,function (data) {
+            var innerHtml = "<h3 data-v-0d738edb=\"\" class=\"title\">个人资料</h3>" +
+                "                    <div data-v-0d738edb=\"\" class=\"user_info\">" +
+                "                        <div data-v-0d738edb=\"\" class=\"header\">" +
+                "                            <img data-v-0d738edb=\"\" src=\"./image/"+data.userInfo.url+"\" alt=\"\" class=\"head\">" +
+                "                            <div data-v-0d738edb=\"\" class=\"modify\">修改头像</div></div> <!---->" +
+                "                        <div data-v-0d738edb=\"\" class=\"right_c\">" +
+                "                            <div data-v-0d738edb=\"\" class=\"right_info\">" +
+                "                                <div data-v-0d738edb=\"\" class=\"id_card\">" +
+                "                                    <span data-v-0d738edb=\"\" class=\"id_name\">ID："+data.userInfo.user_name+"</span>" +
+                "                                    <a data-v-0d738edb=\"\" href=\"personalHomepage.html\" target=\"_blank\" class=\"user_home\">个人主页</a>" +
+                "                                </div>" +
+                "                            </div>" +
+                "                            <div data-v-0d738edb=\"\" class=\"csdn_info\">\n" +
+                "                                <span data-v-0d738edb=\"\" style=\"margin-right: 16px; color: rgb(77, 77, 77); font-size: 14px;\">关注 "+data.attentions+"</span>" +
+                "                                <span data-v-0d738edb=\"\" style=\"margin-right: 16px; color: rgb(77, 77, 77); font-size: 14px;\">粉丝 "+data.fans+"</span>" +
+                "                                <span data-v-0d738edb=\"\" class=\"splits\">|</span>\n" +
+                "                                <span data-v-0d738edb=\"\" style=\"margin-right: 8px; color: rgb(77, 77, 77); font-size: 14px;\">C币  "+data.userInfo.cbis+"</span>" +
+                "                                <a data-v-0d738edb=\"\" href=\"vip_center.html\" class=\"charge\">充值</a></div>" +
+                "                            <div data-v-0d738edb=\"\" class=\"line\"></div>" +
+                "                            <div data-v-0d738edb=\"\" class=\"nick\">" +
+                "                                <span data-v-0d738edb=\"\">昵称："+data.userInfo.name+"</span>\n" +
+                "                                <span data-v-0d738edb=\"\" class=\"mod\" onclick=\"editOnclick()\">修改资料</span></div>" +
+                "                            <ul data-v-0d738edb=\"\" class=\"self\">" +
+                "                                <li data-v-0d738edb=\"\" class=\"comon\">性别："+data.userInfo.sex+" </li>" +
+                "                                <li data-v-0d738edb=\"\" class=\"comon\">生日："+data.userInfo.year+"-"+data.userInfo.month+"-"+data.userInfo.day+"</li>" +
+                "                                <li data-v-0d738edb=\"\" class=\"comon\">地区："+data.userInfo.country+" "+data.userInfo.city+" "+data.userInfo.town+"</li>" +
+                "                                <li data-v-0d738edb=\"\" class=\"comon last\">职位："+data.userInfo.job+"</li>" +
+                "                                <li data-v-0d738edb=\"\" class=\"intro\">\n" +
+                "                                    <span data-v-0d738edb=\"\" class=\"noWid\">简介：</span>\n" +
+                "                                    <span data-v-0d738edb=\"\" class=\"cont\">"+data.userInfo.brief+"</span></li>" +
+                "                            </ul>" +
+                "                        </div>" +
+                "                    </div>";
+            $selectUserInfo.append(innerHtml);
+        })
+    })
 
 </script>
 </html>

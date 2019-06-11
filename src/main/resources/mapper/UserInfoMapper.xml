@@ -1,0 +1,17 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.mapper.UserInfoMapper">
+
+
+    <!--登录-->
+    <select id="login" resultType="com.me.pojo.UserInfo" parameterType="com.me.pojo.UserInfo">
+        SELECT * FROM userinfo
+        WHERE (user_name = #{user_name} OR email = #{email}) AND password = #{password}
+    </select>
+
+    <insert id="regiester" parameterType="com.me.vo.UserInfoVo">
+        INSERT INTO userinfo (user_name,password,email) VALUES (#{user_name},#{password},#{email})
+    </insert>
+
+</mapper>
