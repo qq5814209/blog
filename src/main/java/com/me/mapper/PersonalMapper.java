@@ -58,4 +58,11 @@ public interface PersonalMapper {
      * @return
      */
     List<UserInfo> selectCareByUserFromId(int user_id);
+
+    /**
+     * 更改用户头像
+     * @param userInfo
+     * @return
+     */
+    int updateUserInfoByUserIdToUrl(UserInfo userInfo);
 }

@@ -42,4 +42,11 @@ public interface PersonalService {
      * @return
      */
     List<UserInfo> selectCareByUserFromId(int user_id);
+
+    /**
+     * 更改用户头像
+     * @param userInfo
+     * @return
+     */
+    boolean updateUserInfoByUserIdToUrl(UserInfo userInfo);
 }

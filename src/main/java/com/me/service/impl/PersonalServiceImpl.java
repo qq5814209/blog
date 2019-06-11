@@ -83,4 +83,15 @@ public class PersonalServiceImpl implements PersonalService {
 
         return personalMapper.selectCareByUserFromId(user_id);
     }
+
+    /**
+     * 更改用户头像
+     * @param userInfo
+     * @return
+     */
+    public boolean updateUserInfoByUserIdToUrl(UserInfo userInfo) {
+
+
+        return personalMapper.updateUserInfoByUserIdToUrl(userInfo) > 0;
+    }
 }
