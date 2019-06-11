@@ -85,4 +85,9 @@
         UPDATE userinfo SET url = #{url} WHERE user_id = #{user_id}
     </update>
 
+    <!--修改用户信息-->
+    <update id="updateUserInfo" parameterType="com.me.pojo.UserInfo">
+        UPDATE userinfo SET NAME = #{name} , sex = #{sex}, job = #{job}, brief = #{brief}, year = #{year}, month = #{month}, day = #{day}, country = #{country}, city = #{city}, town = #{town} WHERE user_id = #{user_id}
+    </update>
+
 </mapper>

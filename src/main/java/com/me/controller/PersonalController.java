@@ -38,8 +38,6 @@ public class PersonalController {
 
         int userId = userInfo.getUser_id();
         UserInfoDto userInfoDto = personalService.selectCareByAttentionsAndFans(userId);
-        userInfoDto.setUserInfo(userInfo);
-
         return userInfoDto;
     }
 
@@ -215,6 +213,22 @@ public class PersonalController {
             return delete;
         }
         return false;
+    }
+
+    /**
+     * 修改用户信息
+     * @param session
+     * @param userInfo
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/editUserInfo", method = RequestMethod.POST)
+    public Object editUserInfo(HttpSession session,UserInfo userInfo){
+        UserInfo user = (UserInfo) session.getAttribute("userInfo");
+
+        int user_id = user.getUser_id();
+        userInfo.setUser_id(user_id);
+        return personalService.updateUserInfo(userInfo);
     }
 
 }

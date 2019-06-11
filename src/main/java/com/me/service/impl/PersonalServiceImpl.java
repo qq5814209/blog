@@ -26,7 +26,8 @@ public class PersonalServiceImpl implements PersonalService {
     public UserInfoDto selectCareByAttentionsAndFans(int userId) {
 
         UserInfoDto userInfoDto = personalMapper.selectCareByAttentionsAndFans(userId);
-
+        UserInfo userInfo = personalMapper.selectUserInfo(userId);
+        userInfoDto.setUserInfo(userInfo);
         return userInfoDto;
     }
 
@@ -116,6 +117,16 @@ public class PersonalServiceImpl implements PersonalService {
      */
     public boolean updateUserInfoByUserIdToUrl(UserInfo userInfo) {
         return personalMapper.updateUserInfoByUserIdToUrl(userInfo) > 0;
+    }
+
+    /**
+     * 修改用户信息
+     * @param userInfo
+     * @return
+     */
+    public boolean updateUserInfo(UserInfo userInfo) {
+
+        return personalMapper.updateUserInfo(userInfo) > 0;
     }
 
 
