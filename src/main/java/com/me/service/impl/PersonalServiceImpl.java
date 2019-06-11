@@ -6,6 +6,7 @@ import com.me.pojo.UserInfo;
 import com.me.service.PersonalService;
 import com.me.dto.FavoritesDto;
 import com.me.dto.UserInfoDto;
+import com.me.vo.CareVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -83,4 +84,39 @@ public class PersonalServiceImpl implements PersonalService {
 
         return personalMapper.selectCareByUserFromId(user_id);
     }
+
+    /**
+     * 取消关注
+     * @param user_id 关注人id
+     * @param uf_id 被关注人id
+     */
+    public void noCare(int user_id, String uf_id) {
+        CareVo careVo = new CareVo();
+        careVo.setUt_id(user_id);
+        careVo.setUf_id(Integer.parseInt(uf_id));
+        personalMapper.noCare(careVo);
+    }
+
+    /**
+     * 关注
+     * @param user_id
+     * @param uf_id
+     */
+    public void myCare(int user_id, String uf_id) {
+        CareVo careVo = new CareVo();
+        careVo.setUt_id(user_id);
+        careVo.setUf_id(Integer.parseInt(uf_id));
+        personalMapper.myCare(careVo);
+    }
+
+    /**
+     * 更改用户头像
+     * @param userInfo
+     * @return
+     */
+    public boolean updateUserInfoByUserIdToUrl(UserInfo userInfo) {
+        return personalMapper.updateUserInfoByUserIdToUrl(userInfo) > 0;
+    }
+
+
 }

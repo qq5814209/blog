@@ -14,6 +14,9 @@
     <link href="./css/app.f9fc3bdf5d6cce499d6893ef6119986f.css" rel="stylesheet">
     <title>个人资料-个人中心-CSDN</title>
     <link rel="stylesheet" type="text/css" href="./css/check-adb.css">
+    <link rel="stylesheet" href="css/basic.min.css"/>
+    <link rel="stylesheet" href="css/dropzone.min.css"/>
+    <script src="js/dropzone.min.js"></script>
 </head>
 
 <body>
@@ -26,20 +29,158 @@
 
         <div data-v-357a65ed="" class="view-container">
             <div data-v-0d738edb="" data-v-357a65ed="" class="cont view">
-                <div data-v-0d738edb="" class="right_cont"  id="selectUserInfo">
+                <div data-v-0d738edb="" class="right_cont" id="selectUserInfo">
                     <!--个人信息-->
                 </div>
                 <!--修改信息页开始-->
                 <div id="editPersonal"></div>
 
+                <!--修改头像-->
+                <div data-v-0d738edb="" class="modi_dialog" id="editPersonalUrl" style="display: none">
+                    <div data-v-0d738edb="" class="vue-image-crop-upload">
+                        <div data-action="vicp-wrap" class="vicp-wrap">
+                            <div class="vicp-close" onclick="editClose()">
+                                <i class="vicp-icon4 vic-icon">x</i>
+                            </div>
+                            <h3 data-action="vicp-wrap" class="upword">上传头像</h3>
+                            <h3 data-action="vicp-wrap" class="upword" style="display: none;">修改头像</h3>
+                            <div class="vicp-step1">
+                                <div id="dropzoneDiv" class="dropzone"></div>
+                            </div>
+
+                            <button onclick="editClose()"><a>取消</a></button>
+                            <button onclick="editUserInfoUrl()"><a>确认</a></button>
+                            <p data-action="vicp-wrap" class="img_tip1">图片宽度*高度至少为150*150像素，大小不超过2MB</p>
+                            <p data-action="vicp-wrap" class="img_tip2">请投食JPG或者PNG格式的图片</p>
+                            <canvas width="150" height="150" style="display: none;"></canvas>
+                        </div>
+                    </div>
                 </div>
-                <!--修改信息页结束-->
-        </div>
+                <!--修改头像结束-->
+
+                <!--修改个人信息开始-->
+                <div data-v-0d738edb="" class="dialog" id="editUserInfo" style="display: none">
+                    <div data-v-0d738edb="" class="dialog_cont">
+                        <div data-v-0d738edb="" class="box"><h3 data-v-0d738edb="" class="title">修改资料</h3> <span
+                                data-v-0d738edb="" class="close" onclick="editClose()">×</span></div>
+                        <div data-v-0d738edb="" class="nick word"><span data-v-0d738edb="" class="nc">昵称：</span>
+                            <div data-v-0d738edb="" class="el-form-item is-required">
+                                <div class="el-form-item__content">
+                                    <div data-v-0d738edb="" class="nick_name el-input">
+                                        <input type="text" autocomplete="off" minlength="2" maxlength="20"
+                                               class="el-input__inner" id="name">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-v-0d738edb="" class="word name">
+                            <span data-v-0d738edb="" class="nc">职位：</span>
+                            <div data-v-0d738edb="" class="el-form-item"><!---->
+                                <div class="el-form-item__content">
+                                    <div data-v-0d738edb="" class="nick_name el-input">
+                                        <input type="text" autocomplete="off" maxlength="20" class="el-input__inner"
+                                               id="job">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-v-0d738edb="" class="sex word">
+                            <span data-v-0d738edb="" class="nc">性别：</span>
+                            <div data-v-0d738edb="" class="el-select sexing">
+                                <div class="el-input el-input--suffix">
+                                    <select class="el-input__inner" id="sex">
+                                        <option>男</option>
+                                        <option>女</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-v-0d738edb="" class="place word">
+                            <span data-v-0d738edb="" class="nc">生日：</span>
+                            <div data-v-0d738edb="" class="country">
+                                <div data-v-0d738edb="" class="el-select countring">
+                                    <div class="el-input el-input--suffix">
+                                        <input type="text"
+                                               class="el-scrollbar__view el-select-dropdown__list el-input__inner"
+                                               placeholder="年份" id="year">
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-v-0d738edb="" class="country">
+                                <div data-v-0d738edb="" class="el-select countring">
+                                    <div class="el-input el-input--suffix">
+                                        <input type="text"
+                                               class="el-scrollbar__view el-select-dropdown__list el-input__inner"
+                                               placeholder="月份" id="month">
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-v-0d738edb="" class="country">
+                                <div data-v-0d738edb="" class="el-select countring">
+                                    <div class="el-input el-input--suffix">
+                                        <input type="text"
+                                               class="el-scrollbar__view el-select-dropdown__list el-input__inner"
+                                               placeholder="日期" id="day">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-v-0d738edb="" class="place word">
+                            <span data-v-0d738edb="" class="nc">地区：</span>
+                            <div data-v-0d738edb="" class="country">
+                                <div data-v-0d738edb="" class="el-select countring">
+                                    <div class="el-input el-input--suffix">
+                                        <input type="text"
+                                               class="el-scrollbar__view el-select-dropdown__list el-input__inner"
+                                               placeholder="国家" id="country">
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-v-0d738edb="" class="province">
+                                <div data-v-0d738edb="" class="el-select provincing">
+                                    <div class="el-input el-input--suffix">
+                                        <input type="text"
+                                               class="el-scrollbar__view el-select-dropdown__list el-input__inner"
+                                               placeholder="市" id="city">
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-v-0d738edb="" class="district">
+                                <div data-v-0d738edb="" class="el-select districting">
+                                    <div class="el-input el-input--suffix">
+                                        <input type="text"
+                                               class="el-scrollbar__view el-select-dropdown__list el-input__inner"
+                                               placeholder="区" id="town" >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-v-0d738edb="" class="word introduce">
+                            <span data-v-0d738edb="" class="tip nc">简介：</span>
+                            <div data-v-0d738edb="" class="bao">
+                                <textarea data-v-0d738edb="" maxlength="300" placeholder="300字以内" class="area"
+                                          id="brief"></textarea>
+                            </div>
+                        </div>
+                        <div data-v-0d738edb="" class="btn_group">
+                            <button data-v-0d738edb="" class="cancel" onclick="editClose()">取消</button>
+                            <button data-v-0d738edb="" class="confirm">确定</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--修改个人信息结束-->
+
+
+            </div>
+            <!--修改信息页结束-->
         </div>
     </div>
+</div>
 
-    <link rel="stylesheet" type="text/css" href="./css/pub-footer.css">
-    <div class="bottom-pub-footer footer-box pub_fo" id="foot"></div>
+<link rel="stylesheet" type="text/css" href="./css/pub-footer.css">
+<div class="bottom-pub-footer footer-box pub_fo" id="foot"></div>
 
 </body>
 <script src="jquery/jquery-2.1.1.min.js"></script>
@@ -50,50 +191,121 @@
     });
     $("#foot").load("module/personal_foot.html");
 
-    function editOnclick () {
-        $("#editPersonal").load("module/editPersonal.html");
+    function editPersonal() {
+        $("#editUserInfo").css("display", "block");
+        var url = "selectUserInfo";
+        $.post(url,function (data) {
+            var userInfo = data.userInfo;
+            $("#name").val(userInfo.name);
+            $("#job").val(userInfo.job);
+            $("#sex").val(userInfo.sex);
+            $("#year").val(userInfo.year);
+            $("#month").val(userInfo.month);
+            $("#day").val(userInfo.day);
+            $("#country").val(userInfo.country);
+            $("#city").val(userInfo.city);
+            $("#town").val(userInfo.town);
+            $("#brief").val(userInfo.brief);
+        })
     }
 
+    function editPersonalUrl() {
+        $("#editPersonalUrl").css("display", "block");
+    }
+
+    function editUserInfoUrl(){
+        var url = "updateUserInfoUrl";
+        $.post(url,function (data) {
+            if (data === true) {
+                window.location.reload();
+            }
+        })
+    }
     $(function () {
         var url = "selectUserInfo";
         var $selectUserInfo = $("#selectUserInfo");
-        $.post(url,function (data) {
+        $.post(url, function (data) {
             var innerHtml = "<h3 data-v-0d738edb=\"\" class=\"title\">个人资料</h3>" +
                 "                    <div data-v-0d738edb=\"\" class=\"user_info\">" +
                 "                        <div data-v-0d738edb=\"\" class=\"header\">" +
-                "                            <img data-v-0d738edb=\"\" src=\"./image/"+data.userInfo.url+"\" alt=\"\" class=\"head\">" +
-                "                            <div data-v-0d738edb=\"\" class=\"modify\">修改头像</div></div> <!---->" +
+                "                            <img data-v-0d738edb=\"\" src=\"./image/" + data.userInfo.url + "\" alt=\"\" class=\"head\">" +
+                "                            <div data-v-0d738edb=\"\" class=\"modify\" onclick='editPersonalUrl()'>修改头像</div></div> <!---->" +
                 "                        <div data-v-0d738edb=\"\" class=\"right_c\">" +
                 "                            <div data-v-0d738edb=\"\" class=\"right_info\">" +
                 "                                <div data-v-0d738edb=\"\" class=\"id_card\">" +
-                "                                    <span data-v-0d738edb=\"\" class=\"id_name\">ID："+data.userInfo.user_name+"</span>" +
+                "                                    <span data-v-0d738edb=\"\" class=\"id_name\">ID：" + data.userInfo.user_name + "</span>" +
                 "                                    <a data-v-0d738edb=\"\" href=\"personalHomepage.html\" target=\"_blank\" class=\"user_home\">个人主页</a>" +
                 "                                </div>" +
                 "                            </div>" +
                 "                            <div data-v-0d738edb=\"\" class=\"csdn_info\">\n" +
-                "                                <span data-v-0d738edb=\"\" style=\"margin-right: 16px; color: rgb(77, 77, 77); font-size: 14px;\">关注 "+data.attentions+"</span>" +
-                "                                <span data-v-0d738edb=\"\" style=\"margin-right: 16px; color: rgb(77, 77, 77); font-size: 14px;\">粉丝 "+data.fans+"</span>" +
+                "                                <span data-v-0d738edb=\"\" style=\"margin-right: 16px; color: rgb(77, 77, 77); font-size: 14px;\">关注 " + data.attentions + "</span>" +
+                "                                <span data-v-0d738edb=\"\" style=\"margin-right: 16px; color: rgb(77, 77, 77); font-size: 14px;\">粉丝 " + data.fans + "</span>" +
                 "                                <span data-v-0d738edb=\"\" class=\"splits\">|</span>\n" +
-                "                                <span data-v-0d738edb=\"\" style=\"margin-right: 8px; color: rgb(77, 77, 77); font-size: 14px;\">C币  "+data.userInfo.cbis+"</span>" +
+                "                                <span data-v-0d738edb=\"\" style=\"margin-right: 8px; color: rgb(77, 77, 77); font-size: 14px;\">C币  " + data.userInfo.cbis + "</span>" +
                 "                                <a data-v-0d738edb=\"\" href=\"vip_center.html\" class=\"charge\">充值</a></div>" +
                 "                            <div data-v-0d738edb=\"\" class=\"line\"></div>" +
                 "                            <div data-v-0d738edb=\"\" class=\"nick\">" +
-                "                                <span data-v-0d738edb=\"\">昵称："+data.userInfo.name+"</span>\n" +
-                "                                <span data-v-0d738edb=\"\" class=\"mod\" onclick=\"editOnclick()\">修改资料</span></div>" +
+                "                                <span data-v-0d738edb=\"\">昵称：" + data.userInfo.name + "</span>\n" +
+                "                                <span data-v-0d738edb=\"\" class=\"mod\" onclick=\"editPersonal()\">修改资料</span></div>" +
                 "                            <ul data-v-0d738edb=\"\" class=\"self\">" +
-                "                                <li data-v-0d738edb=\"\" class=\"comon\">性别："+data.userInfo.sex+" </li>" +
-                "                                <li data-v-0d738edb=\"\" class=\"comon\">生日："+data.userInfo.year+"-"+data.userInfo.month+"-"+data.userInfo.day+"</li>" +
-                "                                <li data-v-0d738edb=\"\" class=\"comon\">地区："+data.userInfo.country+" "+data.userInfo.city+" "+data.userInfo.town+"</li>" +
-                "                                <li data-v-0d738edb=\"\" class=\"comon last\">职位："+data.userInfo.job+"</li>" +
+                "                                <li data-v-0d738edb=\"\" class=\"comon\">性别：" + data.userInfo.sex + " </li>" +
+                "                                <li data-v-0d738edb=\"\" class=\"comon\">生日：" + data.userInfo.year + "-" + data.userInfo.month + "-" + data.userInfo.day + "</li>" +
+                "                                <li data-v-0d738edb=\"\" class=\"comon\">地区：" + data.userInfo.country + " " + data.userInfo.city + " " + data.userInfo.town + "</li>" +
+                "                                <li data-v-0d738edb=\"\" class=\"comon last\">职位：" + data.userInfo.job + "</li>" +
                 "                                <li data-v-0d738edb=\"\" class=\"intro\">\n" +
                 "                                    <span data-v-0d738edb=\"\" class=\"noWid\">简介：</span>\n" +
-                "                                    <span data-v-0d738edb=\"\" class=\"cont\">"+data.userInfo.brief+"</span></li>" +
+                "                                    <span data-v-0d738edb=\"\" class=\"cont\">" + data.userInfo.brief + "</span></li>" +
                 "                            </ul>" +
                 "                        </div>" +
                 "                    </div>";
             $selectUserInfo.append(innerHtml);
         })
     })
+
+</script>
+<script>
+    function editClose() {
+        $("#editPersonalUrl").css("display", "none");
+        $("#editUserInfo").css("display", "none");
+        var url = "cancelUserInfoUrl";
+        $.post(url,function (data) {
+            alert("已取消")
+        })
+    }
+
+    Dropzone.options.dropzoneDiv = {
+        url: "upload", // 文件提交地址
+        method: "post",  // 也可用put
+        paramName: "dropzFile", // 默认为file
+        maxFiles: 1,// 一次性上传的文件数量上限
+        maxFilesize: 2, // 文件大小，单位：MB
+        acceptedFiles: ".jpg,.gif,.png,.jpeg", // 上传的类型
+        addRemoveLinks: true,
+        parallelUploads: 1,// 一次上传的文件数量
+        //previewsContainer:"#preview", // 上传图片的预览窗口
+        dictDefaultMessage: '拖动文件至此或者点击上传',
+        dictMaxFilesExceeded: "您最多只能上传1个文件！",
+        dictResponseError: '文件上传失败!',
+        dictInvalidFileType: "文件类型只能是*.jpg,*.gif,*.png,*.jpeg",
+        dictFallbackMessage: "浏览器不受支持",
+        dictFileTooBig: "文件过大上传文件最大支持.",
+        dictRemoveLinks: "删除",
+        dictCancelUpload: "取消",
+        init: function () {
+            this.on("addedfile", function (file) {
+                // 上传文件时触发的事件
+            });
+            this.on("success", function (file, data) {
+                // 上传成功触发的事件
+            });
+            this.on("error", function (file, data) {
+                // 上传失败触发的事件
+            });
+            this.on("removedfile", function (file) {
+                // 删除文件时触发的方法
+            });
+        }
+    }
 
 </script>
 </html>

@@ -4,6 +4,7 @@ import com.me.dto.UserInfoDto;
 import com.me.pojo.Favorites;
 import com.me.pojo.UserInfo;
 import com.me.dto.FavoritesDto;
+import com.me.vo.CareVo;
 
 import java.util.List;
 
@@ -58,4 +59,23 @@ public interface PersonalMapper {
      * @return
      */
     List<UserInfo> selectCareByUserFromId(int user_id);
+
+    /**
+     * 取消关注
+     * @param careVo
+     */
+    void noCare(CareVo careVo);
+
+    /**
+     * 关注
+     * @param careVo
+     */
+    void myCare(CareVo careVo);
+
+    /**
+     * 更改用户头像
+     * @param userInfo
+     * @return
+     */
+    int updateUserInfoByUserIdToUrl(UserInfo userInfo);
 }

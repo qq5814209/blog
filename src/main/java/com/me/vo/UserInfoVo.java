@@ -1,8 +1,20 @@
 package com.me.vo;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class UserInfoVo {
+    @NotNull
+    @Size(min = 2)
     String user_name;
+
+    @NotNull
+    @Pattern(regexp = "^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$",message = "邮箱地址不合法")
     String email;
+
+    @NotNull
+    @Size(min = 6,max = 15)
     String password;
 
     public String getUser_name() {
