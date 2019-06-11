@@ -4,11 +4,15 @@ com\me\pojo\BlogInfo.class
 com\me\service\UserInfoService.class
 com\me\pojo\UserInfo.class
 com\me\service\FavoritesService.class
+com\me\service\impl\InquireServiceImpl.class
 com\me\service\impl\UserInfoServiceImpl.class
-com\me\controller\FavoritesController.class
 com\me\pojo\Favorites.class
 com\me\service\impl\ServiceImpl.class
+com\me\service\InquireService.class
 com\me\controller\UserInfoController.class
+com\me\vo\ShowVo.class
+com\me\controller\InquireController.class
+com\me\mapper\InquireMapper.class
 com\me\mapper\Mapper.class
 com\me\util\test.class
 com\me\vo\CollectVo.class
@@ -18,6 +22,7 @@ com\me\util\Md5.class
 com\me\mapper\UserInfoMapper.class
 com\me\pojo\pojotest.class
 com\me\service\impl\FavoritesServiceImpl.class
+com\me\dto\ShowDto.class
 com\me\mapper\FavoritesMapper.class
 com\me\controller\TestController.class
 com\me\service\Service.class

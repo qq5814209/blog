@@ -27,14 +27,14 @@
                 <div class="add-categorie-box">
                     <div class="form-group row d-flex align-items-center">
                         <div class="txt-box">
-                            <input type="text" class="form-control form-control-sm feedback-icon" id="txtAdd">
+                            <input type="text" class="form-control form-control-sm feedback-icon" id="addCategory">
                         </div>
-                        <button class="btn btn-outline-danger btn-add">添加分类</button>
+                        <button class="btn btn-outline-danger btn-add" onclick="addButton()">添加分类</button>
                     </div>
                 </div>
             </div>
             <div class="categorie-content">
-                <ul class="categorieList" style="display:block">
+                <ul class="categorieList" style="display:block" id="categoryUl">
                     <li class="d-flex title">
                         <div class="sort">排序</div>
                         <div class="categorie">类别</div>
@@ -148,5 +148,46 @@
         $("#bkgl_lbgl").attr("class","list-group-item active");
     });
     $("#csdn-toolbar").load("module/bk_header.html");
+
+    function initial() {
+        $.ajax({
+            type: 'POST',
+            url: "/AllPersonalCategory",
+            contentType:"application/json",
+            success: function(data){
+                console.log(data)
+
+
+            },
+            error:function (data) {
+                console.error(data);
+            },
+            dataType: "json"
+        });
+    }
+    initial();
+
+
+    function addButton() {
+        var value = $("#addCategory").val();
+        alert(value);
+        $.ajax({
+            type: 'GET',
+            url: "/addPersonalCategory?type_name="+value,
+            contentType:"application/json",
+            success: function(data){
+                if(date.contains("true")) {
+                    alert("添加成功");
+                }
+            },
+            error:function (data) {
+                console.error(data);
+                alert("添加失敗")
+            },
+            dataType: "json"
+        });
+
+    }
+    
 </script>
 </html>
