@@ -74,6 +74,36 @@ public class PersonalController {
     }
 
     /**
+     * 取消关注
+     * @param
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "noCare",method = RequestMethod.GET)
+    public Object noCare(String uf_id,HttpSession session){
+        UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        personalService.noCare(user_id,uf_id);
+        return null;
+    }
+
+    /**
+     * 关注
+     * @param uf_id
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "myCare",method = RequestMethod.GET)
+    public Object myCare(String uf_id,HttpSession session){
+        UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        personalService.myCare(user_id,uf_id);
+        return null;
+    }
+
+
+    /**
      * 根据用户 id 查询该用户被那些用户关注，用于展示 fan_center.html 页面
      * @param session
      * @return

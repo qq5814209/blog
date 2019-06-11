@@ -52,6 +52,7 @@
     $(function () {
         var url = "selectCareByUserId";
         $.get(url, function (data) {
+            console.log(data)
             var innerHtml = "<div data-v-0c56b7f6=\"\" class=\"bar\"><h3 data-v-0c56b7f6=\"\" class=\"title\">我的关注</h3>" +
                 "                <span data-v-0c56b7f6=\"\" class=\"num\">共"+data.length+"人</span>" +
                 "            </div>"+
@@ -63,7 +64,7 @@
                     "                            <img data-v-0c56b7f6=\"\" src=\"./image/"+item.url+"\" alt=\"\" class=\"header\">" +
                     "                        </a>" +
                     "                        <a data-v-0c56b7f6=\"\" href=\"#\" title=\"CSDNedu\" target=\"_blank\" class=\"nick\">"+item.name+"</a>" +
-                    "                        <a data-v-0c56b7f6=\"\" href=\"#\" class=\"watch_btn\">取消关注</a>" +
+                    "                        <a data-v-0c56b7f6=\"\" href=\"#\" class=\"watch_btn\" id='care' onclick='care(this,"+item.user_id+")'>取消关注</a>" +
                     "                    </li>";
             });
             innerHtml += "                </ul>";
@@ -72,5 +73,31 @@
 
     });
 
+    //取消关注或者关注功能实现
+    function care(t,id) {
+        var $this = $(t);
+        if($this.text() === "取消关注"){
+            $this.attr("class","watch_btn visited");
+            $this.text("关注");
+            $.ajax({
+                type:'GET',
+                url:"noCare",
+                data:{
+                    "uf_id" : id
+                }
+            })
+        }else {
+            $this.attr("class","watch_btn");
+            $this.text("取消关注");
+            $.ajax({
+                type:'GET',
+                url:"myCare",
+                data:{
+                    "uf_id" : id
+                }
+            })
+        }
+
+    }
 </script>
 </html>

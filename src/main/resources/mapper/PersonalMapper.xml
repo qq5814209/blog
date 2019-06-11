@@ -67,7 +67,16 @@
 
     <select id="selectCareByUserFromId" parameterType="int" resultType="com.me.pojo.UserInfo">
         SELECT user_id,name,url FROM userinfo WHERE user_id IN
-        (SELECT c.uf_id FROM care c WHERE c.uf_id = #{userId})
+        (SELECT c.ut_id FROM care c WHERE c.uf_id = #{userId})
     </select>
 
+    <!--取消关注-->
+    <delete id="noCare" parameterType="com.me.vo.CareVo">
+        DELETE FROM care WHERE ut_id = #{ut_id} AND uf_id = #{uf_id}
+    </delete>
+
+    <!--关注-->
+    <insert id="myCare" parameterType="com.me.vo.CareVo">
+        INSERT INTO care (ut_id,uf_id) VALUES (#{ut_id},#{uf_id})
+    </insert>
 </mapper>

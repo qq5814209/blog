@@ -42,4 +42,18 @@ public interface PersonalService {
      * @return
      */
     List<UserInfo> selectCareByUserFromId(int user_id);
+
+    /**
+     * 取消关注
+     * @param user_id 关注人id
+     * @param uf_id 被关注人id
+     */
+    void noCare(int user_id,String uf_id);
+
+    /**
+     * 关注
+     * @param user_id
+     * @param uf_id
+     */
+    void myCare(int user_id, String uf_id);
 }
