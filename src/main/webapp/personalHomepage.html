@@ -221,8 +221,8 @@
             </ul>
         </div>
 
-        <div class="my_fans js_fans_att clearfix" data-trigger="true">
-            <ul class="my_fans_bar">
+        <div class="my_fans js_fans_att clearfix" data-trigger="true" id="my_fans">
+           <!-- <ul class="my_fans_bar">
                 <li class="tab_item cur" onclick="changeFans()" id="changeFans">
                     <span>粉丝</span>
                     <em>5</em>
@@ -232,7 +232,7 @@
                     <em>4</em>
                 </li>
             </ul>
-            <div class="fan_att_con">
+            <div class="fan_att_con" id="my_from">
                 <ul class="tab_page clearfix" style="display: block;" id="fans">
                     <li>
                         <a href="#" target="_blank">
@@ -240,34 +240,6 @@
                         </a>
                         <a class="fans_title" href="#">
                             tdxtc </a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">
-                            <img alt="" class="fans_img" src="image/3_ppamos.jpg">
-                        </a>
-                        <a class="fans_title" href="#">
-                            ppamos </a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">
-                            <img alt="" class="fans_img" src="image/3_cloudlai.jpg">
-                        </a>
-                        <a class="fans_title" href="#">
-                            CloudLai </a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">
-                            <img alt="" class="fans_img" src="image/3_qq_41137036.jpg">
-                        </a>
-                        <a class="fans_title" href="#">
-                            qq_41137036 </a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">
-                            <img alt="" class="fans_img" src="image/3_qq_42891915.jpg">
-                        </a>
-                        <a class="fans_title" href="#">
-                            qq_42891915 </a>
                     </li>
                 </ul>
                 <ul class="tab_page" style="display: none;" id="attention">
@@ -278,30 +250,10 @@
                         <a class="fans_title" href="#">
                             tdxtc </a>
                     </li>
-                    <li>
-                        <a href="#" target="_blank">
-                            <img alt="" class="fans_img" src="image/3_ppamos.jpg">
-                        </a>
-                        <a class="fans_title" href="#">
-                            ppamos </a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">
-                            <img alt="" class="fans_img" src="image/3_qq_41137036.jpg">
-                        </a>
-                        <a class="fans_title" href="#">
-                            qq_41137036 </a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">
-                            <img alt="" class="fans_img" src="image/3_qq_42891915.jpg">
-                        </a>
-                        <a class="fans_title" href="#">
-                            qq_42891915 </a>
-                    </li>
                 </ul>
-            </div>
-        </div>        <!--footer-->
+            </div>-->
+        </div>
+        <!--footer-->
         <div class="fixed_footer" style="position: relative; top: 0px; z-index: 1;">
             <div class="public_pc_right_footer2018">
                 <div class="right_box footer_box csdn-tracking-statistics" data-mod="popu_475" data-dsm="post">
@@ -395,10 +347,78 @@
 <script>
     $("#csdn-toolbar").load("module/bk_header.html");
 
-    var $fans = $("#fans");
-    var $attention = $("#attention");
-    var $changeFans = $("#changeFans");
-    var $changeAttention = $("#changeAttention");
+    var $fans;
+    var $attention;
+    var $changeFans;
+    var $changeAttention;
+
+    //获取粉丝数和关注数并渲染
+    $.ajax({
+        type:'POST',
+        url:"selectUserInfo",
+        success:function (data) {
+            var html =
+                "<ul class='my_fans_bar'>"+
+                "<li class='tab_item cur' onclick = 'changeFans()' id='changeFans'>"+
+                "<span>粉丝</span>"+
+                "<em>"+data.attentions+"</em>"+
+                "</li>"+
+                "<li class='tab_item' onclick='changeAttention()' id='changeAttention'>"+
+                "<span>关注</span>"+
+                "<em>"+data.fans+"</em>"+
+                "</li>"+
+                "</ul>"+
+                "<div class='fan_att_con' id='my_from'>"+
+                "</div>";
+            $("#my_fans").append(html);
+            $changeFans = $("#changeFans");
+            $changeAttention = $("#changeAttention");
+        }
+    });
+
+    //获取粉丝用户信息并渲染
+    $.ajax({
+        type:'GET',
+        url:"selectCareByUserId",
+        success:function (data) {
+            var html2 ="<ul class='tab_page clearfix' style='display: block;' id='fans'>";
+            $(data).each(function (index, item) {
+                html2 +=
+                    "<li>"+
+                    "<a href='#' target='_blank'>"+
+                    "<img alt='' class='fans_img' src=\"./image/"+item.url+"\">"+
+                    "</a>"+
+                    "<a class='fans_title' href='#'>"+item.name+"</a>"+
+                    "</li>"
+            });
+            html2 += "</ul>";
+            $("#my_from").append(html2)
+            $fans = $("#fans");
+        }
+    });
+
+    //获取关注用户信息并渲染
+    $.ajax({
+        type:'GET',
+        url:"selectCareByUserFromId",
+        success:function (data) {
+            var html3 ="<ul class='tab_page' style='display: none;' id='attention'>";
+            $(data).each(function (index,item) {
+                html3 +=
+                    "<li>"+
+                    "<a href='' target='_blank'>"+
+                    "<img alt='' class='fans_img' src=\"./image/"+item.url+"\">"+
+                    "</a>"+
+                    "<a class='fans_title' href='#'>"+item.name+"</a>"+
+                    "</li>"
+            });
+            html3 += "</ul>"+ "</div>";
+            $("#my_from").append(html3);
+            $attention = $("#attention");
+
+        }
+    });
+
     function changeFans() {
         $fans.css("display","block");
         $changeFans.addClass("cur");

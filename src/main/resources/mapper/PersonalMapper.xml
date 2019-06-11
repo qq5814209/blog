@@ -65,13 +65,22 @@
         (SELECT c.uf_id FROM care c WHERE c.ut_id = #{userId})
     </select>
 
-    <!--查询用户有哪些粉丝-->
     <select id="selectCareByUserFromId" parameterType="int" resultType="com.me.pojo.UserInfo">
         SELECT user_id,name,url FROM userinfo WHERE user_id IN
         (SELECT c.ut_id FROM care c WHERE c.uf_id = #{userId})
     </select>
 
-    <!--修改用户头像-->
+    <!--取消关注-->
+    <delete id="noCare" parameterType="com.me.vo.CareVo">
+        DELETE FROM care WHERE ut_id = #{ut_id} AND uf_id = #{uf_id}
+    </delete>
+
+    <!--关注-->
+    <insert id="myCare" parameterType="com.me.vo.CareVo">
+        INSERT INTO care (ut_id,uf_id) VALUES (#{ut_id},#{uf_id})
+    </insert>
+
+    <!--更改用户头像-->
     <update id="updateUserInfoByUserIdToUrl" parameterType="com.me.pojo.UserInfo">
         UPDATE userinfo SET url = #{url} WHERE user_id = #{user_id}
     </update>
