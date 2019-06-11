@@ -753,7 +753,7 @@
                         "                        <h2>\n" +
                         "                        <a href=\"#\" target=\"_blank\"\n" +
                         "                    data-track-click=\"{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901,career,index_0&quot;}\">\n" +
-                        "                        面试经验：求职面试时的835守则 </a>\n" +
+                        "                        "+item.blog_title+" </a>\n" +
                         "                    </h2>\n" +
                         "                    <div class=\"close_tag\">\n" +
                         "                        <div class=\"unin_reason_dialog_wrapper\">\n" +
@@ -781,12 +781,7 @@
                         "                        </div>\n" +
                         "                        </div>\n" +
                         "                        </div>\n" +
-                        "                        <div class=\"summary oneline\">\n" +
-                        "                        大学生现在就业困难，很大一部分原因是：现在绝大多数大学生在找工作时往往眼高手低的、好高骛远。导致的后果就是别人都有工作了，自己还是在那里徘徊不定。这是大学生找工作时犯的最大也是最致命的毛病！\n" +
-                        "                            求职免不了面试这一环节，大学生在面试中则显得很被动，没有敏锐的识别能力也不能维护好自己的权益。面试的时候很能体现出问题来，为此，有关人士为大学生研究了这“835守则”。\n" +
-                        "                            八不为：\n" +
-                        "                            1.不临时随街上陌生招聘人...\n" +
-                        "                </div>\n" +
+                        "                        <div class=\"summary oneline\">"+item.blog_content.split+" </div>" +
                         "                    <dl class=\"list_userbar\">\n" +
                         "                        <dt>\n" +
                         "                        <a href=\"#\" target=\"_blank\" class=\"user_img\">\n" +
@@ -827,11 +822,6 @@
                         "                        </dl>\n" +
                         "                        </div>\n" +
                         "                        </li>";
-
-
-
-
-
                     tabObj2.append(trHtml2);
                 });
             },
