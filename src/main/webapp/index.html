@@ -359,6 +359,19 @@
 
 
             </ul>
+
+            <div class="row" style="text-align:center">
+                <ul class="pagination" id="pagination">
+                    <li id="btns">
+
+                    </li>
+                </ul>
+                <p class="text-primary">当前第:<span id="currentPage"></span>页 共计<span
+                        id="totalPage"></span>页&nbsp;&nbsp;&nbsp;<input type="text" id="t" style="width: 25px;height: 22px">
+                    <button class="btn-primary" onclick='goto()'>跳转</button>
+                </p>
+                <p class="text-primary">总记录数:<span id="totalNums"></span></p>
+            </div>
         </main>
 
         <aside>
@@ -729,17 +742,28 @@
         $("#csdn-toolbar").load("module/bk_header.html");
     };
 
-    //左边类别栏搜索
+    var str="";
+    var type_name;
+
     function toShowBlog(a) {
         //获取被点击标签的文本
-        var type_name = a.text;
+        type_name = a.text;
+        inital(type_name,1, 2);
+    }
+
+    $(function () {
+        inital(str,1, 2);
+    });
+
+    //左边类别栏搜索和展示所有信息
+    function inital(str,currentPage,pageSize) {
         $.ajax({
             type: 'POST',
             url: "/getBlogsByTypeName",
             contentType:"application/json;charse=UTF-8",
             data: JSON.stringify({
-                "type_name":type_name,
-                "currentPage": currentPage,
+                "type_name":str,
+                "currentPage":currentPage,
                 "pageSize":pageSize
             }),
             success: function(data){
@@ -749,8 +773,123 @@
                 var tabObj2 = $("#feedlist_id");
                 tabObj2.empty();
                 $(data).each(function (index,item) {
-
+                    var trHtml2 = "  <li class=\"clearfix\" data-type=\"blog\" data-id=\"90632901\" shown-time=\"1559560460\">\n" +
+                        "                        <div class=\"list_con\">\n" +
+                        "                        <div class=\"title\">\n" +
+                        "                        <h2>\n" +
+                        "                        <a href=\"#\" target=\"_blank\"\n" +
+                        "                    data-track-click=\"{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901,career,index_0&quot;}\">\n" +
+                        "                        "+item.blog_title+" </a>\n" +
+                        "                    </h2>\n" +
+                        "                    <div class=\"close_tag\">\n" +
+                        "                        <div class=\"unin_reason_dialog_wrapper\">\n" +
+                        "                        <i class=\"icon-close\"></i>\n" +
+                        "                        <div class=\"unin_reason_dialog\">\n" +
+                        "                        <h3>选择理由，精准屏蔽</h3>\n" +
+                        "                    <ul>\n" +
+                        "                    <li class=\"unin_item csdn-tracking-statistics\" data-poputype=\"feed\"\n" +
+                        "                    data-feed-show=\"false\" data-dsm=\"post\" data-mod=\"popu_462\">\n" +
+                        "                        <a>推荐不准: 最新文章</a>\n" +
+                        "                    </li>\n" +
+                        "                    <br>\n" +
+                        "                    <li class=\"unin_item csdn-tracking-statistics\" data-poputype=\"feed\"\n" +
+                        "                    data-feed-show=\"false\" data-dsm=\"post\" data-mod=\"popu_462\">\n" +
+                        "                        <a> 旧闻、重复 </a>\n" +
+                        "                    </li>\n" +
+                        "                    <br>\n" +
+                        "                    <li class=\"unin_item csdn-tracking-statistics\" data-poputype=\"feed\"\n" +
+                        "                    data-feed-show=\"false\" data-dsm=\"post\" data-mod=\"popu_462\">\n" +
+                        "                        <a> 内容质量差 </a>\n" +
+                        "                        </li>\n" +
+                        "                        <br>\n" +
+                        "                        </ul>\n" +
+                        "                        </div>\n" +
+                        "                        </div>\n" +
+                        "                        </div>\n" +
+                        "                        </div>\n" +
+                        "                        <div class=\"summary oneline\">"+item.blog_content+" </div>" +
+                        "                    <dl class=\"list_userbar\">\n" +
+                        "                        <dt>\n" +
+                        "                        <a href=\"#\" target=\"_blank\" class=\"user_img\">\n" +
+                        "                        <img src=\"static/1_mijuoffer\" alt=\"mijuoffer\" title=\"mijuoffer\">\n" +
+                        "                        </a>\n" +
+                        "                        </dt>\n" +
+                        "                        <dd class=\"name\">\n" +
+                        "                        <a href=\"#\" target=\"_blank\">\n" +
+                        "                         "+item.name+" </a>\n" +
+                        "                        </dd>\n" +
+                        "                        <div class=\"interval\"></div>\n" +
+                        // "                        <dd class=\"tag\">\n" +
+                        // "                        <a href=\"#\" target=\"_blank\">\n" +
+                        // "                        "+item.name+" </a>\n" +
+                        // "                        </dd>\n" +
+                        "                        <div class=\"interval\"></div>\n" +
+                        "                        <dd class=\"time\">\n" +
+                        "                        "+item.create_time+"\n" +
+                        "                    </dd>\n" +
+                        "                    <div class=\"interactive floatR\">\n" +
+                        "                    <dd class=\"read_num\">\n" +
+                        "                        <a href=\"#\"\n" +
+                        "                    data-track-click=\"{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901,career,index_0&quot;}\">\n" +
+                        "                        <span class=\"text\">阅读数</span>\n" +
+                        "                        <span class=\"num\">"+item.bnumber+"</span>\n" +
+                        "                        </a>\n" +
+                        "                        </dd>\n" +
+                        "                        <div class=\"interval\"></div>\n" +
+                        "                        <dd class=\"common_num \">\n" +
+                        "                        <a href=\"#\"\n" +
+                        "                    target=\"_blank\"\n" +
+                        "                    data-track-click=\"{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901#commentBox,career,index_0&quot;}\">\n" +
+                        "                        <span class=\"text\">评论数 </span>\n" +
+                        "                        <span class=\"num\">"+item.cnumber+"</span>\n" +
+                        "                        </a>\n" +
+                        "                        </dd>\n" +
+                        "                        </div>\n" +
+                        "                        </dl>\n" +
+                        "                        </div>\n" +
+                        "                        </li>";
+                    tabObj2.append(trHtml2);
                 });
+
+                //动态生成页数
+                for (var i = 0; i < item.lastPage; i++) {
+                    if (i == 0) {
+                        //首页
+                        var buttonFirst = $("<button onclick='goNormal(" + item.firstPage + ")' class='btn-primary'>首页</button>");
+                        //是否存有上页
+                        if (item.pageNum == 1) {
+                            var buttonPrep = $("<button onclick='goNormal(" + item.prePage + ")' class=\"btn-primary\" disabled='disabled'>上一页</button>")
+                        } else {
+                            var buttonPrep = $("<button onclick='goNormal(" + item.prePage + ")' class=\"btn-primary\">上一页</button>")
+                        }
+                        $("#btns").append(buttonFirst);
+                        $("#btns").append(buttonPrep);
+                    }
+                    if (i == item.pageNum - 1) {
+                        var button = $("<button onclick='goNormal(" + (i + 1) + ")' class=\"btn-success\">" + (i + 1) + "</button>")
+                    } else {
+                        var button = $("<button onclick='goNormal(" + (i + 1) + ")' class=\"btn-primary\">" + (i + 1) + "</button>")
+                    }
+                    $("#btns").append(button);
+                    if (i == item.lastPage - 1) {
+                        //尾页
+                        var buttonEnd = $("<button onclick='goNormal(" + item.lastPage + ")' class=\"btn-primary\">尾页</button>");
+                        if (item.pageNum == item.lastPage) {
+                            var buttonNext = $("<button onclick='goNormal(" + item.nextPage + ")' class=\"btn-primary\" disabled='disabled'>下一页</button>")
+                        } else {
+                            var buttonNext = $("<button onclick='goNormal(" + item.nextPage + ")' class=\"btn-primary\">下一页</button>")
+                        }
+                        $("#btns").append(buttonNext);
+                        $("#btns").append(buttonEnd);
+                    }
+
+                }
+                //当前页数
+                $("#currentPage").html(data.pageNum);
+                //总页数
+                $("#totalPage").html(data.lastPage);
+                //总记录数
+                $("#totalNums").html(data.total);
             },
             error:function (data) {
                 console.error(data);
@@ -759,90 +898,19 @@
         });
     }
 
-    $(function () {
-        init(1, 2);
-    })
 
-    function goNormal(n) {
-        $("#tab tr:not(:first)").empty("");
-        $("#btns").find("button").remove();
-        init(n, 2);
-    }
-
-    function init(currentPage, pageSize) {
-        var type_name;
-        function toShowBlog(a) {
-            //获取被点击标签的文本
-            type_name = a.text;
-        }
-        $.ajax({
-            type: 'POST',
-            url: '/getBlogsByTypeName',
-            contentType: "application/json; charset=utf-8",
-            data: JSON.stringify({
-                "type_name":type_name,
-                "currentPage": currentPage,
-                "pageSize": pageSize
-            }),
-            success: function (responseText) {
-                console.log(responseText)
-                //给表格添加数据
-                for (var i = 0; i < responseText.list.length; i++) {
-                    var tr = $(" <tr class='warning'><td>S00<span>" + responseText.list[i].id + "</span></td><td>" + responseText.list[i].name + "</td></tr>");
-                    $("#tab").append(tr);
-                }
-
-                //动态生成页数
-                for (var i = 0; i < responseText.lastPage; i++) {
-                    if (i == 0) {
-                        //首页
-                        var buttonFirst = $("<button onclick='goNormal(" + responseText.firstPage + ")' class='btn-primary'>首页</button>");
-                        //是否存有上页
-                        if (responseText.pageNum == 1) {
-                            var buttonPrep = $("<button onclick='goNormal(" + responseText.prePage + ")' class=\"btn-primary\" disabled='disabled'>上一页</button>")
-                        } else {
-                            var buttonPrep = $("<button onclick='goNormal(" + responseText.prePage + ")' class=\"btn-primary\">上一页</button>")
-                        }
-                        $("#btns").append(buttonFirst);
-                        $("#btns").append(buttonPrep);
-                    }
-                    if (i == responseText.pageNum - 1) {
-                        var button = $("<button onclick='goNormal(" + (i + 1) + ")' class=\"btn-success\">" + (i + 1) + "</button>")
-                    } else {
-                        var button = $("<button onclick='goNormal(" + (i + 1) + ")' class=\"btn-primary\">" + (i + 1) + "</button>")
-                    }
-                    $("#btns").append(button);
-                    if (i == responseText.lastPage - 1) {
-                        //尾页
-                        var buttonEnd = $("<button onclick='goNormal(" + responseText.lastPage + ")' class=\"btn-primary\">尾页</button>");
-                        if (responseText.pageNum == responseText.lastPage) {
-                            var buttonNext = $("<button onclick='goNormal(" + responseText.nextPage + ")' class=\"btn-primary\" disabled='disabled'>下一页</button>")
-                        } else {
-                            var buttonNext = $("<button onclick='goNormal(" + responseText.nextPage + ")' class=\"btn-primary\">下一页</button>")
-                        }
-                        $("#btns").append(buttonNext);
-                        $("#btns").append(buttonEnd);
-                    }
-
-                }
-                //当前页数
-                $("#currentPage").html(responseText.pageNum);
-                //总页数
-                $("#totalPage").html(responseText.lastPage);
-                //总记录数
-                $("#totalNums").html(responseText.total);
-            },
-            error: function (message) {
-                console.log(message);
-            },
-            dataType: 'json'
-        });
-    }
 
     function goto() {
         $("#tab tr:not(:first)").empty("");
         $("#btns").find("button").remove();
-        init($("#t").val(), 5);
+        inital(str,$("#t").val(), 2);
+    }
+
+
+    function goNormal(n) {
+        $("#tab tr:not(:first)").empty("");
+        $("#btns").find("button").remove();
+        inital(str,n, 2);
     }
 
 </script>
