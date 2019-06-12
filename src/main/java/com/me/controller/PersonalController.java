@@ -38,8 +38,7 @@ public class PersonalController {
         UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
 
         int userId = userInfo.getUser_id();
-        UserInfoDto userInfoDto = personalService.selectCareByAttentionsAndFans(userId);
-        return userInfoDto;
+        return personalService.selectUserInfoAndAttentionsAndFans(userId);
     }
 
     /**

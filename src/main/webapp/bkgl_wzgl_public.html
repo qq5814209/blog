@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="referrer" content="always">
+    <title>类别管理-CSDN博客</title>
+    <link rel="stylesheet" href="./css/content_toolbar.css">
+    <link href="css/commons.0347115.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/check-adb.css">
+</head>
+<body>
+<div id="csdn-toolbar" class="csdn-toolbar tb_disnone  csdn-toolbar-skin-black ">
+</div>
+<link href="css/articleList.546296b.css" rel="stylesheet">
+<main role="main" class="container">
+    <div class="row row-offcanvas row-offcanvas-right main-wrapper">
+        <div class="col-6 col-md-2 sidebar-offcanvas" id="sidebar">
+
+        </div>
+        <div class="col-12 col-md-10" id="content-body">
+            <div class="main-nav-tabs">
+                <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link " href="bkgl_wzgl_all.html" role="tab" aria-controls="pills-home"
+                           aria-selected="true">全部(10)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="bkgl_wzgl_public.html" role="tab"
+                           aria-controls="pills-profile" aria-selected="false">公开(6)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="bkgl_wzgl_private.html" role="tab"
+                           aria-controls="pills-profile" aria-selected="false">私密(3)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="bkgl_wzgl_drafts.html" role="tab"
+                           aria-controls="pills-contact" aria-selected="false">草稿箱(1)</a>
+                    </li>
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link " href="#" role="tab"-->
+                           <!--aria-controls="pills-contact" aria-selected="false">-->
+                            <!--回收站(0)-->
+                        <!--</a>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show article-list active" id="pills-home" role="tabpanel"
+                     aria-labelledby="pills-home-tab">
+                    <div class="article-list-item">
+                        <div class="list-item-title">
+
+
+                            <p class="article-list-item-txt">
+                                <a href="#" target="_blank" title="编辑">Mybatis的懒加载</a>
+                            </p>
+                        </div>
+                        <div class="article-list-item-info">
+                            <div class="item-info-left">
+                                        <span class="">
+                                            原创
+                                        </span>
+                                <span class="">2019年05月11日 10:57:25</span>
+                                <span class="">
+                                    15
+                                </span>
+                                <span class="">
+                                    0
+                                </span>
+                            </div>
+                            <div class="item-info-oper">
+                                <a href="#" target="_blank">
+                                    <span class="">查看</span>
+                                </a>
+                                <input type="hidden" value="90106943" class="articleid">
+                                <span class="">
+                                    <a href="#" class="managecomment"
+                                                       data-aid="90106943" data-opt="lock">禁止评论
+                                    </a>
+                                </span>
+
+                                <a href="#" data-aid="90106943">
+                                    <span class="setTop" data-opt="true">置顶</span>
+                                </a>
+
+                                <a href="#" data-aid="90106943">
+                                    <span class="del">删除</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-list-item">
+                        <div class="list-item-title">
+                            <p class="article-list-item-txt">
+                                <a href="#" target="_blank" title="编辑">MyBatis里ResultMap丶ResultType的区别与ParameterType详解</a>
+                            </p>
+                        </div>
+                        <div class="article-list-item-info">
+                            <div class="item-info-left">
+                                        <span class="">
+                                            原创
+                                        </span>
+                                <span class="">2019年05月09日 20:55:21</span>
+                                <span class="">
+                                            87
+                                </span>
+                                <span class="">
+                                            0
+                                </span>
+                            </div>
+                            <div class="item-info-oper">
+                                <a href="#" target="_blank">
+                                    <span class="">查看</span>
+                                </a>
+                                <input type="hidden" value="90047693" class="articleid">
+                                <span class="">
+                                    <a href="#" class="managecomment"
+                                                       data-aid="90047693" data-opt="lock">禁止评论
+                                    </a>
+                                </span>
+
+                                <a href="#" data-aid="90047693">
+                                    <span class="setTop" data-opt="true">置顶</span>
+                                </a>
+
+                                <a href="#" data-aid="90047693">
+                                    <span class="del">删除</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- 分页 -->
+                <div class="pagination-wrapper">
+                    <nav aria-label="Page navigation example">
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+<script>
+    $("#sidebar").load("module/bkgl_left_menu.html",function () {
+        $("#bkgl_wzgl").attr("class","list-group-item active");
+    });
+    $("#csdn-toolbar").load("module/bk_header.html");
+</script>
+</html>
