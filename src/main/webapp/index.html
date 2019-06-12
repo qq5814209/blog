@@ -778,8 +778,8 @@
                         "                        <div class=\"title\">\n" +
                         "                        <h2>\n" +
                         "                        <a href=\"#\" target=\"_blank\"\n" +
-                        "                    data-track-click=\"{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901,career,index_0&quot;}\" onclick='to'>\n" +
-                        "                        "+item.blog_title+" </a>\n" +
+                        "                    data-track-click=\"{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901,career,index_0&quot;}\" onclick='toJump("+item.user_id+","+item.blog_id+")'>\n" +
+                        "                        "+item.blog_title+"</a>\n" +
                         "                    </h2>\n" +
                         "                    <div class=\"close_tag\">\n" +
                         "                        <div class=\"unin_reason_dialog_wrapper\">\n" +
@@ -911,6 +911,9 @@
         $("#tab tr:not(:first)").empty("");
         $("#btns").find("button").remove();
         inital(str,n, 2);
+    }
+    function toJump(a,b) {
+        window.location.href="bk_list.html?user_id="+a+"&blog_id="+b;
     }
 
 </script>
