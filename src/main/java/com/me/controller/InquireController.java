@@ -21,7 +21,7 @@ public class InquireController {
     InquireService inquireService;
 
     /*
-    * 根据博客类别名查询blog
+    * 根据博客类别名查询blog或者查所有blog
     * */
     @ResponseBody
     @RequestMapping("getBlogsByTypeName")
@@ -104,18 +104,22 @@ public class InquireController {
     /*
      * 搜索框搜索
      * */
-//    @ResponseBody
-//    @RequestMapping("searchBlogs")
-//    public Object searchBlogs(@RequestBody(required = false) ShowVo showVo){
-//        List<ShowDto> showDtos = inquireService.searchBlogs(showVo);
-//        return showDtos;
-//    }
-
     @ResponseBody
     @RequestMapping("searchBlogs")
-    public Object searchBlogs(@RequestBody(required = false) String str){
-        List<ShowDto> showDtos = inquireService.searchBlogs(str);
-        return showDtos;
+    public Object searchBlogs(@RequestBody(required = false) ShowVo showVo){
+        System.out.println(showVo+"=====================");
+        PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
+        List<ShowDto> showDtos = inquireService.searchBlogs(showVo);
+        PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
+        System.out.println(showDtoPageInfo);
+        return showDtoPageInfo;
     }
+
+//    @ResponseBody
+//    @RequestMapping("searchBlogs")
+//    public Object searchBlogs(@RequestBody(required = false) String str){
+//        List<ShowDto> showDtos = inquireService.searchBlogs(str);
+//        return showDtos;
+//    }
 
 }
