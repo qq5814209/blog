@@ -1,10 +1,12 @@
 package com.me.mapper;
 
+import com.me.dto.SumDto;
 import com.me.dto.UserInfoDto;
 import com.me.pojo.Favorites;
 import com.me.pojo.UserInfo;
 import com.me.dto.FavoritesDto;
 import com.me.vo.CareVo;
+import com.me.vo.UserInfoVo;
 
 import java.util.List;
 
@@ -113,4 +115,11 @@ public interface PersonalMapper {
      * @return
      */
     int deleteFavorites(int favoritesId);
+
+    /**
+     * 根据用户id统计各种信息总数量
+     * @param user_id
+     * @return
+     */
+    SumDto selectCount(int user_id);
 }

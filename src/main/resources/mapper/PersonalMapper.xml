@@ -138,4 +138,16 @@
         DELETE FROM favorites WHERE favorites_id = #{favorites_id};
     </delete>
 
+    <!--根据用户id统计各种信息总数量-->
+    <select id="selectCount" resultType="com.me.dto.SumDto" parameterType="int">
+        SELECT * FROM
+        (SELECT `value` sun_value FROM `level` WHERE user_id = #{user_id}) g,
+        (SELECT COUNT(*) sum_blog FROM user_blog WHERE user_id = #{user_id}) b ,
+        (SELECT COUNT(*) sum_browse FROM browse WHERE user_id = #{user_id}) c,
+        (SELECT COUNT(*) sum_fans FROM care WHERE uf_id = #{user_id}) d,
+        (SELECT COUNT(*) sum_praise FROM praise WHERE blog_id IN
+        (SELECT blog_id FROM user_blog WHERE user_id = #{user_id})) e,
+        (SELECT COUNT(*) sum_comment FROM comment1 WHERE blog_id IN
+        (SELECT blog_id FROM user_blog WHERE user_id = #{user_id})) f
+    </select>
 </mapper>
