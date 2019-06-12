@@ -40,6 +40,8 @@ public class UserInfo {
     private Date create_time;
 //    状态
     private int status;
+//    头像地址
+    private String url;
 
     public int getUser_id() {
         return user_id;
@@ -177,6 +179,14 @@ public class UserInfo {
         this.status = status;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     @Override
     public String toString() {
         return "UserInfo{" +
@@ -197,6 +207,7 @@ public class UserInfo {
                 ", cbis=" + cbis +
                 ", create_time=" + create_time +
                 ", status=" + status +
+                ", url='" + url + '\'' +
                 '}';
     }
 }

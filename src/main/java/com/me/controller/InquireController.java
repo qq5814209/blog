@@ -29,14 +29,28 @@ public class InquireController {
     }
 
     /*
+    * 根据用户user_id查该用户的所有blog
+    * */
+    @ResponseBody
+    @RequestMapping("getBlogsByUserId")
+    public Object getBlogsByUserId(@RequestBody(required = false) ShowVo showVo, HttpSession session ){
+        UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+
+        List<ShowDto> showDtos = inquireService.getBlogsByTypeName(showVo);
+        return showDtos;
+    }
+
+    /*
     * 增加个人分类
     * */
     @ResponseBody
     @RequestMapping("addPersonalCategory")
-    public Object addPersonalCategory(@RequestBody(required = false) ShowVo showVo, HttpSession httpSession){
-        UserInfo userInfo = (UserInfo)httpSession.getAttribute("userInfo");
+    public Object addPersonalCategory(@RequestBody(required = false) ShowVo showVo, HttpSession session){
+        UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
         showVo.setUser_id(user_id);
+        System.out.println("showVo:"+showVo);
         boolean flag = inquireService.addPersonalCategory(showVo);
         return flag;
     }
@@ -46,15 +60,57 @@ public class InquireController {
      * 显示个人分类所有类别
      * */
     @ResponseBody
-    @RequestMapping("AllPersonalCategory")
-    public Object AllPersonalCategory(@RequestBody(required = false) ShowVo showVo, HttpSession httpSession){
+    @RequestMapping("allPersonalCategory")
+    public Object allPersonalCategory(@RequestBody(required = false) ShowVo showVo, HttpSession httpSession){
         UserInfo userInfo = (UserInfo)httpSession.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
         showVo.setUser_id(user_id);
-        List<ShowDto> showDtos = inquireService.AllPersonalCategory(showVo);
+        List<ShowDto> showDtos = inquireService.allPersonalCategory(showVo);
         return showDtos;
     }
 
 
+    /*
+     * 删除个人分类类别
+     * */
+    @ResponseBody
+    @RequestMapping("deletePersonalCategory")
+    public Object deletePersonalCategory(@RequestBody(required = false) ShowVo showVo, HttpSession httpSession){
+        UserInfo userInfo = (UserInfo)httpSession.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        showVo.setUser_id(user_id);
+        boolean flag = inquireService.deletePersonalCategory(showVo);
+        return flag;
+    }
+
+    /*
+     * 修改个人分类类别
+     * */
+    @ResponseBody
+    @RequestMapping("updatePersonalCategory")
+    public Object updatePersonalCategory(@RequestBody(required = false) ShowVo showVo, HttpSession httpSession){
+        UserInfo userInfo = (UserInfo)httpSession.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        showVo.setUser_id(user_id);
+        boolean flag = inquireService.updatePersonalCategory(showVo);
+        return flag;
+    }
+
+    /*
+     * 搜索框搜索
+     * */
+//    @ResponseBody
+//    @RequestMapping("searchBlogs")
+//    public Object searchBlogs(@RequestBody(required = false) ShowVo showVo){
+//        List<ShowDto> showDtos = inquireService.searchBlogs(showVo);
+//        return showDtos;
+//    }
+
+    @ResponseBody
+    @RequestMapping("searchBlogs")
+    public Object searchBlogs(@RequestBody(required = false) String str){
+        List<ShowDto> showDtos = inquireService.searchBlogs(str);
+        return showDtos;
+    }
 
 }

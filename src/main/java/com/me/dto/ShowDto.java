@@ -1,6 +1,7 @@
 package com.me.dto;
 
 public class ShowDto {
+    private int blog_id;//博客id
     private String name;//用户昵称
     private String type_name;//blog分类
     private String blog_title;//blog标题
@@ -10,7 +11,51 @@ public class ShowDto {
     private int bnumber;//浏览数
     private int user_id;//用户id
     private int wznumber;//文章数量
+    private int bt_id;//博客分类id
+    private int status;
+    private String blog_url;//博客链接
+    private int pt_id;//个人分类id
 
+
+    public int getBt_id() {
+        return bt_id;
+    }
+
+    public void setBt_id(int bt_id) {
+        this.bt_id = bt_id;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getBlog_url() {
+        return blog_url;
+    }
+
+    public void setBlog_url(String blog_url) {
+        this.blog_url = blog_url;
+    }
+
+    public int getPt_id() {
+        return pt_id;
+    }
+
+    public void setPt_id(int pt_id) {
+        this.pt_id = pt_id;
+    }
+
+    public int getBlog_id() {
+        return blog_id;
+    }
+
+    public void setBlog_id(int blog_id) {
+        this.blog_id = blog_id;
+    }
 
     public int getWznumber() {
         return wznumber;
@@ -87,7 +132,8 @@ public class ShowDto {
     @Override
     public String toString() {
         return "ShowDto{" +
-                "name='" + name + '\'' +
+                "blog_id=" + blog_id +
+                ", name='" + name + '\'' +
                 ", type_name='" + type_name + '\'' +
                 ", blog_title='" + blog_title + '\'' +
                 ", blog_content='" + blog_content + '\'' +
@@ -96,6 +142,10 @@ public class ShowDto {
                 ", bnumber=" + bnumber +
                 ", user_id=" + user_id +
                 ", wznumber=" + wznumber +
+                ", bt_id=" + bt_id +
+                ", status=" + status +
+                ", blog_url='" + blog_url + '\'' +
+                ", pt_id=" + pt_id +
                 '}';
     }
 }

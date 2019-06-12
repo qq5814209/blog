@@ -1,6 +1,7 @@
 package com.me.mapper;
 
 import com.me.pojo.UserInfo;
+import com.me.vo.UserInfoVo;
 
 /**
  * 操作 userInfo 表
@@ -15,9 +16,9 @@ public interface UserInfoMapper {
     UserInfo login(UserInfo userInfo);
 
     /**
-     * 根据用户 id 查询用户信息
-     * @param userId
+     * 注册
+     * @param userInfoVo
      * @return
      */
-    UserInfo selectUserInfo(int userId);
+    int regiester(UserInfoVo userInfoVo);
 }

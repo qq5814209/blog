@@ -11,7 +11,16 @@ public class ShowVo {
     private String blog_id;//博客id
     private String bt_id;//博客类别id
     private int pt_id;//个人分类
-    private int user_id;
+    private int user_id;//用户id
+    private String str;//搜索框的值
+
+    public String getStr() {
+        return str;
+    }
+
+    public void setStr(String str) {
+        this.str = str;
+    }
 
     public String getName() {
         return name;
@@ -115,6 +124,7 @@ public class ShowVo {
                 ", bt_id='" + bt_id + '\'' +
                 ", pt_id=" + pt_id +
                 ", user_id=" + user_id +
+                ", str='" + str + '\'' +
                 '}';
     }
 }

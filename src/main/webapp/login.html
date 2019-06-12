@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="css/content_toolbar.css">
 </head>
 <body>
-<div class="csdn-toolbar tb_disnone  csdn-toolbar-skin-black " id="csdn-toolbar" ></div>
 <div class="unix-login">
     <div class="container">
         <div class="row">
@@ -55,8 +54,6 @@
 <script src="/jquery/jquery-2.1.1.min.js"></script>
 <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
 <script>
-    $("#csdn-toolbar").load("module/bk_header.html");
-
     function login() {
         var $user = $("#user").val();
         var $password = $("#password").val();
@@ -69,7 +66,7 @@
                 "password":$password
             },
             success:function (data) {
-                if(data != null){
+                if(data != null & data != ''){
                     window.location.href = "index.html";
                 }
             }

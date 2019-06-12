@@ -1,0 +1,26 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.mapper.OrderMapper">
+
+
+
+    <!--插入订单数据-->
+    <insert id="setOrder" parameterType="com.me.pojo.Order">
+      insert into `order` (user_id,cbi_id,vip_id,price,cbi_number,vip_time,order_number) values (#{user_id},#{cbi_id},#{vip_id}
+            ,#{price},#{cbi_number},#{vip_time},#{order_number});
+    </insert>
+
+
+    <!--修改订单状态-->
+    <update id="upOrder" parameterType="com.me.pojo.Order">
+       update `order` set status = #{status} where order_number=#{order_number};
+    </update>
+
+    <!--根据订单号查订单信息-->
+    <select id="getOrderByNum" parameterType="com.me.pojo.Order" resultType="com.me.pojo.Order">
+        select * from `order` where order_number=#{order_number};
+    </select>
+
+
+</mapper>

@@ -1,13 +1,11 @@
 package com.me.controller;
 
 import com.me.pojo.UserInfo;
-import com.me.service.FavoritesService;
 import com.me.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -21,20 +19,15 @@ public class UserInfoController {
     @Autowired
     UserInfoService userInfoService;
 
-    @Autowired
-    FavoritesService favoritesService;
-
     /**
      * 登录
      * @param user
      * @param password
      * @return
      */
-
     @ResponseBody
     @RequestMapping(value = "userLogin",method = RequestMethod.POST)
-    public Object login(String user, String password,HttpSession session){
-        System.out.println(user + " : "+password);
+    public Object login(String user, String password, HttpSession session){
         UserInfo userInfo = userInfoService.login(user,password);
         System.out.println(userInfo);
         session.setAttribute("userInfo",userInfo);
@@ -54,39 +47,43 @@ public class UserInfoController {
     }
 
     /**
-     * 根据用户id查询用户信息，用于展示 personal_center.html 页面
+     * 注册
+     * @param user_name
+     * @param email
+     * @param password
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/selectUserInfo",method = RequestMethod.POST)
-    public Object selectUserInfo(HttpSession session){
-        UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
-        int userId = userInfo.getUser_id();
-        return userInfoService.selectUserInfo(userId);
+    @RequestMapping(value = "userRegiester",method = RequestMethod.POST)
+    public Object regiester(String user_name,String email,String password){
+        System.out.println(user_name + " : " + email + " : " + password);
+        return userInfoService.regiester(user_name,email,password);
     }
 
     /**
-     * 根据用户 id 查询用户收藏夹信息，用户展示 collect_center.html 页面
-     *
+     * 退出
+     * @param session
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/selectFavoritesByUserId", method = RequestMethod.POST)
-    public Object selectFavoritesByUserId(HttpSession session) {
-        UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
-        int userId = userInfo.getUser_id();
-        return favoritesService.selectFavoritesByUserId(userId);
+    @RequestMapping(value = "logout",method = RequestMethod.GET)
+    public boolean logout(HttpSession session){
+        session.invalidate();
+        return true;
     }
-
-    /**
-     * 根据收藏夹id查询收藏夹中内容
-     * @param favorites_id
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "/selectFavoritesByFavoritesId", method = RequestMethod.POST)
-    public Object selectFavoritesByFavoritesId(@RequestParam int favorites_id) {
-        return favoritesService.selectFavoritesByFavoritesId(favorites_id);
-    }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

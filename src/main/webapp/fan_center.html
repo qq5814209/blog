@@ -21,19 +21,19 @@
     <div data-v-357a65ed="" class="container view">
         <div data-v-357a65ed="" class="left_box" id="left"></div>
         <div data-v-357a65ed="" class="view-container">
-            <div data-v-2f53802b="" data-v-357a65ed="" class="content view">
-                <div data-v-2f53802b="" class="bar"><h3 data-v-2f53802b="" class="title">我的粉丝</h3> <span
-                        data-v-2f53802b="" class="num">共1人</span></div>
-                <ul data-v-2f53802b="" class="watch_list">
-                    <li data-v-2f53802b="" class="item_cont"><a data-v-2f53802b=""
-                                                                href="#"
-                                                                target="_blank" class="fans"><img data-v-2f53802b=""
-                                                                                                  src="./image/3_weixin_42449733.jpg"
-                                                                                                  alt="" class="header"></a>
-                        <a data-v-2f53802b="" href="#" title="weixin_42449733"
-                           target="_blank" class="nick">Fe→_→峰</a> <a data-v-2f53802b="" href="#"
-                                                                      class="watch_btn visited">关注</a></li>
-                </ul> <!----> <!----></div>
+            <div data-v-2f53802b="" data-v-357a65ed="" class="content view" id="fansShow">
+                <!--<div data-v-2f53802b="" class="bar"><h3 data-v-2f53802b="" class="title">我的粉丝</h3>-->
+                    <!--<span data-v-2f53802b="" class="num">共1人</span>-->
+                <!--</div>-->
+                <!--<ul data-v-2f53802b="" class="watch_list">-->
+                    <!--<li data-v-2f53802b="" class="item_cont">-->
+                        <!--<a data-v-2f53802b="" href="#" target="_blank" class="fans">-->
+                            <!--<img data-v-2f53802b="" src="./image/3_weixin_42449733.jpg" alt="" class="header"></a>-->
+                        <!--<a data-v-2f53802b="" href="#" title="weixin_42449733" target="_blank" class="nick">Fe→_→峰</a>-->
+                        <!--<a data-v-2f53802b="" href="#" class="watch_btn visited">关注</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            </div>
         </div>
     </div>
 </div>
@@ -47,5 +47,54 @@
         $("#fan").attr("class","router-link-exact-active router-link-active");
     });
     $("#foot").load("module/personal_foot.html");
+
+    $(function () {
+        var url = "selectCareByUserFromId";
+        $.get(url,function (data) {
+            console.log(data);
+            var innerHtml = "<div data-v-2f53802b=\"\" class=\"bar\"><h3 data-v-2f53802b=\"\" class=\"title\">我的粉丝</h3>" +
+                "                    <span data-v-2f53802b=\"\" class=\"num\">共"+data.length+"人</span>" +
+                "                </div>"+
+                "<ul data-v-2f53802b=\"\" class=\"watch_list\">";
+            $(data).each(function (index, item) {
+                innerHtml += "                    <li data-v-2f53802b=\"\" class=\"item_cont\">" +
+                    "                        <a data-v-2f53802b=\"\" href=\"#\" target=\"_blank\" class=\"fans\">" +
+                    "                            <img data-v-2f53802b=\"\" src=\"./image/"+item.url+"\" alt=\"\" class=\"header\"></a>" +
+                    "                        <a data-v-2f53802b=\"\" href=\"#\" title=\"weixin_42449733\" target=\"_blank\" class=\"nick\">"+item.name+"</a>" +
+                    "                        <a data-v-2f53802b=\"\" href=\"#\" class=\"watch_btn visited\" onclick='care(this,"+item.user_id+")'>关注</a>" +
+                    "                    </li>";
+            });
+            innerHtml += "                </ul>";
+            $("#fansShow").append(innerHtml);
+        });
+    });
+
+    //取消关注或者关注功能实现
+    function care(t,id) {
+        var $this = $(t);
+        if($this.text() === "取消关注"){
+            $this.attr("class","watch_btn visited");
+            $this.text("关注");
+            $.ajax({
+                type:'GET',
+                url:"noCare",
+                data:{
+                    "uf_id" : id
+                }
+            })
+        }else {
+            $this.attr("class","watch_btn");
+            $this.text("取消关注");
+            $.ajax({
+                type:'GET',
+                url:"myCare",
+                data:{
+                    "uf_id" : id
+                }
+            })
+        }
+
+    }
+
 </script>
 </html>

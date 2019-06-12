@@ -1,48 +1,43 @@
 package com.me.vo;
 
-import com.me.pojo.UserInfo;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
-/**
- * 用于展示 personal_center.html 页面
- */
 public class UserInfoVo {
-//    用户信息
-    private UserInfo userInfo;
-//    用户粉丝数
-    private int fans;
-//    用户关注数
-    private int attentions;
+    @NotNull
+    @Size(min = 2)
+    String user_name;
 
-    public UserInfo getUserInfo() {
-        return userInfo;
+    @NotNull
+    @Pattern(regexp = "^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$",message = "邮箱地址不合法")
+    String email;
+
+    @NotNull
+    @Size(min = 6,max = 15)
+    String password;
+
+    public String getUser_name() {
+        return user_name;
     }
 
-    public void setUserInfo(UserInfo userInfo) {
-        this.userInfo = userInfo;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
-    public int getFans() {
-        return fans;
+    public String getEmail() {
+        return email;
     }
 
-    public void setFans(int fans) {
-        this.fans = fans;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getAttentions() {
-        return attentions;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAttentions(int attentions) {
-        this.attentions = attentions;
-    }
-
-    @Override
-    public String toString() {
-        return "UserInfoVo{" +
-                "userInfo=" + userInfo +
-                ", fans=" + fans +
-                ", attentions=" + attentions +
-                '}';
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

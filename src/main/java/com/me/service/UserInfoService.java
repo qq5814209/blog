@@ -1,7 +1,6 @@
 package com.me.service;
 
 import com.me.pojo.UserInfo;
-import com.me.vo.UserInfoVo;
 
 /**
  * 查询用户信息、修改用户信息用
@@ -17,9 +16,11 @@ public interface UserInfoService {
     UserInfo login(String user, String password);
 
     /**
-     * 根据用户id查询用户信息
-     * @param userId
+     * 注册
+     * @param user_name
+     * @param email
+     * @param password
      * @return
      */
-    UserInfoVo selectUserInfo(int userId);
+    int regiester(String user_name, String email, String password);
 }

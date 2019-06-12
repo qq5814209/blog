@@ -147,12 +147,13 @@
     $("#left-menu").load("module/bkgl_left_menu.html",function () {
         $("#bkgl_lbgl").attr("class","list-group-item active");
     });
+
     $("#csdn-toolbar").load("module/bk_header.html");
 
     function initial() {
         $.ajax({
             type: 'POST',
-            url: "/AllPersonalCategory",
+            url: "/allPersonalCategory",
             contentType:"application/json",
             success: function(data){
                 console.log(data)
@@ -169,12 +170,17 @@
 
 
     function addButton() {
-        var value = $("#addCategory").val();
-        alert(value);
+        var str = $("#addCategory").val();
+        alert(str);
         $.ajax({
-            type: 'GET',
-            url: "/addPersonalCategory?type_name="+value,
-            contentType:"application/json",
+            type: 'POST',
+            url: "/addPersonalCategory",
+            contentType:"application/json;charse=UTF-8",
+            data: JSON.stringify({
+                "type_name":str,
+                 "pt_id":""
+
+            }),
             success: function(data){
                 if(date.contains("true")) {
                     alert("添加成功");

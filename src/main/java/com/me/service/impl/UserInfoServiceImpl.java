@@ -1,6 +1,5 @@
 package com.me.service.impl;
 
-import com.me.mapper.CareMapper;
 import com.me.mapper.UserInfoMapper;
 import com.me.pojo.UserInfo;
 import com.me.service.UserInfoService;
@@ -17,9 +16,6 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Autowired
     UserInfoMapper userInfoMapper;
 
-    @Autowired
-    CareMapper careMapper;
-
     /**
      * 登录
      * @param user
@@ -28,27 +24,29 @@ public class UserInfoServiceImpl implements UserInfoService {
      */
     public UserInfo login(String user, String password) {
         UserInfo userInfo = new UserInfo();
-        userInfo.setUser_name(user);
+        if(user.contains("@")){
+            userInfo.setEmail(user); //邮箱登录
+        }else {
+            userInfo.setUser_name(user); //账号登录
+        }
         userInfo.setPassword(password);
         return userInfoMapper.login(userInfo);
     }
 
     /**
-     * 根据用户id查询用户信息
-     * @param userId
+     * 注册
+     * @param user_name
+     * @param email
+     * @param password
      * @return
      */
-    public UserInfoVo selectUserInfo(int userId) {
-
-        UserInfo userInfo = userInfoMapper.selectUserInfo(userId);
-        int fans = careMapper.selectCareByFans(userId);
-        int attentions = careMapper.selectCareByAttentions(userId);
-
+    public int regiester(String user_name, String email, String password) {
         UserInfoVo userInfoVo = new UserInfoVo();
-        userInfoVo.setUserInfo(userInfo);
-        userInfoVo.setFans(fans);
-        userInfoVo.setAttentions(attentions);
-
-        return userInfoVo;
+        userInfoVo.setUser_name(user_name);
+        userInfoVo.setEmail(email);
+        userInfoVo.setPassword(password);
+        return userInfoMapper.regiester(userInfoVo);
     }
+
+
 }

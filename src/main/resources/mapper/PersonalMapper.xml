@@ -1,0 +1,88 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.mapper.PersonalMapper">
+
+    <!--根据id查找个人信息-->
+    <select id="selectUserInfo" parameterType="int" resultType="com.me.pojo.UserInfo">
+        SELECT * FROM userinfo WHERE user_id = #{userId}
+    </select>
+
+    <!--根据用户id查询基础的收藏夹信息-->
+    <select id="selectFavoritesByUserId" parameterType="int" resultType="com.me.pojo.Favorites">
+        SELECT * FROM favorites WHERE user_id = #{userId}
+    </select>
+
+    <!--根据收藏夹id查询该收藏夹中收藏了多少条博客-->
+    <select id="selectFavoritesCollectByFavoritesId" parameterType="int" resultType="int">
+        SELECT COUNT(*) FROM favorites_collect WHERE favorites_id = #{favoritesId}
+    </select>
+
+    <!--根据收藏夹id查询收藏夹中内容-->
+    <select id="selectFavoritesByFavoritesId" parameterType="int" resultMap="selectFavoritesByFavoritesIdMap">
+        SELECT tb.favorites_id,tb.user_id,tb.favorites_desc,tb.favorites_title,tb.status f_status,c.collect_time,b.blog_id,b.blog_title,b.blog_content,b.bt_id,b.create_time,b.status b_status FROM
+        (SELECT * FROM favorites WHERE favorites_id = #{favoritesId}) tb
+        LEFT JOIN favorites_collect fc ON tb.favorites_id=fc.favorites_id
+        LEFT JOIN collect c ON fc.collect_id = c.collect_id
+        LEFT JOIN bloginfo b ON b.blog_id = c.blog_id
+
+    </select>
+
+    <!--接收收藏夹中内容-->
+    <resultMap id="selectFavoritesByFavoritesIdMap" type="com.me.dto.FavoritesDto">
+        <association property="favorites" javaType="com.me.pojo.Favorites">
+            <result column="favorites_id" property="favorites_id"></result>
+            <result column="user_id" property="user_id"></result>
+            <result column="favorites_desc" property="favorites_desc"></result>
+            <result column="favorites_title" property="favorites_title"></result>
+            <result column="f_status" property="status"></result>
+        </association>
+        <collection property="collectVoList" ofType="com.me.dto.CollectDto">
+            <association property="blogInfo" javaType="com.me.pojo.BlogInfo">
+                <result column="blog_id" property="blog_id"></result>
+                <result column="blog_title" property="blog_title"></result>
+                <result column="blog_content" property="blog_content"></result>
+                <result column="bt_id" property="bt_id"></result>
+                <result column="create_time" property="create_time"></result>
+                <result column="b_status" property="status"></result>
+            </association>
+            <association property="collect" javaType="com.me.pojo.Collect">
+                <result column="collect_time" property="collect_time"></result>
+            </association>
+        </collection>
+    </resultMap>
+
+    <!--根据用户 id 查询粉丝数、查询关注数-->
+    <select id="selectCareByAttentionsAndFans" parameterType="int" resultType="com.me.dto.UserInfoDto">
+        SELECT * FROM
+        (SELECT COUNT(*) AS attentions FROM care WHERE ut_id=#{userId}) b1,
+        (SELECT COUNT(*) fans FROM care WHERE uf_id=#{userId}) b2
+    </select>
+
+    <!--根据用户id，查询该用户关注了那些用户-->
+    <select id="selectCareByUserId" parameterType="int" resultType="com.me.pojo.UserInfo">
+        SELECT user_id,name,url FROM userinfo WHERE user_id IN
+        (SELECT c.uf_id FROM care c WHERE c.ut_id = #{userId})
+    </select>
+    <!--查询该用户有哪些粉丝-->
+    <select id="selectCareByUserFromId" parameterType="int" resultType="com.me.pojo.UserInfo">
+        SELECT user_id,name,url FROM userinfo WHERE user_id IN
+        (SELECT c.ut_id FROM care c WHERE c.uf_id = #{userId})
+    </select>
+
+    <!--取消关注-->
+    <delete id="noCare" parameterType="com.me.vo.CareVo">
+        DELETE FROM care WHERE ut_id = #{ut_id} AND uf_id = #{uf_id}
+    </delete>
+
+    <!--关注-->
+    <insert id="myCare" parameterType="com.me.vo.CareVo">
+        INSERT INTO care (ut_id,uf_id) VALUES (#{ut_id},#{uf_id})
+    </insert>
+
+    <!--更改用户头像-->
+    <update id="updateUserInfoByUserIdToUrl" parameterType="com.me.pojo.UserInfo">
+        UPDATE userinfo SET url = #{url} WHERE user_id = #{user_id}
+    </update>
+
+</mapper>

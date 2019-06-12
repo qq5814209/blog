@@ -55,12 +55,27 @@
     </select>
 
     <insert id="addPersonalCategory" parameterType="com.me.vo.ShowVo">
-        insert into person_type values(default,#{user_id},#{type_name})
+        insert into person_type values(default,#{type_name},1)
     </insert>
 
-    <select id="AllPersonalCategory" parameterType="com.me.vo.ShowVo" resultType="com.me.dto.ShowDto">
+    <select id="allPersonalCategory" parameterType="com.me.vo.ShowVo" resultType="com.me.dto.ShowDto">
         SELECT count(tb1.pt_id) wznumber,tb1.type_name from (SELECT b.*,u.user_id,u.user_name, pt.status ptstatus, pt.type_name from
         bloginfo b,userinfo u,user_blog ub,person_type pt where u.user_id =#{user_id} and pt.status = 1 and u.user_id = ub.user_id and
         ub.blog_id = b.blog_id and b.pt_id =pt.pt_id) tb1 GROUP BY tb1.type_name
     </select>
+
+    <update id="deletePersonalCategory" parameterType="com.me.vo.ShowVo">
+        update userinfo u,bloginfo b, user_blog ub, person_type pt set pt.status = 0 where u.user_id = #{user_id} and ub.user_id = u.user_id and ub.blog_id = b.blog_id
+        and b.pt_id = pt.pt_id and pt.type_name = #{type_name}
+    </update>
+
+    <update id="updatePersonalCategory" parameterType="com.me.vo.ShowVo">
+        update userinfo u,bloginfo b, user_blog ub, person_type pt set pt.type_name = #{type_name} where u.user_id = #{user_id} and ub.user_id = u.user_id and ub.blog_id = b.blog_id
+        and b.pt_id = pt.pt_id and pt.status = 1
+    </update>
+
+    <select id="searchBlogs" parameterType="java.lang.String" resultType="com.me.dto.ShowDto">
+        select * from bloginfo b where b.blog_title like #{str} or b.blog_title like #{str}
+    </select>
+
 </mapper>
