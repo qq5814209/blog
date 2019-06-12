@@ -37,13 +37,15 @@ public class InquireController {
     * */
     @ResponseBody
     @RequestMapping("getBlogsByUserId")
-    public Object getBlogsByUserId(HttpSession session){
+    public Object getBlogsByUserId(@RequestBody(required = false)ShowVo showVo ,HttpSession session){
         UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
-        ShowVo showVo = new ShowVo();
         showVo.setUser_id(user_id);
-        List<ShowDto> showDtos = inquireService.getBlogsByTypeName(showVo);
-        return showDtos;
+        PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
+        List<ShowDto> showDtos = inquireService.getBlogsByUserId(showVo);
+        PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
+        System.out.println(showDtoPageInfo);
+        return showDtoPageInfo;
     }
 
     /*
@@ -107,11 +109,10 @@ public class InquireController {
     @ResponseBody
     @RequestMapping("searchBlogs")
     public Object searchBlogs(@RequestBody(required = false) ShowVo showVo){
-        System.out.println(showVo+"=====================");
+
         PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
         List<ShowDto> showDtos = inquireService.searchBlogs(showVo);
         PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
-        System.out.println(showDtoPageInfo);
         return showDtoPageInfo;
     }
 
