@@ -1,6 +1,8 @@
 package com.me.dto;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BlogDto implements Serializable {
@@ -40,8 +42,12 @@ public class BlogDto implements Serializable {
         this.content = content;
     }
 
-    public Date getTime() {
-        return time;
+    public String  getTime() {
+        DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        if (time!=null){
+            return format.format(time);
+        }
+        return null;
     }
 
     public void setTime(Date time) {

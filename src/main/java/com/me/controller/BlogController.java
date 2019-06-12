@@ -3,14 +3,11 @@ package com.me.controller;
 import com.me.dto.BlogDto;
 import com.me.dto.BlogNumDto;
 import com.me.dto.ClassificationDto;
-import com.me.dto.UserInfoDto;
-import com.me.pojo.UserInfo;
 import com.me.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -88,11 +85,9 @@ public class BlogController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/show")
-    public Object show(@RequestBody ClassificationDto classificationDto){
-
-        List<BlogDto> blogList = blogService.showBlogByClassId(classificationDto);
-        return blogList;
+    @RequestMapping(value = "/findComment")
+    public Object findComment(@RequestParam int userId){
+        return null;
     }
 
 
