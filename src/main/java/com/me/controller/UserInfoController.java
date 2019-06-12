@@ -72,9 +72,12 @@ public class UserInfoController {
      */
     @ResponseBody
     @RequestMapping(value = "userRegiester", method = RequestMethod.POST)
-    public Object regiester(String user_name, String email, String password) {
-        System.out.println(user_name + " : " + email + " : " + password);
-        return userInfoService.regiester(user_name, email, password);
+    public Object regiester(String user_name, String email, String password,HttpSession session,String captcha) {
+        if (captcha.equalsIgnoreCase((String) session.getAttribute("randomString"))){
+
+            return userInfoService.regiester(user_name, email, password);
+        }
+        return 0;
     }
 
     /**
