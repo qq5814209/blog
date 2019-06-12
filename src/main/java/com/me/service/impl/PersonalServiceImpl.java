@@ -23,12 +23,9 @@ public class PersonalServiceImpl implements PersonalService {
      * @param userId
      * @return
      */
-    public UserInfoDto selectCareByAttentionsAndFans(int userId) {
+    public UserInfoDto selectUserInfoAndAttentionsAndFans(int userId) {
 
-        UserInfoDto userInfoDto = personalMapper.selectCareByAttentionsAndFans(userId);
-        UserInfo userInfo = personalMapper.selectUserInfo(userId);
-        userInfoDto.setUserInfo(userInfo);
-        return userInfoDto;
+        return personalMapper.selectUserInfoAndAttentionsAndFans(userId);
     }
 
     /**
@@ -137,6 +134,50 @@ public class PersonalServiceImpl implements PersonalService {
     public boolean updateUserInfo(UserInfo userInfo) {
 
         return personalMapper.updateUserInfo(userInfo) > 0;
+    }
+
+    /**
+     * 添加收藏夹
+     * @param favorites
+     * @return
+     */
+    public String insertFavorites(Favorites favorites) {
+        if (!favorites.getFavorites_title().equals("") && favorites != null){
+            int i = personalMapper.insertFavorites(favorites);
+            return String.valueOf(i > 0);
+        }
+        return "请输入收藏夹的名字";
+    }
+
+    /**
+     * 通过收藏夹id查询收藏夹信息
+     * @param favoritesId
+     * @return
+     */
+    public Favorites selectFavoritesId(int favoritesId) {
+        return personalMapper.selectFavoritesId(favoritesId);
+    }
+
+    /**
+     * 修改收藏夹信息
+     * @param favorites
+     * @return
+     */
+    public String updateFavorites(Favorites favorites) {
+        if (!favorites.getFavorites_title().equals("") && favorites.getFavorites_title() != null){
+
+            return String.valueOf(personalMapper.updateFavorites(favorites) > 0);
+        }
+        return "请输入收藏夹标题";
+    }
+
+    /**
+     * 删除收藏夹
+     * @param favoritesId
+     * @return
+     */
+    public boolean deleteFavorites(int favoritesId) {
+        return personalMapper.deleteFavorites(favoritesId)>0;
     }
 
 

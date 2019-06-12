@@ -52,12 +52,39 @@
         </collection>
     </resultMap>
 
-    <!--根据用户 id 查询粉丝数、查询关注数-->
-    <select id="selectCareByAttentionsAndFans" parameterType="int" resultType="com.me.dto.UserInfoDto">
+    <!--根据用户 id 查询粉丝数、关注数、个人信息-->
+    <select id="selectUserInfoAndAttentionsAndFans" parameterType="int" resultMap="selectUserInfoAndAttentionsAndFansMap">
         SELECT * FROM
         (SELECT COUNT(*) AS attentions FROM care WHERE ut_id=#{userId}) b1,
-        (SELECT COUNT(*) fans FROM care WHERE uf_id=#{userId}) b2
+        (SELECT COUNT(*) fans FROM care WHERE uf_id=#{userId}) b2,
+        (SELECT * FROM userinfo WHERE user_id = #{userId}) b3
     </select>
+
+    <!--selectUserInfoAndAttentionsAndFans的结果映射-->
+    <resultMap id="selectUserInfoAndAttentionsAndFansMap" type="com.me.dto.UserInfoDto">
+        <result column="fans" property="fans"></result>
+        <result column="attentions" property="attentions"></result>
+        <association property="userInfo" javaType="com.me.pojo.UserInfo">
+            <id column="user_id" property="user_id"></id>
+            <result column="user_name" property="user_name"></result>
+            <result column="password" property="password"></result>
+            <result column="email" property="email"></result>
+            <result column="name" property="name"></result>
+            <result column="sex" property="sex"></result>
+            <result column="job" property="job"></result>
+            <result column="brief" property="brief"></result>
+            <result column="year" property="year"></result>
+            <result column="month" property="month"></result>
+            <result column="day" property="day"></result>
+            <result column="country" property="country"></result>
+            <result column="city" property="city"></result>
+            <result column="town" property="town"></result>
+            <result column="cbis" property="cbis"></result>
+            <result column="create_time" property="create_time"></result>
+            <result column="status" property="status"></result>
+            <result column="url" property="url"></result>
+        </association>
+    </resultMap>
 
     <!--根据用户id，查询该用户关注了那些用户-->
     <select id="selectCareByUserId" parameterType="int" resultType="com.me.pojo.UserInfo">
@@ -89,5 +116,26 @@
     <update id="updateUserInfo" parameterType="com.me.pojo.UserInfo">
         UPDATE userinfo SET NAME = #{name} , sex = #{sex}, job = #{job}, brief = #{brief}, year = #{year}, month = #{month}, day = #{day}, country = #{country}, city = #{city}, town = #{town} WHERE user_id = #{user_id}
     </update>
+
+    <!--添加收藏夹-->
+    <insert id="insertFavorites" parameterType="com.me.pojo.Favorites">
+        INSERT INTO favorites ( user_id, favorites_desc,  favorites_title )
+        VALUES ( #{user_id}, #{favorites_desc}, #{favorites_title} )
+    </insert>
+
+    <!--通过收藏夹id查询收藏夹信息-->
+    <select id="selectFavoritesId" parameterType="int" resultType="com.me.pojo.Favorites">
+        SELECT * FROM favorites WHERE favorites_id = #{favoritesId}
+    </select>
+
+    <!--修改收藏夹信息-->
+    <update id="updateFavorites" parameterType="com.me.pojo.Favorites">
+        UPDATE favorites SET favorites_desc = #{favorites_desc}, favorites_title = #{favorites_title} WHERE favorites_id = #{favorites_id};
+    </update>
+
+    <!--删除收藏夹-->
+    <delete id="deleteFavorites" parameterType="int">
+        DELETE FROM favorites WHERE favorites_id = #{favorites_id};
+    </delete>
 
 </mapper>
