@@ -49,10 +49,10 @@
     });
     $("#foot").load("module/personal_foot.html");
 
+    //渲染关注页
     $(function () {
         var url = "selectCareByUserId";
         $.get(url, function (data) {
-            console.log(data)
             var innerHtml = "<div data-v-0c56b7f6=\"\" class=\"bar\"><h3 data-v-0c56b7f6=\"\" class=\"title\">我的关注</h3>" +
                 "                <span data-v-0c56b7f6=\"\" class=\"num\">共"+data.length+"人</span>" +
                 "            </div>"+
