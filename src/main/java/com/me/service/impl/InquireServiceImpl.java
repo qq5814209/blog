@@ -62,21 +62,20 @@ public class InquireServiceImpl implements InquireService{
         return false;
     }
 
-    public List<ShowDto> searchBlogs(String str) {
-        str = "%"+str+"%";
-        List<ShowDto> showDtos = inquireMapper.searchBlogs(str);
-        return showDtos;
-    }
-
-
-
-//    public List<ShowDto> searchBlogs(ShowVo showvo) {
-//        showvo.setStr("%"+showvo.getStr()+"%");
-//        System.out.println(showvo);
-//        List<ShowDto> showDtos = inquireMapper.searchBlogs(showvo);
-//        System.out.println(showDtos);
+//    public List<ShowDto> searchBlogs(String str) {
+//        str = "%"+str+"%";
+//        List<ShowDto> showDtos = inquireMapper.searchBlogs(str);
 //        return showDtos;
 //    }
+
+
+
+    public List<ShowDto> searchBlogs(ShowVo showvo) {
+        showvo.setBlog_content("%"+showvo.getType_name()+"%");
+        showvo.setBlog_title("%"+showvo.getType_name()+"%");
+        List<ShowDto> showDtos = inquireMapper.searchBlogs(showvo);
+        return showDtos;
+    }
 
 
     public List<ShowDto> getBlogsByUserId(ShowVo showVo) {

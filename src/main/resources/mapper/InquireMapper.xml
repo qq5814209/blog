@@ -71,8 +71,8 @@
         and b.pt_id = pt.pt_id and pt.status = 1
     </update>
 
-    <select id="searchBlogs" parameterType="java.lang.String" resultType="com.me.dto.ShowDto">
-        select * from bloginfo b where b.blog_title like #{str} or b.blog_title like #{str}
+    <select id="searchBlogs" parameterType="com.me.vo.ShowVo" resultType="com.me.dto.ShowDto">
+        select * from bloginfo b where b.blog_title like #{blog_title} or b.blog_content like #{blog_content}
     </select>
 
     <select id="getBlogsByUserId" parameterType="com.me.vo.ShowVo" resultType="com.me.dto.ShowDto">

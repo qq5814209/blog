@@ -744,25 +744,28 @@
 
     var str="";
     var type_name;
+    var uri;
 
     function toShowBlog(a) {
         //获取被点击标签的文本
         type_name = a.text;
+        uri = "getBlogsByTypeName";
 
-        inital(type_name,1, 2);
+        inital(uri,type_name,1, 2);
     }
 
     $(function () {
-        inital(str,1, 2);
+        uri = "getBlogsByTypeName";
+        inital(uri,str,1, 2);
     });
 
     //左边类别栏搜索和展示所有信息
-    function inital(str,currentPage,pageSize) {
+    function inital(uri,str,currentPage,pageSize) {
         $("#btns").find("button").remove();
         $("#feedlist_id").empty("");
         $.ajax({
             type: 'POST',
-            url: "/getBlogsByTypeName",
+            url: uri,
             contentType:"application/json;charse=UTF-8",
             data: JSON.stringify({
                 "type_name":str,
@@ -770,8 +773,6 @@
                 "pageSize":pageSize
             }),
             success: function(data){
-                alert("哈哈哈");
-                console.log(data);
                 //循环
                 var tabObj2 = $("#feedlist_id");
                 tabObj2.empty();
@@ -906,18 +907,33 @@
     function goto() {
         $("#feedlist_id").empty("");
         $("#btns").find("button").remove();
-        inital(str,$("#t").val(), 2);
+        uri = "getBlogsByTypeName";
+        inital(uri,str,$("#t").val(), 2);
     }
 
 
     function goNormal(n) {
         $("#feedlist_id").empty("");
         $("#btns").find("button").remove();
-        inital(str,n, 2);
+        uri = "getBlogsByTypeName";
+        inital(uri,str,n, 2);
     }
     function toJump(a,b) {
         window.location.href="bk_list.html?user_id="+a+"&blog_id="+b;
     }
+
+
+
+    $(document).keyup(function(event){
+        if(event.keyCode ==13){
+            $("#submit").trigger("click");
+            var str2 = $("#search").val();
+
+            uri ="searchBlogs";
+            inital(uri,str2,1, 2);
+        }
+    });
+
 
 </script>
 </body>
