@@ -10,8 +10,18 @@
         WHERE (user_name = #{user_name} OR email = #{email}) AND password = #{password}
     </select>
 
+    <!--注册-->
     <insert id="regiester" parameterType="com.me.vo.UserInfoVo">
         INSERT INTO userinfo (user_name,password,email) VALUES (#{user_name},#{password},#{email})
     </insert>
 
+    <!--查询最新最大的用户id-->
+    <select id="selectMaxId" resultType="int">
+        SELECT Max(user_id) FROM userinfo
+    </select>
+
+    <!--邮箱验证，修改状态码-->
+    <update id="updateStatus" parameterType="int">
+        UPDATE userinfo SET status = 1 where user_id = #{userid}
+    </update>
 </mapper>

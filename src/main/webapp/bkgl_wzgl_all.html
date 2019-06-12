@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="referrer" content="always">
+    <title>类别管理-CSDN博客</title>
+    <link rel="stylesheet" href="./css/content_toolbar.css">
+    <link href="css/commons.0347115.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/check-adb.css">
+</head>
+<body>
+<div id="csdn-toolbar" class="csdn-toolbar tb_disnone  csdn-toolbar-skin-black ">
+</div>
+<link href="css/articleList.546296b.css" rel="stylesheet">
+<main role="main" class="container">
+    <div class="row row-offcanvas row-offcanvas-right main-wrapper" id="left_menu">
+        <div class="col-6 col-md-2 sidebar-offcanvas" id="sidebar">
+        </div>
+
+        <div class="col-12 col-md-10" id="content-body">
+            <div class="main-nav-tabs">
+                <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="bkgl_wzgl_all.html" role="tab"
+                           aria-controls="pills-home" aria-selected="true">全部(6)
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="bkgl_wzgl_public.html" role="tab"
+                           aria-controls="pills-profile" aria-selected="false">公开(6)
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="bkgl_wzgl_private.html" role="tab"
+                           aria-controls="pills-profile" aria-selected="false">私密(3)
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="bkgl_wzgl_drafts.html" role="tab"
+                           aria-controls="pills-contact" aria-selected="false">草稿箱(1)
+                        </a>
+                    </li>
+                    <!--<li class="nav-item">
+                        <a class="nav-link " href="#" role="tab"
+                           aria-controls="pills-contact" aria-selected="false">
+                            回收站(0)
+                        </a>
+                    </li>-->
+                </ul>
+            </div>
+            <div class="main-search-box">
+                <form class="mt-2 mt-md-0 main-nav-tab-search search_input"
+                      action="#">
+                    <div class="dropdown year float-left mr8 default-val">
+                        <label>筛选：</label>
+                        <button class="btn btn-sm btn-dropdown dropdown-toggle" type="button" id="droYear"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            年
+                        </button>
+                        <input type="hidden" value="all" class="list_status">
+                        <input type="hidden" value="" id="year" name="year">
+                        <div class="dropdown-menu" aria-labelledby="droYear">
+                            <a class="dropdown-item yearOption" data-val="">不限</a>
+                            <a class="dropdown-item yearOption" data-val="2019">2019</a>
+                        </div>
+                    </div>
+                    <div class="dropdown month float-left default-val mr32">
+                        <button class="btn btn-sm btn-dropdown dropdown-toggle" type="button" id="droMonth"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            月
+                        </button>
+                        <input type="hidden" value="" id="month" name="month">
+                        <div class="dropdown-menu months-list" aria-labelledby="droMonth">
+                            <a class="dropdown-item" data-val="">不限</a>
+                        </div>
+                    </div>
+                    <div class="dropdown type float-left default-val mr16">
+                        <button class="btn btn-sm btn-dropdown dropdown-toggle" type="button" id="droType"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            文章类型
+                        </button>
+                        <input type="hidden" value="" id="type" name="type">
+                        <div class="dropdown-menu" aria-labelledby="droType">
+                            <a class="dropdown-item" data-val="">不限类型</a>
+                            <a class="dropdown-item" data-val="1">原创</a>
+                            <a class="dropdown-item" data-val="2">转载</a>
+                            <a class="dropdown-item" data-val="4">翻译</a>
+                        </div>
+                    </div>
+                    <div class="dropdown categorie float-left default-val mr32">
+                        <button class="btn btn-sm btn-dropdown dropdown-toggle " type="button" id="droCategorie"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            个人分类
+                        </button>
+                        <input type="hidden" value="" id="categorie" name="cate">
+                        <div class="dropdown-menu" aria-labelledby="droCategorie">
+                            <a class="dropdown-item" data-val="">不限</a>
+
+                            <a class="dropdown-item" data-val="8818572">JavaWeb</a>
+                            <a class="dropdown-item" data-val="8818595">HTML基础</a>
+                            <a class="dropdown-item" data-val="8818889">idea知识积累</a>
+                            <a class="dropdown-item" data-val="8924745">Maven</a>
+                            <a class="dropdown-item" data-val="8938601">mybatis</a>
+                            <a class="dropdown-item" data-val="8938602">懒加载</a>
+                            <a class="dropdown-item" data-val="none">未分类</a>
+
+                        </div>
+                    </div>
+                    <input class="txt-keyword mr24" id="key" type="text" name="keyword" value="" placeholder="请输入标题关键词"
+                           aria-label="Search">
+                    <button type="button" class="btn btn-danger btn-mp-search float-right">搜索</button>
+                </form>
+            </div>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show article-list active" id="pills-home" role="tabpanel"
+                     aria-labelledby="pills-home-tab">
+                    <div class="article-list-item">
+                        <div class="list-item-title">
+                            <span class="article-list-item-tag">草稿</span>
+
+
+                            <p class="article-list-item-txt">
+                                <a href="#" target="_blank" title="编辑">asdasdsad</a>
+                            </p>
+                        </div>
+                        <div class="article-list-item-info">
+                            <div class="item-info-left">
+                                        <span class="">
+                                                                                            原创                                                                                    </span>
+                                <span class="">2019年06月12日 10:42:05</span>
+                                <span class="">
+                                            <svg class="icon icon-read">
+                                                <use xlink:href="#read"></use>
+                                            </svg>
+                                            0                                        </span>
+                                <span class="">
+                                            <svg class="icon icon-comment">
+                                                <use xlink:href="#comment"></use>
+                                            </svg>
+                                            0                                        </span>
+                            </div>
+                            <div class="item-info-oper">
+                                <a href="#" target="_blank"><span
+                                        class="">查看</span></a>
+
+
+                                <a href="javascript:void(0);" data-aid="91491293"><span class="del">删除</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-list-item">
+                        <div class="list-item-title">
+
+
+                            <p class="article-list-item-txt">
+                                <a href="#" target="_blank"
+                                   title="编辑">Mybatis的懒加载</a>
+                            </p>
+                        </div>
+                        <div class="article-list-item-info">
+                            <div class="item-info-left">
+                                        <span class="">
+                                                                                            原创                                                                                    </span>
+                                <span class="">2019年05月11日 10:57:25</span>
+                                <span class="">
+                                            <svg class="icon icon-read">
+                                                <use xlink:href="#read"></use>
+                                            </svg>
+                                            15                                        </span>
+                                <span class="">
+                                            <svg class="icon icon-comment">
+                                                <use xlink:href="#comment"></use>
+                                            </svg>
+                                            0                                        </span>
+                            </div>
+                            <div class="item-info-oper">
+                                <a href="#" target="_blank"><span
+                                        class="">查看</span></a>
+                                <input type="hidden" value="90106943" class="articleid">
+                                <span class="">
+                                    <a href="javascript:void(0);" class="managecomment"
+                                       data-aid="90106943" data-opt="lock">禁止评论
+                                    </a>
+                                </span>
+
+                                <a href="#" data-aid="90106943"><span class="setTop" data-opt="true">置顶</span></a>
+
+                                <a href="#" data-aid="90106943"><span class="del">删除</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-list-item">
+                        <div class="list-item-title">
+                            <p class="article-list-item-txt">
+                                <a href="#" target="_blank"
+                                   title="编辑">MyBatis里ResultMap丶ResultType的区别与ParameterType详解</a>
+                            </p>
+                        </div>
+                        <div class="article-list-item-info">
+                            <div class="item-info-left">
+                                        <span class="">
+                                            原创
+                                        </span>
+                                <span class="">2019年05月09日 20:55:21</span>
+                                <span class="">
+                                    87
+                                </span>
+                                <span class="">
+                                    0
+                                </span>
+                            </div>
+                            <div class="item-info-oper">
+                                <a href="#" target="_blank"><span
+                                        class="">查看</span></a>
+                                <input type="hidden" value="90047693" class="articleid">
+                                <span class="">
+                                    <a href="#" class="managecomment"
+                                       data-aid="90047693" data-opt="lock">禁止评论
+                                    </a>
+
+                                </span>
+
+                                <a href="#" data-aid="90047693">
+                                    <span class="setTop" data-opt="true">置顶</span>
+                                </a>
+
+                                <a href="#" data-aid="90047693">
+                                    <span class="del">删除</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-list-item">
+                        <div class="list-item-title">
+
+
+                            <p class="article-list-item-txt">
+                                <a href="#" target="_blank" title="编辑">使用mybatis的Vo对象简单完成需求查询</a>
+                            </p>
+                        </div>
+                        <div class="article-list-item-info">
+                            <div class="item-info-left">
+                                <span class="">
+                                    原创
+                                </span>
+                                <span class="">2019年05月08日 16:09:50</span>
+                                <span class="">
+                                    27
+                                </span>
+                                <span class="">
+                                    0
+                                </span>
+                            </div>
+                            <div class="item-info-oper">
+                                <a href="#" target="_blank">
+                                    <span class="">查看</span>
+                                </a>
+                                <input type="hidden" value="89954741" class="articleid">
+                                <span class="">
+                                    <a href="#" class="managecomment" data-aid="89954741" data-opt="lock">禁止评论</a>
+                                </span>
+
+                                <a href="#" data-aid="89954741">
+                                    <span class="setTop" data-opt="true">置顶</span>
+                                </a>
+
+                                <a href="#" data-aid="89954741">
+                                    <span class="del">删除</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="article-list-item">
+                        <div class="list-item-title">
+                            <span class="article-list-item-tag">私密</span>
+                            <p class="article-list-item-txt">
+                                <a href="#" target="_blank" title="编辑">01.03.HTML标签</a>
+                            </p>
+                        </div>
+                        <div class="article-list-item-info">
+                            <div class="item-info-left">
+                                        <span class="">
+                                            原创
+                                        </span>
+                                <span class="">2019年04月01日 21:41:05</span>
+                                <span class="">
+                                    10
+                                </span>
+                                <span class="">
+                                    0
+                                </span>
+                            </div>
+                            <div class="item-info-oper">
+                                <a href="#" target="_blank">
+                                    <span class="">查看</span>
+                                </a>
+                                <a href="#" data-aid="88958085"><span class="del">删除</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-list-item">
+                        <div class="list-item-title">
+                            <span class="article-list-item-tag">私密</span>
+                            <p class="article-list-item-txt">
+                                <a href="#" target="_blank"
+                                   title="编辑">01.02.初探HTML</a>
+                            </p>
+                        </div>
+                        <div class="article-list-item-info">
+                            <div class="item-info-left">
+                                        <span class="">
+                                            原创
+                                        </span>
+                                <span class="">2019年04月01日 21:34:31</span>
+                                <span class="">
+                                            6
+                                </span>
+                                <span class="">
+                                    0
+                                </span>
+                            </div>
+                            <div class="item-info-oper">
+                                <a href="#" target="_blank">
+                                    <span class="">查看</span>
+                                </a>
+                                <a href="#" data-aid="88957951">
+                                    <span class="del">删除</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- 分页 -->
+                <div class="pagination-wrapper">
+                    <nav aria-label="Page navigation example">
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+<script>
+    $("#sidebar").load("module/bkgl_left_menu.html", function () {
+        $("#bkgl_wzgl").attr("class", "list-group-item active");
+    });
+    $("#csdn-toolbar").load("module/bk_header.html");
+</script>
+</html>

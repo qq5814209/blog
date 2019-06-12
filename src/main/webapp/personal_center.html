@@ -191,6 +191,7 @@
     });
     $("#foot").load("module/personal_foot.html");
 
+    //渲染个人信息修改页
     function editPersonal() {
         $("#editUserInfo").css("display", "block");
         var url = "selectUserInfo";
@@ -213,6 +214,7 @@
         $("#editPersonalUrl").css("display", "block");
     }
 
+    //修改头像
     function editUserInfoUrl() {
         var url = "updateUserInfoUrl";
         $.post(url, function (data) {
@@ -221,7 +223,7 @@
             }
         })
     }
-
+    //请求修改个人信息页
     function editUserInfo() {
         var url = "editUserInfo";
 
@@ -249,7 +251,7 @@
         });
 
     }
-
+    //渲染个人信息页
     $(function () {
         var url = "selectUserInfo";
         var $selectUserInfo = $("#selectUserInfo");
@@ -301,7 +303,7 @@
             alert("已取消")
         })
     }
-
+    //文件上传
     Dropzone.options.dropzoneDiv = {
         url: "upload", // 文件提交地址
         method: "post",  // 也可用put
