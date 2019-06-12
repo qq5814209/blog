@@ -18,6 +18,11 @@ public class VipController {
     VipService vipService;
 
 
+    /**
+     * 获取vip套餐
+     * @param vip
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value ="/getVip",method = RequestMethod.POST)
     public Object test(@RequestBody(required = false) Vip vip){

@@ -68,9 +68,7 @@ public class InquireServiceImpl implements InquireService{
         return showDtos;
     }
 
-    public List<ShowDto> getBlogsByUserId(ShowVo showVo) {
-        return null;
-    }
+
 
 //    public List<ShowDto> searchBlogs(ShowVo showvo) {
 //        showvo.setStr("%"+showvo.getStr()+"%");
@@ -80,5 +78,10 @@ public class InquireServiceImpl implements InquireService{
 //        return showDtos;
 //    }
 
+
+    public List<ShowDto> getBlogsByUserId(ShowVo showVo) {
+        List<ShowDto> showDtos = inquireMapper.getBlogsByUserId(showVo);
+        return showDtos;
+    }
 
 }

@@ -20,14 +20,14 @@
     <!--</resultMap>-->
 
 
-    <select id="ShowBlogById" resultType="com.me.dto.ShowDto" parameterType="com.me.vo.ShowVo">
-        SELECT tb3.blog_id,tb3.blog_title,tb3.blog_content,tb3.create_time,tb3.name,tb3.type_name,tb3.cnumber,tb3.bnumber
-        from(SELECT * from (SELECT b.*,u.name,bt.type_name from bloginfo b,userinfo u,blog_type bt,user_blog ub
-        WHERE b.blog_id = ub.blog_id and ub.user_id = u.user_id and b.bt_id = bt.bt_id and b.blog_id = 1 ) tb1
-        LEFT JOIN (SELECT blog_id bid,COUNT(blog_id) as cnumber from comment1 where blog_id = 1) tb2
-        on tb1.blog_id = tb2.bid LEFT JOIN (SELECT blog_id bid2,COUNT(blog_id) as bnumber from browse where blog_id = 1) tb4
-        on tb1.blog_id = tb4.bid2 ) tb3
-    </select>
+    <!--<select id="ShowBlogById" resultType="com.me.dto.ShowDto" parameterType="com.me.vo.ShowVo">-->
+        <!--SELECT tb3.blog_id,tb3.blog_title,tb3.blog_content,tb3.create_time,tb3.name,tb3.type_name,tb3.cnumber,tb3.bnumber-->
+        <!--from(SELECT * from (SELECT b.*,u.name,bt.type_name from bloginfo b,userinfo u,blog_type bt,user_blog ub-->
+        <!--WHERE b.blog_id = ub.blog_id and ub.user_id = u.user_id and b.bt_id = bt.bt_id and b.blog_id = 1 ) tb1-->
+        <!--LEFT JOIN (SELECT blog_id bid,COUNT(blog_id) as cnumber from comment1 where blog_id = 1) tb2-->
+        <!--on tb1.blog_id = tb2.bid LEFT JOIN (SELECT blog_id bid2,COUNT(blog_id) as bnumber from browse where blog_id = 1) tb4-->
+        <!--on tb1.blog_id = tb4.bid2 ) tb3-->
+    <!--</select>-->
 
     <select id="getBlogByType_name" resultType="com.me.pojo.BlogInfo" parameterType="com.me.vo.ShowVo">
         SELECT b.* from bloginfo b,blog_type bt
@@ -42,14 +42,14 @@
           SELECT tb3.blog_id,tb3.blog_title,tb3.blog_content,tb3.create_time,tb3.name,tb3.type_name,tb3.cnumber,tb3.bnumber
             from(SELECT * from (SELECT b.*,u.name,bt.type_name from bloginfo b,userinfo u,blog_type bt,user_blog ub
             WHERE b.blog_id = ub.blog_id
-            and ub.user_id = u.user_id and b.bt_id = bt.bt_id and bt.type_name = #{type_name} ) tb1
+            and ub.user_id = u.user_id and b.bt_id = bt.bt_id and bt.type_name = #{Java} and b.`status`=1 ) tb1
 
             LEFT JOIN (SELECT c.blog_id bid ,COUNT(c.blog_id) as cnumber from comment1 c,blog_type bt,bloginfo b
-            where b.blog_id = c.blog_id and bt.type_name = #{type_name} and b.bt_id = bt.bt_id GROUP BY bid) tb2
+            where b.blog_id = c.blog_id and bt.type_name = #{Java} and b.bt_id = bt.bt_id GROUP BY bid) tb2
             on tb1.blog_id = tb2.bid
 
-            LEFT JOIN (SELECT br.blog_id bid2,COUNT(br.blog_id) as bnumber from browse br,blog_type bt,bloginfo b
-            where b.blog_id = br.blog_id and bt.type_name = #{type_name} and b.bt_id = bt.bt_id GROUP BY bid2) tb4
+            LEFT JOIN (SELECT br.blog_id bid2,COUNT(DISTINCT br.user_id) as bnumber from browse br,blog_type bt,bloginfo b
+            where b.blog_id = br.blog_id and bt.type_name = #{Java} and b.bt_id = bt.bt_id GROUP BY br.blog_id) tb4
             on tb1.blog_id = tb4.bid2
             ) tb3
     </select>
@@ -76,6 +76,21 @@
 
     <select id="searchBlogs" parameterType="java.lang.String" resultType="com.me.dto.ShowDto">
         select * from bloginfo b where b.blog_title like #{str} or b.blog_title like #{str}
+    </select>
+
+    <select id="getBlogsByUserId" parameterType="com.me.vo.ShowVo" resultType="com.me.dto.ShowDto">
+        SELECT tb3.blog_id,tb3.blog_title,tb3.blog_content,tb3.create_time,tb3.`name`,tb3.type_name,tb3.cnumber,tb3.bnumber
+                from
+        (SELECT * from (SELECT b.*,u.name,u.user_id,bt.type_name from bloginfo b,userinfo u,blog_type bt,user_blog ub
+                WHERE b.blog_id = ub.blog_id and ub.user_id = u.user_id and b.bt_id = bt.bt_id and u.user_id = #{user_id} and b.`status` =1) tb1
+
+                LEFT JOIN (SELECT c.blog_id bid,COUNT(c.blog_id) as cnumber from comment1 c,bloginfo b,userinfo u, user_blog ub where c.blog_id = b.blog_id
+        and b.blog_id = ub.blog_id and ub.user_id = u.user_id and u.user_id= #{user_id} GROUP BY c.blog_id) tb2
+                on tb1.blog_id = tb2.bid
+
+        LEFT JOIN (SELECT br.blog_id bid2,COUNT(DISTINCT br.user_id) as bnumber from browse br,bloginfo b,userinfo u, user_blog ub where br.blog_id = b.blog_id
+        and b.blog_id = ub.blog_id and ub.user_id = u.user_id and u.user_id= #{user_id} GROUP BY br.blog_id) tb4
+                on tb1.blog_id = tb4.bid2 ) tb3
     </select>
 
 </mapper>

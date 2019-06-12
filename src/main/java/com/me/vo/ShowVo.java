@@ -13,6 +13,25 @@ public class ShowVo {
     private int pt_id;//个人分类
     private int user_id;//用户id
     private String str;//搜索框的值
+    private int currentPage;//当前页
+    private int pageSize;//当前页数据条数
+
+
+    public int getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
 
     public String getStr() {
         return str;
@@ -125,6 +144,8 @@ public class ShowVo {
                 ", pt_id=" + pt_id +
                 ", user_id=" + user_id +
                 ", str='" + str + '\'' +
+                ", currentPage=" + currentPage +
+                ", pageSize=" + pageSize +
                 '}';
     }
 }

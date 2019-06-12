@@ -2,6 +2,7 @@ package com.me.service;
 
 import com.me.dto.FavoritesDto;
 import com.me.dto.UserInfoDto;
+import com.me.pojo.Favorites;
 import com.me.pojo.UserInfo;
 
 import java.util.List;
@@ -63,4 +64,40 @@ public interface PersonalService {
      * @return
      */
     boolean updateUserInfoByUserIdToUrl(UserInfo userInfo);
+
+    /**
+     * 修改用户信息
+     * @param userInfo
+     * @return
+     */
+    boolean updateUserInfo(UserInfo userInfo);
+
+
+    /**
+     * 添加收藏夹
+     * @param favorites
+     * @return
+     */
+    String insertFavorites(Favorites favorites);
+
+    /**
+     * 通过收藏夹id查询收藏夹信息
+     * @param favoritesId
+     * @return
+     */
+    Favorites selectFavoritesId(int favoritesId);
+
+    /**
+     * 修改收藏夹信息
+     * @param favorites
+     * @return
+     */
+    String updateFavorites(Favorites favorites);
+
+    /**
+     * 删除收藏夹
+     * @param favoritesId
+     * @return
+     */
+    boolean deleteFavorites(int favoritesId);
 }

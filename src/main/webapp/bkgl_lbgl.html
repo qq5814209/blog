@@ -143,12 +143,103 @@
 </body>
 <script src="jquery/jquery-2.1.1.min.js"></script>
 <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+<!--动态分页尾部Js-->
+<script type="text/javascript" src="js/pageHelper.js"></script>
 <script>
     $("#left-menu").load("module/bkgl_left_menu.html",function () {
         $("#bkgl_lbgl").attr("class","list-group-item active");
     });
 
     $("#csdn-toolbar").load("module/bk_header.html");
+
+    function showBlogs() {
+        $.ajax({
+            type: 'POST',
+            url: "/getBlogsByUserId",
+            contentType:"application/json",
+            success: function(data){
+                console.log(data);
+                var tabObj2 = $("#categoryUl");
+                    tabObj2.empty();
+                $(data).each(function (index,item) {
+                    var trHtml2 = "  <li class=\"clearfix\" data-type=\"blog\" data-id=\"90632901\" shown-time=\"1559560460\">\n" +
+                        "                        <div class=\"list_con\">\n" +
+                        "                        <div class=\"title\">\n" +
+                        "                        <h2>\n" +
+                        "                        <a href=\"#\" target=\"_blank\"\n" +
+                        "                    data-track-click=\"{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901,career,index_0&quot;}\">\n" +
+                        "                        "+item.blog_title+" </a>\n" +
+                        "                    </h2>\n" +
+                        "                    <div class=\"close_tag\">\n" +
+                        "                        <div class=\"unin_reason_dialog_wrapper\">\n" +
+                        "                        <i class=\"icon-close\"></i>\n" +
+                        "                        <div class=\"unin_reason_dialog\">\n" +
+                        "                        <h3>选择理由，精准屏蔽</h3>\n" +
+                        "                    <ul>\n" +
+                        "                    <li class=\"unin_item csdn-tracking-statistics\" data-poputype=\"feed\"\n" +
+                        "                    data-feed-show=\"false\" data-dsm=\"post\" data-mod=\"popu_462\">\n" +
+                        "                        <a>推荐不准: 最新文章</a>\n" +
+                        "                    </li>\n" +
+                        "                    <br>\n" +
+                        "                    <li class=\"unin_item csdn-tracking-statistics\" data-poputype=\"feed\"\n" +
+                        "                    data-feed-show=\"false\" data-dsm=\"post\" data-mod=\"popu_462\">\n" +
+                        "                        <a> 旧闻、重复 </a>\n" +
+                        "                    </li>\n" +
+                        "                    <br>\n" +
+                        "                    <li class=\"unin_item csdn-tracking-statistics\" data-poputype=\"feed\"\n" +
+                        "                    data-feed-show=\"false\" data-dsm=\"post\" data-mod=\"popu_462\">\n" +
+                        "                        <a> 内容质量差 </a>\n" +
+                        "                        </li>\n" +
+                        "                        <br>\n" +
+                        "                        </ul>\n" +
+                        "                        </div>\n" +
+                        "                        </div>\n" +
+                        "                        </div>\n" +
+                        "                        </div>\n" +
+                        "                        <div class=\"summary oneline\">"+item.blog_content+" </div>" +
+                        "                    <dl class=\"list_userbar\">\n" +
+                        "                        <dt>\n" +
+                        "                        <a href=\"#\" target=\"_blank\" class=\"user_img\">\n" +
+                        "                        <img src=\"static/1_mijuoffer\" alt=\"mijuoffer\" title=\"mijuoffer\">\n" +
+                        "                        </a>\n" +
+                        "                        </dt>\n" +
+                        "                        <dd class=\"name\">\n" +
+                        "                        <a href=\"#\" target=\"_blank\">\n" +
+                        "                         "+item.name+" </a>\n" +
+                        "                        </dd>\n" +
+                        "                        <div class=\"interval\"></div>\n" +
+                        // "                        <dd class=\"tag\">\n" +
+                        // "                        <a href=\"#\" target=\"_blank\">\n" +
+                        // "                        "+item.name+" </a>\n" +
+                        // "                        </dd>\n" +
+                        "                        <div class=\"interval\"></div>\n" +
+                        "                        <dd class=\"time\">\n" +
+                        "                        "+item.create_time+"\n" +
+                        "                    </dd>\n" +
+                        "                    <div class=\"interactive floatR\">\n" +
+                        "                    <dd class=\"read_num\">\n" +
+                        "                        <a href=\"#\"\n" +
+                        "                    data-track-click=\"{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901,career,index_0&quot;}\">\n" +
+                        "                        <span class=\"text\">阅读数</span>\n" +
+                        "                        <span class=\"num\">"+item.bnumber+"</span>\n" +
+                        "                        </a>\n" +
+                        "                        </dd>\n" +
+                        "                        <div class=\"interval\"></div>\n" +
+                        "                        <dd class=\"common_num \">\n" +
+                        "                        <a href=\"#\"\n" +
+                        "                    target=\"_blank\"\n" +
+                        "                    data-track-click=\"{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901#commentBox,career,index_0&quot;}\">\n" +
+                        "                        <span class=\"text\">评论数 </span>\n" +
+                        "                        <span class=\"num\">"+item.cnumber+"</span>\n" +
+                        "                        </a>\n" +
+                        "                        </dd>\n" +
+                        "                        </div>\n" +
+                        "                        </dl>\n" +
+                        "                        </div>\n" +
+                        "                        </li>";
+                    tabObj2.append(trHtml2);
+                });
+    }
 
     function initial() {
         $.ajax({
@@ -229,7 +320,8 @@
 
             }),
             success: function(data){
-                if(date.contains("true")) {
+
+                if(date =="true") {
                     alert("添加成功");
                 }
                 initial();
@@ -242,6 +334,7 @@
         });
 
     }
+        }
     
 </script>
 </html>

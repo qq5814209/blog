@@ -5,24 +5,55 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Md5 {
-    public static String getMd5(String value) {
-        MessageDigest md5 = null;
-        try {
-            md5 = MessageDigest.getInstance("md5");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+    private static final String hexDigIts[] = {"0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"};
+
+    /**
+     * MD5加密
+     * @param origin 字符
+     * @param charsetname 编码
+     * @return
+     */
+    public static String MD5Encode(String origin, String charsetname){
+        String resultString = null;
+        try{
+            resultString = new String(origin);
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            if(null == charsetname || "".equals(charsetname)){
+                resultString = byteArrayToHexString(md.digest(resultString.getBytes()));
+            }else{
+                resultString = byteArrayToHexString(md.digest(resultString.getBytes(charsetname)));
+            }
+        }catch (Exception e){
         }
-        byte[] digest = md5.digest(value.getBytes());
-        String s = new BigInteger(1, digest).toString(16);
-        for (int i = 0; i < 32 - s.length(); i++) {
-            s = "0" + s;
-        }
-        return s;
+        return resultString;
     }
 
-    public static void main(String[] args){
-        String md5 = Md5.getMd5("admin");
-        md5 = Md5.getMd5(md5.substring(0,16));
-        System.out.println(md5);
+
+    public static String byteArrayToHexString(byte b[]){
+        StringBuffer resultSb = new StringBuffer();
+        for(int i = 0; i < b.length; i++){
+            resultSb.append(byteToHexString(b[i]));
+        }
+        return resultSb.toString();
     }
+
+    public static String byteToHexString(byte b){
+        int n = b;
+        if(n < 0){
+            n += 256;
+        }
+        int d1 = n / 16;
+        int d2 = n % 16;
+        return hexDigIts[d1] + hexDigIts[d2];
+    }
+
+
+    public static String getMD5(String pwd){
+        String md5 = pwd+pwd;
+        String newPwd = null;
+        newPwd = Md5.MD5Encode(md5,"UTF-8");
+        System.out.println(newPwd);
+        return newPwd;
+    }
+
 }

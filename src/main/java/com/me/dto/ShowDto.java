@@ -15,7 +15,25 @@ public class ShowDto {
     private int status;
     private String blog_url;//博客链接
     private int pt_id;//个人分类id
+    private int currentPage;//当前页
+    private int pageSize;//当前页数据条数
 
+
+    public int getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
 
     public int getBt_id() {
         return bt_id;
@@ -146,6 +164,8 @@ public class ShowDto {
                 ", status=" + status +
                 ", blog_url='" + blog_url + '\'' +
                 ", pt_id=" + pt_id +
+                ", currentPage=" + currentPage +
+                ", pageSize=" + pageSize +
                 '}';
     }
 }

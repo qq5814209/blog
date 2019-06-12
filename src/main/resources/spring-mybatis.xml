@@ -37,7 +37,7 @@
                     <property name="properties">
                         <!-- config params as the following -->
                         <value>
-                        param1=mysql
+                            helperDialect=mysql
                         </value>
                     </property>
                 </bean>

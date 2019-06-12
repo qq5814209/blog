@@ -151,7 +151,7 @@
                                     <div class="el-input el-input--suffix">
                                         <input type="text"
                                                class="el-scrollbar__view el-select-dropdown__list el-input__inner"
-                                               placeholder="区" id="town" >
+                                               placeholder="区" id="town">
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@
                         </div>
                         <div data-v-0d738edb="" class="btn_group">
                             <button data-v-0d738edb="" class="cancel" onclick="editClose()">取消</button>
-                            <button data-v-0d738edb="" class="confirm">确定</button>
+                            <button data-v-0d738edb="" class="confirm" onclick="editUserInfo()">确定</button>
                         </div>
                     </div>
                 </div>
@@ -183,7 +183,7 @@
 <div class="bottom-pub-footer footer-box pub_fo" id="foot"></div>
 
 </body>
-<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="/jquery/jquery-2.1.1.min.js"></script>
 <script>
     $("#head").load("module/bk_header.html");
     $("#left").load("module/personal_left.html", function () {
@@ -194,7 +194,7 @@
     function editPersonal() {
         $("#editUserInfo").css("display", "block");
         var url = "selectUserInfo";
-        $.post(url,function (data) {
+        $.post(url, function (data) {
             var userInfo = data.userInfo;
             $("#name").val(userInfo.name);
             $("#job").val(userInfo.job);
@@ -213,14 +213,43 @@
         $("#editPersonalUrl").css("display", "block");
     }
 
-    function editUserInfoUrl(){
+    function editUserInfoUrl() {
         var url = "updateUserInfoUrl";
-        $.post(url,function (data) {
+        $.post(url, function (data) {
             if (data === true) {
                 window.location.reload();
             }
         })
     }
+
+    function editUserInfo() {
+        var url = "editUserInfo";
+
+        var userInfo = {
+            "name": $("#name").val(),
+            "sex": $("#sex").val(),
+            "job": $("#job").val(),
+            "brief": $("#brief").val(),
+            "year": $("#year").val(),
+            "month": $("#month").val(),
+            "day": $("#day").val(),
+            "country": $("#country").val(),
+            "city": $("#city").val(),
+            "town": $("#town").val()
+        };
+
+        $.post(url, userInfo, function (data) {
+            console.log(data);
+            if (data === true){
+                alert("修改成功");
+                window.location.reload();
+            } else {
+                alert("修改失败");
+            }
+        });
+
+    }
+
     $(function () {
         var url = "selectUserInfo";
         var $selectUserInfo = $("#selectUserInfo");
@@ -268,7 +297,7 @@
         $("#editPersonalUrl").css("display", "none");
         $("#editUserInfo").css("display", "none");
         var url = "cancelUserInfoUrl";
-        $.post(url,function (data) {
+        $.post(url, function (data) {
             alert("已取消")
         })
     }

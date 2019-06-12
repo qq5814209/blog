@@ -85,4 +85,30 @@
         UPDATE userinfo SET url = #{url} WHERE user_id = #{user_id}
     </update>
 
+    <!--修改用户信息-->
+    <update id="updateUserInfo" parameterType="com.me.pojo.UserInfo">
+        UPDATE userinfo SET NAME = #{name} , sex = #{sex}, job = #{job}, brief = #{brief}, year = #{year}, month = #{month}, day = #{day}, country = #{country}, city = #{city}, town = #{town} WHERE user_id = #{user_id}
+    </update>
+
+    <!--添加收藏夹-->
+    <insert id="insertFavorites" parameterType="com.me.pojo.Favorites">
+        INSERT INTO favorites ( user_id, favorites_desc,  favorites_title )
+        VALUES ( #{user_id}, #{favorites_desc}, #{favorites_title} )
+    </insert>
+
+    <!--通过收藏夹id查询收藏夹信息-->
+    <select id="selectFavoritesId" parameterType="int" resultType="com.me.pojo.Favorites">
+        SELECT * FROM favorites WHERE favorites_id = #{favoritesId}
+    </select>
+
+    <!--修改收藏夹信息-->
+    <update id="updateFavorites" parameterType="com.me.pojo.Favorites">
+        UPDATE favorites SET favorites_desc = #{favorites_desc}, favorites_title = #{favorites_title} WHERE favorites_id = #{favorites_id};
+    </update>
+
+    <!--删除收藏夹-->
+    <delete id="deleteFavorites" parameterType="int">
+        DELETE FROM favorites WHERE favorites_id = #{favorites_id};
+    </delete>
+
 </mapper>

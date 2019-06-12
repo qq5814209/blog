@@ -1,4 +1,6 @@
 package com.me.controller;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.me.dto.ShowDto;
 import com.me.pojo.UserInfo;
 import com.me.service.InquireService;
@@ -24,7 +26,9 @@ public class InquireController {
     @ResponseBody
     @RequestMapping("getBlogsByTypeName")
     public Object getBlogsByTypeName(@RequestBody(required = false) ShowVo showVo){
+        PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
         List<ShowDto> showDtos = inquireService.getBlogsByTypeName(showVo);
+        PageInfo<ShowDto> studentPageInfo = new PageInfo<ShowDto>(showDtos);
         return showDtos;
     }
 
@@ -33,10 +37,11 @@ public class InquireController {
     * */
     @ResponseBody
     @RequestMapping("getBlogsByUserId")
-    public Object getBlogsByUserId(@RequestBody(required = false) ShowVo showVo, HttpSession session ){
+    public Object getBlogsByUserId(HttpSession session){
         UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
-
+        ShowVo showVo = new ShowVo();
+        showVo.setUser_id(user_id);
         List<ShowDto> showDtos = inquireService.getBlogsByTypeName(showVo);
         return showDtos;
     }

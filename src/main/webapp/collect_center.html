@@ -30,12 +30,13 @@
                         <div data-v-693a9050="" class="collection-head" style="display: block" id="favoritesShow">
                             <a data-v-693a9050="" href="#" tabindex="1" class="tab-title active">我创建的收藏夹</a>
                             <a data-v-693a9050="" href="#" tabindex="2" class="tab-title">我关注的收藏夹</a>
-                            <a data-v-693a9050="" href="#" class="collect-add" style="" onclick="editCollectOnclick()">
+                            <a data-v-693a9050="" href="#" class="collect-add" style="" onclick="insertCollectOnclick()">
                                 <span data-v-693a9050="">+</span>
                                 新建收藏夹
                             </a>
                         </div>
-                        <a data-v-693a9050="" href="collect_center.html" class="tab-title" style="display: none;" id="collectShow">
+                        <a data-v-693a9050="" href="collect_center.html" class="tab-title" style="display: none;"
+                           id="collectShow">
                             返回收藏夹列表
                         </a>
                     </h3>
@@ -46,7 +47,7 @@
 
                     </ul>
                 </div>
-                <!--修改收藏夹信息开始-->
+                <!--新增收藏夹信息开始-->
                 <div data-v-2a98e4d1="" data-v-693a9050="" id="el-dialog" class="dialog-containter containter-skin"
                      style="width: 462px; min-height: 210px; display: none;">
                     <div data-v-2a98e4d1="" class="containter-top">
@@ -62,7 +63,8 @@
                                     <div data-v-693a9050="" class="el-form-item is-required"><!---->
                                         <div class="el-form-item__content">
                                             <div data-v-693a9050="" class="form-input el-input"><!---->
-                                                <input type="text" autocomplete="off" placeholder="请填写收藏夹的名称" class="el-input__inner">
+                                                <input type="text" autocomplete="off" placeholder="请填写收藏夹的名称"
+                                                       class="el-input__inner" id="favorites_title">
                                             </div>
                                         </div>
                                     </div>
@@ -72,7 +74,9 @@
                                     <div data-v-693a9050="" class="el-form-item">
                                         <div class="el-form-item__content">
                                             <div data-v-693a9050="" class="form-textarea el-textarea">
-                                                <textarea autocomplete="off" rows="4" placeholder="请输入描述内容" class="el-textarea__inner" style="min-height: 39px;"></textarea>
+                                                <textarea autocomplete="off" rows="4" placeholder="请输入描述内容"
+                                                          class="el-textarea__inner" style="min-height: 39px;"
+                                                          id="favorites_desc"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -83,13 +87,62 @@
                     <div data-v-2a98e4d1="" class="containter-bottom">
                         <div data-v-693a9050="" data-v-2a98e4d1="" class="form-button">
                             <button data-v-693a9050="" data-v-2a98e4d1="" id="btn-reset" class="btn">取消</button>
-                            <button data-v-693a9050="" data-v-2a98e4d1="" id="btn-confirm" class="btn primary-btn">确定</button>
+                            <button data-v-693a9050="" data-v-2a98e4d1="" id="btn-confirm" class="btn primary-btn"
+                                    onclick="insertFavorites()">确定
+                            </button>
                         </div>
                     </div>
                 </div>
                 <div class="dialog-mark" id="dialog-mark" style="display: none"></div>
+                <!--新增收藏夹信息结束-->
 
-            <!--修改收藏夹信息结束-->
+                <!--修改收藏夹信息开始-->
+                <div data-v-2a98e4d1="" data-v-693a9050="" id="el-dialog-edit" class="dialog-containter containter-skin"
+                     style="width: 462px; min-height: 210px; display: none;">
+                    <div data-v-2a98e4d1="" class="containter-top">
+                        <div data-v-693a9050="" data-v-2a98e4d1="">
+                            <span data-v-693a9050="" data-v-2a98e4d1="">编辑收藏夹</span>
+                        </div>
+                    </div>
+                    <div data-v-2a98e4d1="" class="containter-content">
+                        <div data-v-693a9050="" data-v-2a98e4d1="">
+                            <form data-v-693a9050="" class="el-form el-form-skin" data-v-2a98e4d1="">
+                                <div data-v-693a9050="" class="form-control clearfix">
+                                    <label data-v-693a9050="" class="form-label">标题</label>
+                                    <div data-v-693a9050="" class="el-form-item is-required"><!---->
+                                        <div class="el-form-item__content">
+                                            <div data-v-693a9050="" class="form-input el-input"><!---->
+                                                <input type="text" autocomplete="off" placeholder="请填写收藏夹的名称"
+                                                       class="el-input__inner" id="favorites_title_edit">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-v-693a9050="" class="form-control clearfix">
+                                    <label data-v-693a9050="" class="form-label">描述（选填）</label>
+                                    <div data-v-693a9050="" class="el-form-item">
+                                        <div class="el-form-item__content">
+                                            <div data-v-693a9050="" class="form-textarea el-textarea">
+                                                <textarea autocomplete="off" rows="4" placeholder="请输入描述内容"
+                                                          class="el-textarea__inner" style="min-height: 39px;"
+                                                          id="favorites_desc_edit"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div data-v-2a98e4d1="" class="containter-bottom">
+                        <div data-v-693a9050="" data-v-2a98e4d1="" class="form-button">
+                            <button data-v-693a9050="" data-v-2a98e4d1="" id="btn-reset-edit" class="btn">取消</button>
+                            <button data-v-693a9050="" data-v-2a98e4d1="" id="btn-confirm-edit" class="btn primary-btn" onclick="updateFavorites()"> 确定 </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="dialog-mark" id="dialog-mark-edit" style="display: none"></div>
+                <!--修改收藏夹信息结束-->
+
             </div>
         </div>
     </div>
@@ -107,18 +160,83 @@
         $("#collect").attr("class", "router-link-exact-active router-link-active");
     });
     $("#foot").load("module/personal_foot.html");
-
-    function editCollectOnclick(favoritesId){
-        $("#el-dialog").css("display","block");
+    //打开新增收藏夹页面
+    function insertCollectOnclick() {
+        $("#el-dialog").css("display", "block");
         $("#dialog-mark").css("display", "block");
-
-
-
     }
+    //收藏夹id
+    var favorites_id;
+    //添加收藏夹信息到修改页面
+    function editCollectOnclick(favoritesId) {
+        favorites_id = favoritesId;
+        $("#el-dialog-edit").css("display", "block");
+        $("#dialog-mark-edit").css("display", "block");
 
+        var url = "selectFavoritesId";
+        var value = {
+            "favoritesId" : favoritesId
+        };
+        $.post(url,value,function (data) {
+            $("#favorites_title_edit").val(data.favorites_title);
+            $("#favorites_desc_edit").val(data.favorites_desc);
+        })
+    }
+    //修改收藏夹信息
+    function updateFavorites() {
+        var url = "updateFavorites";
+        var favorites = {
+            "favorites_id" : favorites_id,
+            "favorites_title" : $("#favorites_title_edit").val(),
+            "favorites_desc" :$("#favorites_desc_edit").val()
+        };
+        $.post(url,favorites,function (data) {
+            if (data === "true") {
+                window.location.reload();
+            } else {
+                alert(data);
+            }
+        })
+    }
+    //新增收藏夹
+    function insertFavorites() {
+        var url = "insertFavorites";
+        var favorites = {
+            "favorites_title": $("#favorites_title").val(),
+            "favorites_desc": $("#favorites_desc").val()
+        };
+        $.post(url, favorites, function (data) {
+            if (data === "true") {
+                window.location.reload();
+            } else {
+                alert(data);
+            }
+        });
+    }
+    //删除收藏夹
+    function deleteFavorites(favorites_id){
+        var url = "deleteFavorites";
+        var value = {
+            "favoritesId" : favorites_id
+        };
+        $.post(url,value,function (data) {
+            if (data === true) {
+                alert("删除成功");
+                window.location.reload();
+            } else {
+                alert("删除失败");
+            }
+        })
+    }
+    //不显示新增收藏夹页面
     $("#btn-reset").click(function () {
-        $("#el-dialog").css("display","none");
+        $("#el-dialog").css("display", "none");
         $("#dialog-mark").css("display", "none");
+    });
+    //不显示修改收藏夹页面
+    $("#btn-reset-edit").click(function () {
+        $("#el-dialog-edit").css("display", "none");
+        $("#dialog-mark-edit").css("display", "none");
     });
 
     //请求收藏夹信息
@@ -148,7 +266,6 @@
             "favorites_id": favorites_id
         };
         $.get(url, value, function (data) {
-            console.log(data);
             $(data).each(function (index, item) {
                 var innerHtml = "<li data-v-7afe6b7e=\"\" data-parentid=\"36868\">" +
                     "                                    <span data-v-7afe6b7e=\"\" class=\"collection-dir collection-font collection-detail\"> " + item.favorites.favorites_title + " </span>" +
@@ -156,8 +273,8 @@
                     "                                        <p data-v-7afe6b7e=\"\" class=\"collection-text collection-detail\">收藏夹描述： " + item.favorites.favorites_desc + "</p>" +
                     "                                        <b data-v-7afe6b7e=\"\" class=\"line\">" + item.collectVoList.length + "条内容</b>" +
                     "                                        <b data-v-7afe6b7e=\"\" class=\"line\">0人关注</b>" +
-                    "                                        <em data-v-7afe6b7e=\"\" class=\"cursor line\" onclick='editCollectOnclick("+item.favorites.favorites_id+")'>编辑</em>" +
-                    "                                        <em data-v-7afe6b7e=\"\" class=\"cursor\">删除</em>" +
+                    "                                        <em data-v-7afe6b7e=\"\" class=\"cursor line\" onclick='editCollectOnclick(" + item.favorites.favorites_id + ")'>编辑</em>" +
+                    "                                        <em data-v-7afe6b7e=\"\" class=\"cursor\" onclick='deleteFavorites(" + item.favorites.favorites_id + ")'>删除</em>" +
                     "                                    </span>" +
                     "                         <ul data-v-7afe6b7e=\"\" class=\"collection-sublist\">" +
                     "                                        <li data-v-7afe6b7e=\"\" data-id=\"25518081\" data-parentid=\"36866\" class=\"\">";
@@ -181,8 +298,8 @@
                     "             </li>";
 
                 // alert(innerHtml);
-                $("#favoritesShow").css("display","none");
-                $("#collectShow").css("display","block");
+                $("#favoritesShow").css("display", "none");
+                $("#collectShow").css("display", "block");
                 $("#favorites").empty();
                 $("#favorites").append(innerHtml);
             });

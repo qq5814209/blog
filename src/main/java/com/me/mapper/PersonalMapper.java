@@ -78,4 +78,39 @@ public interface PersonalMapper {
      * @return
      */
     int updateUserInfoByUserIdToUrl(UserInfo userInfo);
+
+    /**
+     * 修改用户信息
+     * @param userInfo
+     * @return
+     */
+    int updateUserInfo(UserInfo userInfo);
+
+    /**
+     * 添加收藏夹
+     * @param favorites
+     * @return
+     */
+    int insertFavorites(Favorites favorites);
+
+    /**
+     * 通过收藏夹id查询收藏夹信息
+     * @param favoritesId
+     * @return
+     */
+    Favorites selectFavoritesId(int favoritesId);
+
+    /**
+     * 修改收藏夹信息
+     * @param favorites
+     * @return
+     */
+    int updateFavorites(Favorites favorites);
+
+    /**
+     * 删除收藏夹
+     * @param favoritesId
+     * @return
+     */
+    int deleteFavorites(int favoritesId);
 }
