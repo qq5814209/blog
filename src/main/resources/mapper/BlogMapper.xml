@@ -58,5 +58,38 @@
         LEFT JOIN comment1 c on c.blog_id=m.blog_id and m.user_id=c.user_id
         GROUP BY m.blog_id
     </select>
+    <!--通过用户id查询最新的5条评论-->
+    <select id="findComment" resultType="com.me.dto.CommentDto" parameterType="int">
+        select u.user_id userId,u.blog_id blogId,b.blog_title title,o.`name` name,c.comment_content comment from user_blog u
+        INNER JOIN bloginfo b on b.blog_id=u.blog_id and u.user_id=#{userId}
+        INNER JOIN comment1 c on c.blog_id=b.blog_id
+        INNER JOIN userinfo o on o.user_id=c.user_id
+        ORDER BY c.comment_time desc
+        LIMIT 5
+    </select>
+    <!--通过博客id以及用户id查询对应的博客文章信息-->
+    <select id="showArticle" parameterType="com.me.dto.BlogDto" resultType="com.me.dto.BlogDto">
+        SELECT any_value(m.blog_id) id,any_value(m.blog_title) title,any_value(m.blog_content) content,any_value(m.create_time) time,any_value(m.user_id) userId,any_value(m.name) name,any_value(m.user_name) userName,any_value(m.seeNum) seeNum,case when any_value(c.comment_id) is null then 0 else COUNT(*) end commentNum from
+        (SELECT any_value(o.blog_id) blog_id,any_value(o.blog_title) blog_title,any_value(o.blog_content) blog_content,any_value(o.create_time) create_time,any_value(b.browse_id) browse_id,any_value(b.browse_time) browse_time,any_value(g.user_id) user_id,any_value(r.name) name,any_value(r.user_name) user_name,case when any_value(b.browse_id) is null then 0 else COUNT(*) end seeNum
+        from bloginfo o
+        INNER JOIN user_blog g on g.user_id=#{userId} and g.blog_id=o.blog_id and o.blog_id=#{id}
+				INNER JOIN userinfo r on r.user_id=g.user_id
+        LEFT JOIN browse b on b.blog_id=o.blog_id and b.user_id=g.user_id
+        GROUP BY o.blog_id) m
+        LEFT JOIN comment1 c on c.blog_id=m.blog_id and m.user_id=c.user_id
+        GROUP BY m.blog_id
+    </select>
+    <!--通过用户id查询最近更新的博客-->
+    <select id="showBlogByNewTime" parameterType="int" resultType="com.me.dto.BlogDto">
+        SELECT any_value(m.blog_id) id,any_value(m.blog_title) title,any_value(m.blog_content) content,any_value(m.create_time) time,any_value(m.user_id) userId,any_value(m.seeNum) seeNum,case when any_value(c.comment_id) is null then 0 else COUNT(*) end commentNum from
+        (SELECT any_value(o.blog_id) blog_id,any_value(o.blog_title) blog_title,any_value(o.blog_content) blog_content,any_value(o.create_time) create_time,any_value(b.browse_id) browse_id,any_value(b.browse_time) browse_time,any_value(g.user_id) user_id,case when any_value(b.browse_id) is null then 0 else COUNT(*) end seeNum
+        from bloginfo o
+        INNER JOIN user_blog g on g.user_id=1 and g.blog_id=o.blog_id
+        LEFT JOIN browse b on b.blog_id=o.blog_id and b.user_id=g.user_id
+        GROUP BY o.blog_id) m
+        LEFT JOIN comment1 c on c.blog_id=m.blog_id and m.user_id=c.user_id
+        GROUP BY m.blog_id
+		ORDER BY m.create_time desc
+    </select>
 
 </mapper>

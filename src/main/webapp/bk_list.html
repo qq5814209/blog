@@ -20,56 +20,42 @@
           content="{&quot;autorun&quot;:true,&quot;install&quot;:true,&quot;keyword&quot;:&quot;微信支付宝跑分系统源码是什么原理？码商平台供码平台搭建流程 - 网站系统开发&quot;}">
     <link rel="stylesheet" href="css/detail-7fc618a1d6.min.css">
     <link rel="stylesheet" href="css/skin3-template-9b39979775.min.css">
-    <title>【 分类 】- Web开发基本原理 - 血色@残阳的专栏（个人公众号：编程之路从0到1） - CSDN博客</title>
-    <style>
-        .MathJax, .MathJax_Message, .MathJax_Preview{
-            display: none
-        }
-    </style>
+    <title id="title">【 分类 】- Web开发基本原理 - 血色@残阳的专栏（个人公众号：编程之路从0到1） - CSDN博客</title>
+    <style>.MathJax, .MathJax_Message, .MathJax_Preview{display: none}</style>
 </head>
 <body class="nodata " >
+<div id="BAIDU_DUP_fp_wrapper"
+     style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;">
+</div>
+
+<link rel="stylesheet" href="css/content_toolbar.css">
+<link rel="stylesheet" href="css/paging.css">
+<!--导航栏-->
+<div id="csdn-toolbar" class="csdn-toolbar tb_disnone ">
+</div>
+<div style="height: 30px"></div>
+
+
 <header>
-    <div class="container d-flex clearfix" style="background-image: ">
-        <div class="title-box">
-            <h1 class="title-blog">
-                <a href="https://blog.csdn.net/yingshukun">血色@残阳的专栏</a>
-            </h1>
-            <p class="description ">个人公众号：编程之路从0到1</p>
+    <div class="container d-flex clearfix"  >
+        <div class="title-box" id="title-box">
+
         </div>
-        <div class="opt-box d-flex justify-content-end">
-        </div>
+        <div class="opt-box d-flex justify-content-end"></div>
     </div>
 </header>
 <script src="https://dup.baidustatic.com/js/ds.js"></script>
 <div class="container clearfix pt0" id="mainBox">
     <main>
-        <div class="filter-box d-flex align-items-center">
-            <div class="breadcrumbs-box">
-                <a href="https://blog.csdn.net/yingshukun">全部文章</a>
-                <span class="ml8 mr8">></span>              Web开发基本原理
-            </div>
-            <dl class="filter-sort-box d-flex align-items-center">
-                <dt>排序：</dt>
-                <dd>
-                    <a href="javascript:void(0);" class="btn-filter-sort active" target="_self">默认</a>
-                </dd>
-                <dd>
-                    <a href="https://blog.csdn.net/yingshukun/article/category/8323031?orderby=UpdateTime" class="btn-filter-sort " target="_self">按更新时间</a>
-                </dd>
-                <dd>
-                    <a href="https://blog.csdn.net/yingshukun/article/category/8323031?orderby=ViewCount" class="btn-filter-sort " target="_self">按访问量</a>
-                </dd>
-                <dd>
-                    <a class="btn btn-sm rss" href="https://blog.csdn.net/yingshukun/rss/list">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#csdnc-rss"></use>
-                        </svg>RSS订阅
-                    </a>
-                </dd>
-            </dl>
+        <div class="filter-box d-flex align-items-center" id="breadcrumbsBox" style="display: none">
+            <!--<div class="breadcrumbs-box"><a href="#">全部文章</a><span class="ml8 mr8">></span>              Web开发基本原理</div><dl class="filter-sort-box d-flex align-items-center"><dt>排序：</dt><dd><a href="javascript:void(0);" class="btn-filter-sort active" target="_blank">默认</a></dd><dd><a href="#" class="btn-filter-sort " target="_blank">按更新时间</a></dd><dd><a href="#" class="btn-filter-sort " target="_blank">按访问量</a></dd><dd><a class="btn btn-sm rss" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#csdnc-rss"></use></svg>RSS订阅</a></dd></dl>-->
         </div>
-        <div class="article-list" id="articleList">
+
+        <div class="article-list" id="articleList" style="display: none">
             <!--博客文章列表-->
+        </div>
+        <!--展示博客文章内容-->
+        <div class="blog-content-box" style="display: none" id="blog-content">
         </div>
     </main>
     <aside id="aside">
@@ -77,29 +63,13 @@
     </aside>
 
 </div>
-<div class="mask"></div>
-<div class="promptBox clearfix">
-    <div class="title clearfix bottom-dis-16">
-        <span class="float-left">提示</span>
-        <a class="float-right Boxclose">
-            <svg class="icon" aria-hidden="true">
-                <use xlink:href="#csdnc-times"></use>
-            </svg>
-        </a>
-    </div>
-    <div class="text">确定要删除当前文章？</div>
-    <div class="pro-btn float-right">
-        <a class="clickNo">取消</a>
-        <a class="clickYes">删除</a>
-    </div>
-</div>
+
 <script src="jquery/jquery-2.1.1.min.js"></script>
 <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
 <script>
-
+        $("#csdn-toolbar").load("module/bk_header.html");
        $("#aside").load("module/bk_content_left.html");
        $.getScript("js/bk_content_left.js",function () {});
-
 </script>
 </body>
 </html>

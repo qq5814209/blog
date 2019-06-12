@@ -3,6 +3,7 @@ package com.me.controller;
 import com.me.dto.BlogDto;
 import com.me.dto.BlogNumDto;
 import com.me.dto.ClassificationDto;
+import com.me.dto.CommentDto;
 import com.me.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -87,7 +88,32 @@ public class BlogController {
     @ResponseBody
     @RequestMapping(value = "/findComment")
     public Object findComment(@RequestParam int userId){
-        return null;
+        List<CommentDto> commentDtoList = blogService.findComment(userId);
+        return commentDtoList;
+    }
+
+    /**
+     *  通过博客id以及用户id查询对应的博客文章信息
+     * @param blogDto
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/showArticle")
+    public Object showArticle(@RequestBody BlogDto blogDto){
+        List<BlogDto> blogDtoList = blogService.showArticle(blogDto);
+        return blogDtoList;
+    }
+
+    /**
+     *  通过用户id查询最近更新的博客
+     * @param userId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/showBlogByNewTime")
+    public Object showBlogByNewTime(@RequestParam int userId){
+        List<BlogDto> blogDtoList = blogService.showBlogByNewTime(userId);
+        return blogDtoList;
     }
 
 

@@ -3,6 +3,7 @@ package com.me.service;
 import com.me.dto.BlogDto;
 import com.me.dto.BlogNumDto;
 import com.me.dto.ClassificationDto;
+import com.me.dto.CommentDto;
 
 import java.util.List;
 
@@ -40,4 +41,25 @@ public interface BlogService {
      * @return
      */
     List<BlogDto> showBlogByClassId(ClassificationDto classificationDto);
+
+    /**
+     *  通过用户id查询最新的5条评论
+     * @param userId
+     * @return
+     */
+    List<CommentDto> findComment(int userId);
+
+    /**
+     *  通过博客id以及用户id查询对应的博客文章信息
+     * @param blogDto
+     * @return
+     */
+    List<BlogDto> showArticle(BlogDto blogDto);
+
+    /**
+     *  通过用户id查询最近更新的博客
+     * @param userId
+     * @return
+     */
+    List<BlogDto> showBlogByNewTime(int userId);
 }

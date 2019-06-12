@@ -3,6 +3,7 @@ package com.me.service.impl;
 import com.me.dto.BlogDto;
 import com.me.dto.BlogNumDto;
 import com.me.dto.ClassificationDto;
+import com.me.dto.CommentDto;
 import com.me.mapper.BlogMapper;
 import com.me.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,4 +39,20 @@ public class BlogServiceImpl implements BlogService {
         List<BlogDto> blogDtoList = blogMapper.showBlogByClassId(classificationDto);
         return blogDtoList;
     }
+
+    public List<CommentDto> findComment(int userId) {
+        List<CommentDto> commentDtoList =  blogMapper.findComment(userId);
+        return commentDtoList;
+    }
+
+    public List<BlogDto> showArticle(BlogDto blogDto) {
+        List<BlogDto> blogDtoList = blogMapper.showArticle(blogDto);
+        return blogDtoList;
+    }
+
+    public List<BlogDto> showBlogByNewTime(int userId) {
+        List<BlogDto> blogDtoList = blogMapper.showBlogByNewTime(userId);
+        return blogDtoList;
+    }
+
 }
