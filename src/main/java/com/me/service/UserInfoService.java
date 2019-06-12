@@ -23,4 +23,10 @@ public interface UserInfoService {
      * @return
      */
     int regiester(String user_name, String email, String password);
+
+    /**
+     * 邮箱验证
+     * @param user_id
+     */
+    void updateStatus(String user_id);
 }

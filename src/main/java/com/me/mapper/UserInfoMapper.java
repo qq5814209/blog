@@ -21,4 +21,17 @@ public interface UserInfoMapper {
      * @return
      */
     int regiester(UserInfoVo userInfoVo);
+
+    /**
+     * 获取刚注册最新的id
+     * @return
+     */
+    int selectMaxId();
+
+    /**
+     * 新用户注册邮箱激活
+     * @param userid
+     */
+    void updateStatus(int userid);
+
 }
