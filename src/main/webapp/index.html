@@ -748,6 +748,7 @@
     function toShowBlog(a) {
         //获取被点击标签的文本
         type_name = a.text;
+
         inital(type_name,1, 2);
     }
 
@@ -757,6 +758,8 @@
 
     //左边类别栏搜索和展示所有信息
     function inital(str,currentPage,pageSize) {
+        $("#btns").find("button").remove();
+        $("#feedlist_id").empty("");
         $.ajax({
             type: 'POST',
             url: "/getBlogsByTypeName",
@@ -772,14 +775,14 @@
                 //循环
                 var tabObj2 = $("#feedlist_id");
                 tabObj2.empty();
-                $(data).each(function (index,item) {
+                for (var i = 0; i < data.list.length; i++) {
                     var trHtml2 = "  <li class=\"clearfix\" data-type=\"blog\" data-id=\"90632901\" shown-time=\"1559560460\">\n" +
                         "                        <div class=\"list_con\">\n" +
                         "                        <div class=\"title\">\n" +
                         "                        <h2>\n" +
                         "                        <a href=\"#\" target=\"_blank\"\n" +
-                        "                    data-track-click=\"{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901,career,index_0&quot;}\" onclick='toJump("+item.user_id+","+item.blog_id+")'>\n" +
-                        "                        "+item.blog_title+"</a>\n" +
+                        "                    data-track-click=\"{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901,career,index_0&quot;}\" onclick=toJump(" + data.list[i].user_id + "," + data.list[i].blog_id + ")>\n" +
+                        "                        " + data.list[i].blog_title + "</a>\n" +
                         "                    </h2>\n" +
                         "                    <div class=\"close_tag\">\n" +
                         "                        <div class=\"unin_reason_dialog_wrapper\">\n" +
@@ -807,7 +810,7 @@
                         "                        </div>\n" +
                         "                        </div>\n" +
                         "                        </div>\n" +
-                        "                        <div class=\"summary oneline\">"+item.blog_content+" </div>" +
+                        "                        <div class=\"summary oneline\">" + data.list[i].blog_content + " </div>" +
                         "                    <dl class=\"list_userbar\">\n" +
                         "                        <dt>\n" +
                         "                        <a href=\"#\" target=\"_blank\" class=\"user_img\">\n" +
@@ -816,7 +819,7 @@
                         "                        </dt>\n" +
                         "                        <dd class=\"name\">\n" +
                         "                        <a href=\"#\" target=\"_blank\">\n" +
-                        "                         "+item.name+" </a>\n" +
+                        "                         " + data.list[i].name + " </a>\n" +
                         "                        </dd>\n" +
                         "                        <div class=\"interval\"></div>\n" +
                         // "                        <dd class=\"tag\">\n" +
@@ -825,14 +828,14 @@
                         // "                        </dd>\n" +
                         "                        <div class=\"interval\"></div>\n" +
                         "                        <dd class=\"time\">\n" +
-                        "                        "+item.create_time+"\n" +
+                        "                        " + data.list[i].create_time + "\n" +
                         "                    </dd>\n" +
                         "                    <div class=\"interactive floatR\">\n" +
                         "                    <dd class=\"read_num\">\n" +
                         "                        <a href=\"#\"\n" +
                         "                    data-track-click=\"{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901,career,index_0&quot;}\">\n" +
                         "                        <span class=\"text\">阅读数</span>\n" +
-                        "                        <span class=\"num\">"+item.bnumber+"</span>\n" +
+                        "                        <span class=\"num\">" + data.list[i].bnumber + "</span>\n" +
                         "                        </a>\n" +
                         "                        </dd>\n" +
                         "                        <div class=\"interval\"></div>\n" +
@@ -841,7 +844,7 @@
                         "                    target=\"_blank\"\n" +
                         "                    data-track-click=\"{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901#commentBox,career,index_0&quot;}\">\n" +
                         "                        <span class=\"text\">评论数 </span>\n" +
-                        "                        <span class=\"num\">"+item.cnumber+"</span>\n" +
+                        "                        <span class=\"num\">" + data.list[i].cnumber + "</span>\n" +
                         "                        </a>\n" +
                         "                        </dd>\n" +
                         "                        </div>\n" +
@@ -849,35 +852,35 @@
                         "                        </div>\n" +
                         "                        </li>";
                     tabObj2.append(trHtml2);
-                });
+                }
 
                 //动态生成页数
-                for (var i = 0; i < item.lastPage; i++) {
+                for (var i = 0; i < data.pages; i++) {
                     if (i == 0) {
                         //首页
-                        var buttonFirst = $("<button onclick='goNormal(" + item.firstPage + ")' class='btn-primary'>首页</button>");
+                        var buttonFirst = $("<button onclick='goNormal(" + data.firstPage + ")' class='btn-primary'>首页</button>");
                         //是否存有上页
-                        if (item.pageNum == 1) {
-                            var buttonPrep = $("<button onclick='goNormal(" + item.prePage + ")' class=\"btn-primary\" disabled='disabled'>上一页</button>")
+                        if (data.pageNum == 1) {
+                            var buttonPrep = $("<button onclick='goNormal(" + data.prePage + ")' class=\"btn-primary\" disabled='disabled'>上一页</button>")
                         } else {
-                            var buttonPrep = $("<button onclick='goNormal(" + item.prePage + ")' class=\"btn-primary\">上一页</button>")
+                            var buttonPrep = $("<button onclick='goNormal(" + data.prePage + ")' class=\"btn-primary\">上一页</button>")
                         }
                         $("#btns").append(buttonFirst);
                         $("#btns").append(buttonPrep);
                     }
-                    if (i == item.pageNum - 1) {
+                    if (i == data.pageNum - 1) {
                         var button = $("<button onclick='goNormal(" + (i + 1) + ")' class=\"btn-success\">" + (i + 1) + "</button>")
                     } else {
                         var button = $("<button onclick='goNormal(" + (i + 1) + ")' class=\"btn-primary\">" + (i + 1) + "</button>")
                     }
                     $("#btns").append(button);
-                    if (i == item.lastPage - 1) {
+                    if (i == data.lastPage - 1) {
                         //尾页
-                        var buttonEnd = $("<button onclick='goNormal(" + item.lastPage + ")' class=\"btn-primary\">尾页</button>");
-                        if (item.pageNum == item.lastPage) {
-                            var buttonNext = $("<button onclick='goNormal(" + item.nextPage + ")' class=\"btn-primary\" disabled='disabled'>下一页</button>")
+                        var buttonEnd = $("<button onclick='goNormal(" + data.lastPage + ")' class=\"btn-primary\">尾页</button>");
+                        if (data.pageNum == data.lastPage) {
+                            var buttonNext = $("<button onclick='goNormal(" + data.nextPage + ")' class=\"btn-primary\" disabled='disabled'>下一页</button>")
                         } else {
-                            var buttonNext = $("<button onclick='goNormal(" + item.nextPage + ")' class=\"btn-primary\">下一页</button>")
+                            var buttonNext = $("<button onclick='goNormal(" + data.nextPage + ")' class=\"btn-primary\">下一页</button>")
                         }
                         $("#btns").append(buttonNext);
                         $("#btns").append(buttonEnd);
@@ -901,14 +904,14 @@
 
 
     function goto() {
-        $("#tab tr:not(:first)").empty("");
+        $("#feedlist_id").empty("");
         $("#btns").find("button").remove();
         inital(str,$("#t").val(), 2);
     }
 
 
     function goNormal(n) {
-        $("#tab tr:not(:first)").empty("");
+        $("#feedlist_id").empty("");
         $("#btns").find("button").remove();
         inital(str,n, 2);
     }

@@ -28,8 +28,8 @@ public class InquireController {
     public Object getBlogsByTypeName(@RequestBody(required = false) ShowVo showVo){
         PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
         List<ShowDto> showDtos = inquireService.getBlogsByTypeName(showVo);
-        PageInfo<ShowDto> studentPageInfo = new PageInfo<ShowDto>(showDtos);
-        return showDtos;
+        PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
+        return showDtoPageInfo;
     }
 
     /*
