@@ -1,0 +1,15 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.mapper.MessageMapper">
+
+    <!--查询评论消息的信息-->
+    <select id="selectCommentByUserId" parameterType="int" resultType="com.me.dto.InformCommentDto">
+        SELECT * FROM (
+        SELECT tb2.*,im.informComment_id,im.status FROM
+        (SELECT tb1.comment_id,tb1.user_id,tb1.blog_id,tb1.comment_content,tb1.comment_time, u.name FROM
+        (SELECT * FROM comment1 WHERE comment_id IN
+        (SELECT comment_id FROM informcomment WHERE user_id = #{userId})) tb1 , userinfo u WHERE tb1.user_id = u.user_id) tb2 INNER JOIN informcomment im ON tb2.comment_id = im.comment_id ) a1,
+        (SELECT COUNT(*) comments FROM informcomment WHERE user_id = #{userId} AND STATUS = 0 ) a2
+    </select>
+</mapper>

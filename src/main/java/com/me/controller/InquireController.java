@@ -21,7 +21,7 @@ public class InquireController {
     InquireService inquireService;
 
     /*
-    * 根据博客类别名查询blog
+    * 根据博客类别名查询blog或者查所有blog
     * */
     @ResponseBody
     @RequestMapping("getBlogsByTypeName")
@@ -37,13 +37,15 @@ public class InquireController {
     * */
     @ResponseBody
     @RequestMapping("getBlogsByUserId")
-    public Object getBlogsByUserId(HttpSession session){
+    public Object getBlogsByUserId(@RequestBody(required = false)ShowVo showVo ,HttpSession session){
         UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
-        ShowVo showVo = new ShowVo();
         showVo.setUser_id(user_id);
-        List<ShowDto> showDtos = inquireService.getBlogsByTypeName(showVo);
-        return showDtos;
+        PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
+        List<ShowDto> showDtos = inquireService.getBlogsByUserId(showVo);
+        PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
+        System.out.println(showDtoPageInfo);
+        return showDtoPageInfo;
     }
 
     /*
@@ -104,18 +106,21 @@ public class InquireController {
     /*
      * 搜索框搜索
      * */
-//    @ResponseBody
-//    @RequestMapping("searchBlogs")
-//    public Object searchBlogs(@RequestBody(required = false) ShowVo showVo){
-//        List<ShowDto> showDtos = inquireService.searchBlogs(showVo);
-//        return showDtos;
-//    }
-
     @ResponseBody
     @RequestMapping("searchBlogs")
-    public Object searchBlogs(@RequestBody(required = false) String str){
-        List<ShowDto> showDtos = inquireService.searchBlogs(str);
-        return showDtos;
+    public Object searchBlogs(@RequestBody(required = false) ShowVo showVo){
+
+        PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
+        List<ShowDto> showDtos = inquireService.searchBlogs(showVo);
+        PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
+        return showDtoPageInfo;
     }
+
+//    @ResponseBody
+//    @RequestMapping("searchBlogs")
+//    public Object searchBlogs(@RequestBody(required = false) String str){
+//        List<ShowDto> showDtos = inquireService.searchBlogs(str);
+//        return showDtos;
+//    }
 
 }
