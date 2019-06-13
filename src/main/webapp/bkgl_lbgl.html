@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="categorie-content">
-                <ul class="categorieList" style="display:block" id="categoryUl">
+                <ul class="categorieList" style="display:block" id="feedlist_id">
                     <!--<li class="d-flex title">-->
                         <!--<div class="sort">排序</div>-->
                         <!--<div class="categorie">类别</div>-->
@@ -56,7 +56,7 @@
                             <!--</button>-->
                         <!--</div>-->
                         <!--<div class="categorie d-flex align-items-center">-->
-                            <!--<input type="text" class="edit-box" name="" data-value="Java" value="Java" disabled="">-->
+                            <!--<input type="text" class="edit-box" name="" data-value="23" value="23" disabled="">-->
                             <!--<span class="opt-box">-->
                                             <!--<a class="btn-online c-blue bd-right btn-save" data-type="save">保存</a>-->
                                             <!--<a class="btn-online c-blue btn-cancle-edit">取消</a>-->
@@ -77,41 +77,7 @@
                                                       <!--href="https://blog.csdn.net/qq_24224509/article/category/9007868">0</a>-->
                         <!--</div>-->
                     <!--</li>-->
-                    <!--<li class="d-flex align-items-center" data-id="9007870">-->
-                        <!--<div class="sort d-flex flex-column justify-content-center">-->
-                            <!--<button class="btn-online btn-sort btn-sort-up" title="上移" data-type="up">-->
-                                <!--<svg class="icon icon-sort" data-type="up">-->
-                                    <!--<polygon data-type="up" class="st0" points="5,0 0,6 10,6 "></polygon>-->
-                                <!--</svg>-->
-                            <!--</button>-->
-                            <!--<button class="btn-online btn-sort btn-sort-down" title="下移" data-type="down">-->
-                                <!--<svg class="icon icon-sort" data-type="down">-->
-                                    <!--<polygon data-type="down" class="st0" points="5,6 10,0 0,0 "></polygon>-->
-                                <!--</svg>-->
-                            <!--</button>-->
-                        <!--</div>-->
-                        <!--<div class="categorie d-flex align-items-center">-->
-                            <!--<input type="text" class="edit-box" name="" data-value="c++" value="c++" disabled="">-->
-                            <!--<span class="opt-box">-->
-                                            <!--<a class="btn-online c-blue bd-right btn-save" data-type="save">保存</a>-->
-                                            <!--<a class="btn-online c-blue btn-cancle-edit">取消</a>-->
-                                        <!--</span>-->
-                        <!--</div>-->
-                        <!--<div class="operate d-flex justify-content-center">-->
-                            <!--<a class="btn-online c-blue bd-right btn-edit" data-type="top" style="">置顶</a>-->
-                            <!--<a class="btn-online c-blue bd-right btn-edit" data-type="edit">编辑</a>-->
-                            <!--<a class="btn-online c-red btn-delete" data-type="delete">删除</a>-->
-                        <!--</div>-->
-                        <!--<div class="isshow">-->
-                            <!--<div class="switch-box">-->
-                                <!--<input type="checkbox" class="form-control form-control-sm chk-switch" checked="">-->
-                                <!--<label class="lab-switch" data-type="showhide"></label>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="article-count">-->
-                            <!--<a target="_blank" href="#">0</a>-->
-                        <!--</div>-->
-                    <!--</li>-->
+
 
 
                 </ul>
@@ -150,162 +116,8 @@
 
     $("#csdn-toolbar").load("module/bk_header.html");
 
-    function showBlogs() {
-        $.ajax({
-            type: 'POST',
-            url: "/getBlogsByUserId",
-            contentType:"application/json",
-            success: function(data) {
-            console.log(data);
-            var tabObj2 = $("#categoryUl");
-            tabObj2.empty();
-            $(data).each(function (index, item) {
-                var trHtml2 = "  <li class=\"clearfix\" data-type=\"blog\" data-id=\"90632901\" shown-time=\"1559560460\">\n" +
-                    "                        <div class=\"list_con\">\n" +
-                    "                        <div class=\"title\">\n" +
-                    "                        <h2>\n" +
-                    "                        <a href=\"#\" target=\"_blank\"\n" +
-                    "                    data-track-click=\"{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901,career,index_0&quot;}\">\n" +
-                    "                        " + item.blog_title + " </a>\n" +
-                    "                    </h2>\n" +
-                    "                    <div class=\"close_tag\">\n" +
-                    "                        <div class=\"unin_reason_dialog_wrapper\">\n" +
-                    "                        <i class=\"icon-close\"></i>\n" +
-                    "                        <div class=\"unin_reason_dialog\">\n" +
-                    "                        <h3>选择理由，精准屏蔽</h3>\n" +
-                    "                    <ul>\n" +
-                    "                    <li class=\"unin_item csdn-tracking-statistics\" data-poputype=\"feed\"\n" +
-                    "                    data-feed-show=\"false\" data-dsm=\"post\" data-mod=\"popu_462\">\n" +
-                    "                        <a>推荐不准: 最新文章</a>\n" +
-                    "                    </li>\n" +
-                    "                    <br>\n" +
-                    "                    <li class=\"unin_item csdn-tracking-statistics\" data-poputype=\"feed\"\n" +
-                    "                    data-feed-show=\"false\" data-dsm=\"post\" data-mod=\"popu_462\">\n" +
-                    "                        <a> 旧闻、重复 </a>\n" +
-                    "                    </li>\n" +
-                    "                    <br>\n" +
-                    "                    <li class=\"unin_item csdn-tracking-statistics\" data-poputype=\"feed\"\n" +
-                    "                    data-feed-show=\"false\" data-dsm=\"post\" data-mod=\"popu_462\">\n" +
-                    "                        <a> 内容质量差 </a>\n" +
-                    "                        </li>\n" +
-                    "                        <br>\n" +
-                    "                        </ul>\n" +
-                    "                        </div>\n" +
-                    "                        </div>\n" +
-                    "                        </div>\n" +
-                    "                        </div>\n" +
-                    "                        <div class=\"summary oneline\">" + item.blog_content + " </div>" +
-                    "                    <dl class=\"list_userbar\">\n" +
-                    "                        <dt>\n" +
-                    "                        <a href=\"#\" target=\"_blank\" class=\"user_img\">\n" +
-                    "                        <img src=\"static/1_mijuoffer\" alt=\"mijuoffer\" title=\"mijuoffer\">\n" +
-                    "                        </a>\n" +
-                    "                        </dt>\n" +
-                    "                        <dd class=\"name\">\n" +
-                    "                        <a href=\"#\" target=\"_blank\">\n" +
-                    "                         " + item.name + " </a>\n" +
-                    "                        </dd>\n" +
-                    "                        <div class=\"interval\"></div>\n" +
-                    // "                        <dd class=\"tag\">\n" +
-                    // "                        <a href=\"#\" target=\"_blank\">\n" +
-                    // "                        "+item.name+" </a>\n" +
-                    // "                        </dd>\n" +
-                    "                        <div class=\"interval\"></div>\n" +
-                    "                        <dd class=\"time\">\n" +
-                    "                        " + item.create_time + "\n" +
-                    "                    </dd>\n" +
-                    "                    <div class=\"interactive floatR\">\n" +
-                    "                    <dd class=\"read_num\">\n" +
-                    "                        <a href=\"#\"\n" +
-                    "                    data-track-click=\"{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901,career,index_0&quot;}\">\n" +
-                    "                        <span class=\"text\">阅读数</span>\n" +
-                    "                        <span class=\"num\">" + item.bnumber + "</span>\n" +
-                    "                        </a>\n" +
-                    "                        </dd>\n" +
-                    "                        <div class=\"interval\"></div>\n" +
-                    "                        <dd class=\"common_num \">\n" +
-                    "                        <a href=\"#\"\n" +
-                    "                    target=\"_blank\"\n" +
-                    "                    data-track-click=\"{&quot;mod&quot;:&quot;popu_775&quot;,&quot;con&quot;:&quot;,https://blog.csdn.net/mijuoffer/article/details/90632901#commentBox,career,index_0&quot;}\">\n" +
-                    "                        <span class=\"text\">评论数 </span>\n" +
-                    "                        <span class=\"num\">" + item.cnumber + "</span>\n" +
-                    "                        </a>\n" +
-                    "                        </dd>\n" +
-                    "                        </div>\n" +
-                    "                        </dl>\n" +
-                    "                        </div>\n" +
-                    "                        </li>";
-                tabObj2.append(trHtml2);
-            });
-        }
-    }
-
-    function initial() {
-        $.ajax({
-            type: 'POST',
-            url: "/allPersonalCategory",
-            contentType:"application/json",
-            success: function(data){
-                console.log(data);
-
-                var tabObj2 = $("#categoryUl");
-                tabObj2.empty();
-                $(data).each(function (index,item) {
-                        var trHtml2 ="  <li class=\"d-flex title\">\n" +
-                            "                    <div class=\"sort\">排序</div>\n" +
-                            "                    <div class=\"categorie\">类别</div>\n" +
-                            "                    <div class=\"operate\">操作</div>\n" +
-                            "                    <div class=\"isshow\">前台是否显示</div>\n" +
-                            "                    <div class=\"article-count\">文章数</div>\n" +
-                            "                    </li>\n" +
-                            "                    <li class=\"d-flex align-items-center\" data-id=\"9007868\">\n" +
-                            "                    <div class=\"sort d-flex flex-column justify-content-center\">\n" +
-                            "                    <button class=\"btn-online btn-sort btn-sort-up\" title=\"上移\" data-type=\"up\">\n" +
-                            "                    <svg class=\"icon icon-sort\" data-type=\"up\">\n" +
-                            "                    <polygon data-type=\"up\" class=\"st0\" points=\"5,0 0,6 10,6 \"></polygon>\n" +
-                            "                    </svg>\n" +
-                            "                    </button>\n" +
-                            "                    <button class=\"btn-online btn-sort btn-sort-down\" title=\"下移\" data-type=\"down\">\n" +
-                            "                    <svg class=\"icon icon-sort\" data-type=\"down\">\n" +
-                            "                    <polygon data-type=\"down\" class=\"st0\" points=\"5,6 10,0 0,0 \"></polygon>\n" +
-                            "                    </svg>\n" +
-                            "                    </button>\n" +
-                            "                    </div>\n" +
-                            "                    <div class=\"categorie d-flex align-items-center\">\n" +
-                            "                    <input type=\"text\" class=\"edit-box\" name=\"\" data-value=\"Java\" value=\"Java\" disabled=\"\">\n"+
-                            "                    <span class=\"opt-box\">\n"+
-                            "                    <a class=\"btn-online c-blue bd-right btn-save\" data-type=\"save\">保存</a>\n" +
-                            "                    <a class=\"btn-online c-blue btn-cancle-edit\">取消</a>\n"+
-                            "                    </span>\n"+
-                            "                    </div>\n"+
-                            "                    <div class=\"operate d-flex justify-content-center\">\n" +
-                            "                    <a class=\"btn-online c-blue bd-right btn-edit\" data-type=\"top\" style=\"display: none;\">置顶</a>\n" +
-                            "                    <a class=\"btn-online c-blue bd-right btn-edit\" data-type=\"edit\">编辑</a>\n" +
-                            "                    <a class=\"btn-online c-red btn-delete\" data-type=\"delete\">删除</a>\n" +
-                            "                    </div>\n" +
-                            "                    <div class=\"isshow\">\n" +
-                            "                    <div class=\"switch-box\">\n" +
-                            "                    <input type=\"checkbox\" class=\"form-control form-control-sm chk-switch\" checked=\"\">\n" +
-                            "                    <label class=\"lab-switch\" data-type=\"showhide\"></label>\n" +
-                            "                    </div>\n" +
-                            "                    </div>\n" +
-                            "                    <div class=\"article-count\"><a target=\"_blank\"\n" +
-                            "                href=\"https://blog.csdn.net/qq_24224509/article/category/9007868\">0</a>\n" +
-                            "                    </div>\n" +
-                            "                    </li>";
-                    tabObj2.append(trHtml2);
-                });
-
-            },
-            error:function (data) {
-                console.error(data);
-            },
-            dataType: "json"
-        });
-    }
-    initial();
-
-
+    var ptid=new Array();
+    var pt_id;
     function addButton() {
         var str = $("#addCategory").val();
         alert(str);
@@ -319,11 +131,8 @@
 
             }),
             success: function(data){
-
-                if(date =="true") {
-                    alert("添加成功");
-                }
-                initial();
+                    alert("添加成功")
+                begin(1,10);
             },
             error:function (data) {
                 console.error(data);
@@ -333,7 +142,136 @@
         });
 
     }
-        }
-    
+
+
+    // $(function () {
+    //
+    // });
+
+    begin(1,10);
+
+    function begin(currentPage,pageSize) {
+        $("#btns").find("button").remove();
+        $("#feedlist_id").empty("");
+        $.ajax({
+            type: 'POST',
+            url: "allPersonalCategory",
+            async: false,
+            contentType:"application/json;charse=UTF-8",
+            data: JSON.stringify({
+                "currentPage":currentPage,
+                "pageSize":pageSize
+            }),
+            success: function(data){
+                console.log(data);
+                //循环
+                var tabObj2 = $("#feedlist_id");
+
+                var str2 = " <li class=\"d-flex title\">\n" +
+                "                        <div class=\"sort\">排序</div>\n" +
+                "                        <div class=\"categorie\">类别</div>\n" +
+                "                        <div class=\"operate\">操作</div>\n" +
+                "                        <div class=\"isshow\">前台是否显示</div>\n" +
+                "                        <div class=\"article-count\">文章数</div>\n" +
+                "                    </li>\n" ;
+
+
+                tabObj2.empty();
+                tabObj2.append(str2);
+                for (var i = 0; i < data.list.length; i++) {
+                    ptid[i] = data.list[i].pt_id;
+                    var trHtml2 =
+                        "                    <li class=\"d-flex align-items-center\" data-id=\"9007868\" >\n" +
+                        "                        <div class=\"sort d-flex flex-column justify-content-center\">\n" +
+                        "                            <button class=\"btn-online btn-sort btn-sort-up\" title=\"上移\" data-type=\"up\">\n" +
+                        "                                <svg class=\"icon icon-sort\" data-type=\"up\">\n" +
+                        "                                    <polygon data-type=\"up\" class=\"st0\" points=\"5,0 0,6 10,6 \"></polygon>\n" +
+                        "                                </svg>\n" +
+                        "                            </button>\n" +
+                        "                            <button class=\"btn-online btn-sort btn-sort-down\" title=\"下移\" data-type=\"down\">\n" +
+                        "                                <svg class=\"icon icon-sort\" data-type=\"down\">\n" +
+                        "                                    <polygon data-type=\"down\" class=\"st0\" points=\"5,6 10,0 0,0 \"></polygon>\n" +
+                        "                                </svg>\n" +
+                        "                            </button>\n" +
+                        "                        </div>\n" +
+                        "                        <div class=\"categorie d-flex align-items-center\">\n" +
+                        "                            <input type=\"text\" class=\"edit-box\" name=\"\" data-value="+data.list[i].type_name+" value="+data.list[i].type_name+" disabled=\"\" id='myEdit"+i+"'>\n" +
+                        "                            <span class=\"opt-box\">\n" +
+                        "                                            <a class=\"btn-online c-blue bd-right btn-save\" data-type=\"save\" onclick='baoCun()'>保存</a>\n" +
+                        "                                            <a class=\"btn-online c-blue btn-cancle-edit\" onclick='quXiao()'>取消</a>\n" +
+                        "                                        </span>\n" +
+                        "                        </div>\n" +
+                        "                        <div class=\"operate d-flex justify-content-center\">\n" +
+                        "                            <a class=\"btn-online c-blue bd-right btn-edit\" data-type=\"top\" style=\"display: none;\">置顶</a>\n" +
+                        "                            <a class=\"btn-online c-blue bd-right btn-edit\" data-type=\"edit\" id='Edit"+i+"' onclick='btns(this)'>编辑</a>\n" +
+                        "                            <a class=\"btn-online c-red btn-delete\" data-type=\"delete\">删除</a>\n" +
+                        "                        </div>\n" +
+                        "                        <div class=\"isshow\">\n" +
+                        "                            <div class=\"switch-box\">\n" +
+                        "                                <input type=\"checkbox\" class=\"form-control form-control-sm chk-switch\" checked=\"\">\n" +
+                        "                                <label class=\"lab-switch\" data-type=\"showhide\"></label>\n" +
+                        "                            </div>\n" +
+                        "                        </div>\n" +
+                        "                        <div class=\"article-count\"><a target=\"_blank\"\n" +
+                        "                                                      href=\"https://blog.csdn.net/qq_24224509/article/category/9007868\">"+data.list[i].wznumber+"</a>\n" +
+                        "                        </div>\n" +
+                        "                    </li>";
+                    tabObj2.append(trHtml2);
+                }
+            },
+            error:function (data) {
+                console.error(data);
+            },
+            dataType: "json"
+        });
+
+    }
+
+
+        var str2="";
+        var inputId;
+       function btns(a) {
+         var val = a.id;
+         var val = val.split("t")[1];
+         pt_id = ptid[val];
+         inputId = $(eval("myEdit"+val)).addClass("activity");
+         inputId.removeAttr("disabled");
+       }
+
+      function baoCun() {
+          str2 = inputId.val();
+          alert(str2)
+           alert("ga");
+          $.ajax({
+              type: 'POST',
+              url: "/updatePersonalCategory",
+              contentType:"application/json;charse=UTF-8",
+              data: JSON.stringify({
+                  "type_name":str2,
+                  "pt_id":pt_id
+              }),
+              success: function(data){
+                  alert("修改成功")
+                  if(data == "true") {
+                      inputId.addClass("activity").attr("disabled");
+                  }
+              },
+              error:function (data) {
+                  console.error(data);
+                  alert("修改失敗")
+              },
+              dataType: "json"
+          });
+      }
+
+    var flag = "true";
+    function quXiao() {
+        alert("智障")
+           if(flag=="true"){
+               inputId.addClass("activity").attr("disabled");
+           }
+    }
+
+
 </script>
 </html>

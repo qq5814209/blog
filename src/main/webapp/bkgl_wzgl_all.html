@@ -186,9 +186,8 @@
         begin(1,2);
     });
 
-    function showBlogs() {
-        begin(1,2);
-    }
+
+
 
     function begin(currentPage,pageSize) {
         $("#btns").find("button").remove();
@@ -208,6 +207,7 @@
                 var tabObj2 = $("#feedlist_id");
                 tabObj2.empty();
                 for (var i = 0; i < data.list.length; i++) {
+
                     var trHtml2 = " <div class=\"article-list-item\">\n" +
                         "        <div class=\"list-item-title\">\n" +
                         "\n" +
