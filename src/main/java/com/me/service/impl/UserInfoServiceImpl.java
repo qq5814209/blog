@@ -3,6 +3,8 @@ package com.me.service.impl;
 import com.me.mapper.UserInfoMapper;
 import com.me.pojo.UserInfo;
 import com.me.service.UserInfoService;
+import com.me.util.BaseResult;
+import com.me.util.SendJMail;
 import com.me.vo.UserInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class UserInfoServiceImpl implements UserInfoService {
 
     @Autowired
-    UserInfoMapper userInfoMapper;
+    private UserInfoMapper userInfoMapper;
 
     /**
      * 登录
@@ -23,14 +25,14 @@ public class UserInfoServiceImpl implements UserInfoService {
      * @return
      */
     public UserInfo login(String user, String password) {
-        UserInfo userInfo = new UserInfo();
+        UserInfo userinfo = new UserInfo();
         if(user.contains("@")){
-            userInfo.setEmail(user); //邮箱登录
+            userinfo.setEmail(user); //邮箱登录
         }else {
-            userInfo.setUser_name(user); //账号登录
+            userinfo.setUser_name(user); //账号登录
         }
-        userInfo.setPassword(password);
-        return userInfoMapper.login(userInfo);
+        userinfo.setPassword(password);
+        return userInfoMapper.login(userinfo);
     }
 
     /**
@@ -45,8 +47,23 @@ public class UserInfoServiceImpl implements UserInfoService {
         userInfoVo.setUser_name(user_name);
         userInfoVo.setEmail(email);
         userInfoVo.setPassword(password);
-        return userInfoMapper.regiester(userInfoVo);
+        //插入新数据
+        int i = userInfoMapper.regiester(userInfoVo);
+        //查询最新user_id
+        int newUserId = userInfoMapper.selectMaxId();
+        //发送邮件
+        String emailMsg = "注册成功，请<a href='http://localhost:8080/activate?user_id="+newUserId+"'>激活</a>后登录";
+        SendJMail.sendMail(email, emailMsg);
+        return i;
     }
 
+    /**
+     * 新用户注册邮箱激活
+     * @param user_id
+     */
+    public void updateStatus(String user_id) {
+        int userid = Integer.parseInt(user_id);
+        userInfoMapper.updateStatus(userid);
+    }
 
 }

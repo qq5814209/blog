@@ -1,5 +1,6 @@
 package com.me.controller;
 
+import com.me.pojo.Favorites;
 import com.me.pojo.UserInfo;
 import com.me.service.PersonalService;
 import com.me.dto.UserInfoDto;
@@ -37,8 +38,7 @@ public class PersonalController {
         UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
 
         int userId = userInfo.getUser_id();
-        UserInfoDto userInfoDto = personalService.selectCareByAttentionsAndFans(userId);
-        return userInfoDto;
+        return personalService.selectUserInfoAndAttentionsAndFans(userId);
     }
 
     /**
@@ -230,5 +230,57 @@ public class PersonalController {
         userInfo.setUser_id(user_id);
         return personalService.updateUserInfo(userInfo);
     }
+
+    /**
+     * 添加收藏夹
+     * @param session
+     * @param favorites
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/insertFavorites", method = RequestMethod.POST)
+    public Object insertFavorites(HttpSession session, Favorites favorites){
+
+        UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        favorites.setUser_id(user_id);
+        return personalService.insertFavorites(favorites);
+    }
+
+    /**
+     * 通过收藏夹 id 查询收藏夹信息
+     * @param favoritesId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/selectFavoritesId", method = RequestMethod.POST)
+    public Object selectFavoritesId(int favoritesId){
+        return personalService.selectFavoritesId(favoritesId);
+    }
+
+    /**
+     * 修改收藏夹信息
+     * @param favorites
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/updateFavorites", method = RequestMethod.POST)
+    public Object updateFavorites(Favorites favorites){
+        return personalService.updateFavorites(favorites);
+    }
+
+    /**
+     * 删除收藏夹
+     * @param favoritesId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/deleteFavorites", method = RequestMethod.POST)
+    public Object deleteFavorites(int favoritesId){
+
+        return personalService.deleteFavorites(favoritesId);
+    }
+
+
 
 }

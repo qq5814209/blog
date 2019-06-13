@@ -1,10 +1,12 @@
 package com.me.mapper;
 
+import com.me.dto.SumDto;
 import com.me.dto.UserInfoDto;
 import com.me.pojo.Favorites;
 import com.me.pojo.UserInfo;
 import com.me.dto.FavoritesDto;
 import com.me.vo.CareVo;
+import com.me.vo.UserInfoVo;
 
 import java.util.List;
 
@@ -39,11 +41,11 @@ public interface PersonalMapper {
     List<FavoritesDto> selectFavoritesByFavoritesId(int favorites_id);
 
     /**
-     * 根据用户 id 查询粉丝数
+     * 根据用户 id 查询个人信息，其中包括粉丝数、关注数、用户的个人信息
      * @param userId
      * @return
      */
-    UserInfoDto selectCareByAttentionsAndFans(int userId);
+    UserInfoDto selectUserInfoAndAttentionsAndFans(int userId);
 
     /**
      * 根据用户id，查询该用户关注了那些用户
@@ -85,4 +87,39 @@ public interface PersonalMapper {
      * @return
      */
     int updateUserInfo(UserInfo userInfo);
+
+    /**
+     * 添加收藏夹
+     * @param favorites
+     * @return
+     */
+    int insertFavorites(Favorites favorites);
+
+    /**
+     * 通过收藏夹id查询收藏夹信息
+     * @param favoritesId
+     * @return
+     */
+    Favorites selectFavoritesId(int favoritesId);
+
+    /**
+     * 修改收藏夹信息
+     * @param favorites
+     * @return
+     */
+    int updateFavorites(Favorites favorites);
+
+    /**
+     * 删除收藏夹
+     * @param favoritesId
+     * @return
+     */
+    int deleteFavorites(int favoritesId);
+
+    /**
+     * 根据用户id统计各种信息总数量
+     * @param user_id
+     * @return
+     */
+    SumDto selectCount(int user_id);
 }
