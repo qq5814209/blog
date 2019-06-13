@@ -81,8 +81,7 @@ public class UserInfoController {
     @RequestMapping(value = "getUser_id")
     public Object getUser_id(HttpSession session){
         UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
-//        int user_id = userInfo.getUser_id();
-        int user_id = 1;
+        int user_id = userInfo.getUser_id();
         return user_id;
     }
 }

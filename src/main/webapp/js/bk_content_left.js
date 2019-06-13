@@ -76,8 +76,6 @@ function showCommentBox() {
             $("#comment-edit-box").append(b);
         },
         error:function (data) {
-            var b="<a id=\"commentsedit\"></a><div class=\"user-img\"><a href=\"javascript:void(0);\" target=\"_blank\"><img class=\"show_loginbox\" src=\"image/3_q383965374.jpg\"></a></div><form id=\"commentform\"><textarea class=\"comment-content\" name=\"comment_content\" id=\"comment_content\" placeholder=\"想对作者说点什么\"></textarea><div><div><span id=\"tip_comment\" class=\"tip\">还能输入<em>1000</em>个字符</span><input type=\"submit\" class=\"btn btn-sm btn-red btn-comment\" value=\"发表评论\"></div></div></form>\n";
-            $("#comment-edit-box").append(b);
         }
     });
 };
