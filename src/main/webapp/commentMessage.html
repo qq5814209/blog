@@ -80,7 +80,9 @@
                             <div data-v-36df9b30="" class="submit-box">
                                 <div data-v-36df9b30="" class="submit-right">
                                     <button data-v-36df9b30="" class="btn btn-cancel" onclick="cancel()">取消</button>
-                                    <button data-v-36df9b30="" class="btn btn-confirm btn-primary">确定</button>
+                                    <button data-v-36df9b30="" class="btn btn-confirm btn-primary"
+                                            onclick="confirmDelete()">确定
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -104,51 +106,107 @@
         $("#comment").attr("class", "router-link-exact-active router-link-active");
     });
     $("#foot").load("module/personal_foot.html");
+    //要删除的消息id
+    var deleteId;
+
     //打开确认删除页面
     function deleteInform(id) {
         $("#confirm").removeClass("hide");
+        deleteId = id;
     }
+
+    //确认删除消息
+    function confirmDelete() {
+        var url = "deleteInformByInformComment_id";
+        var value = {
+            "informComment_id": deleteId
+        };
+        $.post(url, value, function (data) {
+            if (data === true) {
+                window.location.reload();
+            } else {
+                alert("删除失败")
+            }
+        })
+    }
+
     //关闭确认删除页面
     function cancel() {
         $("#confirm").addClass("hide");
     }
+
+    //把消息变成已读
+    function reading(id) {
+        var url = "updateInformToReadingByInformCommentId";
+        var value = {
+            "informComment_id": id
+        };
+        $.post(url, value)
+    }
+
+    //删除所有消息
+    function deleteInformByUserIdAndAll() {
+        var url = "/deleteInformByUserIdAndAll";
+        $.post(url, function (data) {
+            if (data === true) {
+                window.location.reload();
+            } else {
+                alert("删除失败");
+            }
+        })
+    }
+
     //请求评论消息
     $(function () {
         var url = "selectCommentByUserId";
-        $.get(url,function (data) {
-            console.log(data);
-            var commentsHtml = "<span data-v-0947769e=\"\">未读消息："+$(data)[0].comments+"</span>" +
-                "                        <a data-v-0947769e=\"\" data-ref=\"msg-ul\" class=\"fr\">清空所有消息</a>";
-            $("#showComments").append(commentsHtml);
-            var pageHtml = "<li data-v-7d7fdb5b=\"\" class=\"total-page disabled\">共"+data.length+"条</li>" +
-                "                            <li data-v-7d7fdb5b=\"\" id=\"prev-page\" class=\"page-prev disabled\">上一页</li>" +
-                "                            <li data-v-7d7fdb5b=\"\" class=\"number-page active\">1</li>" +
-                "                            <li data-v-7d7fdb5b=\"\" id=\"next-page\" class=\"page-next disabled\">下一页</li>";
-            $("#showPage").append(pageHtml);
-            $(data).each(function (index, item) {
-                var commentHtml = "<li data-v-0947769e=\"\" id=\"li_1\" class=\"msg-read\">" ;
-                
-                if (item.status === 0){
-                    commentHtml += "                                <span data-v-0947769e=\"\" id=\"notice_1\" class=\"msg-type notice-active\">博客</span>" ;
-                } else {
-                    commentHtml += "                                <span data-v-0947769e=\"\" id=\"notice_1\" class=\"msg-type\">博客</span>" ;
-                }
+        $.get(url, function (data) {
+            var commentsHtml;
+            var pageHtml;
+            if (data.length === 0 || data === null) {
+                commentsHtml = "<span data-v-0947769e=\"\">未读消息：0</span>" +
+                    "                        <a data-v-0947769e=\"\" data-ref=\"msg-ul\" class=\"fr\" onclick='deleteInformByUserIdAndAll()'>清空所有消息</a>";
+                $("#showComments").append(commentsHtml);
+                pageHtml = "<li data-v-7d7fdb5b=\"\" class=\"total-page disabled\">共0条</li>" +
+                    "                            <li data-v-7d7fdb5b=\"\" id=\"prev-page\" class=\"page-prev disabled\">上一页</li>" +
+                    "                            <li data-v-7d7fdb5b=\"\" class=\"number-page active\">1</li>" +
+                    "                            <li data-v-7d7fdb5b=\"\" id=\"next-page\" class=\"page-next disabled\">下一页</li>";
+                $("#showPage").append(pageHtml);
+            } else {
 
-                commentHtml += "                                <span data-v-0947769e=\"\" class=\"msg-title\">" +
-                    "                                    <a target=\"_blank\" href=\"#\">"+item.name+"</a>评论了你的博文" +
-                    "                                </span>" +
-                    "                                <a data-v-0947769e=\"\" data-ref=\"li_1\" data-id=\"422562\" class=\"btn-rush csdnc-trash\" onclick=\"deleteInform(2)\">" +
-                    "                                    删除" +
-                    "                                </a>" +
-                    "                                <p data-v-0947769e=\"\" class=\"msg-text clearfix\">" +
-                    "                                    <span data-v-0947769e=\"\" class=\"bb-span-wrap\">" +
-                    "                                        <a href=\"#\" target=\"_blank\">"+item.comment_content+"</a>" +
-                    "                                    </span>" +
-                    "                                    <em data-v-0947769e=\"\" class=\"fr\">"+item.comment_time+"</em>" +
-                    "                                </p>" +
-                    "                            </li>";
-                $("#showComment").append(commentHtml);
-            });
+
+                commentsHtml = "<span data-v-0947769e=\"\">未读消息：" + $(data)[0].comments + "</span>" +
+                    "                        <a data-v-0947769e=\"\" data-ref=\"msg-ul\" class=\"fr\" onclick='deleteInformByUserIdAndAll()'>清空所有消息</a>";
+                $("#showComments").append(commentsHtml);
+                pageHtml = "<li data-v-7d7fdb5b=\"\" class=\"total-page disabled\">共" + data.length + "条</li>" +
+                    "                            <li data-v-7d7fdb5b=\"\" id=\"prev-page\" class=\"page-prev disabled\">上一页</li>" +
+                    "                            <li data-v-7d7fdb5b=\"\" class=\"number-page active\">1</li>" +
+                    "                            <li data-v-7d7fdb5b=\"\" id=\"next-page\" class=\"page-next disabled\">下一页</li>";
+                $("#showPage").append(pageHtml);
+                $(data).each(function (index, item) {
+                    var commentHtml = "<li data-v-0947769e=\"\" id=\"li_1\" class=\"msg-read\">";
+
+                    if (item.status === 0) {
+                        commentHtml += "                                <span data-v-0947769e=\"\" id=\"notice_1\" class=\"msg-type notice-active\">博客</span>";
+                    } else {
+                        commentHtml += "                                <span data-v-0947769e=\"\" id=\"notice_1\" class=\"msg-type\">博客</span>";
+                    }
+
+                    commentHtml += "                                <span data-v-0947769e=\"\" class=\"msg-title\">" +
+                        "                                    <a target=\"_blank\" href=\"#\" onclick='reading(" + item.informComment_id + ")'>" + item.name + "</a>评论了你的博文" +
+                        "                                </span>" +
+                        "                                <a data-v-0947769e=\"\" data-ref=\"li_1\" data-id=\"422562\" class=\"btn-rush csdnc-trash\" onclick=\"deleteInform(" + item.informComment_id + ")\">" +
+                        "                                    删除" +
+                        "                                </a>" +
+                        "                                <p data-v-0947769e=\"\" class=\"msg-text clearfix\">" +
+                        "                                    <span data-v-0947769e=\"\" class=\"bb-span-wrap\" onclick='reading(" + item.informComment_id + ")'>" +
+                        "                                        <a href=\"#\" target=\"_blank\" >" + item.comment_content + "</a>" +
+                        "                                    </span>" +
+                        "                                    <em data-v-0947769e=\"\" class=\"fr\">" + item.comment_time + "</em>" +
+                        "                                </p>" +
+                        "                            </li>";
+                    $("#showComment").append(commentHtml);
+                });
+            }
         });
     })
 
