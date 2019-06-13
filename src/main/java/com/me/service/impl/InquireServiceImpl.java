@@ -64,13 +64,6 @@ public class InquireServiceImpl implements InquireService{
         return false;
     }
 
-//    public List<ShowDto> searchBlogs(String str) {
-//        str = "%"+str+"%";
-//        List<ShowDto> showDtos = inquireMapper.searchBlogs(str);
-//        return showDtos;
-//    }
-
-
 
     public List<ShowDto> searchBlogs(ShowVo showvo) {
         showvo.setBlog_content("%"+showvo.getType_name()+"%");
@@ -81,6 +74,15 @@ public class InquireServiceImpl implements InquireService{
             showDto.setBlog_content(str);
         }
         return showDtos;
+    }
+
+    @Transactional
+    public boolean deleteBlogbyBlog_id(ShowVo showVo) {
+        int count = inquireMapper.deleteBlogbyBlog_id(showVo);
+        if(count>0) {
+            return true;
+        }
+        return false;
     }
 
 
