@@ -2,13 +2,18 @@ package com.me.controller;
 
 import com.me.pojo.UserInfo;
 import com.me.service.UserInfoService;
+import com.me.util.CaptchaUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 /**
  * 查询用户信息、修改用户信息用controller
@@ -71,7 +76,18 @@ public class UserInfoController {
         session.invalidate();
         return true;
     }
-
+    /**
+     * 获取验证码图片
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    @RequestMapping(value = "/captcha", method = RequestMethod.GET)
+    @ResponseBody
+    public void captcha(HttpServletRequest request, HttpServletResponse response) throws  ServletException, IOException {
+        CaptchaUtil.outputCaptcha(request, response);
+    }
     /**
      * 从session获取用户id
      * @param session

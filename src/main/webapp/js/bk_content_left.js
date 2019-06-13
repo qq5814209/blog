@@ -31,6 +31,7 @@ function findLoginUserId() {
         contentType:"application/json",
         success:function (data) {
             loginUserId=data;
+            showCommentBox(loginUserId);
         },
         error:function (data) {
         }
@@ -51,7 +52,6 @@ function showArticle() {
         contentType:"application/json",
         success:function (data) {
             $.each(data,function (index,item) {
-
                 var d = "<h1 class=\"title-blog\"><a>"+item.name+"的专栏</a></h1><p class=\"description \">个人公众号："+item.userName+"</p>";
                 $("#title-box").append(d);
                 var b= "<div class=\"article-header-box\"><div class=\"article-header\"><div class=\"article-title-box\"><span class=\"article-type type-1 float-left\">原</span><h1 class=\"title-article\">"+item.title+"</h1></div><div class=\"article-info-box\"><div class=\"article-bar-top\" style=\"height: 56px;\"><span class=\"time\">"+item.time+"</span><a class=\"follow-nickName\" href=\"#\" target=\"_blank\">"+item.name+"</a><span class=\"read-count\">阅读数："+item.seeNum+"</span></div><div class=\"operating\"></div></div></div></div><article class=\"baidu_pl\"><div  class=\"article_content clearfix csdn-tracking-statistics\" data-pid=\"blog\" data-mod=\"popu_307\" data-dsm=\"post\"><div class=\"article-copyright\">版权声明：本博客由【"+item.name+"】独家发布</div><div class=\"htmledit_views\" id=\"content_views\"><p>&nbsp;"+item.content+"</p></div></div></article>\n";
@@ -64,7 +64,7 @@ function showArticle() {
     $("#blog-content").css("display","block");
 };
 showArticle();
-function showCommentBox() {
+function showCommentBox(loginUserId) {
     $("#comment-edit-box").empty();
     $.ajax({
         type:"post",
@@ -72,15 +72,15 @@ function showCommentBox() {
         url:"/showCommentBox?loginUserId="+loginUserId,
         contentType:"application/json",
         success:function (data) {
-            var b="<a id=\"commentsedit\"></a><div class=\"user-img\"><a href=\"javascript:void(0);\" target=\"_blank\"><img class=\"show_loginbox\" src=\"image/"+data.url+"\"></a></div><form id=\"commentform\"><textarea class=\"comment-content\" name=\"comment_content\" id=\"comment_content\" placeholder=\"想对作者说点什么\"></textarea><div><div><span id=\"tip_comment\" class=\"tip\">还能输入<em>1000</em>个字符</span><input type=\"submit\" class=\"btn btn-sm btn-red btn-comment\" value=\"发表评论\"></div></div></form>\n";
+            var b="<a id=\"commentsedit\"></a><div class=\"user-img\"><a><img class=\"show_loginbox\" src=\"image/"+data.url+"\"></a></div><form id=\"commentform\"><textarea class=\"comment-content\" name=\"comment_content\" id=\"comment_content\" placeholder=\"想对作者说点什么\"></textarea><div><div><span id=\"tip_comment\" class=\"tip\">还能输入<em>1000</em>个字符</span><input type=\"submit\" class=\"btn btn-sm btn-red btn-comment\" value=\"发表评论\" onclick=addComment("+loginUserId+")></div></div></form>\n";
             $("#comment-edit-box").append(b);
         },
         error:function (data) {
         }
     });
 };
-showCommentBox();
-function addComment() {
+
+function addComment(loginUserId) {
     $.ajax({
         type:"post",
         dataType:"JSON",
@@ -92,12 +92,12 @@ function addComment() {
             "blog_Id":blogId
         }),
         success:function (data) {
+
         },
         error:function (data) {
         }
     });
-}
-
+};
 function classNum(){
     $.ajax({
         type:"post",
