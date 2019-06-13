@@ -213,7 +213,7 @@
                         "\n" +
                         "\n" +
                         "        <p class=\"article-list-item-txt\">\n" +
-                        "        <a href=\"#\" target=\"_blank\" title=\"编辑\"><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">"+data.list[i].blog_title+"</font></font></a>\n" +
+                        "        <a href=\"#\" target=\"_self\" title=\"编辑\"><font style=\"vertical-align: inherit;\" onclick=toJump(" + data.list[i].user_id + "," + data.list[i].blog_id + ")><font style=\"vertical-align: inherit;\">"+data.list[i].blog_title+"</font></font></a>\n" +
                         "    </p>\n" +
                         "    </div>\n" +
                         "    <div class=\"article-list-item-info\">\n" +
@@ -233,7 +233,7 @@
                         "        </svg><font style=\"vertical-align: inherit;\"></font></span>\n" +
                         "    </div>\n" +
                         "    <div class=\"item-info-oper\">\n" +
-                        "        <a href=\"#\" target=\"_blank\"><span class=\"\"><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">查看</font></font></span></a>\n" +
+                        "        <a href=\"#\" target=\"_self\" onclick=toJump(" + data.list[i].user_id + "," + data.list[i].blog_id + ")><span class=\"\"><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">查看</font></font></span></a>\n" +
                         "    <font style=\"vertical-align: inherit;\"><span class=\"\"><a href=\"javascript:void(0);\" class=\"managecomment\" data-aid=\"90106943\" data-opt=\"lock\"><font style=\"vertical-align: inherit;\">禁止评论\n" +
                         "        </font></a></span><a href=\"#\" data-aid=\"90106943\"><span class=\"setTop\" data-opt=\"true\"><font style=\"vertical-align: inherit;\">置顶</font></span></a><a href=\"#\" data-aid=\"90106943\" onclick='delblog("+data.list[i].blog_id+")'><span class=\"del\"><font style=\"vertical-align: inherit;\">删除</font></span></a></font><input type=\"hidden\" value=\"90106943\" class=\"articleid\">\n" +
                         "        <span class=\"\">\n" +
@@ -309,27 +309,29 @@
         begin(n,2);
     }
 
-function delblog(blog_id) {
-    $.ajax({
-        type: 'POST',
-        url: "deleteBlogbyBlog_id",
-        contentType:"application/json;charse=UTF-8",
-        data: JSON.stringify({
-            "blog_id":blog_id,
-            "pageSize":"",
-            "currentPage":""
+    function delblog(blog_id) {
+        $.ajax({
+            type: 'POST',
+            url: "deleteBlogbyBlog_id",
+            contentType:"application/json;charse=UTF-8",
+            data: JSON.stringify({
+                "blog_id":blog_id,
+                "pageSize":"",
+                "currentPage":""
 
-        }),
-        success: function(data){
-            alert("刪除成功");
-        },
-        error:function (data) {
-            console.error(data);
-        },
-        dataType: "json"
-    });
-}
+            }),
+            success: function(data){
+                alert("刪除成功");
+            },
+            error:function (data) {
+                console.error(data);
+            },
+            dataType: "json"
+        });
+    }
 
-
+    function toJump(a,b) {
+        window.location.href="bk_list.html?userId="+a+"&blogId="+b;
+    }
 </script>
 </html>

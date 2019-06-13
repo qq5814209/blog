@@ -15,7 +15,16 @@ public class ShowVo {
     private String str;//搜索框的值
     private int currentPage;//当前页
     private int pageSize;//当前页数据条数
+    private int comment_id;//评论id
 
+
+    public int getComment_id() {
+        return comment_id;
+    }
+
+    public void setComment_id(int comment_id) {
+        this.comment_id = comment_id;
+    }
 
     public int getCurrentPage() {
         return currentPage;
@@ -146,6 +155,7 @@ public class ShowVo {
                 ", str='" + str + '\'' +
                 ", currentPage=" + currentPage +
                 ", pageSize=" + pageSize +
+                ", comment_id=" + comment_id +
                 '}';
     }
 }

@@ -57,7 +57,6 @@ public class InquireController {
         UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
         showVo.setUser_id(user_id);
-        System.out.println("showVo:"+showVo);
         boolean flag = inquireService.addPersonalCategory(showVo);
         return flag;
     }
@@ -97,8 +96,7 @@ public class InquireController {
     @ResponseBody
     @RequestMapping("updatePersonalCategory")
     public Object updatePersonalCategory(@RequestBody(required = false) ShowVo showVo, HttpSession httpSession){
-        System.out.println("保存");
-        System.out.println(showVo);
+
         UserInfo userInfo = (UserInfo)httpSession.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
         showVo.setUser_id(user_id);
@@ -130,4 +128,26 @@ public class InquireController {
         return flag;
     }
 
+    @ResponseBody
+    @RequestMapping("showMyComment")
+    public Object showMyComment(@RequestBody(required = false) ShowVo showVo,HttpSession session){
+        UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        showVo.setUser_id(user_id);
+        PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
+        List<ShowDto> showDtos = inquireService.showMyComment(showVo);
+        PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
+
+        return showDtoPageInfo;
+    }
+
+
+
+    @ResponseBody
+    @RequestMapping("delComment")
+    public Object delComment(@RequestBody(required = false) ShowVo showVo){
+        System.out.println(showVo+"::::::::::");
+        boolean flag = inquireService.delComment(showVo);
+        return flag;
+    }
 }

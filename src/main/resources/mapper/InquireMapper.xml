@@ -32,7 +32,7 @@
 
     <select id="allPersonalCategory" parameterType="com.me.vo.ShowVo" resultType="com.me.dto.ShowDto">
        SELECT  tb1.pt_id,count(DISTINCT tb1.type_name) wznumber,tb1.type_name,tb1.user_id from (SELECT b.*,u.user_id,u.user_name, pt.status ptstatus, pt.type_name from
-        bloginfo b,userinfo u,user_blog ub,person_type pt where u.user_id = #{user_id} and u.user_id =pt.user_id and pt.status = 1 and u.user_id = ub.user_id and
+        bloginfo b,userinfo u,user_blog ub,person_type pt where pt.user_id = #{user_id} and u.user_id =pt.user_id and pt.`status` = 1 and u.user_id = ub.user_id and
         ub.blog_id = b.blog_id and b.pt_id =pt.pt_id) tb1 GROUP BY tb1.pt_id
     </select>
 
@@ -80,6 +80,16 @@
 
     <update id="deleteBlogbyBlog_id" parameterType="com.me.vo.ShowVo">
          update bloginfo set status = 0 where blog_id = #{blog_id}
+    </update>
+
+    <select id="showMyComment" parameterType="com.me.vo.ShowVo" resultType="com.me.dto.ShowDto">
+      SELECT * from (SELECT b.blog_title,c.comment_content,c.comment_time,c.user_id, c.comment_id from comment1 c,bloginfo b,userinfo u,user_blog ub
+         where c.blog_id = b.blog_id and b.blog_id = ub.blog_id and c.`status` = 1 and ub.user_id = u.user_id and u.user_id =#{user_id})tb1 LEFT JOIN
+        (SELECT `name`,user_id uid from userinfo) tb2 on tb2.uid = tb1.user_id
+    </select>
+
+    <update id="delComment" parameterType="com.me.vo.ShowVo">
+        update comment1 set status = 0 where comment_id = #{comment_id}
     </update>
 
 </mapper>

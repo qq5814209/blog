@@ -87,8 +87,29 @@ public class InquireServiceImpl implements InquireService{
 
 
     public List<ShowDto> getBlogsByUserId(ShowVo showVo) {
+
+        int user_id = showVo.getUser_id();
         List<ShowDto> showDtos = inquireMapper.getBlogsByUserId(showVo);
+        for(ShowDto showDto : showDtos){
+            String str = showDto.getBlog_content().substring(0,5);
+            showDto.setBlog_content(str);
+            showDto.setUser_id(user_id);
+        }
         return showDtos;
+    }
+
+    public List<ShowDto> showMyComment(ShowVo showVo) {
+        List<ShowDto> showDtos = inquireMapper.showMyComment(showVo);
+        return showDtos;
+    }
+
+    @Transactional
+    public boolean delComment(ShowVo showVo) {
+        int count = inquireMapper.delComment(showVo);
+        if(count>0) {
+            return true;
+        }
+        return false;
     }
 
 }
