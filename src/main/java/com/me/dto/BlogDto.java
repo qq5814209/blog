@@ -14,8 +14,28 @@ public class BlogDto implements Serializable {
     private int userId;
     private int seeNum;
     private int commentNum;
+    private String name;
+    private String userName;
+
+
 
     public BlogDto() {
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getId() {
@@ -76,5 +96,18 @@ public class BlogDto implements Serializable {
 
     public void setCommentNum(int commentNum) {
         this.commentNum = commentNum;
+    }
+
+    @Override
+    public String toString() {
+        return "BlogDto{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", time=" + time +
+                ", userId=" + userId +
+                ", seeNum=" + seeNum +
+                ", commentNum=" + commentNum +
+                '}';
     }
 }

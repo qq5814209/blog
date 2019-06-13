@@ -91,10 +91,7 @@ public class InquireController {
      * */
     @ResponseBody
     @RequestMapping("deletePersonalCategory")
-    public Object deletePersonalCategory(@RequestBody(required = false) ShowVo showVo, HttpSession httpSession){
-        UserInfo userInfo = (UserInfo)httpSession.getAttribute("userInfo");
-        int user_id = userInfo.getUser_id();
-        showVo.setUser_id(user_id);
+    public Object deletePersonalCategory(@RequestBody(required = false) ShowVo showVo){
         boolean flag = inquireService.deletePersonalCategory(showVo);
         return flag;
     }
@@ -123,17 +120,20 @@ public class InquireController {
     public Object searchBlogs(@RequestBody(required = false) ShowVo showVo){
 
         PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
+
         List<ShowDto> showDtos = inquireService.searchBlogs(showVo);
+
         PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
         return showDtoPageInfo;
     }
 
-//    @ResponseBody
-//    @RequestMapping("searchBlogs")
-//    public Object searchBlogs(@RequestBody(required = false) String str){
-//        List<ShowDto> showDtos = inquireService.searchBlogs(str);
-//        return showDtos;
-//    }
+
+    @ResponseBody
+    @RequestMapping("deleteBlogbyBlog_id")
+    public Object deleteBlogbyBlog_id(@RequestBody(required = false) ShowVo showVo){
+        boolean flag = inquireService.deleteBlogbyBlog_id(showVo);
+        return flag;
+    }
 
 
     /**

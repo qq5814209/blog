@@ -14,7 +14,7 @@ public interface InquireService {
     public boolean deletePersonalCategory(ShowVo showvo);
     public boolean updatePersonalCategory(ShowVo showvo);
     public List<ShowDto> searchBlogs(ShowVo showvo);
-//    public List<ShowDto> searchBlogs(String str);
+    public boolean deleteBlogbyBlog_id(ShowVo showVo);
     public List<ShowDto> getBlogsByUserId(ShowVo showVo);
 
     /**

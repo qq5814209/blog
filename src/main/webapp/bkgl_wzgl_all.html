@@ -57,10 +57,10 @@
                       action="#">
                     <div class="dropdown year float-left mr8 default-val">
                         <label>筛选：</label>
-                        <button class="btn btn-sm btn-dropdown dropdown-toggle" type="button" id="droYear"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            年
-                        </button>
+                        <!--<button class="btn btn-sm btn-dropdown dropdown-toggle" type="button" id="droYear"-->
+                                <!--data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                            <!--年-->
+                        <!--</button>-->
                         <input type="hidden" value="all" class="list_status">
                         <input type="hidden" value="" id="year" name="year">
                         <div class="dropdown-menu" aria-labelledby="droYear">
@@ -69,10 +69,10 @@
                         </div>
                     </div>
                     <div class="dropdown month float-left default-val mr32">
-                        <button class="btn btn-sm btn-dropdown dropdown-toggle" type="button" id="droMonth"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            月
-                        </button>
+                        <!--<button class="btn btn-sm btn-dropdown dropdown-toggle" type="button" id="droMonth"-->
+                                <!--data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                            <!--月-->
+                        <!--</button>-->
                         <input type="hidden" value="" id="month" name="month">
                         <div class="dropdown-menu months-list" aria-labelledby="droMonth">
                             <a class="dropdown-item" data-val="">不限</a>
@@ -235,7 +235,7 @@
                         "    <div class=\"item-info-oper\">\n" +
                         "        <a href=\"#\" target=\"_blank\"><span class=\"\"><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">查看</font></font></span></a>\n" +
                         "    <font style=\"vertical-align: inherit;\"><span class=\"\"><a href=\"javascript:void(0);\" class=\"managecomment\" data-aid=\"90106943\" data-opt=\"lock\"><font style=\"vertical-align: inherit;\">禁止评论\n" +
-                        "        </font></a></span><a href=\"#\" data-aid=\"90106943\"><span class=\"setTop\" data-opt=\"true\"><font style=\"vertical-align: inherit;\">置顶</font></span></a><a href=\"#\" data-aid=\"90106943\"><span class=\"del\"><font style=\"vertical-align: inherit;\">删除</font></span></a></font><input type=\"hidden\" value=\"90106943\" class=\"articleid\">\n" +
+                        "        </font></a></span><a href=\"#\" data-aid=\"90106943\"><span class=\"setTop\" data-opt=\"true\"><font style=\"vertical-align: inherit;\">置顶</font></span></a><a href=\"#\" data-aid=\"90106943\" onclick='delblog("+data.list[i].blog_id+")'><span class=\"del\"><font style=\"vertical-align: inherit;\">删除</font></span></a></font><input type=\"hidden\" value=\"90106943\" class=\"articleid\">\n" +
                         "        <span class=\"\">\n" +
                         "        <a href=\"javascript:void(0);\" class=\"managecomment\" data-aid=\"90106943\" data-opt=\"lock\"><font style=\"vertical-align: inherit;\"></font></a>\n" +
                         "    </span>\n" +
@@ -309,6 +309,26 @@
         begin(n,2);
     }
 
+function delblog(blog_id) {
+    $.ajax({
+        type: 'POST',
+        url: "deleteBlogbyBlog_id",
+        contentType:"application/json;charse=UTF-8",
+        data: JSON.stringify({
+            "blog_id":blog_id,
+            "pageSize":"",
+            "currentPage":""
+
+        }),
+        success: function(data){
+            alert("刪除成功");
+        },
+        error:function (data) {
+            console.error(data);
+        },
+        dataType: "json"
+    });
+}
 
 
 </script>

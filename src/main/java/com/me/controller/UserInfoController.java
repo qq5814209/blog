@@ -2,7 +2,6 @@ package com.me.controller;
 
 import com.me.pojo.UserInfo;
 import com.me.service.UserInfoService;
-import com.me.util.BaseResult;
 import com.me.util.CaptchaUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,85 +26,69 @@ public class UserInfoController {
 
     /**
      * 登录
-     *
      * @param user
      * @param password
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "userLogin", method = RequestMethod.POST)
-    public Object login(String user, String password, String captcha, HttpSession session) {
-        String randomString = (String) session.getAttribute("randomString");
-        if (randomString.equalsIgnoreCase(captcha)){
-            UserInfo userInfo = userInfoService.login(user, password);
-            if (userInfo.getStatus() == 1) {
-                session.setAttribute("userInfo", userInfo);
-                return userInfo;
-            } else {
-                BaseResult result = BaseResult.fail("你的账号未激活，请激活后再登录");
-                return result;
-            }
-        }
-        return BaseResult.fail("验证码错误");
+    @RequestMapping(value = "userLogin",method = RequestMethod.POST)
+    public Object login(String user, String password, HttpSession session){
+        UserInfo userInfo = userInfoService.login(user,password);
+        System.out.println(userInfo);
+        session.setAttribute("userInfo",userInfo);
+        return userInfo;
     }
 
     /**
      * 判断是否登录
-     *
      * @param session
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "islogin", method = RequestMethod.GET)
-    public Object islogin(HttpSession session) {
+    @RequestMapping(value = "islogin",method = RequestMethod.GET)
+    public Object islogin(HttpSession session){
         UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
         return userInfo;
     }
 
     /**
      * 注册
-     *
      * @param user_name
      * @param email
      * @param password
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "userRegiester", method = RequestMethod.POST)
-    public Object regiester(String user_name, String email, String password,HttpSession session,String captcha) {
-        if (captcha.equalsIgnoreCase((String) session.getAttribute("randomString"))){
-
-            return userInfoService.regiester(user_name, email, password);
-        }
-        return 0;
-    }
-
-    /**
-     * 新用户注册邮箱激活
-     *
-     * @param user_id
-     * @return
-     */
-    @RequestMapping(value = "activate", method = RequestMethod.GET)
-    public Object activate(String user_id) {
-        System.out.println(user_id);
-        userInfoService.updateStatus(user_id);
-        return "index";
+    @RequestMapping(value = "userRegiester",method = RequestMethod.POST)
+    public Object regiester(String user_name,String email,String password){
+        System.out.println(user_name + " : " + email + " : " + password);
+        return userInfoService.regiester(user_name,email,password);
     }
 
     /**
      * 退出
-     *
      * @param session
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "logout", method = RequestMethod.GET)
-    public boolean logout(HttpSession session) {
+    @RequestMapping(value = "logout",method = RequestMethod.GET)
+    public boolean logout(HttpSession session){
         session.invalidate();
         return true;
     }
 
+    /**
+     * 从session获取用户id
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "getUser_id")
+    public Object getUser_id(HttpSession session){
+        UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        return user_id;
+    }
     /**
      * 获取验证码图片
      * @param request

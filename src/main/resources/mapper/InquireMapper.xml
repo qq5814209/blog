@@ -4,31 +4,6 @@
 <mapper namespace="com.me.mapper.InquireMapper">
 
 
-    <!--<resultMap id="showDtoMapper" type="com.me.dto.ShowDto">-->
-        <!--<id property="id" column="menuid"></id>-->
-        <!--<result property="pid" column="parentid"></result>-->
-        <!--<result property="name" column="menuname"></result>-->
-        <!--<result property="icon" column="menuicon"></result>-->
-        <!--<result property="url" column="menu_uri"></result>-->
-        <!--<collection property="children" ofType="com.qf.dto.MenuInfoDto">-->
-            <!--<id property="id" column="menuid"></id>-->
-            <!--<result property="pid" column="parentid"></result>-->
-            <!--<result property="name" column="menuname"></result>-->
-            <!--<result property="icon" column="menuicon"></result>-->
-            <!--<result property="url" column="menu_uri"></result>-->
-        <!--</collection>-->
-    <!--</resultMap>-->
-
-
-    <!--<select id="ShowBlogById" resultType="com.me.dto.ShowDto" parameterType="com.me.vo.ShowVo">-->
-        <!--SELECT tb3.blog_id,tb3.blog_title,tb3.blog_content,tb3.create_time,tb3.name,tb3.type_name,tb3.cnumber,tb3.bnumber-->
-        <!--from(SELECT * from (SELECT b.*,u.name,bt.type_name from bloginfo b,userinfo u,blog_type bt,user_blog ub-->
-        <!--WHERE b.blog_id = ub.blog_id and ub.user_id = u.user_id and b.bt_id = bt.bt_id and b.blog_id = 1 ) tb1-->
-        <!--LEFT JOIN (SELECT blog_id bid,COUNT(blog_id) as cnumber from comment1 where blog_id = 1) tb2-->
-        <!--on tb1.blog_id = tb2.bid LEFT JOIN (SELECT blog_id bid2,COUNT(blog_id) as bnumber from browse where blog_id = 1) tb4-->
-        <!--on tb1.blog_id = tb4.bid2 ) tb3-->
-    <!--</select>-->
-
     <select id="getBlogsByTypeName" resultType="com.me.dto.ShowDto" parameterType="com.me.vo.ShowVo">
           SELECT tb3.blog_id,tb3.blog_title,tb3.blog_content,tb3.create_time,tb3.name,tb3.type_name,tb3.cnumber,tb3.bnumber,tb3.user_id
             from(SELECT * from (SELECT b.*,u.name,bt.type_name,u.user_id from bloginfo b,userinfo u,blog_type bt,user_blog ub
@@ -62,7 +37,7 @@
     </select>
 
     <update id="deletePersonalCategory" parameterType="com.me.vo.ShowVo">
-        update person_type pt set  pt.status = 1 where  pt.pt_id = #{pt_id}
+        update person_type set status = 0 where  pt_id = #{pt_id}
     </update>
 
     <update id="updatePersonalCategory" parameterType="com.me.vo.ShowVo">
@@ -70,8 +45,23 @@
     </update>
 
     <select id="searchBlogs" parameterType="com.me.vo.ShowVo" resultType="com.me.dto.ShowDto">
-        select * from bloginfo b where b.blog_title like #{blog_title} or b.blog_content like #{blog_content}
+        SELECT any_value(m.blog_id) blog_id,any_value(m.blog_title) blog_title,any_value(m.blog_content) blog_content,
+        any_value(m.create_time) create_time,any_value(m.user_id) user_id,any_value(m.name) name,any_value(m.user_name) user_name,
+        any_value(m.bnumber) bnumber,case when any_value(c.comment_id) is null then 0 else COUNT(*) end cnumber from
+        (SELECT any_value(o.blog_id) blog_id,any_value(o.blog_title) blog_title,any_value(o.blog_content) blog_content,
+        any_value(o.create_time) create_time,any_value(b.browse_id) browse_id,any_value(b.browse_time) browse_time,
+        any_value(g.user_id) user_id,any_value(r.name) name,
+        any_value(r.user_name) user_name,case when any_value(b.browse_id) is null then 0 else COUNT(DISTINCT b.browse_id) end bnumber
+        from bloginfo o
+        INNER JOIN user_blog g on  g.blog_id=o.blog_id and o.blog_title LIKE #{blog_title} or o.blog_content LIKE #{blog_content}
+        INNER JOIN userinfo r on r.user_id=g.user_id
+        LEFT JOIN browse b on b.blog_id=o.blog_id and b.user_id=g.user_id
+        GROUP BY o.blog_id) m
+        LEFT JOIN comment1 c on c.blog_id=m.blog_id and m.user_id=c.user_id
+        GROUP BY m.blog_id
     </select>
+
+
 
     <select id="getBlogsByUserId" parameterType="com.me.vo.ShowVo" resultType="com.me.dto.ShowDto">
         SELECT tb3.blog_id,tb3.blog_title,tb3.blog_content,tb3.create_time,tb3.`name`,tb3.type_name,tb3.cnumber,tb3.bnumber
@@ -113,5 +103,9 @@
     <insert id="insertUser_Blog" parameterType="com.me.vo.WriteBlogVo">
         INSERT INTO user_blog (user_id,blog_id) VALUES (#{user_id},#{blog_id})
     </insert>
+
+    <update id="deleteBlogbyBlog_id" parameterType="com.me.vo.ShowVo">
+         update bloginfo set status = 0 where blog_id = #{blog_id}
+    </update>
 
 </mapper>

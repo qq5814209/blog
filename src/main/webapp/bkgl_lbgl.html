@@ -204,7 +204,7 @@
                         "                        <div class=\"operate d-flex justify-content-center\">\n" +
                         "                            <a class=\"btn-online c-blue bd-right btn-edit\" data-type=\"top\" style=\"display: none;\">置顶</a>\n" +
                         "                            <a class=\"btn-online c-blue bd-right btn-edit\" data-type=\"edit\" id='Edit"+i+"' onclick='btns(this)'>编辑</a>\n" +
-                        "                            <a class=\"btn-online c-red btn-delete\" data-type=\"delete\">删除</a>\n" +
+                        "                            <a class=\"btn-online c-red btn-delete\" data-type=\"delete\" onclick='delCategory("+data.list[i].pt_id+") '>删除</a>\n" +
                         "                        </div>\n" +
                         "                        <div class=\"isshow\">\n" +
                         "                            <div class=\"switch-box\">\n" +
@@ -252,9 +252,9 @@
               }),
               success: function(data){
                   alert("修改成功")
-                  if(data == "true") {
-                      inputId.addClass("activity").attr("disabled");
-                  }
+
+                      inputId.addClass("activity").attr("disabled","disabled");
+
               },
               error:function (data) {
                   console.error(data);
@@ -266,10 +266,31 @@
 
     var flag = "true";
     function quXiao() {
-        alert("智障")
+        alert("取消")
            if(flag=="true"){
-               inputId.addClass("activity").attr("disabled");
+               inputId.addClass("activity").attr("disabled","disabled");
            }
+    }
+
+    function delCategory(pt_id) {
+        $.ajax({
+            type: 'POST',
+            url: "/deletePersonalCategory",
+            contentType:"application/json;charse=UTF-8",
+            data: JSON.stringify({
+                "pt_id":pt_id,
+                "currentPage":"",
+                "pageSize":""
+            }),
+            success: function(data){
+                alert("刪除成功")
+            },
+            error:function (data) {
+                console.error(data);
+                alert("修改失敗")
+            },
+            dataType: "json"
+        });
     }
 
 
