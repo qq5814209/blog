@@ -34,93 +34,66 @@
             <div data-v-45761c34="" class="msg-content view">
                 <div data-v-0947769e="" class="msg-all">
                     <div data-v-0947769e="" class="msg-info clearfix msg-info-wrap"><!---->
-                        <a data-v-0947769e="" data-ref="msg-ul" class="fr">清空所有消息</a>
-                        <!----></div>
+                        <a data-v-0947769e="" data-ref="msg-ul" class="fr" onclick="deleteInformCareByUserIdAndAll()">清空所有消息</a>
+                    </div>
                     <div data-v-0947769e="" class="msg-list">
-                        <ul data-v-0947769e="" class="list">
-                            <li data-v-0947769e="" id="li_0" class="clearfix msg-read">
+                        <ul data-v-0947769e="" class="list" id="showInform">
+                            <!--<li data-v-0947769e="" id="li_0" class="clearfix msg-read">
                                 <span data-v-0947769e="" id="notice_0" class="msg-type msg-attention">粉丝</span>
                                 <span data-v-0947769e="" class="msg-title msg-info">
-                                    <a target="_blank" href="#">秃顶小天才</a>关注了你</span>
+                                    <a target="_blank" href="#">秃顶小天才</a>关注了你
+                                </span>
                                 <span data-v-0947769e="" class="fr options-info options-f">
-                                    <a data-v-0947769e="" data-ref="li_0" data-id="646070" class="btn-rush csdnc-trash">
-                                        <svg data-v-0947769e="" aria-hidden="true" data-ref="li_0" data-id="646070"
-                                             class="icon csdnc-trash">
-                                            <use data-v-0947769e="" xlink:href="#csdnc-trash" data-ref="li_0"
-                                                 data-id="646070" class="csdnc-trash"></use></svg></a> <em
-                                        data-v-0947769e="" class="data-time">2019-04-20</em></span></li>
-                            <li data-v-0947769e="" id="li_1" class="clearfix msg-read"><span data-v-0947769e=""
-                                                                                             id="notice_1"
-                                                                                             class="msg-type msg-attention">粉丝</span>
-                                <span data-v-0947769e="" class="msg-title msg-info"><a target="_blank"
-                                                                                       href="#">ppamos</a>关注了你</span>
-                                <span data-v-0947769e="" class="fr options-info options-f"><a data-v-0947769e=""
-                                                                                              data-ref="li_1"
-                                                                                              data-id="574417"
-                                                                                              class="btn-rush csdnc-trash"><svg
-                                        data-v-0947769e="" aria-hidden="true" data-ref="li_1" data-id="574417"
-                                        class="icon csdnc-trash"><use data-v-0947769e="" xlink:href="#csdnc-trash"
-                                                                      data-ref="li_1" data-id="574417"
-                                                                      class="csdnc-trash"></use></svg></a> <em
-                                        data-v-0947769e="" class="data-time">2019-04-13</em></span></li>
-                            <li data-v-0947769e="" id="li_2" class="clearfix msg-read"><span data-v-0947769e=""
-                                                                                             id="notice_2"
-                                                                                             class="msg-type msg-attention">粉丝</span>
-                                <span data-v-0947769e="" class="msg-title msg-info"><a target="_blank"
-                                                                                       href="#">冰释前嫌</a>关注了你</span>
-                                <span data-v-0947769e="" class="fr options-info options-f"><a data-v-0947769e=""
-                                                                                              data-ref="li_2"
-                                                                                              data-id="559150"
-                                                                                              class="btn-rush csdnc-trash"><svg
-                                        data-v-0947769e="" aria-hidden="true" data-ref="li_2" data-id="559150"
-                                        class="icon csdnc-trash"><use data-v-0947769e="" xlink:href="#csdnc-trash"
-                                                                      data-ref="li_2" data-id="559150"
-                                                                      class="csdnc-trash"></use></svg></a> <em
-                                        data-v-0947769e="" class="data-time">2019-04-11</em></span></li>
-                            <li data-v-0947769e="" id="li_3" class="clearfix msg-read"><span data-v-0947769e=""
-                                                                                             id="notice_3"
-                                                                                             class="msg-type msg-attention">粉丝</span>
-                                <span data-v-0947769e="" class="msg-title msg-info"><a target="_blank"
-                                                                                       href="#">qq_41137036</a>关注了你</span>
-                                <span data-v-0947769e="" class="fr options-info options-f"><a data-v-0947769e=""
-                                                                                              data-ref="li_3"
-                                                                                              data-id="539501"
-                                                                                              class="btn-rush csdnc-trash"><svg
-                                        data-v-0947769e="" aria-hidden="true" data-ref="li_3" data-id="539501"
-                                        class="icon csdnc-trash"><use data-v-0947769e="" xlink:href="#csdnc-trash"
-                                                                      data-ref="li_3" data-id="539501"
-                                                                      class="csdnc-trash"></use></svg></a> <em
-                                        data-v-0947769e="" class="data-time">2019-04-10</em></span></li>
-                            <li data-v-0947769e="" id="li_4" class="clearfix msg-read"><span data-v-0947769e=""
-                                                                                             id="notice_4"
-                                                                                             class="msg-type msg-attention">粉丝</span>
-                                <span data-v-0947769e="" class="msg-title msg-info"><a target="_blank"
-                                                                                       href="#">qq_42891915</a>关注了你</span>
-                                <span data-v-0947769e="" class="fr options-info options-f"><a data-v-0947769e=""
-                                                                                              data-ref="li_4"
-                                                                                              data-id="480033"
-                                                                                              class="btn-rush csdnc-trash"><svg
-                                        data-v-0947769e="" aria-hidden="true" data-ref="li_4" data-id="480033"
-                                        class="icon csdnc-trash"><use data-v-0947769e="" xlink:href="#csdnc-trash"
-                                                                      data-ref="li_4" data-id="480033"
-                                                                      class="csdnc-trash"></use></svg></a> <em
-                                        data-v-0947769e="" class="data-time">2019-04-02</em></span></li>
-                        </ul> <!----></div>
+                                    <a data-v-0947769e="" data-ref="li_0" data-id="646070" class="btn-rush csdnc-trash" onclick="deleteInform(1)">
+                                        删除
+                                    </a>
+                                    <em data-v-0947769e="" class="data-time">2019-04-20</em>
+                                </span>
+                            </li>
+                            <li data-v-0947769e="" id="li_1" class="clearfix msg-read">
+                                <span data-v-0947769e="" id="notice_1" class="msg-type msg-attention">粉丝</span>
+                                <span data-v-0947769e="" class="msg-title msg-info">
+                                    <a target="_blank" href="#">ppamos</a>关注了你
+                                </span>
+                                <span data-v-0947769e="" class="fr options-info options-f">
+                                    <a data-v-0947769e="" data-ref="li_1" data-id="574417" class="btn-rush csdnc-trash" onclick="deleteInform(2)">
+                                        删除
+                                    </a>
+                                    <em data-v-0947769e="" class="data-time">2019-04-13</em>
+                                </span>
+                            </li>
+                            <li data-v-0947769e="" id="li_2" class="clearfix msg-read">
+                                <span data-v-0947769e="" id="notice_2" class="msg-type msg-attention">粉丝</span>
+                                <span data-v-0947769e="" class="msg-title msg-info">
+                                    <a target="_blank" href="#">冰释前嫌</a>关注了你
+                                </span>
+                                <span data-v-0947769e="" class="fr options-info options-f">
+                                    <a data-v-0947769e="" data-ref="li_2" data-id="559150" class="btn-rush csdnc-trash" onclick="deleteInform(3)">
+                                        删除</a>
+                                    <em data-v-0947769e="" class="data-time">2019-04-11</em>
+                                </span>
+                            </li>-->
+                        </ul>
+                    </div>
+
                     <div data-v-7d7fdb5b="" data-v-0947769e="" class="page-box">
                         <ul data-v-7d7fdb5b="">
                             <li data-v-7d7fdb5b="" class="total-page disabled">共5条</li>
                             <li data-v-7d7fdb5b="" id="prev-page" class="page-prev disabled">上一页</li>
                             <li data-v-7d7fdb5b="" class="number-page active">1</li>
-                            <li data-v-7d7fdb5b="" id="next-page" class="page-next disabled">下一页</li> <!----></ul>
+                            <li data-v-7d7fdb5b="" id="next-page" class="page-next disabled">下一页</li>
+                        </ul>
                     </div>
-                    <div data-v-36df9b30="" data-v-0947769e="" class="hide">
-                        <div data-v-36df9b30="" class="layer-box" style="width: 358px; height: 140px;"><a
-                                data-v-36df9b30="" class="btn-close">×</a>
-                            <div data-v-36df9b30="" class="layer-content"><!----></div>
+                    <div data-v-36df9b30="" data-v-0947769e="" class="hide" id="confirm">
+                        <div data-v-36df9b30="" class="layer-box" style="width: 358px; height: 140px;">
+                            <a data-v-36df9b30="" class="btn-close" onclick="cancel()">×</a>
+                            <div data-v-36df9b30="" class="layer-content">
+                                <p data-v-36df9b30="">确定删除本条消息吗？</p>
+                            </div>
                             <div data-v-36df9b30="" class="submit-box">
                                 <div data-v-36df9b30="" class="submit-right">
-                                    <button data-v-36df9b30="" class="btn btn-cancel">取消</button>
-                                    <button data-v-36df9b30="" class="btn btn-confirm btn-primary">确定</button>
+                                    <button data-v-36df9b30="" class="btn btn-cancel" onclick="cancel()">取消</button>
+                                    <button data-v-36df9b30="" class="btn btn-confirm btn-primary" onclick="confirmDelete()">确定</button>
                                 </div>
                             </div>
                         </div>
@@ -143,6 +116,70 @@
         $("#attention").attr("class", "router-link-exact-active router-link-active");
     });
     $("#foot").load("module/personal_foot.html");
+
+    var deleteId;
+    //打开确认删除页面
+    function deleteInform(id) {
+        $("#confirm").removeClass("hide");
+        deleteId = id;
+    }
+
+    //关闭确认删除页面
+    function cancel() {
+        $("#confirm").addClass("hide");
+    }
+
+    //确认删除消息
+    function confirmDelete() {
+        var url = "deleteInformByInformCare_id";
+        var value = {
+            "informCare_id": deleteId
+        };
+        $.post(url, value, function (data) {
+            if (data === true) {
+                window.location.reload();
+            } else {
+                alert("删除失败")
+            }
+        })
+    }
+
+    //删除所有消息
+    function deleteInformCareByUserIdAndAll() {
+        var url = "deleteInformCareByUserIdAndAll";
+        $.post(url, function (data) {
+            if (data === true) {
+                window.location.reload();
+            } else {
+                alert("删除失败");
+            }
+        })
+    }
+    //请求关注消息
+    $(function () {
+        var url = "selectInformCareByUserId";
+        $.get(url,function (data) {
+            console.log(data);
+            $(data).each(function (index,item) {
+                var innerHtml = "<li data-v-0947769e=\"\" id=\"li_0\" class=\"clearfix msg-read\">" +
+                    "                                <span data-v-0947769e=\"\" id=\"notice_0\" class=\"msg-type msg-attention\">粉丝</span>" +
+                    "                                <span data-v-0947769e=\"\" class=\"msg-title msg-info\">" +
+                    "                                    <a target=\"_blank\" href=\"#\">"+item.name+"</a>关注了你" +
+                    "                                </span>" +
+                    "                                <span data-v-0947769e=\"\" class=\"fr options-info options-f\">\n" +
+                    "                                    <a data-v-0947769e=\"\" data-ref=\"li_0\" data-id=\"646070\" class=\"btn-rush csdnc-trash\" onclick=\"deleteInform("+item.informcare_id+")\">" +
+                    "                                        删除" +
+                    "                                    </a>" +
+                    "                                    <em data-v-0947769e=\"\" class=\"data-time\">"+item.create_time+"</em>" +
+                    "                                </span>" +
+                    "                            </li>";
+                $("#showInform").append(innerHtml);
+            })
+
+
+        });
+    })
+
 </script>
 
 </html>

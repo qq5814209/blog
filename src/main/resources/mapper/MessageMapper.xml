@@ -12,4 +12,85 @@
         (SELECT comment_id FROM informcomment WHERE user_id = #{userId})) tb1 , userinfo u WHERE tb1.user_id = u.user_id) tb2 INNER JOIN informcomment im ON tb2.comment_id = im.comment_id ) a1,
         (SELECT COUNT(*) comments FROM informcomment WHERE user_id = #{userId} AND STATUS = 0 ) a2
     </select>
+
+    <!--根据评论消息 id 删除评论消息-->
+    <delete id="deleteInformByInformComment_id" parameterType="int">
+        DELETE FROM informcomment WHERE informComment_id = #{informComment_id}
+    </delete>
+
+    <!--把未读消息设置为已读-->
+    <update id="updateInformToReadingByInformCommentId" parameterType="int">
+        UPDATE informcomment SET status = 1 WHERE informComment_id = #{informComment_id}
+    </update>
+
+    <!--清除所有评论消息-->
+    <delete id="deleteInformCommentByUserIdAndAll" parameterType="int">
+        DELETE FROM informcomment WHERE user_id = #{user_id}
+    </delete>
+
+    <!--查询所有关注信息-->
+    <select id="selectCareByUserId" parameterType="int" resultType="com.me.dto.InformCareDto">
+        SELECT i.informcare_id,i.create_time,tb3.* FROM
+        (SELECT tb1.user_id,tb1.name FROM
+        (SELECT * FROM userinfo WHERE user_id IN
+        (SELECT uf_id FROM informcare WHERE uf_id = #{uf_id})) tb1) tb3
+        INNER JOIN informcare i ON tb3.user_id = i.uf_id
+    </select>
+
+    <!--根据关注消息id删除关注消息-->
+    <delete id="deleteInformByInformCare_id" parameterType="int">
+        DELETE FROM informcare WHERE informcare_id = #{informacare_id}
+    </delete>
+
+    <!--清除所有关注消息-->
+    <delete id="deleteInformCareByUserIdAndAll" parameterType="int">
+        DELETE FROM informcare WHERE uf_id = #{uf_id}
+    </delete>
+
+    <!--查询所有点赞消息-->
+    <select id="selectInformPraiseByUserId" parameterType="int" resultType="com.me.dto.InformPraiseDto">
+        SELECT * FROM
+        (
+        SELECT tb1.user_id,tb1.name,tb2.praise_time,tb3.blog_id,tb3.blog_title,i.informpraise_id,i.status FROM
+        (
+        SELECT user_id,NAME FROM userinfo WHERE user_id IN(
+        SELECT user_id FROM praise WHERE praise_id IN(
+        SELECT praise_id FROM informpraise WHERE user_id = #{user_id})
+        )
+        ) tb1 INNER JOIN
+        (
+        SELECT * FROM praise WHERE praise_id IN(
+        SELECT praise_id FROM informpraise WHERE user_id = #{user_id})
+        ) tb2 ON tb1.user_id = tb2.user_id INNER JOIN
+        (
+        SELECT blog_id,blog_title FROM bloginfo WHERE blog_id IN(
+        SELECT blog_id FROM praise WHERE praise_id IN(
+        SELECT praise_id FROM informpraise WHERE user_id = #{user_id})
+        )
+        ) tb3 ON tb2.blog_id = tb3.blog_id
+        INNER JOIN informpraise i ON i.praise_id = tb2.praise_id
+        ) a1,
+        (
+        SELECT COUNT(*) unread FROM informpraise WHERE user_id = #{user_id} AND STATUS=0) a2
+    </select>
+
+    <!--把未读的点赞消息修改为已读-->
+    <update id="updateInformToReadingByInformPraiseId" parameterType="int">
+        UPDATE informpraise SET STATUS = 1 WHERE informpraise_id = #{informpraise_id}
+    </update>
+
+    <!--把未读的点赞消息全部修改为已读-->
+    <update id="updateInformToReadingByAll" parameterType="int">
+        UPDATE informpraise SET STATUS = 1 WHERE user_id = #{user_id}
+    </update>
+
+    <!--根据点赞消息id清除点赞消息-->
+    <delete id="deleteInformByInformPraise_id" parameterType="int">
+        DELETE FROM informpraise WHERE informpraise_id = #{informpraise_id}
+    </delete>
+
+    <!--清除所有点赞消息-->
+    <delete id="deleteInformPraiseByUserIdAndAll" parameterType="int">
+        DELETE FROM informpraise WHERE user_id = #{user_id}
+    </delete>
 </mapper>

@@ -56,8 +56,7 @@ public class InformCommentDto {
 
     public void setComment_time(Date comment_time) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String date = simpleDateFormat.format(comment_time);
-        this.comment_time = date;
+        this.comment_time = simpleDateFormat.format(comment_time);
     }
 
     public String getName() {
