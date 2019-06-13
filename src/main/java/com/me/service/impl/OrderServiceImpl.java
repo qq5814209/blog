@@ -5,6 +5,7 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.domain.AlipayTradePagePayModel;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.me.config.PayProperties;
+import com.me.dto.UserCbiDto;
 import com.me.dto.UserVipDto;
 import com.me.mapper.CbiMapper;
 import com.me.mapper.OrderMapper;
@@ -18,8 +19,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.*;
 
@@ -48,16 +51,17 @@ public class OrderServiceImpl implements OrderService {
      * @param response
      * @return
      */
-    public Object SetOrder(HttpServletRequest request, HttpServletResponse response) {
+    public void SetOrder(HttpServletRequest request, HttpServletResponse response) {
 
         try {
             response.setContentType("text/html; charset=utf-8");
             response.getWriter().write(getwayPay(request));
             response.getWriter().close();
+            return;
         } catch (IOException e) {
             e.printStackTrace();
         }
-       return "订单创建完成";
+     return;
     }
 
     /**
@@ -69,8 +73,7 @@ public class OrderServiceImpl implements OrderService {
 
         Order order =new Order();
         UserVipDto userVip =new UserVipDto();
-        Enumeration enu = request.getParameterNames();
-
+        UserCbiDto userCbiDto =new UserCbiDto();
         String out_trade_no = request.getParameter("out_trade_no");
         System.out.println("订单号为："+out_trade_no);
         order.setOrder_number(out_trade_no);
@@ -85,12 +88,37 @@ public class OrderServiceImpl implements OrderService {
             vipMapper.setUserVip(userVip);
         }
 
+        if  (order2.getCbi_id()!=null){
+            userCbiDto.setCbi_number(order2.getCbi_number());
+            userCbiDto.setUser_id(order2.getUser_id());
+            cbiMapper.addUserCbi(userCbiDto);
+        }
+
         try {
-            response.sendRedirect(request.getContextPath()+"/vip_center.html");
+            request.getRequestDispatcher("/vip_center.html").forward(request,response);
+            return;
+        } catch (ServletException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return;
     }
+
+    /**
+     * 获取订单
+     * @param session
+     * @return
+     */
+    public Object getOrderBy(HttpSession session) {
+        UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
+        return orderMapper.getOrderBy(userInfo);
+    }
+
+
+
+
+
 
 
     public String getwayPay(HttpServletRequest request) {

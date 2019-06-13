@@ -22,5 +22,9 @@
         select * from `order` where order_number=#{order_number};
     </select>
 
+    <!--根据用户查C币订单-->
+    <select id="getOrderBy" parameterType="com.me.pojo.UserInfo" resultType="com.me.pojo.Order">
+        select * from `order` where user_id=#{user_id} and cbi_id >0;
+    </select>
 
 </mapper>

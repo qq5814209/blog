@@ -17,13 +17,21 @@
 
     <!--获取指定的vip套餐-->
     <select id="getVipById" resultType="com.me.pojo.Vip" parameterType="String">
-        select * from  vip where vip_id = #{vip_id}
+        select * from  vip where vip_id = #{vip_id} and `status`=1
     </select>
 
     <!--添加用户成为会员-->
     <insert id="setUserVip" parameterType="com.me.dto.UserVipDto">
         insert into user_vip (user_id,vip_id,statr_time,end_time)
-        values (#{user_id},#{vip_id},now(),DATE_SUB(now(),INTERVAL #{end_time} day));
+        values (#{user_id},#{vip_id},now(),DATE_SUB(now(),INTERVAL #{end_time} day))
+        on DUPLICATE key update end_time= IF(`status` = 1 ,DATE_SUB(end_time, INTERVAL #{end_time} DAY),DATE_SUB(now(),INTERVAL #{end_time} DAY))
+
     </insert>
+
+    <!--查看是否为会员-->
+    <select id="isVip" parameterType="com.me.pojo.UserInfo" resultType="com.me.vo.IsVipVo">
+        SELECT v.* , s.user_name  from user_vip v,userinfo s where v.user_id=s.user_id
+        and v.user_id =#{user_id} and v.`status`=1
+    </select>
 
 </mapper>

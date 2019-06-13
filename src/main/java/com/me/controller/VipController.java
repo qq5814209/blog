@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class VipController {
 
@@ -27,6 +29,17 @@ public class VipController {
     @RequestMapping(value ="/getVip",method = RequestMethod.POST)
     public Object test(@RequestBody(required = false) Vip vip){
         return vipService.getVip(vip);
+    }
+
+    /**
+     * 查看是否为会员身份
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value ="isVip",method = RequestMethod.POST)
+    public Object isVip(HttpSession session){
+        return vipService.isVip(session);
     }
 
 }

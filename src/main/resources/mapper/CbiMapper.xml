@@ -14,11 +14,16 @@
     </select>
 
 
-
     <!--通过id查c币套餐-->
     <select id="getCbiById" resultType="com.me.pojo.Cbi" parameterType="String">
-        select * from  cbi where cbi_id = #{cbi_id}
+        select * from  cbi where cbi_id = #{cbi_id} and `status` =1
     </select>
+
+    <!--用户添加C币数-->
+    <update id="addUserCbi" parameterType="com.me.dto.UserCbiDto" >
+        update userinfo set cbis =cbis + #{cbi_number} where #{user_id};
+    </update>
+
 
 
 </mapper>
