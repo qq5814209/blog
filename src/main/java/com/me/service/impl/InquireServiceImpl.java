@@ -76,6 +76,10 @@ public class InquireServiceImpl implements InquireService{
         showvo.setBlog_content("%"+showvo.getType_name()+"%");
         showvo.setBlog_title("%"+showvo.getType_name()+"%");
         List<ShowDto> showDtos = inquireMapper.searchBlogs(showvo);
+        for(ShowDto showDto : showDtos){
+            String str = showDto.getBlog_content().substring(0,5);
+            showDto.setBlog_content(str);
+        }
         return showDtos;
     }
 
