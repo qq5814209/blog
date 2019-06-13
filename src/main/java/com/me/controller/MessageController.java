@@ -160,6 +160,62 @@ public class MessageController {
 
         return messageService.deleteInformPraiseByUserIdAndAll(userInfo.getUser_id());
     }
+
+    /**
+     * 查询所有系统消息
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/selectInformSystemByUserId", method = RequestMethod.GET)
+    public Object selectInformSystemByUserId(HttpSession session){
+        UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+        return messageService.selectInformSystemByUserId(userInfo.getUser_id());
+    }
+
+    /**
+     * 把未读的系统消息修改为已读
+     * @param informSystem_id
+     */
+    @ResponseBody
+    @RequestMapping(value = "/updateInformToReadingByInformSystemId", method = RequestMethod.POST)
+    public void updateInformToReadingByInformSystemId(int informSystem_id){
+        messageService.updateInformToReadingByInformSystemId(informSystem_id);
+    }
+
+    /**
+     * 把未读的系统消息全部变成已读
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/updateInformSystemToReadingByAll", method = RequestMethod.POST)
+    public Object updateInformSystemToReadingByAll(HttpSession session){
+        UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+        return messageService.updateInformSystemToReadingByAll(userInfo.getUser_id());
+    }
+
+    /**
+     * 根据系统消息id删除系统消息
+     * @param informSystem_id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/deleteInformByInformSystem_id", method = RequestMethod.POST)
+    public Object deleteInformByInformSystem_id(int informSystem_id){
+        return messageService.deleteInformByInformSystem_id(informSystem_id);
+    }
+
+    /**
+     * 删除所有系统消息
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/deleteInformSystemByUserIdAndAll", method = RequestMethod.POST)
+    public Object deleteInformSystemByUserIdAndAll(HttpSession session){
+        UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+        return messageService.deleteInformSystemByUserIdAndAll(userInfo.getUser_id());
+    }
 }
 
 

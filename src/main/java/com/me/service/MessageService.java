@@ -3,6 +3,7 @@ package com.me.service;
 import com.me.dto.InformCareDto;
 import com.me.dto.InformCommentDto;
 import com.me.dto.InformPraiseDto;
+import com.me.dto.InformSystemDto;
 
 import java.util.List;
 
@@ -87,4 +88,37 @@ public interface MessageService {
      * @return
      */
     boolean deleteInformPraiseByUserIdAndAll(int user_id);
+
+    /**
+     * 查询所有系统消息
+     * @param user_id
+     * @return
+     */
+    List<InformSystemDto> selectInformSystemByUserId(int user_id);
+
+    /**
+     * 把未读的系统消息修改为已读
+     * @param informSystem_id
+     */
+    void updateInformToReadingByInformSystemId(int informSystem_id);
+
+    /**
+     * 把未读的系统消息全部变成已读
+     * @return
+     */
+    boolean updateInformSystemToReadingByAll(int user_id);
+
+    /**
+     * 根据系统消息id删除系统消息
+     * @param informSystem_id
+     * @return
+     */
+    boolean deleteInformByInformSystem_id(int informSystem_id);
+
+    /**
+     * 删除所有系统消息
+     * @param user_id
+     * @return
+     */
+    boolean deleteInformSystemByUserIdAndAll(int user_id);
 }

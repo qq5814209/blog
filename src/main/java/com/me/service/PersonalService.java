@@ -1,6 +1,7 @@
 package com.me.service;
 
 import com.me.dto.FavoritesDto;
+import com.me.dto.SumDto;
 import com.me.dto.UserInfoDto;
 import com.me.pojo.Favorites;
 import com.me.pojo.UserInfo;
@@ -100,4 +101,11 @@ public interface PersonalService {
      * @return
      */
     boolean deleteFavorites(int favoritesId);
+
+    /**
+     * 根据用户id统计各种信息总数量
+     * @param user_id
+     * @return
+     */
+    SumDto selectCount(int user_id);
 }
