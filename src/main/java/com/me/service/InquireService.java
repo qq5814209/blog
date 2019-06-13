@@ -1,5 +1,7 @@
 package com.me.service;
 
+import com.me.dto.Blog_TypeDto;
+import com.me.dto.Person_TypeDto;
 import com.me.dto.ShowDto;
 import com.me.vo.ShowVo;
 
@@ -23,5 +25,19 @@ public interface InquireService {
      * @param blogType
      * @return
      */
-    int writeBlog(int user_id, String txtTitle, String content, String blogType);
+    int writeBlog(int user_id, String txtTitle, String content,String typeSpan,String blogType);
+
+    /**
+     * 查询个人分类类型
+     * @return
+     */
+    List<Person_TypeDto> selectPersonType();
+
+    /**
+     * 查询博客类型
+     * @return
+     */
+    List<Blog_TypeDto> selectBlogType();
+
+
 }

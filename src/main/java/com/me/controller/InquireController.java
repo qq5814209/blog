@@ -1,6 +1,8 @@
 package com.me.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.me.dto.Blog_TypeDto;
+import com.me.dto.Person_TypeDto;
 import com.me.dto.ShowDto;
 import com.me.pojo.UserInfo;
 import com.me.service.InquireService;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -133,7 +136,22 @@ public class InquireController {
 //    }
 
 
-
+    /**
+     * 个人分类类型和查询博客类型
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "selectPersonTypeAndBlogType",method = RequestMethod.GET)
+    public Object selectBlogType(){
+        //查询个人分类类型
+        List<Person_TypeDto> person_typeDtos = inquireService.selectPersonType();
+        //查询博客类型
+        List<Blog_TypeDto> blog_typeDtos = inquireService.selectBlogType();
+        ArrayList<Object> type = new ArrayList<Object>();
+        type.add(person_typeDtos);
+        type.add(blog_typeDtos);
+        return type;
+    }
 
     /**
      * 写博客
@@ -145,15 +163,16 @@ public class InquireController {
      */
     @ResponseBody
     @RequestMapping(value = "writeBlog",method = RequestMethod.POST)
-    public Object writeBlog(HttpSession httpSession,String txtTitle,String content,String blogType){
+    public Object writeBlog(HttpSession httpSession,String txtTitle,String content,String typeSpan,String blogType){
         System.out.println(txtTitle);
         System.out.println(content);
+        System.out.println(typeSpan);
         System.out.println(blogType);
         UserInfo userInfo = (UserInfo)httpSession.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
-        int i = inquireService.writeBlog(user_id,txtTitle,content,blogType);
+        int i = inquireService.writeBlog(user_id,txtTitle,content,typeSpan,blogType);
         if(i == 0){
-            return BaseResult.fail("服务器正正在维护，写博客功能延迟开放");
+            return BaseResult.fail("服务器正在维护，写博客功能延迟开放");
         }
         return BaseResult.success("博客发表成功");
     }

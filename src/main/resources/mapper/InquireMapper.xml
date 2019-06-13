@@ -88,9 +88,20 @@
                 on tb1.blog_id = tb4.bid2 ) tb3
     </select>
 
+    <!--查询个人分类类型-->
+    <select id="selectPersonType" resultType="com.me.dto.Person_TypeDto">
+        SELECT pt_id,type_name persontype_name FROM person_type
+    </select>
+
+    <!--查询博客类型-->
+    <select id="selectBlogType" resultType="com.me.dto.Blog_TypeDto">
+        SELECT bt_id,type_name blogtype_name FROM blog_type
+    </select>
+
+
     <!--写博客-->
     <update id="writeBlog" parameterType="com.me.vo.WriteBlogVo">
-        INSERT INTO bloginfo(blog_title,blog_content,create_time) VALUES(#{txtTitle},#{content},NOW());
+        INSERT INTO bloginfo(blog_title,blog_content,bt_id,create_time,pt_id) VALUES(#{txtTitle},#{content},#{blogType},NOW(),#{typeSpan});
     </update>
 
     <!--获取最新博客id-->

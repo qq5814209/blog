@@ -1,5 +1,7 @@
 package com.me.service.impl;
 
+import com.me.dto.Blog_TypeDto;
+import com.me.dto.Person_TypeDto;
 import com.me.dto.ShowDto;
 import com.me.mapper.InquireMapper;
 import com.me.mapper.LevelValueMapper;
@@ -100,12 +102,15 @@ public class InquireServiceImpl implements InquireService{
      * @return
      */
     @Override
-    public int writeBlog(int user_id, String txtTitle, String content, String blogType) {
+    public int writeBlog(int user_id, String txtTitle, String content,String typeSpan,String blogType) {
         WriteBlogVo writeBlogVo = new WriteBlogVo();
         writeBlogVo.setUser_id(user_id);
         writeBlogVo.setTxtTitle(txtTitle);
         writeBlogVo.setContent(content);
+        writeBlogVo.setTypeSpan(typeSpan);
         writeBlogVo.setBlogType(blogType);
+
+
         //1、博客内容表插入数据
         int i1 = inquireMapper.writeBlog(writeBlogVo);
         System.out.println(i1 + "11111");
@@ -122,12 +127,31 @@ public class InquireServiceImpl implements InquireService{
         levelValueVo.setValue(50);
         int i3 = levelValueMapper.addValue(levelValueVo);
         System.out.println(i3 + "33333");
-        
+
         //成功
         if(i1 == 1 && i2 == 1){
             return 1;
         }
         return 0;
     }
+
+    /**
+     * 查询个人分类类型
+     * @return
+     */
+    @Override
+    public List<Person_TypeDto> selectPersonType() {
+        return inquireMapper.selectPersonType();
+    }
+
+    /**
+     * 查询博客类型
+     * @return
+     */
+    @Override
+    public List<Blog_TypeDto> selectBlogType() {
+        return inquireMapper.selectBlogType();
+    }
+
 
 }

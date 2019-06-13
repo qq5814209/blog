@@ -1,11 +1,20 @@
 package com.me.vo;
 
 public class WriteBlogVo {
-    int user_id;
-    int blog_id;
-    String txtTitle;
-    String content;
-    String blogType;
+    int user_id;//用户id
+    int blog_id;//博客id
+    String txtTitle;//博客标题
+    String content;//博客内容
+    String typeSpan;//个人分类
+    String blogType;//博客类型
+
+    public String getTypeSpan() {
+        return typeSpan;
+    }
+
+    public void setTypeSpan(String typeSpan) {
+        this.typeSpan = typeSpan;
+    }
 
     public int getBlog_id() {
         return blog_id;
