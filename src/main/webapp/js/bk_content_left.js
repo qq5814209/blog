@@ -1,8 +1,6 @@
 <!--需要获取用户id-->
 var userId=1;
 var blogId=1;
-var userName;
-var names;
 function split() {
     // userId=window.location.search.split("=")[1].split("&")[0];
     // blogId = window.location.search.split("=")[2];
@@ -147,6 +145,4 @@ function findComment(){
 };
 findComment();
 function showBlogByNewTime() {
-    
-
 }

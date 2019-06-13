@@ -71,6 +71,19 @@ public class UserInfoController {
         session.invalidate();
         return true;
     }
+
+    /**
+     * 从session获取用户id
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "getUser_id",method = RequestMethod.GET)
+    public Object getUser_id(HttpSession session){
+        UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        return user_id;
+    }
 }
 
 
