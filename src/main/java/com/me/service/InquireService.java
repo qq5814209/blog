@@ -14,4 +14,14 @@ public interface InquireService {
     public List<ShowDto> searchBlogs(ShowVo showvo);
 //    public List<ShowDto> searchBlogs(String str);
     public List<ShowDto> getBlogsByUserId(ShowVo showVo);
+
+    /**
+     * 写博客
+     * @param user_id
+     * @param txtTitle
+     * @param content
+     * @param blogType
+     * @return
+     */
+    int writeBlog(int user_id, String txtTitle, String content, String blogType);
 }

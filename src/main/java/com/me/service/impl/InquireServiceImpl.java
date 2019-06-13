@@ -2,8 +2,11 @@ package com.me.service.impl;
 
 import com.me.dto.ShowDto;
 import com.me.mapper.InquireMapper;
+import com.me.mapper.LevelValueMapper;
 import com.me.service.InquireService;
+import com.me.vo.LevelValueVo;
 import com.me.vo.ShowVo;
+import com.me.vo.WriteBlogVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +18,9 @@ public class InquireServiceImpl implements InquireService{
 
     @Autowired
     InquireMapper inquireMapper;
+
+    @Autowired
+    LevelValueMapper levelValueMapper;
 
 
     public List<ShowDto> getBlogsByTypeName(ShowVo showVo) {
@@ -83,6 +89,45 @@ public class InquireServiceImpl implements InquireService{
     public List<ShowDto> getBlogsByUserId(ShowVo showVo) {
         List<ShowDto> showDtos = inquireMapper.getBlogsByUserId(showVo);
         return showDtos;
+    }
+
+    /**
+     * 写博客
+     * @param user_id
+     * @param txtTitle
+     * @param content
+     * @param blogType
+     * @return
+     */
+    @Override
+    public int writeBlog(int user_id, String txtTitle, String content, String blogType) {
+        WriteBlogVo writeBlogVo = new WriteBlogVo();
+        writeBlogVo.setUser_id(user_id);
+        writeBlogVo.setTxtTitle(txtTitle);
+        writeBlogVo.setContent(content);
+        writeBlogVo.setBlogType(blogType);
+        //1、博客内容表插入数据
+        int i1 = inquireMapper.writeBlog(writeBlogVo);
+        System.out.println(i1 + "11111");
+        //2、获取最新插入的博客id
+        int blog_id = inquireMapper.selectMaxBlog_id();
+        System.out.println(blog_id);
+        writeBlogVo.setBlog_id(blog_id);
+        //3、用户_博客中间表插入数据
+        int i2 = inquireMapper.insertUser_Blog(writeBlogVo);
+        System.out.println(i2 + "22222");
+        //4、增加经验值
+        LevelValueVo levelValueVo = new LevelValueVo();
+        levelValueVo.setUser_id(user_id);
+        levelValueVo.setValue(50);
+        int i3 = levelValueMapper.addValue(levelValueVo);
+        System.out.println(i3 + "33333");
+        
+        //成功
+        if(i1 == 1 && i2 == 1){
+            return 1;
+        }
+        return 0;
     }
 
 }

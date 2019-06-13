@@ -4,11 +4,13 @@ import com.github.pagehelper.PageInfo;
 import com.me.dto.ShowDto;
 import com.me.pojo.UserInfo;
 import com.me.service.InquireService;
+import com.me.util.BaseResult;
 import com.me.vo.ShowVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -129,5 +131,31 @@ public class InquireController {
 //        List<ShowDto> showDtos = inquireService.searchBlogs(str);
 //        return showDtos;
 //    }
+
+
+
+
+    /**
+     * 写博客
+     * @param httpSession
+     * @param txtTitle
+     * @param content
+     * @param blogType
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "writeBlog",method = RequestMethod.POST)
+    public Object writeBlog(HttpSession httpSession,String txtTitle,String content,String blogType){
+        System.out.println(txtTitle);
+        System.out.println(content);
+        System.out.println(blogType);
+        UserInfo userInfo = (UserInfo)httpSession.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        int i = inquireService.writeBlog(user_id,txtTitle,content,blogType);
+        if(i == 0){
+            return BaseResult.fail("服务器正正在维护，写博客功能延迟开放");
+        }
+        return BaseResult.success("博客发表成功");
+    }
 
 }

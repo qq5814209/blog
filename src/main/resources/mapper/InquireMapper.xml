@@ -88,4 +88,19 @@
                 on tb1.blog_id = tb4.bid2 ) tb3
     </select>
 
+    <!--写博客-->
+    <update id="writeBlog" parameterType="com.me.vo.WriteBlogVo">
+        INSERT INTO bloginfo(blog_title,blog_content,create_time) VALUES(#{txtTitle},#{content},NOW());
+    </update>
+
+    <!--获取最新博客id-->
+    <select id="selectMaxBlog_id" resultType="int">
+        SELECT MAX(blog_id) FROM bloginfo
+    </select>
+
+    <!--用户_博客中间表插入数据-->
+    <insert id="insertUser_Blog" parameterType="com.me.vo.WriteBlogVo">
+        INSERT INTO user_blog (user_id,blog_id) VALUES (#{user_id},#{blog_id})
+    </insert>
+
 </mapper>
