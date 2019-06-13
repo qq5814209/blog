@@ -93,4 +93,31 @@
     <delete id="deleteInformPraiseByUserIdAndAll" parameterType="int">
         DELETE FROM informpraise WHERE user_id = #{user_id}
     </delete>
+
+    <!--查询所有系统消息-->
+    <select id="selectInformSystemByUserId" parameterType="int" resultType="com.me.dto.InformSystemDto">
+        SELECT * FROM (
+        SELECT * FROM informsystem WHERE user_id = #{user_id}) tb1,
+        (SELECT COUNT(*) unreads FROM informsystem WHERE STATUS = 0 AND user_id = #{user_id}) tb2
+    </select>
+
+    <!--把未读的系统消息改为已读-->
+    <update id="updateInformToReadingByInformSystemId" parameterType="int">
+        UPDATE informsystem SET STATUS = 1 WHERE inform_id = #{inform_id}
+    </update>
+
+    <!--把未读的系统消息全部改为已读-->
+    <update id="updateInformSystemToReadingByAll" parameterType="int">
+        UPDATE informsystem SET STATUS = 1 WHERE user_id = #{user_id}
+    </update>
+
+    <!--根据系统消息id删除系统消息-->
+    <delete id="deleteInformByInformSystem_id" parameterType="int">
+        DELETE FROM informsystem WHERE inform_id = #{inform_id}
+    </delete>
+
+    <!--删除所有系统消息-->
+    <delete id="deleteInformSystemByUserIdAndAll" parameterType="int">
+        DELETE FROM informsystem WHERE user_id = #{user_id}
+    </delete>
 </mapper>
