@@ -54,8 +54,10 @@ public class InquireServiceImpl implements InquireService{
         return false;
     }
 
+    @Transactional
     public boolean updatePersonalCategory(ShowVo showvo) {
         int count = inquireMapper.updatePersonalCategory(showvo);
+
         if(count>0) {
             return true;
         }

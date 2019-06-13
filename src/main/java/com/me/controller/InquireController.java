@@ -44,7 +44,7 @@ public class InquireController {
         PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
         List<ShowDto> showDtos = inquireService.getBlogsByUserId(showVo);
         PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
-        System.out.println(showDtoPageInfo);
+
         return showDtoPageInfo;
     }
 
@@ -69,11 +69,15 @@ public class InquireController {
     @ResponseBody
     @RequestMapping("allPersonalCategory")
     public Object allPersonalCategory(@RequestBody(required = false) ShowVo showVo, HttpSession httpSession){
+
+        PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
         UserInfo userInfo = (UserInfo)httpSession.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
         showVo.setUser_id(user_id);
         List<ShowDto> showDtos = inquireService.allPersonalCategory(showVo);
-        return showDtos;
+        PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
+
+        return showDtoPageInfo;
     }
 
 
@@ -96,10 +100,13 @@ public class InquireController {
     @ResponseBody
     @RequestMapping("updatePersonalCategory")
     public Object updatePersonalCategory(@RequestBody(required = false) ShowVo showVo, HttpSession httpSession){
+        System.out.println("保存");
+        System.out.println(showVo);
         UserInfo userInfo = (UserInfo)httpSession.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
         showVo.setUser_id(user_id);
         boolean flag = inquireService.updatePersonalCategory(showVo);
+        System.out.println(flag+"flag來了");
         return flag;
     }
 
