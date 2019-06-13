@@ -1,0 +1,27 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.mapper.FileMapper">
+
+    <!--用户文件上传-->
+    <insert id="fileUpLoad" parameterType="com.me.pojo.Files" >
+       insert into files (user_id,file_name,file_time,file_cbi)
+        values (#{user_id},#{file_name},now(),#{file_cbi});
+    </insert>
+
+
+    <!--文件下载扣除C币-->
+    <update id="fileDown" parameterType="com.me.pojo.Files" >
+        update userinfo set cbis =cbis-#{file_cbi}  where user_id=#{user_id};
+    </update>
+
+
+    <!--查询用户是否能下载文件-->
+    <select id="selectCbiIs" parameterType="com.me.pojo.Files" resultType="com.me.dto.IsDownDto">
+        SELECT f.file_cbi,u.cbis from files f, userinfo u where u.user_id=#{user_id} and f.file_id=#{file_id}
+    </select>
+
+
+
+
+</mapper>
