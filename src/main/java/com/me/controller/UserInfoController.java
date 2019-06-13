@@ -78,10 +78,11 @@ public class UserInfoController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "getUser_id",method = RequestMethod.GET)
+    @RequestMapping(value = "getUser_id")
     public Object getUser_id(HttpSession session){
         UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
-        int user_id = userInfo.getUser_id();
+//        int user_id = userInfo.getUser_id();
+        int user_id = 1;
         return user_id;
     }
 }

@@ -1,9 +1,8 @@
 package com.me.service;
 
-import com.me.dto.BlogDto;
-import com.me.dto.BlogNumDto;
-import com.me.dto.ClassificationDto;
-import com.me.dto.CommentDto;
+import com.me.dto.*;
+import com.me.pojo.Comment;
+import com.me.pojo.UserInfo;
 
 import java.util.List;
 
@@ -62,4 +61,32 @@ public interface BlogService {
      * @return
      */
     List<BlogDto> showBlogByNewTime(int userId);
+
+    /**
+     *  通过用户id查询访问量排名靠前的博客
+     * @param userId
+     * @return
+     */
+    List<BlogDto> showBlogByCommentNum(int userId);
+
+    /**
+     *  通过登录者的id查询用户信息
+     * @param loginUserId
+     * @return
+     */
+    UserInfo showCommentBox(int loginUserId);
+
+    /**
+     * 获取评论对象，用于新增最新评论
+     * @param comment
+     * @return
+     */
+    int addComment(Comment comment);
+
+    /**
+     *  通过用户id信息查询用户所有统计数据信息
+     * @param userId
+     * @return
+     */
+    UserDto findUserDto(int userId);
 }

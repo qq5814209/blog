@@ -1,9 +1,8 @@
 package com.me.controller;
 
-import com.me.dto.BlogDto;
-import com.me.dto.BlogNumDto;
-import com.me.dto.ClassificationDto;
-import com.me.dto.CommentDto;
+import com.me.dto.*;
+import com.me.pojo.Comment;
+import com.me.pojo.UserInfo;
 import com.me.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,7 +49,6 @@ public class BlogController {
     @ResponseBody
     @RequestMapping(value = "/showBlog")
     public Object showBlog(@RequestParam int userId){
-
         List<BlogDto> blogList = blogService.showBlog(userId);
         return blogList;
     }
@@ -116,5 +114,52 @@ public class BlogController {
         return blogDtoList;
     }
 
+    /**
+     *  通过用户id查询访问量排名靠前的博客
+     * @param userId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/showBlogByCommentNum")
+    public Object showBlogByCommentNum(@RequestParam int userId){
+        List<BlogDto> blogDtoList = blogService.showBlogByCommentNum(userId);
+        return blogDtoList;
+    }
+
+    /**
+     *  通过登录者的id查询用户信息
+     * @param loginUserId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/showCommentBox")
+    public Object showCommentBox(@RequestParam int loginUserId){
+        UserInfo userInfo = blogService.showCommentBox(loginUserId);
+        return userInfo;
+    }
+
+    /**
+     *  获取评论对象，用于新增最新评论
+     * @param comment
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/addComment")
+    public Object addComment(@RequestBody Comment comment){
+        int num = blogService.addComment(comment);
+        return num;
+    }
+
+    /**
+     *  通过用户id信息查询用户所有统计数据信息
+     * @param userId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/findUserDto")
+    public Object findUserDto(@RequestParam int userId){
+        UserDto userDto = blogService.findUserDto(userId);
+        return userDto;
+    }
 
 }
