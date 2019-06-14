@@ -1,5 +1,6 @@
 package com.me.controller;
 
+import com.me.dto.SumDto;
 import com.me.pojo.Favorites;
 import com.me.pojo.UserInfo;
 import com.me.service.PersonalService;
@@ -281,6 +282,18 @@ public class PersonalController {
         return personalService.deleteFavorites(favoritesId);
     }
 
-
+    /**
+     * 根据用户id统计各种信息总数量
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "selectCount",method = RequestMethod.GET)
+    public Object selectCount(HttpSession session){
+        UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        SumDto sumDto = personalService.selectCount(user_id);
+        return sumDto;
+    }
 
 }
