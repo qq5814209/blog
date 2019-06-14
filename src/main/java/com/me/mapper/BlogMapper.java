@@ -61,4 +61,5 @@ public interface BlogMapper {
     public ShowDto selectBrowse(ShowVo showVo);
 
 
+    int addSpan(int userId);
 }

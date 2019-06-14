@@ -190,7 +190,6 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public int addBrowse(ShowVo showVo) {
         ShowDto showDto = blogMapper.selectBrowse(showVo);
-        System.out.println(showVo+"9999999999999999999999999");
         int i = 0;
         if(showDto == null) {
             i = blogMapper.addBrowse(showVo);
@@ -207,6 +206,12 @@ public class BlogServiceImpl implements BlogService {
         ShowDto showDto = blogMapper.selectBrowse(showVo);
         return showDto;
 
+    }
+
+    @Override
+    public int addSpan(int userId) {
+        int num = blogMapper.addSpan(userId);
+        return num;
     }
 
 }
