@@ -134,6 +134,19 @@ public class UserInfoController {
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CaptchaUtil.outputCaptcha(request, response);
     }
+
+
+    /**
+     * 用户名检测
+     * @param user_name
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/cheUsername", method = RequestMethod.POST)
+    public boolean cheUsername(String user_name){
+       return userInfoService.cheUsername(user_name);
+    }
+
 }
 
 

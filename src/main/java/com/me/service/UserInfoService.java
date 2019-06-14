@@ -36,4 +36,5 @@ public interface UserInfoService {
      * @return
      */
     UserInfo user_nameIsExist(String user_name);
+    boolean cheUsername(String user_name);
 }

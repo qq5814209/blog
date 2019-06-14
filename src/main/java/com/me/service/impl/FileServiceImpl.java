@@ -5,7 +5,6 @@ import com.me.mapper.FileMapper;
 import com.me.pojo.Files;
 import com.me.pojo.UserInfo;
 import com.me.service.FileService;
-import com.sun.deploy.net.URLEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

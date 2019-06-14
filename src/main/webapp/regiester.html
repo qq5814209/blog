@@ -121,17 +121,37 @@
             })
         }
     });
+    var flag = false;
+    $.validator.addMethod(
+        //规则名称
+        "checkUsername",
+        function () {
+            $.ajax({
+                type:'POST',
+                url:"cheUsername",
+                data:{
+                    "user_name": $("#user_name").val()
+                },
+                success:function (data) {
+                    if(data == true) {
+                        flag = true;
+                    }
+                }
+            });
+            return flag;
+        });
 
     $().ready(function() {
         // 在键盘按下并释放及提交后验证提交表单
         $("#regiesterForm").validate({
             rules: {
-                user_name: "required",
-                email: "required",
-                password: "required",
-
                 user_name: {
                     required: true,
+<<<<<<< HEAD
+=======
+                    minlength: 2,
+                    checkUsername: true
+>>>>>>> cba3efe4ed66c460c852f13f3e35ab8b4d44341d
                 },
                 password: {
                     required: true,
@@ -144,11 +164,13 @@
                 }
             },
             messages: {
-                user_name: "请输入您的名字",
-                email: "请输入您的邮箱",
-                password: "请输入您的密码",
                 user_name: {
                     required: "请输入用户名",
+<<<<<<< HEAD
+=======
+                    minlength: "用户名长度必需大于2个字符",
+                    checkUsername: "用户名已存在"
+>>>>>>> cba3efe4ed66c460c852f13f3e35ab8b4d44341d
                 },
                 password: {
                     required: "请输入密码",

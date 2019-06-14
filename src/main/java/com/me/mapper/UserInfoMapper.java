@@ -34,10 +34,14 @@ public interface UserInfoMapper {
      */
     void updateStatus(int userid);
 
+
     /**
      * 判断新注册账号是否存在
      * @param user_name
      * @return
      */
     UserInfo user_nameIsExist(String user_name);
+
+    public UserInfo cheUsername(String user_name);
+
 }

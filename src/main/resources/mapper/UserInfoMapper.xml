@@ -25,8 +25,15 @@
         UPDATE userinfo SET status = 1 where user_id = #{userid}
     </update>
 
+
     <!--判断新注册账号是否存在-->
     <select id="user_nameIsExist" resultType="com.me.pojo.UserInfo" parameterType="java.lang.String">
         SELECT * FROM userinfo WHERE user_name = #{user_name};
     </select>
+
+    <!--邮箱验证，修改状态码-->
+    <select id="cheUsername" parameterType="String" resultType="com.me.pojo.UserInfo">
+        select * from userinfo where user_name=#{user_name} and `status`=1;
+    </select>
+
 </mapper>
