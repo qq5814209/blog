@@ -17,7 +17,7 @@
 
 
     <!--查询用户是否能下载文件-->
-    <select id="selectCbiIs" parameterType="com.me.pojo.Files" resultType="com.me.dto.IsDownDto">
+    <select id="selectCbiIs" parameterType="String" resultType="com.me.dto.IsDownDto">
         SELECT f.file_cbi,u.cbis,f.file_name from files f, userinfo u where u.user_id=f.user_id and f.file_id=#{file_id}
     </select>
 
@@ -29,7 +29,7 @@
             and file_id = #{file_id}
         </if>
         <if test="user_id != null and user_id != ''">
-            and user_id = #{user_id}
+            and f.user_id = #{user_id}
         </if>
         <if test="file_name != null and file_name !='' ">
             and  file_name  LIKE '%${file_name}%'
