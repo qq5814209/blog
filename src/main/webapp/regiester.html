@@ -31,6 +31,7 @@
                             <div class="form-group">
                                 <label>账号</label>
                                 <input type="text" id="user_name" name="user_name" class="form-control" placeholder="User Name">
+                                <label id="isExist" style="display: none" class="error" for="email"></label>
                             </div>
                             <div class="form-group">
                                 <label>邮箱</label>
@@ -39,11 +40,6 @@
                             <div class="form-group">
                                 <label>密码</label>
                                 <input type="password" id="password" name="password" class="form-control" placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                                <label>验证码</label>
-                                <input type="text" id="captcha" placeholder="Captcha">
-                                <img src="captcha" id="captchaImage">
                             </div>
                             <input type="submit"  class="btn btn-primary btn-flat m-b-30 m-t-30">注册</input>
                         </form>
@@ -64,6 +60,38 @@
 <script src="jquery-validation-1.19.0/dist/jquery.validate.min.js"></script>
 <script src ="jquery-validation-1.19.0/dist/localization/messages_zh.js"></script>
 <script>
+    /*$("#user_name").bind('keypress',function () {
+
+        if($("#user_name").text().equal("")){
+            $("#").css("display","none");
+        }
+    });*/
+
+    /*$(function () {
+        if($("#user_name").text().equal("")){
+            $("#isExist").css("display","none");
+        }
+    });*/
+
+    //验证注册账号是否已存在
+    $("#user_name").blur(function () {
+        var user_name = $("#user_name").val();
+        console.log(user_name);
+        $.ajax({
+            type:'GET',
+            url:"user_nameIsExist",
+            data:{
+                "user_name":user_name
+            },
+            success:function (data) {
+                if(data != null && data != ""){
+                    $("#isExist").text(data.message);
+                    $("#isExist").css("display","block");
+                }
+            }
+        })
+    });
+
     //表单验证
     $.validator.setDefaults({
         //验证通过以后注册方法执行
@@ -119,8 +147,11 @@
             rules: {
                 user_name: {
                     required: true,
+<<<<<<< HEAD
+=======
                     minlength: 2,
                     checkUsername: true
+>>>>>>> cba3efe4ed66c460c852f13f3e35ab8b4d44341d
                 },
                 password: {
                     required: true,
@@ -135,8 +166,11 @@
             messages: {
                 user_name: {
                     required: "请输入用户名",
+<<<<<<< HEAD
+=======
                     minlength: "用户名长度必需大于2个字符",
                     checkUsername: "用户名已存在"
+>>>>>>> cba3efe4ed66c460c852f13f3e35ab8b4d44341d
                 },
                 password: {
                     required: "请输入密码",
@@ -151,9 +185,5 @@
         });
     });
 
-    //刷新验证码
-    $('#captchaImage').click(function () {
-        $('#captchaImage').attr("src", "captcha?timestamp=" + (new Date()).valueOf());
-    });
 </script>
 </html>

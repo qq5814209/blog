@@ -4,11 +4,16 @@ import com.me.dto.*;
 import com.me.pojo.Comment;
 import com.me.pojo.UserInfo;
 import com.me.service.BlogService;
+
 import com.me.vo.ReportVo;
+
+import com.me.vo.ShowVo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -163,6 +168,7 @@ public class BlogController {
         return userDto;
     }
 
+
     /**
      * 添加举报信息
      * @param reportVo
@@ -170,8 +176,47 @@ public class BlogController {
      */
     @ResponseBody
     @RequestMapping(value = "/insertReportMessage", method = RequestMethod.POST)
-    public Object insertReportMessage(ReportVo reportVo){
+    public Object insertReportMessage(ReportVo reportVo) {
         return blogService.insertReportMessage(reportVo);
+    }
+
+    /*
+     * 点赞
+     * count的值为1取消点赞，为2点赞
+     * */
+    @ResponseBody
+    @RequestMapping(value = "getPraise")
+    public Object getPraise(@RequestBody(required = false) ShowVo showVo, HttpSession session){
+        UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        showVo.setUser_id(user_id);
+        int count  = blogService.getPraise(showVo);
+        return count;
+    }
+
+    /*
+     * 根据博客id查询赞数量praise_number
+     * */
+    @ResponseBody
+    @RequestMapping(value = "selectPraise2")
+    public Object selectPraise2(@RequestBody(required = false) ShowVo showVo){
+        ShowDto showDto = blogService.selectPraise2(showVo);
+        return showDto;
+    }
+
+
+    /*
+     * 获取浏览量browse_number
+     * 需要blog_id和user_id
+     * */
+    @ResponseBody
+    @RequestMapping(value = "getBrowse")
+    public Object getBrowse(@RequestBody(required = false) ShowVo showVo, HttpSession session){
+        UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        showVo.setUser_id(user_id);
+        ShowDto showDto = blogService.getBrowse(showVo);
+        return showDto;
     }
 
 }

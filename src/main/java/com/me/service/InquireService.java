@@ -16,10 +16,13 @@ public interface InquireService {
     public List<ShowDto> searchBlogs(ShowVo showvo);
     public boolean deleteBlogbyBlog_id(ShowVo showVo);
     public List<ShowDto> getBlogsByUserId(ShowVo showVo);
-
+    public List<ShowDto> showComment(ShowVo showVo);
     public List<ShowDto> showMyComment(ShowVo showVo);
     public boolean delComment(ShowVo showVo);
     public List<ShowDto> getAllBigType();
+    public List<ShowDto> getAllBlogs(ShowVo showVo);
+
+
 
     /**
      * 写博客
@@ -35,7 +38,7 @@ public interface InquireService {
      * 查询个人分类类型
      * @return
      */
-    List<Person_TypeDto> selectPersonType();
+    List<Person_TypeDto> selectPersonType(int user_id);
 
     /**
      * 查询博客类型

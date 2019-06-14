@@ -30,5 +30,11 @@ public interface UserInfoService {
      */
     void updateStatus(String user_id);
 
+    /**
+     * 判断新注册账号是否存在
+     * @param user_name
+     * @return
+     */
+    UserInfo user_nameIsExist(String user_name);
     boolean cheUsername(String user_name);
 }

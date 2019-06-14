@@ -181,9 +181,11 @@
     });
     $("#csdn-toolbar").load("module/bk_header.html");
 
-
+    /*
+    * 页面初始化
+    * */
     $(function () {
-        begin(1,2);
+        begin(1,5);
     });
 
 
@@ -303,7 +305,7 @@
     function goto() {
         $("#feedlist_id").empty("");
         $("#btns").find("button").remove();
-        begin($("#t").val(), 2);
+        begin($("#t").val(), 5);
     }
 
     /*
@@ -312,7 +314,7 @@
     function goNormal(n) {
         $("#feedlist_id").empty("");
         $("#btns").find("button").remove();
-        begin(n,2);
+        begin(n,5);
     }
 
     /*

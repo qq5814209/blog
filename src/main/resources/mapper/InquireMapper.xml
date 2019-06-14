@@ -55,7 +55,7 @@
         any_value(g.user_id) user_id,any_value(r.name) name,
         any_value(r.user_name) user_name,case when any_value(b.browse_id) is null then 0 else COUNT(DISTINCT b.browse_id) end bnumber
         from bloginfo o
-        INNER JOIN user_blog g on  g.blog_id=o.blog_id and o.blog_title LIKE #{blog_title} or o.blog_content LIKE #{blog_content}
+        INNER JOIN user_blog g on  g.blog_id=o.blog_id and o.blog_title LIKE #{blog_title} or o.blog_content LIKE #{blog_content} and o.`status`=1
         INNER JOIN userinfo r on r.user_id=g.user_id
         LEFT JOIN browse b on b.blog_id=o.blog_id and b.user_id=g.user_id
         GROUP BY o.blog_id) m
@@ -81,8 +81,8 @@
     </select>
 
     <!--查询个人分类类型-->
-    <select id="selectPersonType" resultType="com.me.dto.Person_TypeDto">
-        SELECT pt_id,type_name persontype_name FROM person_type
+    <select id="selectPersonType" resultType="com.me.dto.Person_TypeDto" parameterType="int">
+        SELECT pt_id,type_name persontype_name FROM person_type WHERE user_id = #{user_id}
     </select>
 
     <!--查询博客类型-->
@@ -90,6 +90,20 @@
         SELECT bt_id,type_name blogtype_name FROM blog_type
     </select>
 
+    <!--判断新增分类是否已存在-->
+    <select id="isExist" resultType="java.lang.String" parameterType="java.lang.String">
+        SELECT pt_id FROM person_type WHERE pt_id = #{typeSpan} OR type_name = #{typeSpan}
+    </select>
+
+    <!--获取新增分类的id-->
+    <select id="getPt_Id" resultType="java.lang.String">
+        SELECT MAX(pt_id) FROM person_type
+    </select>
+
+    <!--新增分类插入分类表-->
+    <insert id="insertPerson_Type" parameterType="com.me.vo.WriteBlogVo">
+        INSERT INTO person_type (type_name,user_id) VALUES (#{typeSpan},user_id);
+    </insert>
 
     <!--写博客-->
     <update id="writeBlog" parameterType="com.me.vo.WriteBlogVo">
@@ -104,6 +118,11 @@
     <!--用户_博客中间表插入数据-->
     <insert id="insertUser_Blog" parameterType="com.me.vo.WriteBlogVo">
         INSERT INTO user_blog (user_id,blog_id) VALUES (#{user_id},#{blog_id})
+    </insert>
+    
+    <!--博客分类_个人分类中间表插入数据-->
+    <insert id="insertPbt_Middle" parameterType="com.me.vo.WriteBlogVo">
+        INSERT INTO pbt_middle (blog_id,pt_id) VALUES (#{blog_id},#{typeSpan})
     </insert>
 
     <update id="deleteBlogbyBlog_id" parameterType="com.me.vo.ShowVo">
@@ -123,5 +142,30 @@
     <select id="getAllBigType" resultType="com.me.dto.ShowDto">
           select * from blog_type where `status` = 1
     </select>
+
+    <select id="getAllBlogs" parameterType="com.me.vo.ShowVo" resultType="com.me.dto.ShowDto">
+        SELECT any_value(m.blog_id) blog_id,any_value(m.blog_title) blog_title,any_value(m.blog_content) blog_content,
+            any_value(m.create_time) create_time,any_value(m.user_id) user_id,any_value(m.name) name,any_value(m.user_name) user_name,
+            any_value(m.bnumber) bnumber,case when any_value(c.comment_id) is null then 0 else COUNT(*) end cnumber from
+            (SELECT any_value(o.blog_id) blog_id,any_value(o.blog_title) blog_title,any_value(o.blog_content) blog_content,
+            any_value(o.create_time) create_time,any_value(b.browse_id) browse_id,any_value(b.browse_time) browse_time,
+            any_value(g.user_id) user_id,any_value(r.name) name,
+            any_value(r.user_name) user_name,case when any_value(b.browse_id) is null then 0 else COUNT(DISTINCT b.browse_id) end bnumber
+            from bloginfo o
+            INNER JOIN user_blog g on  g.blog_id=o.blog_id and o.`status`=1
+            INNER JOIN userinfo r on r.user_id=g.user_id
+            LEFT JOIN browse b on b.blog_id=o.blog_id and b.user_id=g.user_id
+            GROUP BY o.blog_id) m
+            LEFT JOIN comment1 c on c.blog_id=m.blog_id and m.user_id=c.user_id
+            GROUP BY m.blog_id
+    </select>
+
+    <select id="showComment" resultType="com.me.dto.ShowDto" parameterType="com.me.vo.ShowVo">
+        select DISTINCT u.`name`, c.*,b.blog_title,b.blog_id from comment1 c,bloginfo b,userinfo u,user_blog ub
+         where c.user_id = #{user_id} and c.blog_id = b.blog_id and u.user_id = #{user_id}
+    </select>
+
+
+
 
 </mapper>

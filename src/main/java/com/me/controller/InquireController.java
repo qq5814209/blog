@@ -26,13 +26,26 @@ public class InquireController {
     InquireService inquireService;
 
     /*
-    * 根据博客类别名查询blog或者查所有blog
-    * */
+     * 根据博客类别名查询blog或者查所有blog
+     * */
     @ResponseBody
     @RequestMapping("getBlogsByTypeName")
     public Object getBlogsByTypeName(@RequestBody(required = false) ShowVo showVo){
         PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
         List<ShowDto> showDtos = inquireService.getBlogsByTypeName(showVo);
+        PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
+        return showDtoPageInfo;
+    }
+
+    /*
+     * 查询所有blog
+     * */
+    @ResponseBody
+    @RequestMapping("getAllBlogs")
+    public Object getAllBlogs(@RequestBody(required = false) ShowVo showVo){
+        System.out.println("54yyhjbjfkdnf");
+        PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
+        List<ShowDto> showDtos = inquireService.getAllBlogs(showVo);
         PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
         return showDtoPageInfo;
     }
@@ -167,9 +180,12 @@ public class InquireController {
      */
     @ResponseBody
     @RequestMapping(value = "selectPersonTypeAndBlogType",method = RequestMethod.GET)
-    public Object selectBlogType(){
+    public Object selectBlogType(HttpSession httpSession){
+        UserInfo userInfo = (UserInfo)httpSession.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+
         //查询个人分类类型
-        List<Person_TypeDto> person_typeDtos = inquireService.selectPersonType();
+        List<Person_TypeDto> person_typeDtos = inquireService.selectPersonType(user_id);
         //查询博客类型
         List<Blog_TypeDto> blog_typeDtos = inquireService.selectBlogType();
         ArrayList<Object> type = new ArrayList<Object>();
@@ -209,8 +225,26 @@ public class InquireController {
     @RequestMapping(value = "getAllBigType")
     public Object getAllBigType(){
         List<ShowDto> showDtos = inquireService.getAllBigType();
-        System.out.println(showDtos+"1111111111111111111111111");
         return showDtos;
     }
+
+    /*
+     * 展示我的评论
+     * */
+    @ResponseBody
+    @RequestMapping("showComment")
+    public Object showComment(@RequestBody(required = false) ShowVo showVo,HttpSession session){
+        System.out.println("-------------"+showVo);
+        UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        showVo.setUser_id(user_id);
+        PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
+        List<ShowDto> showDtos = inquireService.showComment(showVo);
+        System.out.println(showDtos+"=============");
+        PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
+        return showDtoPageInfo;
+    }
+
+
 
 }
