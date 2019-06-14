@@ -5,7 +5,11 @@ import com.me.mapper.BlogMapper;
 import com.me.pojo.Comment;
 import com.me.pojo.UserInfo;
 import com.me.service.BlogService;
+
+import com.me.vo.ReportVo;
+
 import com.me.vo.ShowVo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -80,6 +84,17 @@ public class BlogServiceImpl implements BlogService {
         return userDto;
     }
 
+
+    /**
+     * 添加举报信息
+     * @param reportVo
+     * @return
+     */
+    @Override
+    public boolean insertReportMessage(ReportVo reportVo) {
+
+        return blogMapper.insertReportMessage(reportVo) > 0;
+    }
     /*
      * 点赞
      * */
@@ -172,6 +187,7 @@ public class BlogServiceImpl implements BlogService {
     public ShowDto selectBrowse(ShowVo showVo) {
         ShowDto showDto = blogMapper.selectBrowse(showVo);
         return showDto;
+
     }
 
 }

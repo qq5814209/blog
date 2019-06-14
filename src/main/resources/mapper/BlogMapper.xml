@@ -129,6 +129,11 @@
     </select>
 
 
+    <insert id="insertReportMessage" parameterType="com.me.vo.ReportVo">
+        INSERT INTO report VALUE (DEFAULT,#{userId},#{blogId},#{reportMessage},DEFAULT)
+    </insert>
+
+
     <!--插入点赞记录-->
     <insert id="getPraise" parameterType="com.me.vo.ShowVo">
         INSERT INTO praise VALUES(DEFAULT,user_id,blog_id,now(),1)
