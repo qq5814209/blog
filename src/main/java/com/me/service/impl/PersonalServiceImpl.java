@@ -1,5 +1,6 @@
 package com.me.service.impl;
 
+import com.me.dto.SumDto;
 import com.me.mapper.PersonalMapper;
 import com.me.pojo.Favorites;
 import com.me.pojo.UserInfo;
@@ -181,4 +182,13 @@ public class PersonalServiceImpl implements PersonalService {
     }
 
 
+    /**
+     * 根据用户id统计各种信息总数量
+     * @param user_id
+     * @return
+     */
+    @Override
+    public SumDto selectCount(int user_id) {
+        return personalMapper.selectCount(user_id);
+    }
 }

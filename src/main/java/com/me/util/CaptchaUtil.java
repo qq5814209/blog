@@ -7,20 +7,15 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 /**
- * @author 无名
- * @version 1.0
- * @ClassName: CaptchaUtil
  * @Description: 关于验证码的工具类
- * @date 2016-5-7 上午8:33:08
  */
 public final class CaptchaUtil {
     private CaptchaUtil() {
@@ -93,8 +88,7 @@ public final class CaptchaUtil {
 
         // 转成JPEG格式
         ServletOutputStream out = response.getOutputStream();
-        JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
-        encoder.encode(bi);
+        ImageIO.write(bi ,"png",out);
         out.flush();
     }
 }

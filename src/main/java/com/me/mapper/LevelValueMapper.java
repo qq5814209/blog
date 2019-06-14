@@ -8,5 +8,5 @@ public interface LevelValueMapper {
      * 增加经验值
      * @param levelValueVo
      */
-    void addValue(LevelValueVo levelValueVo);
+    int addValue(LevelValueVo levelValueVo);
 }

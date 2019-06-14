@@ -3,9 +3,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.me.mapper.LevelValueMapper">
     <!--增加经验值-->
-    <update id="addValue" parameterType="com.me.vo.LevelValueVo">
-        INSERT INTO LEVEL(user_id,VALUE)
-        VALUES(#{user_id},#{value}) ON DUPLICATE
-        KEY UPDATE user_id=#{user_id},VALUE = VALUE + #{value}
-    </update>
+    <insert id="addValue" parameterType="com.me.vo.LevelValueVo">
+        INSERT INTO `level`(user_id,value) VALUES(#{user_id},#{value})
+        ON DUPLICATE KEY UPDATE `value` = `value` + #{value}
+    </insert>
+
 </mapper>

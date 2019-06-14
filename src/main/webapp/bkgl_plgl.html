@@ -32,7 +32,7 @@
             <div class="main-nav-tabs">
                 <ul class="nav nav-pills" id="pills-tab" role="tablist">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active" role="tab">我的文章评论</a>
+                        <a href="#" class="nav-link active" role="tab" onclick="mycomment()">我的文章评论</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link " role="tab">我发表的评论</a>
@@ -53,84 +53,58 @@
                     <!--有评论时选中这个div-->
                     <div class="article-list-item">
                         <!--评论列表 begin-->
-                        <ul class="comment-list ">
-                            <li class="clearfix">
-                                <div class="img-avatar-box">
-                                    <img src="image/3_tdxtc.jpg" width="32" height="32">
-                                </div>
-                                <div class="content-box">
-                                    <div class="title">
-                                        <span class="user-name">秃顶小天才</span>
-                                        <span class="date"><time datetime="2019-04-20 15:29:33" title="2019-04-20 15:29:33">1个月前</time></span>回复了你的文章
-                                        <a class="article-title c-blue" target="_blank" href="https://blog.csdn.net/qq_39381892/article/details/89214710">Java 时间、日历表达式的操作应用</a>
-                                        <div class="opt-box clearfix">
-                                            <a class="btn-txt c-blue icon-split btn-triggle-reply">快速回复</a>
-                                            <a class="btn-txt c-red" data-blog-user="万岁爷的悲伤" data-blog-username="qq_39381892" data-id="9591370" data-aid="89214710">删除</a>
-                                        </div>
-                                    </div>
-                                    <div class="comment-box">
-                                        <svg class="icon-yinhao icon-zuoyinhao">
-                                            <use xlink:href="#zuoyinhao"></use>
-                                        </svg>
-                                        很实用                                        <svg class="icon-yinhao icon-youyinhao">
-                                        <use xlink:href="#youyinhao"></use>
-                                    </svg>
-                                    </div>
-                                    <div class="reply-box d-n">
-                                        <div class="img-box">
-                                            <img src="image/3_qq_39381892.jpg" width="32" height="32">
-                                        </div>
-                                        <div class="ipt-box">
-                                            <input class="txt txt-block" type="text" name="" id="" placeholder="发表你的评论">
-                                        </div>
-                                        <div class="opt-box">
-                                            <button class="btn btn-reply" data-blog-user="qq_39381892" data-article-id="89214710" data-id="9591370" disabled="true">回复评论</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <div class="img-avatar-box">
-                                    <img src="image/3_qq_42891915.jpg" width="32" height="32">
-                                </div>
-                                <div class="content-box">
-                                    <div class="title">
-                                        <span class="user-name">Bryant丶程序猿</span>
-                                        <span class="date"><time datetime="2019-04-13 16:11:30" title="2019-04-13 16:11:30">1个月前</time></span>回复了你的文章
-                                        <a class="article-title c-blue" target="_blank" href="https://blog.csdn.net/qq_39381892/article/details/89214710">Java 时间、日历表达式的操作应用</a>
-                                        <div class="opt-box clearfix">
-                                            <a class="btn-txt c-blue icon-split btn-triggle-reply">快速回复</a>
-                                            <a class="btn-txt c-red" data-blog-user="万岁爷的悲伤" data-blog-username="qq_39381892" data-id="9538563" data-aid="89214710">删除</a>
-                                        </div>
-                                    </div>
-                                    <div class="comment-box">
-                                        <svg class="icon-yinhao icon-zuoyinhao">
-                                            <use xlink:href="#zuoyinhao"></use>
-                                        </svg>
-                                        楼主写的很详细,很不错的博客                                        <svg class="icon-yinhao icon-youyinhao">
-                                        <use xlink:href="#youyinhao"></use>
-                                    </svg>
-                                    </div>
-                                    <div class="reply-box d-n">
-                                        <div class="img-box">
-                                            <img src="https://avatar.csdn.net/E/A/3/3_qq_39381892.jpg" width="32" height="32">
-                                        </div>
-                                        <div class="ipt-box">
-                                            <input class="txt txt-block" type="text" name="" id="" placeholder="发表你的评论">
-                                        </div>
-                                        <div class="opt-box">
-                                            <button class="btn btn-reply" data-blog-user="qq_39381892" data-article-id="89214710" data-id="9538563" disabled="true">回复评论</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                        <ul class="comment-list" id="feedlist_id">
+                            <!--<li class="clearfix">-->
+                                <!--<div class="img-avatar-box">-->
+                                    <!--<img src="image/3_tdxtc.jpg" width="32" height="32">-->
+                                <!--</div>-->
+                                <!--<div class="content-box">-->
+                                    <!--<div class="title">-->
+                                        <!--<span class="user-name">秃顶小天才</span>-->
+                                        <!--<span class="date"><time datetime="2019-04-20 15:29:33" title="2019-04-20 15:29:33">1个月前</time></span>回复了你的文章-->
+                                        <!--<a class="article-title c-blue" target="_blank" href="https://blog.csdn.net/qq_39381892/article/details/89214710">Java 时间、日历表达式的操作应用</a>-->
+                                        <!--<div class="opt-box clearfix">-->
+                                            <!--<a class="btn-txt c-blue icon-split btn-triggle-reply">快速回复</a>-->
+                                            <!--<a class="btn-txt c-red" data-blog-user="万岁爷的悲伤" data-blog-username="qq_39381892" data-id="9591370" data-aid="89214710">删除</a>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="comment-box">-->
+                                        <!--<svg class="icon-yinhao icon-zuoyinhao">-->
+                                            <!--<use xlink:href="#zuoyinhao"></use>-->
+                                        <!--</svg>-->
+                                        <!--很实用                                        <svg class="icon-yinhao icon-youyinhao">-->
+                                        <!--<use xlink:href="#youyinhao"></use>-->
+                                    <!--</svg>-->
+                                    <!--</div>-->
+                                    <!--<div class="reply-box d-n">-->
+                                        <!--<div class="img-box">-->
+                                            <!--<img src="image/3_qq_39381892.jpg" width="32" height="32">-->
+                                        <!--</div>-->
+                                        <!--<div class="ipt-box">-->
+                                            <!--<input class="txt txt-block" type="text" name="" id="" placeholder="发表你的评论">-->
+                                        <!--</div>-->
+                                        <!--<div class="opt-box">-->
+                                            <!--<button class="btn btn-reply" data-blog-user="qq_39381892" data-article-id="89214710" data-id="9591370" disabled="true">回复评论</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</li>-->
+
                         </ul>
                         <!--评论列表 end-->
                     </div>
                     <!--分页页码 begin-->
-                    <div class="pagination-wrapper">
-                        <nav aria-label="Page navigation example">
-                        </nav>
+                    <div class="row" style="text-align:center">
+                        <ul class="pagination" id="pagination">
+                            <li id="btns">
+
+                            </li>
+                        </ul>
+                        <p class="text-primary">当前第:<span id="currentPage"></span>页 共计<span
+                                id="totalPage"></span>页&nbsp;&nbsp;&nbsp;<input type="text" id="t" style="width: 25px;height: 22px">
+                            <button class="btn-primary" onclick='goto()'>跳转</button>
+                        </p>
+                        <p class="text-primary">总记录数:<span id="totalNums"></span></p>
                     </div>
                     <!--分页页码 end-->
                 </div>
@@ -165,5 +139,159 @@
         $("#bkgl_plgl").attr("class","list-group-item active");
     });
     $("#csdn-toolbar").load("module/bk_header.html");
+
+        var uri = "showMyComment";
+
+    $(function () {
+        inital(uri,1, 2);
+    });
+
+
+        /*
+        *页面加载并展示评论
+        * */
+        function inital(uri,currentPage,pageSize) {
+            $("#btns").find("button").remove();
+            $("#feedlist_id").empty("");
+            $.ajax({
+                type: 'POST',
+                url: uri,
+                contentType:"application/json;charse=UTF-8",
+                data: JSON.stringify({
+                    "currentPage":currentPage,
+                    "pageSize":pageSize
+                }),
+                success: function(data){
+                    //循环
+                    var tabObj2 = $("#feedlist_id");
+                    tabObj2.empty();
+                    for (var i = 0; i < data.list.length; i++) {
+                        var trHtml2 = "<li class=\"clearfix\">\n" +
+                            "                                <div class=\"img-avatar-box\">\n" +
+                            "                                    <img src=\"image/3_tdxtc.jpg\" width=\"32\" height=\"32\">\n" +
+                            "                                </div>\n" +
+                            "                                <div class=\"content-box\">\n" +
+                            "                                    <div class=\"title\">\n" +
+                            "                                        <span class=\"user-name\">"+ data.list[i].name+"</span>\n" +
+                            "                                        <span class=\"date\"><time datetime=\"\" title=\"\">"+data.list[i].comment_time+"</time></span>回复了你的文章\n" +
+                            "                                        <a class=\"article-title c-blue\" target=\"_blank\" href=\"https://blog.csdn.net/qq_39381892/article/details/89214710\">"+data.list[i].blog_title+"</a>\n" +
+                            "                                        <div class=\"opt-box clearfix\">\n" +
+                            "                                            <a class=\"btn-txt c-blue icon-split btn-triggle-reply\">快速回复</a>\n" +
+                            "                                            <a class=\"btn-txt c-red\" data-blog-user=\"万岁爷的悲伤\" data-blog-username=\"qq_39381892\" data-id=\"9591370\" data-aid=\"89214710\" onclick=delComment("+data.list[i].comment_id+")>删除</a>\n" +
+                            "                                        </div>\n" +
+                            "                                    </div>\n" +
+                            "                                    <div class=\"comment-box\">\n" +
+                            "                                        <svg class=\"icon-yinhao icon-zuoyinhao\">\n" +
+                            "                                            <use xlink:href=\"#zuoyinhao\"></use>\n" +
+                            "                                        </svg>\n" +
+                            "                                        "+data.list[i].comment_content+"           <svg class=\"icon-yinhao icon-youyinhao\">\n" +
+                            "                                        <use xlink:href=\"#youyinhao\"></use>\n" +
+                            "                                    </svg>\n" +
+                            "                                    </div>\n" +
+                            "                                    <div class=\"reply-box d-n\">\n" +
+                            "                                        <div class=\"img-box\">\n" +
+                            "                                            <img src=\"image/3_qq_39381892.jpg\" width=\"32\" height=\"32\">\n" +
+                            "                                        </div>\n" +
+                            "                                        <div class=\"ipt-box\">\n" +
+                            "                                            <input class=\"txt txt-block\" type=\"text\" name=\"\" id=\"\" placeholder=\"发表你的评论\">\n" +
+                            "                                        </div>\n" +
+                            "                                        <div class=\"opt-box\">\n" +
+                            "                                            <button class=\"btn btn-reply\" data-blog-user=\"qq_39381892\" data-article-id=\"89214710\" data-id=\"9591370\" disabled=\"true\">回复评论</button>\n" +
+                            "                                        </div>\n" +
+                            "                                    </div>\n" +
+                            "                                </div>\n" +
+                            "                            </li>";
+                        tabObj2.append(trHtml2);
+                    }
+
+                    //动态生成页数
+                    for (var i = 0; i < data.pages; i++) {
+                        if (i == 0) {
+                            //首页
+                            var buttonFirst = $("<button onclick='goNormal(" + data.firstPage + ")' class='btn-primary'>首页</button>");
+                            //是否存有上页
+                            if (data.pageNum == 1) {
+                                var buttonPrep = $("<button onclick='goNormal(" + data.prePage + ")' class=\"btn-primary\" disabled='disabled'>上一页</button>")
+                            } else {
+                                var buttonPrep = $("<button onclick='goNormal(" + data.prePage + ")' class=\"btn-primary\">上一页</button>")
+                            }
+                            $("#btns").append(buttonFirst);
+                            $("#btns").append(buttonPrep);
+                        }
+                        if (i == data.pageNum - 1) {
+                            var button = $("<button onclick='goNormal(" + (i + 1) + ")' class=\"btn-success\">" + (i + 1) + "</button>")
+                        } else {
+                            var button = $("<button onclick='goNormal(" + (i + 1) + ")' class=\"btn-primary\">" + (i + 1) + "</button>")
+                        }
+                        $("#btns").append(button);
+                        if (i == data.lastPage - 1) {
+                            //尾页
+                            var buttonEnd = $("<button onclick='goNormal(" + data.lastPage + ")' class=\"btn-primary\">尾页</button>");
+                            if (data.pageNum == data.lastPage) {
+                                var buttonNext = $("<button onclick='goNormal(" + data.nextPage + ")' class=\"btn-primary\" disabled='disabled'>下一页</button>")
+                            } else {
+                                var buttonNext = $("<button onclick='goNormal(" + data.nextPage + ")' class=\"btn-primary\">下一页</button>")
+                            }
+                            $("#btns").append(buttonNext);
+                            $("#btns").append(buttonEnd);
+                        }
+
+                    }
+                    //当前页数
+                    $("#currentPage").html(data.pageNum);
+                    //总页数
+                    $("#totalPage").html(data.lastPage);
+                    //总记录数
+                    $("#totalNums").html(data.total);
+                },
+                error:function (data) {
+                    console.error(data);
+                },
+                dataType: "json"
+            });
+        }
+    function goto() {
+        $("#feedlist_id").empty("");
+        $("#btns").find("button").remove();
+        inital(uri,$("#t").val(), 2);
+    }
+
+    function goNormal(n) {
+        $("#feedlist_id").empty("");
+        $("#btns").find("button").remove();
+        inital(uri,n, 2);
+    }
+
+
+    /*
+    * 删除评论
+    * */
+    function delComment(a) {
+        var comment_id= a;
+        $.ajax({
+            type: 'POST',
+            url: "delComment",
+            contentType:"application/json;charse=UTF-8",
+            data: JSON.stringify({
+                "comment_id":comment_id,
+                "pageSize":""
+            }),
+            success: function(data){
+                alert("删除成功");
+            },
+            error:function (data) {
+                console.error(data);
+            },
+            dataType: "json"
+        });
+    }
+
+    /*
+    * 我的评论
+    * */
+    function mycomment() {
+        inital(uri,1, 2);
+    }
+
 </script>
 </html>
