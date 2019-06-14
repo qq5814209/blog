@@ -138,10 +138,16 @@ public class InquireServiceImpl implements InquireService{
     public List<ShowDto> getAllBlogs(ShowVo showVo) {
         List<ShowDto> showDtos = inquireMapper.getAllBlogs(showVo);
         for(ShowDto showDto : showDtos){
-            String str = showDto.getBlog_content().substring(0,5);
+            String str = showDto.getBlog_content().substring(0,30);
             System.out.println(showDto);
             showDto.setBlog_content(str);
         }
+        return showDtos;
+    }
+
+    @Override
+    public List<ShowDto> searchMyBlogs(ShowVo showVo) {
+        List<ShowDto> showDtos = inquireMapper.searchBlogs(showVo);
         return showDtos;
     }
 

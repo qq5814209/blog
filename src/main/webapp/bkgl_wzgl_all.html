@@ -112,7 +112,7 @@
                     </div>
                     <input class="txt-keyword mr24" id="key" type="text" name="keyword" value="" placeholder="请输入标题关键词"
                            aria-label="Search">
-                    <button type="button" class="btn btn-danger btn-mp-search float-right">搜索</button>
+                    <button type="button" class="btn btn-danger btn-mp-search float-right" onclick="searchmyblog()">搜索</button>
                 </form>
             </div>
             <div class="tab-content" id="pills-tabContent">
@@ -341,6 +341,71 @@
         });
     }
 
+    function searchmyblog() {
+        var blog_title ="";
+        var blog_content ="";
+        blog_title = $("#key").val();
+        blog_content = $("#key").val();
+        $.ajax({
+            type: 'POST',
+            url: "searchMyBlogs",
+            contentType:"application/json;charse=UTF-8",
+            data: JSON.stringify({
+                "blog_content":blog_content,
+                "blog_title":blog_title
+            }),
+            success: function(data){
+                var tabObj2 = $("#feedlist_id");
+                tabObj2.empty();
+                for (var i = 0; i < data.list.length; i++) {
+
+                    var trHtml2 = " <div class=\"article-list-item\">\n" +
+                        "        <div class=\"list-item-title\">\n" +
+                        "\n" +
+                        "\n" +
+                        "        <p class=\"article-list-item-txt\">\n" +
+                        "        <a href=\"#\" target=\"_self\" title=\"编辑\"><font style=\"vertical-align: inherit;\" onclick=toJump(" + data.list[i].user_id + "," + data.list[i].blog_id + ")><font style=\"vertical-align: inherit;\">"+data.list[i].blog_title+"</font></font></a>\n" +
+                        "    </p>\n" +
+                        "    </div>\n" +
+                        "    <div class=\"article-list-item-info\">\n" +
+                        "        <div class=\"item-info-left\">\n" +
+                        "        <span class=\"\"><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">\n" +
+                        "        原创                                                                                     </font></font></span>\n" +
+                        "    <span class=\"\"><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">"+data.list[i].create_time+"</font></font></span>\n" +
+                        "    <font style=\"vertical-align: inherit;\"><span class=\"\"><font style=\"vertical-align: inherit;\">\n" +
+                        "        "+data.list[i].cnumber+"                                      </font></span><span class=\"\"><font style=\"vertical-align: inherit;\">\n" +
+                        "        "+data.list[i].bnumber+"                                      </font></span></font><span class=\"\">\n" +
+                        "    <svg class=\"icon icon-read\">\n" +
+                        "        <use xlink:href=\"#read\"></use>\n" +
+                        "        </svg><font style=\"vertical-align: inherit;\"></font></span>\n" +
+                        "    <span class=\"\">\n" +
+                        "        <svg class=\"icon icon-comment\">\n" +
+                        "        <use xlink:href=\"#comment\"></use>\n" +
+                        "        </svg><font style=\"vertical-align: inherit;\"></font></span>\n" +
+                        "    </div>\n" +
+                        "    <div class=\"item-info-oper\">\n" +
+                        "        <a href=\"#\" target=\"_self\" onclick=toJump(" + data.list[i].user_id + "," + data.list[i].blog_id + ")><span class=\"\"><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">查看</font></font></span></a>\n" +
+                        "    <font style=\"vertical-align: inherit;\"><span class=\"\"><a href=\"javascript:void(0);\" class=\"managecomment\" data-aid=\"90106943\" data-opt=\"lock\"><font style=\"vertical-align: inherit;\">禁止评论\n" +
+                        "        </font></a></span><a href=\"#\" data-aid=\"90106943\"><span class=\"setTop\" data-opt=\"true\"><font style=\"vertical-align: inherit;\">置顶</font></span></a><a href=\"#\" data-aid=\"90106943\" onclick='delblog("+data.list[i].blog_id+")'><span class=\"del\"><font style=\"vertical-align: inherit;\">删除</font></span></a></font><input type=\"hidden\" value=\"90106943\" class=\"articleid\">\n" +
+                        "        <span class=\"\">\n" +
+                        "        <a href=\"javascript:void(0);\" class=\"managecomment\" data-aid=\"90106943\" data-opt=\"lock\"><font style=\"vertical-align: inherit;\"></font></a>\n" +
+                        "    </span>\n" +
+                        "\n" +
+                        "    <a href=\"#\" data-aid=\"90106943\"><span class=\"setTop\" data-opt=\"true\"><font style=\"vertical-align: inherit;\"></font></span></a>\n" +
+                        "\n" +
+                        "    <a href=\"#\" data-aid=\"90106943\"><span class=\"del\"><font style=\"vertical-align: inherit;\"></font></span></a>\n" +
+                        "    </div>\n" +
+                        "    </div>\n" +
+                        "    </div>\n";
+                    tabObj2.append(trHtml2);
+                }
+            },
+            error:function (data) {
+                console.error(data);
+            },
+            dataType: "json"
+        });
+    }
 
     /*
     * 跳转到bk_list.html
