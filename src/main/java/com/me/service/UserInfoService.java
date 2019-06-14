@@ -29,4 +29,6 @@ public interface UserInfoService {
      * @param user_id
      */
     void updateStatus(String user_id);
+
+    boolean cheUsername(String user_name);
 }

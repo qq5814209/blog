@@ -66,4 +66,14 @@ public class UserInfoServiceImpl implements UserInfoService {
         userInfoMapper.updateStatus(userid);
     }
 
+    @Override
+    public boolean cheUsername(String user_name) {
+
+        UserInfo userInfo = userInfoMapper.cheUsername(user_name);
+        if (userInfo==null){
+            return true;
+        }
+        return false;
+    }
+
 }

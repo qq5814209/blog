@@ -24,4 +24,11 @@
     <update id="updateStatus" parameterType="int">
         UPDATE userinfo SET status = 1 where user_id = #{userid}
     </update>
+
+
+    <!--邮箱验证，修改状态码-->
+    <select id="cheUsername" parameterType="String" resultType="com.me.pojo.UserInfo">
+        select * from userinfo where user_name=#{user_name} and `status`=1;
+    </select>
+
 </mapper>

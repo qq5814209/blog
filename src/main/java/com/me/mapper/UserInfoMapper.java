@@ -34,4 +34,5 @@ public interface UserInfoMapper {
      */
     void updateStatus(int userid);
 
+    public UserInfo cheUsername(String user_name);
 }
