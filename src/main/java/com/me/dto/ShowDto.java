@@ -17,7 +17,44 @@ public class ShowDto {
     private int pt_id;//个人分类id
     private int currentPage;//当前页
     private int pageSize;//当前页数据条数
+    private int uid;
+    private String comment_content;//评论内容
+    private String comment_time;//评论时间
+    private int comment_id;//评论id
 
+
+
+    public int getComment_id() {
+        return comment_id;
+    }
+
+    public void setComment_id(int comment_id) {
+        this.comment_id = comment_id;
+    }
+
+    public String getComment_content() {
+        return comment_content;
+    }
+
+    public void setComment_content(String comment_content) {
+        this.comment_content = comment_content;
+    }
+
+    public String getComment_time() {
+        return comment_time;
+    }
+
+    public void setComment_time(String comment_time) {
+        this.comment_time = comment_time;
+    }
+
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
 
     public int getCurrentPage() {
         return currentPage;
@@ -166,6 +203,10 @@ public class ShowDto {
                 ", pt_id=" + pt_id +
                 ", currentPage=" + currentPage +
                 ", pageSize=" + pageSize +
+                ", uid=" + uid +
+                ", comment_content='" + comment_content + '\'' +
+                ", comment_time='" + comment_time + '\'' +
+                ", comment_id=" + comment_id +
                 '}';
     }
 }

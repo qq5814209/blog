@@ -17,6 +17,10 @@ public interface InquireService {
     public boolean deleteBlogbyBlog_id(ShowVo showVo);
     public List<ShowDto> getBlogsByUserId(ShowVo showVo);
 
+    public List<ShowDto> showMyComment(ShowVo showVo);
+    public boolean delComment(ShowVo showVo);
+    public List<ShowDto> getAllBigType();
+
     /**
      * 写博客
      * @param user_id
@@ -38,6 +42,7 @@ public interface InquireService {
      * @return
      */
     List<Blog_TypeDto> selectBlogType();
+
 
 
 }

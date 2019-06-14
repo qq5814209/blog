@@ -18,6 +18,11 @@ public interface InquireMapper {
     public int deleteBlogbyBlog_id(ShowVo showVo);
     public List<ShowDto> getBlogsByUserId(ShowVo showVo);
 
+    public List<ShowDto> showMyComment(ShowVo showVo);
+    public int delComment(ShowVo showVo);
+    public List<ShowDto> getAllBigType();
+
+
     /**
      * 写博客
      * @param writeBlogVo
@@ -68,10 +73,12 @@ public interface InquireMapper {
      */
     String getPt_Id();
 
+
     /**
      * 博客分类_个人分类中间表插入数据
      * @param writeBlogVo
      * @return
      */
     int insertPbt_Middle(WriteBlogVo writeBlogVo);
+
 }

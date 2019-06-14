@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)https://download.csdn.net/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="baidu-site-verification" content="0ZEYmMYLRD">
+    <title>CSDN下载-IT资源大本营</title>
+    <meta content="always" name="referrer">
+    <meta name="author" content="CSDN">
+    <meta name="Copyright" content="CSDN">
+    <meta name="apple-mobile-web-app-status-bar-style" content="yes">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/download_new.css">
+    <link rel="stylesheet" href="css/content_toolbar.css">
+    <link rel="stylesheet" href="css//bootstrap.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link href="css/quake.slider.css" rel="stylesheect" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/download_index.css">
+
+    <style type="text/css">
+        .clearfix {
+            margin-bottom: 15px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="news-nav">
+    <div class="container clearfix">
+        <div class="nav-bar">
+            <a href="download_index.html" class="current">下载首页</a>
+            <a href="index.html" class="">博客首页</a>
+            <a href="#">我的资源</a>
+            <a class="nav_upload" href="uploadfile.html">上传资源赚积分</a>
+            <a class=" " href="#">已下载</a>
+            <a class=" " href="#">我的收藏</a>
+        </div>
+    </div>
+</div>
+
+<div class="home_page_wrap">
+    <div class="right_bottom_ads">
+        <div id="kp_box_460" data-pid="460"
+             data-track-view="{&quot;mod&quot;:&quot;kp_popu_460-952&quot;,&quot;con&quot;:&quot;,,&quot;}">
+        </div>
+    </div>
+    <input id="is_login" type="hidden" value="false">
+
+    <div class="container main">
+
+        <div class="main_l fl" style="margin-top: 0;">
+            <div class="dl_wrap">
+
+
+
+                <dl class="cate_sea_list clearfix">
+                    <dt class="keyword_dt">关键词：</dt>
+                    <dd>
+                        <input type="text" id="sss" class="keywords" value=""><a
+                            href="#" id="keywords" class="cate_search">搜索</a>
+                    </dd>
+                </dl>
+            </div>
+
+            <div class="condition clearfix" style="display: none;"><span>已选条件 ： &nbsp;</span>
+                <div class="condition_wrap">
+                    <label id="tech" class="condition_item"><em>全部</em></label>
+
+                    <label class="removeAll">
+                        <a href="#" class=""></a>
+                    </label>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="download_l main_l pull-left">
+            <div class="resouces_tab_shows tab_nav J_tabSwitch" style="margin-top: 0px;" data-trigger="true">
+                <div class="tab_bar">
+                    <ul class="tab_list clearfix">
+                        <li class="tab_item cur" type="dm" data-href="#">代码资源</li>
+                    </ul>
+                    <div class="more_info"><a id="more_info_a" href="#">更多</a></div>
+                </div>
+                <!-- 选项卡 内容-->
+                <div class="tab_con_box">
+                    <!-- 代码资源列表-->
+                    <div class="tab_page tab3_con" style="display: block;">
+                        <div class="album_detail_wrap" id="files">
+                            <!-- 循环开始 -->
+
+                            <!-- 循环结束 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="position: fixed;">
+        <ins data-revive-zoneid="150" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" id="revive-0-2"></ins>
+        <ins data-revive-zoneid="151" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" id="revive-0-3"></ins>
+        <ins data-revive-zoneid="152" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" id="revive-0-4"></ins>
+    </div>
+
+</div>
+<link href="css/indexSuperise.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/pub_footer_1.0.3.css">
+<div style="position:fixed; top:0; left:0; overflow:hidden;"><input style="position:absolute; left:-300px;" type="text"
+                                                                    value="" id="focus_retriever" readonly="true"></div>
+<iframe class="bdSug_sd" style="display: none; position: absolute; border-width: 0px;"
+        src="static/saved_resource(8).html"></iframe>
+<div id="bdSug_1560328221963" class="bdSug_wpr" style="display: none;"></div>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+</body>
+
+<script type="text/javascript">
+
+    init();
+
+    $("#keywords").click(function () {
+        alert($("#sss").val());
+        $("#files").empty("");
+       var file_name =  $("#sss").val();
+        init(file_name);
+    });
+    function init(file_name) {
+        $.ajax({
+            url:"getFilesById",
+            type:"POST",
+            contentType:"application/json",
+            dataType:"json",
+            data: JSON.stringify({
+
+            }),
+            success:function(resp){
+                console.log(resp);
+                $(resp).each(function (index, item) {
+                    $("#files").append("<dl class=\"album_detail_list clearfix\">\n" +
+                        "                                <dt><a target=\"_blank\" href=\"\"><img src=\"image/rar.svg\" alt=\"img\"></a></dt>\n" +
+                        "                                <dd>\n" +
+                        "                                    <a target=\"_blank\" href='download.html?file_id="+item.file_id+"' class=\"album_detail_title\">\n" +
+                        "                                        "+item.file_name+"" +
+                        "                                    </a>\n" +
+                        "                                    <div class=\"album_detail_bot clearfix\">\n" +
+                        "                                        <label><span>上传者：</span>\n" +
+                        "                                            <em class=\"upl_name\">\n" +
+                        "                                                "+item.user_name+"\n" +
+                        "                                            </em>\n" +
+                        "                                        </label>\n" +
+                        "                                        <label>\n" +
+                        "                                            <span>上传时间：</span>\n" +
+                        "                                            <em class=\"upl_time\">"+item.file_time+"</em>\n" +
+                        "                                        </label>\n" +
+                                                                "<strong><span class=\"jifen\">积分/C币：</span>\n" +
+                        "                                         <em>\n" +
+                        "                                                    "+item.file_cbi+"                                               </em>\n" +
+                        "                                          </strong>"+
+                        "                                    </div>\n" +
+                        "                                </dd>\n" +
+                        "                            </dl>")
+                })
+            },
+            error:function () {
+                alert("错误");
+            }
+        });
+    }
+
+
+</script>
+
+</html>

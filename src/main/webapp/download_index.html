@@ -18,15 +18,22 @@
     <link href="css/quake.slider.css" rel="stylesheect" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/download_index.css">
+
+    <style type="text/css">
+        .clearfix {
+            margin-bottom: 15px;
+        }
+
+    </style>
 </head>
 <body>
 <div class="news-nav">
     <div class="container clearfix">
         <div class="nav-bar">
-            <a href="#" class="current">下载首页</a>
-            <a class=" " href="#">精品专辑</a>
-            <a href="#">我的资源</a>
-            <a class="nav_upload  " href="#">上传资源赚积分</a>
+            <a href="download_index.html" class="current">下载首页</a>
+            <a href="index.html" class="">博客首页</a>
+            <a href="download_my.html">我的资源</a>
+            <a class="nav_upload" href="uploadfile.html">上传资源赚积分</a>
             <a class=" " href="#">已下载</a>
             <a class=" " href="#">我的收藏</a>
         </div>
@@ -225,7 +232,7 @@
                 <dl class="cate_sea_list clearfix">
                     <dt class="keyword_dt">关键词：</dt>
                     <dd>
-                        <input type="text" class="keywords" value="" onkeyup="KeyP(event);"><a
+                        <input type="text" id="sss" class="keywords" value=""><a
                             href="#" id="keywords" class="cate_search">搜索</a>
                     </dd>
                 </dl>
@@ -256,26 +263,9 @@
                 <div class="tab_con_box">
                     <!-- 代码资源列表-->
                     <div class="tab_page tab3_con" style="display: block;">
-                        <div class="album_detail_wrap">
+                        <div class="album_detail_wrap" id="files">
                             <!-- 循环开始 -->
-                            <dl class="album_detail_list clearfix">
-                                <dt><a target="_blank"
-                                       href=""><img
-                                        src="image/rar.svg" alt="img"></a></dt>
-                                <dd>
-                                    <a target="_blank" href="#"
-                                       class="album_detail_title">
-                                        java-loadresource.rar </a>
-                                    <div class="album_detail_bot clearfix">
-                                        <label><span>上传者：</span>
-                                            <em class="upl_name">
-                                                YvesHe </em>
-                                        </label>
-                                        <label><span>上传时间：</span><em class="upl_time">2019-06-12</em></label>
 
-                                    </div>
-                                </dd>
-                            </dl>
                             <!-- 循环结束 -->
                         </div>
                     </div>
@@ -298,5 +288,63 @@
 <iframe class="bdSug_sd" style="display: none; position: absolute; border-width: 0px;"
         src="static/saved_resource(8).html"></iframe>
 <div id="bdSug_1560328221963" class="bdSug_wpr" style="display: none;"></div>
+<script src="jquery/jquery-2.1.1.min.js"></script>
 </body>
+
+<script type="text/javascript">
+
+    init();
+
+    $("#keywords").click(function () {
+        alert($("#sss").val());
+        $("#files").empty("");
+       var file_name =  $("#sss").val();
+        init(file_name);
+    });
+    function init(file_name) {
+        $.ajax({
+            url:"getFiles",
+            type:"POST",
+            contentType:"application/json",
+            dataType:"json",
+            data: JSON.stringify({
+                "file_name": file_name
+            }),
+            success:function(resp){
+                console.log(resp);
+                $(resp).each(function (index, item) {
+                    $("#files").append("<dl class=\"album_detail_list clearfix\">\n" +
+                        "                                <dt><a target=\"_blank\" href=\"\"><img src=\"image/rar.svg\" alt=\"img\"></a></dt>\n" +
+                        "                                <dd>\n" +
+                        "                                    <a target=\"_blank\" href='download.html?file_id="+item.file_id+"' class=\"album_detail_title\">\n" +
+                        "                                        "+item.file_name+"" +
+                        "                                    </a>\n" +
+                        "                                    <div class=\"album_detail_bot clearfix\">\n" +
+                        "                                        <label><span>上传者：</span>\n" +
+                        "                                            <em class=\"upl_name\">\n" +
+                        "                                                "+item.user_name+"\n" +
+                        "                                            </em>\n" +
+                        "                                        </label>\n" +
+                        "                                        <label>\n" +
+                        "                                            <span>上传时间：</span>\n" +
+                        "                                            <em class=\"upl_time\">"+item.file_time+"</em>\n" +
+                        "                                        </label>\n" +
+                                                                "<strong><span class=\"jifen\">积分/C币：</span>\n" +
+                        "                                         <em>\n" +
+                        "                                                    "+item.file_cbi+"                                               </em>\n" +
+                        "                                          </strong>"+
+                        "                                    </div>\n" +
+                        "                                </dd>\n" +
+                        "                            </dl>")
+                })
+            },
+            error:function () {
+                alert("错误");
+            }
+        });
+    }
+
+
+</script>
+
 </html>

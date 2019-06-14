@@ -62,7 +62,6 @@ public class InquireController {
         UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
         showVo.setUser_id(user_id);
-        System.out.println("showVo:"+showVo);
         boolean flag = inquireService.addPersonalCategory(showVo);
         return flag;
     }
@@ -102,8 +101,7 @@ public class InquireController {
     @ResponseBody
     @RequestMapping("updatePersonalCategory")
     public Object updatePersonalCategory(@RequestBody(required = false) ShowVo showVo, HttpSession httpSession){
-        System.out.println("保存");
-        System.out.println(showVo);
+
         UserInfo userInfo = (UserInfo)httpSession.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
         showVo.setUser_id(user_id);
@@ -135,6 +133,33 @@ public class InquireController {
         return flag;
     }
 
+
+    /*
+    * 展示我文章的评论
+    * */
+    @ResponseBody
+    @RequestMapping("showMyComment")
+    public Object showMyComment(@RequestBody(required = false) ShowVo showVo,HttpSession session){
+        UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        showVo.setUser_id(user_id);
+        PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
+        List<ShowDto> showDtos = inquireService.showMyComment(showVo);
+        PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
+
+        return showDtoPageInfo;
+    }
+
+
+    /*
+    * 删除文章的评论
+    * */
+    @ResponseBody
+    @RequestMapping("delComment")
+    public Object delComment(@RequestBody(required = false) ShowVo showVo){
+        boolean flag = inquireService.delComment(showVo);
+        return flag;
+    }
 
     /**
      * 个人分类类型和查询博客类型
@@ -178,6 +203,17 @@ public class InquireController {
             return BaseResult.fail("服务器正在维护，写博客功能延迟开放");
         }
         return BaseResult.success("博客发表成功");
+    }
+
+    /*
+    * 获取所有类别
+    * */
+    @ResponseBody
+    @RequestMapping(value = "getAllBigType")
+    public Object getAllBigType(){
+        List<ShowDto> showDtos = inquireService.getAllBigType();
+        System.out.println(showDtos+"1111111111111111111111111");
+        return showDtos;
     }
 
 }

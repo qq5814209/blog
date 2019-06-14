@@ -5,8 +5,10 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.domain.AlipayTradePagePayModel;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.me.config.PayProperties;
+import com.me.dto.UserCbiDto;
 import com.me.dto.UserVipDto;
 import com.me.mapper.CbiMapper;
+import com.me.mapper.LevelValueMapper;
 import com.me.mapper.OrderMapper;
 import com.me.mapper.VipMapper;
 import com.me.pojo.Cbi;
@@ -14,12 +16,15 @@ import com.me.pojo.Order;
 import com.me.pojo.UserInfo;
 import com.me.pojo.Vip;
 import com.me.service.OrderService;
+import com.me.vo.LevelValueVo;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.*;
 
@@ -41,6 +46,9 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     VipMapper vipMapper;
 
+    @Autowired
+    LevelValueMapper levelValueMapper;
+
 
     /**
      * 创建未支付的订单
@@ -48,16 +56,17 @@ public class OrderServiceImpl implements OrderService {
      * @param response
      * @return
      */
-    public Object SetOrder(HttpServletRequest request, HttpServletResponse response) {
+    public void SetOrder(HttpServletRequest request, HttpServletResponse response) {
 
         try {
             response.setContentType("text/html; charset=utf-8");
             response.getWriter().write(getwayPay(request));
             response.getWriter().close();
+            return;
         } catch (IOException e) {
             e.printStackTrace();
         }
-       return "订单创建完成";
+     return;
     }
 
     /**
@@ -69,8 +78,7 @@ public class OrderServiceImpl implements OrderService {
 
         Order order =new Order();
         UserVipDto userVip =new UserVipDto();
-        Enumeration enu = request.getParameterNames();
-
+        UserCbiDto userCbiDto =new UserCbiDto();
         String out_trade_no = request.getParameter("out_trade_no");
         System.out.println("订单号为："+out_trade_no);
         order.setOrder_number(out_trade_no);
@@ -85,12 +93,41 @@ public class OrderServiceImpl implements OrderService {
             vipMapper.setUserVip(userVip);
         }
 
+        if  (order2.getCbi_id()!=null){
+            userCbiDto.setCbi_number(order2.getCbi_number());
+            userCbiDto.setUser_id(order2.getUser_id());
+            cbiMapper.addUserCbi(userCbiDto);
+        }
+        //4、增加经验值
+        LevelValueVo levelValueVo = new LevelValueVo();
+
+        levelValueVo.setUser_id(order2.getUser_id());
+        levelValueVo.setValue(Integer.parseInt(order2.getPrice())/10);
+        int i3 = levelValueMapper.addValue(levelValueVo);
         try {
-            response.sendRedirect(request.getContextPath()+"/vip_center.html");
+            request.getRequestDispatcher("/vip_center.html").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return;
     }
+
+    /**
+     * 获取订单
+     * @param session
+     * @return
+     */
+    public Object getOrderBy(HttpSession session) {
+        UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
+        return orderMapper.getOrderBy(userInfo);
+    }
+
+
+
+
+
 
 
     public String getwayPay(HttpServletRequest request) {
@@ -108,7 +145,7 @@ public class OrderServiceImpl implements OrderService {
         long time = date.getTime();
         sb.append(time);
         for (int i=0;i<4;i++){
-            sb.append(ra.nextInt(10)+1);
+            sb.append(ra.nextInt(9));
         }
         String cbi_id = request.getParameter("cbi_id");
         String vip_id = request.getParameter("vip_id");

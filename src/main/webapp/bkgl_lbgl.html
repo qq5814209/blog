@@ -118,6 +118,9 @@
 
     var ptid=new Array();
     var pt_id;
+    /*
+    * 添加个人类别
+    * */
     function addButton() {
         var str = $("#addCategory").val();
         alert(str);
@@ -131,7 +134,7 @@
 
             }),
             success: function(data){
-                    alert("添加成功")
+                    alert("添加成功");
                 begin(1,10);
             },
             error:function (data) {
@@ -150,6 +153,9 @@
 
     begin(1,10);
 
+    /*
+    * 个人类别页面初始化展示
+    * */
     function begin(currentPage,pageSize) {
         $("#btns").find("button").remove();
         $("#feedlist_id").empty("");
@@ -238,10 +244,13 @@
          inputId.removeAttr("disabled");
        }
 
+       /*
+       * 保存修改
+       * */
       function baoCun() {
           str2 = inputId.val();
-          alert(str2)
-           alert("ga");
+          alert(str2);
+
           $.ajax({
               type: 'POST',
               url: "/updatePersonalCategory",
@@ -251,7 +260,7 @@
                   "pt_id":pt_id
               }),
               success: function(data){
-                  alert("修改成功")
+                  alert("修改成功");
 
                       inputId.addClass("activity").attr("disabled","disabled");
 
@@ -264,14 +273,20 @@
           });
       }
 
+      /*
+      * 取消修改
+      * */
     var flag = "true";
     function quXiao() {
-        alert("取消")
+        alert("取消");
            if(flag=="true"){
                inputId.addClass("activity").attr("disabled","disabled");
            }
     }
 
+    /*
+    * 删除个人类别
+    * */
     function delCategory(pt_id) {
         $.ajax({
             type: 'POST',

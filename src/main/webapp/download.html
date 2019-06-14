@@ -19,11 +19,10 @@
 <div class="news-nav">
     <div class="container clearfix">
         <div class="nav-bar">
-            <a href="#">下载首页</a>
-            <a class=" " href="#">精品专辑</a>
-            <a href="#">我的资源</a>
+            <a href="download_index.html">下载首页</a>
+            <a href="index.html">博客首页</a>
+            <a href="myupload.html">我的资源</a>
             <a class="nav_upload " href="#">上传资源赚积分</a>
-
             <a class=" " href="#">已下载</a>
             <a class=" " href="#">我的收藏</a>
         </div>
@@ -59,17 +58,21 @@
                             </dt>
                             <dd>
                                 <h3 title="java-loadresource.rar">
-                                    <span>
-                                        java-loadresource.rar                                                                            </span>
+                                    <span id="file_name">
+                                        java-loadresource.rar
+                                    </span>
                                 </h3>
 
                                 <div class="download_b">
-                                    <div class="pre_description">
-                                        Java加载资源文件的两种方法getResource与getResourceAsStream
+                                    <div class="pre_description" id="file_intro">
+
                                     </div>
                                     <div class="dl_b">
                                         <strong class="size_box">
-                                            <span>2019-06-12                                            上传</span><span>大小：<em>6KB</em></span>
+                                            <span id="file_time"></span>上传
+                                            <span>
+                                                大小：<em>未知</em>
+                                            </span>
                                         </strong>
                                     </div>
 
@@ -83,344 +86,96 @@
                 <div data-id="11237663" data-username="u011479200" class="dl_download dl_pdf clearfix">
                     <div class="dl_download_box dl_download_l">
                         <label>所需:
-                            <em>5</em>积分/C币
+                            <em id="cbinum">5</em>C币
                         </label>
+                        <label>你当前拥有<span id="mycbi">12</span>枚C币</label>
                         <!-- 备注：资源下载和详情页埋点修改  update by yc 20170703 -->
-                        <a href="#" class="open_vip"><img
-                                src="image/vip.png"><span
-                                class="report_101_source_click">开通VIP
-                                        </span>
-                        </a>
-                        <a href="#" target="_blank"
-                           class="student"><span>学生认证会员8折</span></a>
                         <a href="javascript:;" class="direct_download" target="_self" id="download"
                            onclick="downloads()">立即下载</a>
                     </div>
-                </div>
-            </div>
 
-            <!--相关推荐-->
-            <div class="mod_similar clearfix" id="mod_recom">
 
-                <div class="dl_wrap dl_reco" style="margin-top: 0">
-                    <div class="album_detail_wrap" id="album_detail_wrap">
-                        <dl class="album_detail_list clearfix"
-                            data-track-click="{&quot;mod&quot;:&quot;popu_595&quot;,&quot;con&quot;:&quot;,https://download.csdn.net/download/zc4607/10910677,BlogCommendHotData_0&quot;}">
-                            <dt><a class="dl_block_a" target="_blank"
-                                   href="#"><img
-                                    src="image/txt.svg" title="txt文件"></a>
-                            </dt>
-                            <dd>
-                                <a target="_blank" href="#"
-                                   class="album_detail_title reco_a">
-                                    nod 32 激活码ESET(NOD32)激活码2021到期适用于ESS/EAV 12.0，有效期至2021年5月
-                                </a>
-                                <p class="download-text">
-                                    <a target="_blank" href="#"
-                                       class="album_detail_title reco_a">
-                                        nod 32 激活码ESET(NOD32)激活码2021到期适用于ESS/EAV 12.0，有效期至2021年5月 </a>
-                                </p>
-                                <a href="#" class="dl_reco_btn dl_reco_btn_new" data-id="10910677"
-                                   data-username="zc4607" data-url="#"
-                                   target="_self">立即下载</a>
-                                <a class="dl_block_a" href="#"
-                                   target="_blank">
-                                    <div class="album_detail_bot clearfix">
-                                        <label>
-                                            <span>上传者：</span>
-                                            <em class="upl_time">zc4607</em>
-                                        </label>
-                                        <label>
-                                            <span>时间：</span>
-                                            <em class="upl_time">2019-01-11</em>
-                                        </label>
-                                    </div>
-                                </a>
-                            </dd>
-                        </dl>
-                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!--当前用户已登录 积分足够时，点击立即下载按钮-->
-<div id="dlMask">
 
-</div>
-<!--<div id="dlMask" style="display: block;"></div>-->
-
-<!--1.当前用户已登录，非VIP用户，0积分资源下载： 2004-->
-<div id="noVipZeroP" class="dl_popup dl_popup_new" style="margin-top: -170px;"><a href="javascript:;"
-                                                                                  class="pop_close"></a><span
-        class="pop_close_line"></span>
-    <div class="resource_img">
-        <img src="image/download_detail_t.png" alt="img"></div>
-    <div class="resource_title" style="padding-bottom: 0">
-        <h3>spring mvc+mybatis+mysql+maven+bootstrap 整合实现增删查改简单实例.zip</h3>
-        <table width="100%">
-            <tbody>
-            <tr>
-                <td width="32%"><span>资源所需积分/C币</span></td>
-                <td width="32%"><span>当前拥有积分</span></td>
-                <td width="32%"><span>当前拥有C币</span></td>
-            </tr>
-            <tr>
-                <td><strong class="jsNeedInte">5</strong></td>
-                <td><strong class="mark jsRemainInte">0</strong></td>
-                <td><strong class="mark jsRemainC">0</strong></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div>
-        <div style="text-align: center;margin-top: 15px;margin-bottom: 15px">
-            <a href="http://task.csdn.net/" target="_blank" style="color: red">点击完成任务获取下载码</a>
-        </div>
-        <div style="text-align: center;margin-top: 5px">
-            输入下载码
-            <input type="text" id="download_code" class="download_code" name="" style="width: 70px;">
-            <input type="button" value="确定" onclick="check_download_code()">
-            <span class="download_code_err" style="color: red"></span>
-        </div>
-    </div>
-    <div class="dl_xunlei_tips"> 为了良好体验，不建议使用迅雷下载</div>
-
-    <div class="resource_dl_btn">
-        <a href="javascript:;" target="_self" class="dl_btn js_download_btn" data-mod="popu_339" style="display: none">确认下载</a>
-    </div>
-</div>
-
-
-<!--2.当前用户已登录，VIP用户，积分不论：  2005-->
-<div id="vipIgnoreP" class="dl_popup dl_popup_new" style="margin-top: -170px;">
-    <a href="javascript:void(0)" class="pop_close"></a>
-    <span class="pop_close_line"></span>
-    <div class="resource_img"><img src="image/rar.svg" alt="img"></div>
-    <div class="resource_title">
-        <h3>java-loadresource.rar</h3>
-    </div>
-    <div class="rec_tips"><em class="tips">会员到期时间：</em><em class="tips"></em>
-        <span class="fur_tips">剩余下载个数：<em></em></span>
-        <span class="fur_tips">剩余C币：<em>0</em></span>
-        <span class="fur_tips">剩余积分：<em>0</em></span>
-    </div>
-
-    <div class="dl_xunlei_tips"> 为了良好体验，不建议使用迅雷下载</div>
-    <div class="resource_dl_btn"><a href="https://download.csdn.net/index.php/vip_download/download_client/11237663"
-                                    id="vip_btn" class="dl_btn vip_dl_btn">VIP下载</a></div>
-</div>
-
-
-<!--下载次数>=20-->
-<div id="download_times" class="dl_popup dl_popup_new" style="margin-top: -170px;">
-    <a href="javascript:void(0)" class="pop_close"></a>
-    <span class="pop_close_line"></span>
-    <div style="padding: 50px; color: red; font-size: 16px">您今日下载次数已达上限（为了良好下载体验及使用，每位用户24小时之内最多可下载20个资源）</div>
-</div>
-
-
-<!--5. 当前用户已登录，非VIP用户，积分不足有剩余C币： 2012  -->
-<div id="noVipNoEnoughPIsHasC" class="dl_popup dl_popup_new" style="margin-top: -170px;"><a href="javascript:;"
-                                                                                            class="pop_close"></a><span
-        class="pop_close_line"></span>
-    <div class="resource_title">
-        <h2>积分不足！</h2>
-        <table width="100%">
-            <tbody>
-            <tr>
-                <td width="50%"><span>资源所需积分/C币</span></td>
-                <td width="50%"><span>当前拥有积分</span></td>
-            </tr>
-            <tr>
-                <td><strong class="jsNeedInte"></strong></td>
-                <td><strong class="mark jsRemainInte"></strong></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="space_bar"><span class="tit">您可以选择</span></div>
-    <div class="resource_dl_btn">
-        <!-- <span class="csdn-tracking-statistics" data-mod="popu_337"> -->
-        <a href="https://mall.csdn.net/vip" class="dl_btn vip_dl_btn" target="_blank">开通VIP</a>
-        <!-- </span> -->
-    </div>
-
-    <div class="rec_tips">
-        <table width="100%">
-            <tbody>
-            <tr>
-                <td width="30%"><span class="pop_icon pop_icon1"><i class="fa fa-check-circle"></i></span><span
-                        class="txt">
-                        4000万<br>
-                        程序员的必选</span></td>
-                <td width="30%"><span class="pop_icon pop_icon2"><i class="fa fa-check-circle"></i></span><span
-                        class="txt">
-                        600万<br>
-                        绿色安全资源</span></td>
-                <td width="30%"><span class="pop_icon pop_icon3"><i class="fa fa-check-circle"></i></span><span
-                        class="txt">
-                        现在开通<br>
-                        立省522元</span></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="space_bar"><span class="tit">或者</span></div>
-
-    <div class="rec_tips rec_tips_new">
-        <!--<span class="csdn-tracking-statistics" data-mod="popu_337" >   -->
-        <a href="javascript:;" class="c_tips c_tips_c" target="_blank">购买C币兑换积分</a>
-        <!--<a href="http://task.csdn.net/?utm_source=download" class="c_tips_c" target="_blank">做任务赚积分</a>  -->
-        <a href="http://mall.csdn.net/cbuy/prize" class="c_tips_c" target="_blank">C币抽奖</a>
-        <!-- </span>  -->
-        <!--em.c_mark_tips （1C币可兑换1积分）-->
-    </div>
-</div>
-
-<!--3.当前用户已登录，非VIP用户，需积分且积分足够： 2002-->
-<div id="noVipEnoughP" class="dl_popup dl_popup_new" style="margin-top: -170px;">
-    <a href="javascript:;" class="pop_close"></a>
-    <span
-            class="pop_close_line">
-    </span>
-    <div class="resource_img"><img src="image/download_detail_t.png" alt="img"></div>
-    <div class="resource_title">
-        <h3></h3>
-        <table width="100%">
-            <tbody>
-            <tr>
-                <td width="32%"><span>资源所需积分/C币</span></td>
-                <td width="32%"><span>当前拥有积分</span></td>
-                <td width="32%"><span>当前拥有C币</span></td>
-            </tr>
-            <tr>
-                <td><strong class="jsNeedInte">5</strong></td>
-                <td><strong class="mark jsRemainInte">4</strong></td>
-                <td><strong class="jsRemainC">45</strong></td>
-            </tr>
-
-            </tbody>
-        </table>
-    </div>
-    <div class="dl_xunlei_tips"> 为了良好体验，不建议使用迅雷下载</div>
-    <div class="resource_dl_btn"><a href="javascript:;" data-href="" class="dl_btn js_download_btn">确认下载</a></div>
-</div>
-
-
-<!--4. 当前用户已登录，非VIP用户，积分不足且无C币：2006-->
-<div id="noVipNoEnoughPNoC" class="dl_popup dl_popup_new" style="margin-top: -170px;"><a href="javascript:;"
-                                                                                         class="pop_close"></a><span
-        class="pop_close_line"></span>
-    <div class="resource_img"><img src="image/download_detail_t.png" alt="img"></div>
-    <div class="resource_title">
-        <h3></h3>
-        <table width="100%">
-            <tbody>
-            <tr>
-                <td width="32%"><span>资源所需积分/C币</span></td>
-                <td width="32%"><span>当前拥有积分</span></td>
-                <td width="32%"><span>当前拥有C币</span></td>
-            </tr>
-            <tr>
-                <td><strong class="jsNeedInte">5</strong></td>
-                <td><strong class="mark jsRemainInte">0</strong></td>
-                <td><strong class="mark jsRemainC">0</strong></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="noC"><span></span></div>
-    <div class="noCmsg_up"><span></span></div>
-    <div class="dl_xunlei_tips"> 为了良好体验，不建议使用迅雷下载</div>
-
-    <div class="resource_dl_btn">
-        <a href="https://mall.csdn.net/vip" class="openV" id="do_openV" target="_blank">VIP和C币套餐优惠</a>
-    </div>
-
-</div>
-
-
-<!--5. 当前用户已登录，非VIP用户，积分不足有剩余C币：2007-->
-<div id="noVipNoEnoughPHasC" class="dl_popup dl_popup_new" style="margin-top: -170px;">
-    <a href="javascript:;" class="pop_close"></a>
-    <span class="pop_close_line"></span>
-    <div class="resource_img"><img src="image/download_detail_t.png" alt="img"></div>
-    <div class="resource_title">
-        <!--h2 积分不足！-->
-        <h3></h3>
-        <table width="100%">
-            <tbody>
-            <tr>
-                <td width="32%"><span>资源所需积分/C币</span></td>
-                <td width="32%"><span>当前拥有积分</span></td>
-                <td width="32%"><span>当前拥有C币</span></td>
-            </tr>
-            <tr>
-                <td><strong class="jsNeedInte">5</strong></td>
-                <td><strong class="mark jsRemainInte">4</strong></td>
-                <td><strong class="jsRemainC">45</strong></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="noC"><span>您的积分不足，将扣除</span><em class="cWrap"> 10</em><span> C币</span></div>
-
-    <div class="dl_xunlei_tips"> 为了良好体验，不建议使用迅雷下载</div>
-    <div class="dl_download_btn"><a href="javascript:;" data-href="" class="dl_btn js_download_btn">确认下载
-        <!--em.c_mark_tips （1C币可兑换2积分）--></a></div>
-</div>
-
-<!--兑换成功  无兑换成功提示-->
-<div id="exchange_succ" class="dl_popup"><i class="fa fa-close pop_close"></i>
-    <h3 class="dl_popup_title_bold">兑换成功</h3>
-    <div class="dl_integral">你当前的下载分为<span id="user_score">234</span>。<a
-            href="https://download.csdn.net/download/u011479200/11237663" target="_blank">开始下载资源</a></div>
-</div>
-
-<div id="noVip_dl" class="dl_popup"><i class="fa fa-close pop_close"></i>
-    <div class="integral_intro">你还不是VIP会员</div>
-    <div class="integral_intro">开通VIP会员权限，免积分下载</div>
-    <div class="dl_download_btn dl_download_b"><a href="https://download.csdn.net/download/u011479200/11237663#"
-                                                  class="dl_btn_red">立即开通</a></div>
-</div>
-
-<!--跟随菜单-->
-<div class="follow_menu_box" style="display: none;">
-
-
-    <div class="follow_menu clearfix">
-        <div class="follow_menu_l fl">
-            <p>java-loadresource.rar</p>
-        </div>
-        <div class="follow_menu_r fr">
-            <label>
-                <em>5</em>积分
-            </label>
-            <a href="javascript:;" class="direct_download" target="_self">立即下载</a>
-        </div>
-    </div>
-</div>
-
-<div id="loginWrap"></div>
-
-<link rel="stylesheet" type="text/css" href="./java-loadresource.rar-CSDN下载_files/pub_footer_1.0.3.css">
-
-<div style="position:fixed; top:0; left:0; overflow:hidden;"><input style="position:absolute; left:-300px;" type="text"
-                                                                    value="" id="focus_retriever" readonly="true"></div>
-<iframe class="bdSug_sd" style="display: none; position: absolute; border-width: 0px;"
-        src="./java-loadresource.rar-CSDN下载_files/saved_resource.html"></iframe>
-<div id="bdSug_1560332662553" class="bdSug_wpr" style="display: none;"></div>
-<script></script>
 </body>
 <script src="jquery/jquery-2.1.1.min.js"></script>
 <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
 <script>
-    function downloads() {
-        $("#dlMask").attr("style", "display: block;")
-        $("#noVipNoEnoughPHasC").attr("style", "margin-top: -170px; display: block;")
+
+
+    var file_Id = location.search.split("=")[1];
+    init(file_Id);
+    function init(file_Id) {
+        $.ajax({
+            url:"islogin",
+            type:"POST",
+            contentType:"application/json",
+            data: JSON.stringify({
+            }),
+            dataType:"json",
+            success:function(resp){
+                console.log(resp);
+                $("#mycbi").html(item.cbis);
+            },
+            error:function () {
+            }
+        });
+
+
+        $.ajax({
+            url:"getFiles",
+            type:"POST",
+            contentType:"application/json",
+            data: JSON.stringify({
+                "file_id": file_Id
+            }),
+            dataType:"json",
+            success:function(resp){
+                console.log(resp);
+               $(resp).each(function (index, item) {
+                   $("#cbinum").html(item.file_cbi);
+                   $("#file_intro").html(item.file_intro);
+                   $("#file_time").html(item.file_time);
+                   $("#file_name").html(item.file_name);
+               })
+            },
+            error:function () {
+                alert("错误");
+            }
+        });
     }
+
+
+    function downloads() {
+        window.location.href="fileDown?file_id="+file_Id
+        // $.ajax({
+        //     url:"fileDown",
+        //     type:"POST",
+        //     contentType:"application/json",
+        //     data: JSON.stringify({
+        //         "file_id":file_Id
+        //     }),
+        //     dataType:"json",
+        //     success:function(resp){
+        //         console.log(resp);
+        //        if (resp==false){
+        //             alert("你的C币不足");
+        //        }
+        //     },
+        //     error:function (resp) {
+        //         console.log(resp);
+        //         alert("失败");
+        //     }
+        // });
+    }
+
+
+
 </script>
 </html>

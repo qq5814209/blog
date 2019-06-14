@@ -1,6 +1,9 @@
 package com.me.mapper;
 
 import com.me.pojo.Order;
+import com.me.pojo.UserInfo;
+
+import java.util.List;
 
 public interface OrderMapper {
     /**
@@ -24,5 +27,10 @@ public interface OrderMapper {
      */
     public Order getOrderByNum(Order order);
 
-
+    /**
+     * 根据用户查订单
+     * @param userInfo
+     * @return
+     */
+    List<Order> getOrderBy(UserInfo userInfo);
 }
