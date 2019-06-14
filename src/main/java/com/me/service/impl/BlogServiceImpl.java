@@ -5,8 +5,10 @@ import com.me.mapper.BlogMapper;
 import com.me.pojo.Comment;
 import com.me.pojo.UserInfo;
 import com.me.service.BlogService;
+import com.me.vo.ShowVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -76,6 +78,100 @@ public class BlogServiceImpl implements BlogService {
     public UserDto findUserDto(int userId) {
         UserDto userDto = blogMapper.findUserDto(userId);
         return userDto;
+    }
+
+    /*
+     * 点赞
+     * */
+    @Override
+    public int getPraise(ShowVo showVo) {
+
+        //根据user_id and blog_id查询有无赞记录
+        ShowDto showDto = blogMapper.selectPraise1(showVo);
+        int status;
+
+        //showDto不为空，就有赞记录
+        if(showDto != null) {
+            //获取赞记录的状态
+            status = showDto.getStatus();
+
+            //状态为1的时候设置为0,删除赞
+            if(status ==1) {
+                showVo.setStatus(0);
+                int i = blogMapper.updatePraise(showVo);
+                return i;//i为取消点赞
+
+                //状态为0的时候设置为1,点赞
+            }else if(status == 0) {
+                showVo.setStatus(1);
+                int i = blogMapper.updatePraise(showVo);
+                return i+1;
+            }
+        }
+        //showDto为空，插入赞记录,并设置状态为1,点赞
+        int i = blogMapper.getPraise(showVo);
+        return i+1;//i为2点赞
+    }
+
+    /*
+     * 根据user_id和blog_id查询点赞记录
+     * */
+    @Override
+    public ShowDto selectPraise1(ShowVo showVo) {
+        ShowDto showDto = blogMapper.selectPraise1(showVo);
+        return showDto;
+    }
+
+    /*
+     * 通过修改状态字来点赞或者取消赞
+     * */
+    @Transactional
+    @Override
+    public int updatePraise(ShowVo showVo) {
+        int count = blogMapper.updatePraise(showVo);
+        return count;
+    }
+
+    /*
+     * 根据博客id查询此博客的赞的数量
+     * */
+    @Override
+    public ShowDto selectPraise2(ShowVo showVo) {
+        ShowDto showDto = blogMapper.selectPraise2(showVo);
+        return showDto;
+    }
+
+    /*
+     * 根据博客id查询此篇浏览量browse_number
+     * */
+    @Override
+    public ShowDto getBrowse(ShowVo showVo) {
+        ShowDto showDto = blogMapper.getBrowse(showVo);
+        ShowDto showDto1 = blogMapper.selectBrowse(showVo);
+        if(showDto1 == null) {
+            int i = blogMapper.addBrowse(showVo);
+        }
+
+        return showDto;
+    }
+
+    /*
+     * 根据user_id和blog_id增加浏览量
+     * */
+    @Transactional
+    @Override
+    public int addBrowse(ShowVo showVo) {
+        int i = blogMapper.addBrowse(showVo);
+        return i;
+    }
+
+    /*
+     * 查询相应blog_id和user_id的浏览记录
+     * */
+    @Override
+    public ShowDto selectBrowse(ShowVo showVo) {
+        ShowDto showDto = blogMapper.selectBrowse(showVo);
+        return showDto;
     }
 
 }

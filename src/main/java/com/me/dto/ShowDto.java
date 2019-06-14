@@ -12,7 +12,7 @@ public class ShowDto {
     private int user_id;//用户id
     private int wznumber;//文章数量
     private int bt_id;//博客分类id
-    private int status;
+    private int status;//状态字
     private String blog_url;//博客链接
     private int pt_id;//个人分类id
     private int currentPage;//当前页
@@ -21,8 +21,61 @@ public class ShowDto {
     private String comment_content;//评论内容
     private String comment_time;//评论时间
     private int comment_id;//评论id
+    private int praise_id;//点赞id
+    private String praise_time;//点赞时间
+    private int praise_number;//单篇博客点赞数
+    private int browse_id;//浏览记录id
+    private String browse_time;//浏览记录创建时间
+    private int browse_number;//单篇博客浏览数
 
 
+    public int getBrowse_number() {
+        return browse_number;
+    }
+
+    public void setBrowse_number(int browse_number) {
+        this.browse_number = browse_number;
+    }
+
+    public int getBrowse_id() {
+        return browse_id;
+    }
+
+    public void setBrowse_id(int browse_id) {
+        this.browse_id = browse_id;
+    }
+
+    public String getBrowse_time() {
+        return browse_time;
+    }
+
+    public void setBrowse_time(String browse_time) {
+        this.browse_time = browse_time;
+    }
+
+    public int getPraise_number() {
+        return praise_number;
+    }
+
+    public void setPraise_number(int praise_number) {
+        this.praise_number = praise_number;
+    }
+
+    public int getPraise_id() {
+        return praise_id;
+    }
+
+    public void setPraise_id(int praise_id) {
+        this.praise_id = praise_id;
+    }
+
+    public String getPraise_time() {
+        return praise_time;
+    }
+
+    public void setPraise_time(String praise_time) {
+        this.praise_time = praise_time;
+    }
 
     public int getComment_id() {
         return comment_id;
@@ -184,6 +237,7 @@ public class ShowDto {
         this.bnumber = bnumber;
     }
 
+
     @Override
     public String toString() {
         return "ShowDto{" +
@@ -207,6 +261,12 @@ public class ShowDto {
                 ", comment_content='" + comment_content + '\'' +
                 ", comment_time='" + comment_time + '\'' +
                 ", comment_id=" + comment_id +
+                ", praise_id=" + praise_id +
+                ", praise_time='" + praise_time + '\'' +
+                ", praise_number=" + praise_number +
+                ", browse_id=" + browse_id +
+                ", browse_time='" + browse_time + '\'' +
+                ", browse_number=" + browse_number +
                 '}';
     }
 }

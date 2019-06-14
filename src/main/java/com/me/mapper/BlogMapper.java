@@ -3,6 +3,7 @@ package com.me.mapper;
 import com.me.dto.*;
 import com.me.pojo.Comment;
 import com.me.pojo.UserInfo;
+import com.me.vo.ShowVo;
 
 import java.util.List;
 
@@ -32,4 +33,19 @@ public interface BlogMapper {
     int addComment(Comment comment);
 
     UserDto findUserDto(int userId);
+
+    public int getPraise(ShowVo showVo);
+
+    public ShowDto selectPraise1(ShowVo showVo);
+
+    public int updatePraise(ShowVo showVo);
+
+    public ShowDto selectPraise2(ShowVo showVo);
+
+    public ShowDto getBrowse(ShowVo showVo);
+
+    public int addBrowse(ShowVo showVo);
+
+    public ShowDto selectBrowse(ShowVo showVo);
+
 }

@@ -16,7 +16,61 @@ public class ShowVo {
     private int currentPage;//当前页
     private int pageSize;//当前页数据条数
     private int comment_id;//评论id
+    private int status;//状态字
+    private int praise_id;//点赞id
+    private int praise_time;//点赞时间
+    private int praise_number;//单篇文章点赞数
+    private int browse_id;//单篇博客浏览数
+    private String browse_time;//浏览记录创建时间
 
+
+    public int getBrowse_id() {
+        return browse_id;
+    }
+
+    public void setBrowse_id(int browse_id) {
+        this.browse_id = browse_id;
+    }
+
+    public String getBrowse_time() {
+        return browse_time;
+    }
+
+    public void setBrowse_time(String browse_time) {
+        this.browse_time = browse_time;
+    }
+
+    public int getPraise_number() {
+        return praise_number;
+    }
+
+    public void setPraise_number(int praise_number) {
+        this.praise_number = praise_number;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getPraise_id() {
+        return praise_id;
+    }
+
+    public void setPraise_id(int praise_id) {
+        this.praise_id = praise_id;
+    }
+
+    public int getPraise_time() {
+        return praise_time;
+    }
+
+    public void setPraise_time(int praise_time) {
+        this.praise_time = praise_time;
+    }
 
     public int getComment_id() {
         return comment_id;
@@ -156,6 +210,12 @@ public class ShowVo {
                 ", currentPage=" + currentPage +
                 ", pageSize=" + pageSize +
                 ", comment_id=" + comment_id +
+                ", status=" + status +
+                ", praise_id=" + praise_id +
+                ", praise_time=" + praise_time +
+                ", praise_number=" + praise_number +
+                ", browse_id=" + browse_id +
+                ", browse_time='" + browse_time + '\'' +
                 '}';
     }
 }

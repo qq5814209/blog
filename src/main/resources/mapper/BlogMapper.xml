@@ -129,4 +129,49 @@
     </select>
 
 
+    <!--插入点赞记录-->
+    <insert id="getPraise" parameterType="com.me.vo.ShowVo">
+        INSERT INTO praise VALUES(DEFAULT,user_id,blog_id,now(),1)
+    </insert>
+
+    <!--没统计博客赞的数量-->
+    <select id="selectPraise1" parameterType="com.me.vo.ShowVo" resultType="com.me.dto.ShowDto">
+        SELECT * from praise where user_id =#{user_id} and blog_id =#{blog_id}
+    </select>
+
+    <!--统计博客赞的数量 praise_id -->
+    <select id="selectPraise2" parameterType="com.me.vo.ShowVo" resultType="com.me.dto.ShowDto">
+        SELECT COUNT(praise_id) praise_number from praise where blog_id = #{blog_id} and `status`=1
+    </select>
+
+    <!--根据user_id和blog_id 或 praise_id 修改状态字-->
+    <update id="updatePraise" parameterType="com.me.vo.ShowVo">
+        update praise set `status`= #{status}
+        where
+        <if test="user_id != null and user_id !=''">
+            user_id = {#user_id}
+        </if>
+        <if test="blog_id != null and blog_id !=''">
+            and blog_id = {#blog_id}
+        </if>
+        <if test="praise_id != null and praise_id !=''">
+            and praise_id = #{praise_id}
+        </if>
+    </update>
+
+    <!--获取单篇博客浏览数-->
+    <select id="getBrowse" parameterType="com.me.vo.ShowVo" resultType="com.me.dto.ShowDto">
+          SELECT COUNT(browse_number) browse_number from browse where blog_id = #{blog_id} and `status`=1
+    </select>
+
+    <!--插入点赞记录-->
+    <insert id="addBrowse" parameterType="com.me.vo.ShowVo">
+        INSERT INTO browse VALUES(DEFAULT,user_id,blog_id,now(),1)
+    </insert>
+
+    <!--查询相应blog_id和user_id的浏览记录-->
+    <select id="selectBrowse" parameterType="com.me.vo.ShowVo" resultType="com.me.dto.ShowDto">
+        SELECT * from browse where user_id =#{user_id} and blog_id =#{blog_id}
+    </select>
+
 </mapper>

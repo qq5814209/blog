@@ -22,6 +22,8 @@ public interface InquireService {
     public List<ShowDto> getAllBigType();
     public List<ShowDto> getAllBlogs(ShowVo showVo);
 
+
+
     /**
      * 写博客
      * @param user_id

@@ -145,4 +145,8 @@
         select DISTINCT u.`name`, c.*,b.blog_title,b.blog_id from comment1 c,bloginfo b,userinfo u,user_blog ub
          where c.user_id = #{user_id} and c.blog_id = b.blog_id and u.user_id = #{user_id}
     </select>
+
+
+
+
 </mapper>
