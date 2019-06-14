@@ -2,9 +2,11 @@ package com.me.controller;
 
 import com.me.pojo.UserInfo;
 import com.me.service.UserInfoService;
+import com.me.util.BaseResult;
 import com.me.util.CaptchaUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -64,6 +66,37 @@ public class UserInfoController {
         System.out.println(user_name + " : " + email + " : " + password);
         return userInfoService.regiester(user_name,email,password);
     }
+
+    /**
+     * 判断新注册账号是否存在
+     * @param user_name
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "user_nameIsExist",method = RequestMethod.GET)
+    public Object user_nameIsExist(String user_name){
+        System.out.println(user_name);
+        if(user_name != null && user_name != ""){
+            UserInfo userInfo = userInfoService.user_nameIsExist(user_name);
+            if(userInfo != null){
+                return BaseResult.fail("该账号已被注册");
+            }
+            return BaseResult.fail("该账号可以被使用");
+        }
+        return null;
+    }
+
+    /**
+     * 更改用户激活状态
+     * @param user_id
+     * @return
+     */
+    @RequestMapping(value = "activate",method = RequestMethod.GET)
+    public Object activate(String user_id){
+        userInfoService.updateStatus(user_id);
+        return "login";
+    }
+
 
     /**
      * 退出

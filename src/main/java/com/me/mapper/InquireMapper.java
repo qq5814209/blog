@@ -41,7 +41,7 @@ public interface InquireMapper {
      * 查询个人分类类型
      * @return
      */
-    List<Person_TypeDto> selectPersonType();
+    List<Person_TypeDto> selectPersonType(int user_id);
 
     /**
      * 查询博客类型
@@ -49,5 +49,29 @@ public interface InquireMapper {
      */
     List<Blog_TypeDto> selectBlogType();
 
+    /**
+     * 判断新增分类是否已存在
+     * @param typeSpan
+     * @return
+     */
+    String isExist(String typeSpan);
 
+    /**
+     * 新增分类插入分类表
+     * @param writeBlogVo2
+     */
+    void insertPerson_Type(WriteBlogVo writeBlogVo2);
+
+    /**
+     * 获取新增分类的id
+     * @return
+     */
+    String getPt_Id();
+
+    /**
+     * 博客分类_个人分类中间表插入数据
+     * @param writeBlogVo
+     * @return
+     */
+    int insertPbt_Middle(WriteBlogVo writeBlogVo);
 }

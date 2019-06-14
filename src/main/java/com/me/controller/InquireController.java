@@ -142,9 +142,12 @@ public class InquireController {
      */
     @ResponseBody
     @RequestMapping(value = "selectPersonTypeAndBlogType",method = RequestMethod.GET)
-    public Object selectBlogType(){
+    public Object selectBlogType(HttpSession httpSession){
+        UserInfo userInfo = (UserInfo)httpSession.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+
         //查询个人分类类型
-        List<Person_TypeDto> person_typeDtos = inquireService.selectPersonType();
+        List<Person_TypeDto> person_typeDtos = inquireService.selectPersonType(user_id);
         //查询博客类型
         List<Blog_TypeDto> blog_typeDtos = inquireService.selectBlogType();
         ArrayList<Object> type = new ArrayList<Object>();
