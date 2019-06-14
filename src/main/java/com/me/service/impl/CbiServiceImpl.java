@@ -29,5 +29,11 @@ public class CbiServiceImpl implements CbiService {
         return cbiMapper.getCbi(cbi);
     }
 
+    @Override
+    public UserInfo getCbiById(HttpSession session) {
+        UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
+        return cbiMapper.getUserCbi(userInfo);
+    }
+
 
 }
