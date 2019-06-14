@@ -251,23 +251,9 @@
         });
 
     }
-    function getUserId() {
-        $.ajax({
-            type:"post",
-            dataType:"JSON",
-            url:"/getUser_id",
-            contentType:"application/json",
-            success:function (data) {
-                loginUserId=data;
-                userPage(loginUserId);
-            },
-            error:function (data) {
-            }
-        });
-    }
-    getUserId();
     //渲染个人信息页
-    function userPage(loginUserId) {
+    $(function () {
+
         var url = "selectUserInfo";
         var $selectUserInfo = $("#selectUserInfo");
         $.post(url, function (data) {
@@ -281,7 +267,7 @@
                 "                                <div data-v-0d738edb=\"\" class=\"id_card\">" +
                 "                                    <span data-v-0d738edb=\"\" class=\"id_name\">ID：" + data.userInfo.user_name + "</span>" +
                 "                                       <img src='image/vip.png' id='viptouxiang' style='display: none'/><span id='daoqishijian' style='display: none'>会员到期时间：2019-06-27</span>"+
-                "                                    <a data-v-0d738edb=\"\" href=\"personalHomepage.html?userId="+loginUserId+"\" target=\"_blank\" class=\"user_home\">个人主页</a>" +
+                "                                    <a data-v-0d738edb=\"\" href=\"personalHomepage.html?userId="+data.userInfo.user_id+"\" target=\"_blank\" class=\"user_home\">个人主页</a>" +
                 "                                </div>" +
                 "                            </div>" +
                 "                            <div data-v-0d738edb=\"\" class=\"csdn_info\">\n" +
@@ -320,7 +306,8 @@
                 }
             })
         })
-    };
+
+    });
 
 
     /*$(function () {

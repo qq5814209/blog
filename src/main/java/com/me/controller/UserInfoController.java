@@ -4,6 +4,7 @@ import com.me.pojo.UserInfo;
 import com.me.service.UserInfoService;
 import com.me.util.BaseResult;
 import com.me.util.CaptchaUtil;
+import com.me.util.Md5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,7 +36,10 @@ public class UserInfoController {
     @ResponseBody
     @RequestMapping(value = "userLogin",method = RequestMethod.POST)
     public Object login(String user, String password, HttpSession session){
-        UserInfo userInfo = userInfoService.login(user,password);
+        UserInfo userInfo = userInfoService.login(user, Md5.getMD5(password));
+        if(userInfo == null){
+            return BaseResult.fail("账号或密码错误，请重新登录");
+        }
         System.out.println(userInfo);
         session.setAttribute("userInfo",userInfo);
         return userInfo;
@@ -64,7 +68,7 @@ public class UserInfoController {
     @RequestMapping(value = "userRegiester",method = RequestMethod.POST)
     public Object regiester(String user_name,String email,String password){
         System.out.println(user_name + " : " + email + " : " + password);
-        return userInfoService.regiester(user_name,email,password);
+        return userInfoService.regiester(user_name,email,Md5.getMD5(password));
     }
 
     /**
