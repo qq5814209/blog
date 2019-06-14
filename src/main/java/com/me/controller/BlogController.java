@@ -174,6 +174,13 @@ public class BlogController {
         List<Comment> commentList = blogService.showCommentByBlogId(blogId);
         return commentList;
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/addSpan")
+    public Object addSpan(@RequestParam int userId){
+        int num = blogService.addSpan(userId);
+        return num;
+    }
     /**
      * 添加举报信息
      * @param reportVo
@@ -220,7 +227,6 @@ public class BlogController {
         UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
         showVo.setUser_id(user_id);
-        System.out.println(showVo+"1111111111111");
         int count = blogService.addBrowse(showVo);
         return count;
     }

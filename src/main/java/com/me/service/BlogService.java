@@ -117,4 +117,5 @@ public interface BlogService {
 
     public ShowDto selectBrowse(ShowVo showVo);
 
+    int addSpan(int userId);
 }

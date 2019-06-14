@@ -175,5 +175,8 @@
     <select id="selectBrowse" parameterType="com.me.vo.ShowVo" resultType="com.me.dto.ShowDto">
         SELECT * from browse where user_id =#{user_id} and blog_id =#{blog_id}
     </select>
+    <select id="addSpan" parameterType="int" resultType="int">
+        select COUNT(*) from browse b where b.blog_id=#{userId}
+    </select>
 
 </mapper>
