@@ -116,14 +116,14 @@
             url:"islogin",
             type:"GET",
             contentType:"application/json",
-            data: JSON.stringify({
-            }),
-            dataType:"json",
+
+
             success:function(resp){
                 console.log(resp);
                 $("#mycbi").html(resp.cbis);
             },
             error:function () {
+                alert("222");
             }
         });
 

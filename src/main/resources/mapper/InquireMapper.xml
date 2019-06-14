@@ -102,7 +102,7 @@
 
     <!--新增分类插入分类表-->
     <insert id="insertPerson_Type" parameterType="com.me.vo.WriteBlogVo">
-        INSERT INTO person_type (type_name,user_id) VALUES (#{typeSpan},user_id);
+        INSERT INTO person_type (type_name,user_id) VALUES (#{typeSpan},#{user_id});
     </insert>
 
     <!--写博客-->
