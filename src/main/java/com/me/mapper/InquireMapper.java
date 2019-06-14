@@ -22,6 +22,7 @@ public interface InquireMapper {
     public int delComment(ShowVo showVo);
     public List<ShowDto> getAllBigType();
     public List<ShowDto> getAllBlogs(ShowVo showVo);
+    public List<ShowDto> searchMyBlogs(ShowVo showVo);
 
     /**
      * 写博客

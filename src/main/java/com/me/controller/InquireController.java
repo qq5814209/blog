@@ -245,4 +245,18 @@ public class InquireController {
         return showDtoPageInfo;
     }
 
+
+    /*
+     * 搜索我的博客
+     * */
+    @ResponseBody
+    @RequestMapping("searchMyBlogs")
+    public Object searchMyBlogs(@RequestBody(required = false) ShowVo showVo,HttpSession session){
+        UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        showVo.setUser_id(user_id);
+        List<ShowDto> showDtos = inquireService.searchMyBlogs(showVo);
+        return showDtos;
+    }
+
 }
