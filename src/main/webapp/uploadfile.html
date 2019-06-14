@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!-- saved from url=(0032)https://download.csdn.net/upload -->
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head >
+    <meta http-equiv="Content-Type" content="multipart/form-data;charset=utf-8" />，
     <title>上传资源-下载频道-CSDN.NET</title>
     <meta content="always" name="referrer">
     <meta name="author" content="CSDN">
@@ -16,20 +16,35 @@
     <link rel="stylesheet" type="css/goTop.min.css">
     <link rel="stylesheet" href="css/user-sms-verification.css">
     <link rel="stylesheet" type="css/check-adb.css">
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+
+    <style>
+        input {
+            height: 50px;
+            width: 260px;
+        }
+    </style>
+
+
 </head>
 <body>
 <div class="news-nav">
     <div class="container clearfix">
         <div class="nav-bar">
-            <a href="#">下载首页</a>
-            <a class=" " href="#">精品专辑</a>
-            <a href="#">我的资源</a>
+            <a href="download_index.html">下载首页</a>
+            <a href="index.html" class="">博客首页</a>
+            <a href="download_my.html">我的资源</a>
             <a class="#">上传资源赚积分</a>
             <a class=" " href="#">已下载</a>
             <a class=" " href="#">我的收藏</a>
         </div>
     </div>
 </div>
+
+
+
 
 <div class="meeting_main">
     <div class="download_new clearfix">
@@ -39,92 +54,38 @@
                     上传资源                </span>
                     <!--搜索页面热点资源-->
                 </h4>
-                <div class="create_album upl_resources">
-                    <form id="uploadform" name="uploadform" action="https://download.csdn.net/upload/do_upload"
-                          enctype="multipart/form-data" method="POST" onsubmit="return false;" class="form">
-                        <div id="targetLayer"></div>
+                <form action="fileUpLoad" enctype="multipart/form-data"  method="post"  class="form-horizontal" role="form">
 
-                        <input type="hidden" id="sourceid" name="sourceid" value="">
-                        <ul class="create_album_list clearfix">
-                            <li class="resource_li">
-                                <div class="choose_wrap">
-                                    <div id="progress-box-new">
-                                        <div id="progress-bar-new"></div>
-                                        <span id="progress-status-new">上传中… (0%)</span>
-                                    </div>
-                                    <span class="choose_intro choose_file" style="margin-right: 8px">
-                                            <a href="javascript:void(0);" class="updata-file">
-                                            </a>
-                                        </span>
-                                    <span class="choose_intro choose_file">
-                                            <em id="li_userfile">点击上传资源，文件小于220MB</em>
-                                        </span>
-                                    <input id="txt_userfile" type="file" name="txt_userfile" value="" class="file">
-                                    <input id="fileMd5" name="fileMd5" type="hidden" value="">
-                                    <input id="isOpenPDF" type="hidden" value="0">
-                                </div>
-                                <em class="form_error"></em>
-                            </li>
 
-                            <li>
-                                <label><span class="required-icon">*</span>资源名称：</label>
-                                <input type="text" max="80" id="txt_title" name="txt_title" placeholder="请输入资源名称"
-                                       class="album_inpt" value="">
-                                <em class="form_error"></em>
-                            </li>
-                            <li>
-                                <label><span class="required-icon">*</span>资源类型：</label>
-                                <select def="0" class="select category-1" id="sel_filetype" name="sel_filetype">
-                                    <option value="0">请选择</option>
-                                    <option value="1">文档</option>
-                                    <option value="2">代码类</option>
-                                    <option value="3">工具类</option>
-                                    <option value="4">其他</option>
-                                    <option value="4">其他</option>
-                                </select>
-                                <div class="res_tip"></div>
-                                <em class="form_error"></em>
-                            </li>
-                            <li>
-                                <label><span class="required-icon">*</span>所属分类：</label>
-                                <select id="sel_primary" name="sel_primary" class="select category-1"
-                                        autocomplete="sel_primary">
-                                    <option value="">请选择</option>
-                                    <option value="21">移动开发</option>
-                                    <option value="16">开发技术</option>
-                                    <option value="15">课程资源</option>
-                                    <option value="19">网络技术</option>
-                                    <option value="12">操作系统</option>
-                                    <option value="10">安全技术</option>
-                                    <option value="18">数据库</option>
-                                    <option value="14">行业</option>
-                                    <option value="13">服务器应用</option>
-                                    <option value="20">信息化</option>
-                                    <option value="11">存储</option>
-                                    <option value="17">考试认证</option>
-                                    <option value="22">云计算</option>
-                                    <option value="23">大数据</option>
-                                    <option value="24">跨平台</option>
-                                    <option value="25">音视频</option>
-                                    <option value="26">游戏开发</option>
-                                    <option value="27">人工智能</option>
-                                    <option value="28">区块链</option>
-                                </select>&nbsp;
-                                <select id="sel_subclass" style="display:none" name="sel_subclass">
-                                    <option value="" selected="selected" def="0">请选择</option>
-                                </select>
-                                <em class="form_error"></em>
-                            </li>
-                            <li>
-                                <label><span class="required-icon">*</span>资源描述：</label>
-                                <textarea name="txt_desc" id="txt_desc" max="500"
-                                          placeholder="描述不支持HTML标签；详细的资源描述有机会获得我们的推荐，更有利于他人下载，赚取更多积分。如资源描述不清，有可能审核不通过。"></textarea>
-                                <em class="form_error"></em>
-                            </li>
-                        </ul>
-                        <div class="create_album_b">
-                            <!--input.album_cancel(type="button" value="取消")-->
-                            <input id="btnUpLoad" type="button" value="提交" class="album_submit submit-btn">
+                        <div class="form-group" >
+                            <label class="col-sm-3 control-label"><span class="glyphicon glyphicon-ok"></span> 文件描述：</label>
+                            <input type="text" value="" name="file_intro" placeholder="请详细描述文件的信息"/>
+                        </div>
+
+                        <div class="form-group" >
+                            <label class="col-sm-3 control-label"><span class="glyphicon glyphicon-ok"></span> 给文件取名为：</label>
+                            <input type="text" value="" name="file_name" placeholder="文件名"/>
+                        </div>
+
+                        <div class="form-group" >
+                            <label class="col-sm-3 control-label"><span class="glyphicon glyphicon-list"></span> C币：</label>
+                            <input type="text" name="file_cbi" placeholder="输入下载此文件需要的C币"/>
+                        </div>
+
+
+
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label class="control-label"> <span class="glyphicon glyphicon-upload"></span> 上传文件</label>
+                                <input type="file" name="file" id="inputfile"></input>
+                            </div>
+                        </div>
+                        <p style="margin-left: 150px;margin-bottom: 25px;" class="help-block"></p>
+
+                        <div class="form-group">
+                            <div id="btn" style="margin-left: 160px">
+                                <input type="submit" value="立即提交" class="col-sm-4 btn btn-warning">
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -148,6 +109,12 @@
 </div>
 
 <div id="bdSug_1560340342395" class="bdSug_wpr" style="display: none;"></div>
-<script></script>
+<script type="text/javascript">
+
+</script>
+
+
+
+
 </body>
 </html>

@@ -37,4 +37,11 @@ public interface VipMapper {
      */
     public IsVipVo isVip(UserInfo userInfo);
 
+    /**
+     * 根据用户id查是否为会员
+     * @param userInfo
+     * @return
+     */
+    public Object isVipById(UserInfo userInfo);
+
 }

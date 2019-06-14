@@ -1,6 +1,7 @@
 package com.me.controller;
 
 
+import com.me.pojo.UserInfo;
 import com.me.pojo.Vip;
 import com.me.service.VipService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class VipController {
     /**
      * 获取vip套餐
      * @param vip
-     * @return
+     * @return vip套餐
      */
     @ResponseBody
     @RequestMapping(value ="/getVip",method = RequestMethod.POST)
@@ -32,14 +33,30 @@ public class VipController {
     }
 
     /**
-     * 查看是否为会员身份
-     * @param session
-     * @return
+     * 查看自己是否为会员用户
+     * @param session 直接发送请求过来
+     * @return isVipVO实体，包括会员到期时间，开通的时间
      */
     @ResponseBody
     @RequestMapping(value ="isVip",method = RequestMethod.POST)
     public Object isVip(HttpSession session){
         return vipService.isVip(session);
     }
+
+
+
+    /**
+     * 查看自己是否为会员用户
+     * @param userInfo 接受用户id
+     * @return isVipVO实体，包括会员到期时间，开通的时间
+     */
+    @ResponseBody
+    @RequestMapping(value ="isVipById",method = RequestMethod.POST)
+    public Object isVipById(@RequestBody UserInfo userInfo ){
+        return vipService.isVipById(userInfo);
+    }
+
+
+
 
 }

@@ -14,9 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.List;
+
 
 @Service
 public class FileServiceImpl implements FileService {
@@ -28,41 +27,41 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public Object fileUpLoad(Files file, MultipartFile dropzFile, HttpServletRequest request) {
-        Map<String, Object> result = new HashMap<String, Object>();
-        // 获取上传的原始文件名
-        String fileName = dropzFile.getOriginalFilename();
-        // 设置文件上传路径
-        String filePath = request.getSession().getServletContext().getRealPath("/file");
-        // 获取文件后缀
-        String fileSuffix = fileName.substring(fileName.lastIndexOf("."), fileName.length());
-
-        // 判断并创建上传用的文件夹
-        File destFile = new File(filePath);
-        if (!destFile.exists()) {
-            destFile.mkdirs();
-        }
-        // 重新设置文件名为 UUID，以确保唯一
-        destFile = new File(filePath, UUID.randomUUID() + fileSuffix);
-        if (!destFile.exists()) {
+        if(dropzFile!=null && !dropzFile.isEmpty()){
+            String fileName = dropzFile.getOriginalFilename();
+            String fileSuffix = fileName.substring(fileName.lastIndexOf("."), fileName.length());
+            String filePath = request.getSession().getServletContext().getRealPath("/file");
+            File destFile = new File(filePath);
+            if (!destFile.exists()) {
+                destFile.mkdirs();
+            }
+            destFile = new File(filePath, file.getFile_name()+fileSuffix);
+            if (!destFile.exists()) {
+                try {
+                    destFile.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }else {
+                destFile = new File(filePath, file.getFile_name()+"1"+fileSuffix);
+                if (!destFile.exists()){
+                    try {
+                        destFile.createNewFile();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
             try {
-                destFile.createNewFile();
+                dropzFile.transferTo(destFile);
+                file.setFile_name(destFile.getName());
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            System.out.println(destFile.getName());
+            //UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
+            file.setUser_id(5);
         }
-        try {
-            // 写入文件
-            dropzFile.transferTo(destFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // 返回 JSON 数据，这里只带入了文件名
-        result.put("fileName", destFile.getName());
-        System.out.println(destFile.getName());
-
-        file.setFile_name(destFile.getName());
-        UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
-        file.setUser_id(userInfo.getUser_id());
         return fileMapper.fileUpLoad(file);
     }
 
@@ -70,10 +69,13 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public Object fileDown(Files file2, HttpServletRequest request) {
-        if (selectCbiIs(file2)){
-            fileMapper.fileDown(file2);
+        IsDownDto isDownDto = fileMapper.selectCbiIs(file2);
+        UserInfo userinfo =(UserInfo) request.getSession().getAttribute("userInfo");
+        file2.setUser_id(userinfo.getUser_id());
+        file2.setFile_cbi(isDownDto.getFile_cbi());
+        if (isDownDto.getCbis()>isDownDto.getFile_cbi()){
             //创建文件
-            File fileDown = new File(request.getSession().getServletContext().getRealPath("/"+file2.getFile_name()));
+            File fileDown = new File(request.getSession().getServletContext().getRealPath("/"+isDownDto.getFile_name()));
             byte[] body = null;
             //创建输入流(从硬盘读取数据)
             InputStream is = null;
@@ -90,6 +92,7 @@ public class FileServiceImpl implements FileService {
                 HttpStatus statusCode = HttpStatus.OK;
                 //创建响应实体对象
                 ResponseEntity<byte[]> entity = new ResponseEntity<byte[]>(body, headers, statusCode);
+                fileMapper.fileDown(file2);
                 return entity;
 
             } catch (FileNotFoundException e) {
@@ -98,11 +101,9 @@ public class FileServiceImpl implements FileService {
                 e.printStackTrace();
             }
         }
-
         return false;
 
     }
-
 
 
 
@@ -113,5 +114,10 @@ public class FileServiceImpl implements FileService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public List<Files> getFiles(Files file) {
+        return fileMapper.getFiles(file);
     }
 }

@@ -34,4 +34,12 @@
         and v.user_id =#{user_id} and v.`status`=1
     </select>
 
+
+
+    <!--根据用户id查是否为会员-->
+    <select id="isVipById" parameterType="com.me.pojo.UserInfo" resultType="com.me.vo.IsVipVo">
+        SELECT v.* , s.user_name  from user_vip v,userinfo s where v.user_id=s.user_id
+        and v.user_id =#{user_id} and v.`status`=1
+    </select>
+
 </mapper>

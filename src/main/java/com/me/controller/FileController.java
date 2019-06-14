@@ -22,13 +22,22 @@ public class FileController {
 
     /**
      * 文件上传
-     * @param dropzFile
+     * @param
      * @return
      */
-    @ResponseBody
     @RequestMapping(value ="fileUpLoad",method = RequestMethod.POST)
-    public Object fileUpLoad(@RequestBody Files file, MultipartFile dropzFile, HttpServletRequest request) {
-        return fileService.fileUpLoad(file,dropzFile,request);
+    public Object fileUpLoad(MultipartFile file,
+                             @RequestParam("file_cbi")String file_cbi,
+                             @RequestParam("file_name")String file_name,
+                             @RequestParam("file_intro")String file_intro,
+                             HttpServletRequest request){
+
+        Files files = new Files();
+        files.setFile_cbi(Integer.parseInt(file_cbi));
+        files.setFile_intro(file_intro);
+        files.setFile_name(file_name);
+        fileService.fileUpLoad(files,file,request);
+        return "index";
     }
 
 
@@ -42,6 +51,13 @@ public class FileController {
     @RequestMapping(value ="fileDown",method = RequestMethod.POST)
     public Object fileDown(@RequestBody Files file,  HttpServletRequest request) {
         return fileService.fileDown(file,request);
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value ="getFiles",method = RequestMethod.POST)
+    public Object getFiles(@RequestBody(required = false) Files file) {
+        return fileService.getFiles(file);
     }
 
 

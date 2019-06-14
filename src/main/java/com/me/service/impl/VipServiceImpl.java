@@ -34,10 +34,15 @@ public class VipServiceImpl implements VipService {
      */
     public Object isVip(HttpSession session) {
         UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
-        IsVipVo vip = vipMapper.isVip(userInfo);
-        if (vip!=null){
-            return vip;
+        IsVipVo isVip = vipMapper.isVip(userInfo);
+        if (isVip!=null){
+            return isVip;
         }
         return false;
+    }
+
+    @Override
+    public Object isVipById(UserInfo userInfo) {
+        return vipMapper.isVipById(userInfo);
     }
 }
