@@ -13,7 +13,7 @@ public interface FileMapper {
     public int fileDown(Files file);
 
     /*查询是否能下载*/
-    public IsDownDto selectCbiIs(Files file);
+    public IsDownDto selectCbiIs(String file_id);
 
     /*获取文件列表*/
     public List<Files> getFiles(Files file);

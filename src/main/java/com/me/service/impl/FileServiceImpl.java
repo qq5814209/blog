@@ -13,7 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.util.List;
 
@@ -60,8 +63,8 @@ public class FileServiceImpl implements FileService {
                 e.printStackTrace();
             }
             System.out.println(destFile.getName());
-            //UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
-            file.setUser_id(5);
+            UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
+            file.setUser_id(userInfo.getUser_id());
         }
         return fileMapper.fileUpLoad(file);
     }
@@ -69,9 +72,11 @@ public class FileServiceImpl implements FileService {
 
 
     @Override
-    public Object fileDown(Files file2, HttpServletRequest request) {
-        IsDownDto isDownDto = fileMapper.selectCbiIs(file2);
+    public Object fileDown(String file_id, HttpServletRequest request, HttpServletResponse resp) {
+        IsDownDto isDownDto = fileMapper.selectCbiIs(file_id);
         UserInfo userinfo =(UserInfo) request.getSession().getAttribute("userInfo");
+        Files file2 = new Files();
+        file2.setFile_id(Integer.parseInt(file_id));
         file2.setUser_id(userinfo.getUser_id());
         System.out.println("传入的："+file2);
         System.out.println("返回的文件："+isDownDto);
@@ -106,23 +111,30 @@ public class FileServiceImpl implements FileService {
                 e.printStackTrace();
             }
         }
-        return false;
-
-    }
-
-
-
-    @Override
-    public boolean selectCbiIs(Files file) {
-        IsDownDto isDownDto = fileMapper.selectCbiIs(file);
-        if (isDownDto.getCbis()>isDownDto.getFile_cbi()){
-            return true;
+        try {
+            resp.setContentType("text/html; charset=utf-8");
+            resp.getWriter().write("<br/><a href='download_index.html'>C币不足！！重新前往下载中心</a>");
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return false;
+        return null;
     }
+
+
+
+
 
     @Override
     public List<Files> getFiles(Files file) {
         return fileMapper.getFiles(file);
+    }
+
+    @Override
+    public Object getFilesById(HttpSession session) {
+        Files files = new Files();
+        UserInfo userInfo =(UserInfo) session.getAttribute("userInfo");
+        files.setUser_id(userInfo.getUser_id());
+        return fileMapper.getFiles(files);
     }
 }
