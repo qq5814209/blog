@@ -29,4 +29,5 @@ public interface CbiMapper {
      */
     public void addUserCbi(UserCbiDto userCbiDto);
 
+    public UserInfo getUserCbi(UserInfo userInfo);
 }

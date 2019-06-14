@@ -113,11 +113,9 @@
     init(file_Id);
     function init(file_Id) {
         $.ajax({
-            url:"islogin",
-            type:"GET",
+            url:"getCbiById",
+            type:"POST",
             contentType:"application/json",
-
-
             success:function(resp){
                 console.log(resp);
                 $("#mycbi").html(resp.cbis);
