@@ -70,11 +70,12 @@ $.ajax({
     type: 'GET',
     url: "selectCareByUserId",
     success: function (data) {
+        console.log(data);
         var html2 = "<ul class='tab_page clearfix' style='display: block;' id='fans'>";
         $(data).each(function (index, item) {
             html2 +=
                 "<li>" +
-                "<a href='#' target='_blank'>" +
+                "<a href=\"bk_list.html?userId="+item.user_id+"\" target='_blank'>" +
                 "<img alt='' class='fans_img' src=\"./image/" + item.url + "\">" +
                 "</a>" +
                 "<a class='fans_title' href='#'>" + item.name + "</a>" +
@@ -91,11 +92,12 @@ $.ajax({
     type: 'GET',
     url: "selectCareByUserFromId",
     success: function (data) {
+        console.log(data);
         var html3 = "<ul class='tab_page' style='display: none;' id='attention'>";
         $(data).each(function (index, item) {
             html3 +=
                 "<li>" +
-                "<a href='' target='_blank'>" +
+                "<a href=\"bk_list.html?userId="+item.user_id+"\" target='_blank'>" +
                 "<img alt='' class='fans_img' src=\"./image/" + item.url + "\">" +
                 "</a>" +
                 "<a class='fans_title' href='#'>" + item.name + "</a>" +
@@ -172,6 +174,37 @@ $.ajax({
             "                        </li>\n" +
             "                    </ul>"
 
-        $("#sumCount").append(html)
+        $("#sumCount").append(html);
     }
-})
+
+});
+
+
+    var userId=window.location.search.split("=")[1];
+    $.ajax({
+        type:"post",
+        dataType:"JSON",
+        url:"/showBlog?userId="+userId,
+        contentType:"application/json",
+        success:function (data) {
+            $("#tab_page_list").empty();
+            $.each(data,function (index,item) {
+                var contents = spilt(item.content,item.title);
+                var c= "<dt><h3><a href=\"bk_list.html?userId="+userId+"\" target=\"_blank\">"+item.title+"</a></h3></dt><dd><p class=\"tab_page_intro\">"+contents+"</p></dd><dd class=\"tab_page_con_b clearfix\"><div class=\"tab_page_b_l fl\"><label><em>"+item.seeNum+"</em>次阅读</label></div><div class=\"tab_page_b_r fr\">"+item.time+"</div></dd>\n";
+                $("#tab_page_list").append(c);
+            })
+        },
+        error:function (data) {
+        }
+    });
+
+
+function spilt(content,title) {
+
+    var s= content.split("</p>")[1]
+    if (s==null){
+        return title;
+    } else {
+        return s.replace("<p>","");
+    }
+};

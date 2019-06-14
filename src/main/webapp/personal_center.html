@@ -251,8 +251,23 @@
         });
 
     }
+    function getUserId() {
+        $.ajax({
+            type:"post",
+            dataType:"JSON",
+            url:"/getUser_id",
+            contentType:"application/json",
+            success:function (data) {
+                loginUserId=data;
+                userPage(loginUserId);
+            },
+            error:function (data) {
+            }
+        });
+    }
+    getUserId();
     //渲染个人信息页
-    $(function () {
+    function userPage(loginUserId) {
         var url = "selectUserInfo";
         var $selectUserInfo = $("#selectUserInfo");
         $.post(url, function (data) {
@@ -265,7 +280,7 @@
                 "                            <div data-v-0d738edb=\"\" class=\"right_info\">" +
                 "                                <div data-v-0d738edb=\"\" class=\"id_card\">" +
                 "                                    <span data-v-0d738edb=\"\" class=\"id_name\">ID：" + data.userInfo.user_name + "</span>" +
-                "                                    <a data-v-0d738edb=\"\" href=\"personalHomepage.html\" target=\"_blank\" class=\"user_home\">个人主页</a>" +
+                "                                    <a data-v-0d738edb=\"\" href=\"personalHomepage.html?userId="+loginUserId+"\" target=\"_blank\" class=\"user_home\">个人主页</a>" +
                 "                                </div>" +
                 "                            </div>" +
                 "                            <div data-v-0d738edb=\"\" class=\"csdn_info\">\n" +
@@ -291,7 +306,9 @@
                 "                    </div>";
             $selectUserInfo.append(innerHtml);
         })
-    })
+    };
+
+
 
 </script>
 <script>
@@ -338,10 +355,5 @@
         }
     }
 
-
-    function getLoginUserId() {
-
-
-    }
 </script>
 </html>
