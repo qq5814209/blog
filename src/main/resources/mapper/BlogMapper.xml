@@ -128,5 +128,7 @@
         (SELECT @j:=0) rankNum
     </select>
 
-
+    <insert id="insertReportMessage" parameterType="com.me.vo.ReportVo">
+        INSERT INTO report VALUE (DEFAULT,#{userId},#{blogId},#{reportMessage},DEFAULT)
+    </insert>
 </mapper>

@@ -3,6 +3,7 @@ package com.me.service;
 import com.me.dto.*;
 import com.me.pojo.Comment;
 import com.me.pojo.UserInfo;
+import com.me.vo.ReportVo;
 
 import java.util.List;
 
@@ -89,4 +90,11 @@ public interface BlogService {
      * @return
      */
     UserDto findUserDto(int userId);
+
+    /**
+     * 添加举报信息
+     * @param reportVo
+     * @return
+     */
+    boolean insertReportMessage(ReportVo reportVo);
 }

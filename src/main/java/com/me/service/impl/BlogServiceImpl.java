@@ -5,6 +5,7 @@ import com.me.mapper.BlogMapper;
 import com.me.pojo.Comment;
 import com.me.pojo.UserInfo;
 import com.me.service.BlogService;
+import com.me.vo.ReportVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -76,6 +77,17 @@ public class BlogServiceImpl implements BlogService {
     public UserDto findUserDto(int userId) {
         UserDto userDto = blogMapper.findUserDto(userId);
         return userDto;
+    }
+
+    /**
+     * 添加举报信息
+     * @param reportVo
+     * @return
+     */
+    @Override
+    public boolean insertReportMessage(ReportVo reportVo) {
+
+        return blogMapper.insertReportMessage(reportVo) > 0;
     }
 
 }

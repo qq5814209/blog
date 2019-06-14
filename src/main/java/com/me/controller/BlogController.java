@@ -4,6 +4,7 @@ import com.me.dto.*;
 import com.me.pojo.Comment;
 import com.me.pojo.UserInfo;
 import com.me.service.BlogService;
+import com.me.vo.ReportVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -160,6 +161,17 @@ public class BlogController {
     public Object findUserDto(@RequestParam int userId){
         UserDto userDto = blogService.findUserDto(userId);
         return userDto;
+    }
+
+    /**
+     * 添加举报信息
+     * @param reportVo
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/insertReportMessage", method = RequestMethod.POST)
+    public Object insertReportMessage(ReportVo reportVo){
+        return blogService.insertReportMessage(reportVo);
     }
 
 }
