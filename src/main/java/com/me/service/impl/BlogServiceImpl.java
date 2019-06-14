@@ -85,6 +85,11 @@ public class BlogServiceImpl implements BlogService {
     }
 
 
+    @Override
+    public List<Comment> showCommentByBlogId(int blogId) {
+        List<Comment> commentList = blogMapper.showCommentByBlogId(blogId);
+        return commentList;
+    }
     /**
      * 添加举报信息
      * @param reportVo

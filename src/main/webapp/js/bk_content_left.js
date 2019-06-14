@@ -15,7 +15,7 @@ function showBlogUser() {
         url:"/findUserDto?userId="+userId,
         contentType:"application/json",
         success:function (data) {
-            var b= "<div class=\"profile-intro d-flex\"><div class=\"avatar-box d-flex justify-content-center flex-column\"><a href=\"#\"><img src=\"./image/"+data.url+"\" class=\"avatar_pic\"><img  src=\"./image/vip.jpg\" class=\"user-years\"></a></div><div class=\"user-info d-flex justify-content-center flex-column\"><p class=\"name csdn-tracking-statistics tracking-click\" data-mod=\"popu_379\"><a class=\"\" id=\"uid\">"+data.name+"</a></p></div><div class=\"opt-box d-flex justify-content-center flex-column\"><span class=\"csdn-tracking-statistics tracking-click\" data-mod=\"popu_379\"><a class=\"btn btn-sm btn-red-hollow attention\" id=\"btnAttent\">关注</a></span></div></div><div class=\"data-info d-flex item-tiling\"><dl class=\"text-center\" title=\"3\"><dt><a href=\"#\">原创</a></dt><dd><a href=\"#\"><span class=\"count\">"+data.blogNum+"</span></a></dd></dl><dl class=\"text-center\" id=\"fanBox\" title=\"0\"><dt>粉丝</dt><dd><span class=\"count\" id=\"fan\">"+data.careNum+"</span></dd></dl><dl class=\"text-center\" title=\"0\"><dt>喜欢</dt><dd><span class=\"count\">"+data.loveNum+"</span></dd></dl><dl class=\"text-center\" title=\"1\"><dt>评论</dt><dd><span class=\"count\">"+data.commentNum+"</span></dd></dl></div><div class=\"grade-box clearfix\"><dl><dt>等级：</dt><dd>"+data.levelNum+"<a href=\"#\" title=\"1级,点击查看等级说明\"><svg class=\"icon icon-level\" aria-hidden=\"true\"><use xlink:href=\"#csdnc-bloglevel-1\"></use></svg></a></dd></dl><dl><dt>访问：</dt><dd title=\"400\">"+data.seeNum+"</dd></dl><dl><dt>积分：</dt><dd title=\"43\">"+data.levelValue+"</dd></dl><dl title=\"1986512\"><dt>排名：</dt><dd>198万+</dd></dl></div>\n"
+            var b= "<div class=\"profile-intro d-flex\"><div class=\"avatar-box d-flex justify-content-center flex-column\"><a href=\"#\"><img src=\"./image/"+data.url+"\" class=\"avatar_pic\"><img id=\"vipImg\" style='display: none' src=\"./image/vip.png\" class=\"user-years\"></a></div><div class=\"user-info d-flex justify-content-center flex-column\"><p class=\"name csdn-tracking-statistics tracking-click\" data-mod=\"popu_379\"><a class=\"\" id=\"uid\">"+data.name+"</a></p></div><div class=\"opt-box d-flex justify-content-center flex-column\"><span class=\"csdn-tracking-statistics tracking-click\" data-mod=\"popu_379\"><a class=\"btn btn-sm btn-red-hollow attention\" id=\"btnAttent\">关注</a></span></div></div><div class=\"data-info d-flex item-tiling\"><dl class=\"text-center\" title=\"3\"><dt><a href=\"#\">原创</a></dt><dd><a href=\"#\"><span class=\"count\">"+data.blogNum+"</span></a></dd></dl><dl class=\"text-center\" id=\"fanBox\" title=\"0\"><dt>粉丝</dt><dd><span class=\"count\" id=\"fan\">"+data.careNum+"</span></dd></dl><dl class=\"text-center\" title=\"0\"><dt>喜欢</dt><dd><span class=\"count\">"+data.loveNum+"</span></dd></dl><dl class=\"text-center\" title=\"1\"><dt>评论</dt><dd><span class=\"count\">"+data.commentNum+"</span></dd></dl></div><div class=\"grade-box clearfix\"><dl><dt>等级：</dt><dd>"+data.levelNum+"<a href=\"#\" title=\"1级,点击查看等级说明\"><svg class=\"icon icon-level\" aria-hidden=\"true\"><use xlink:href=\"#csdnc-bloglevel-1\"></use></svg></a></dd></dl><dl><dt>访问：</dt><dd title=\"400\">"+data.seeNum+"</dd></dl><dl><dt>积分：</dt><dd title=\"43\">"+data.levelValue+"</dd></dl><dl title=\"1986512\"><dt>排名：</dt><dd>198万+</dd></dl></div>\n"
             $("#asideProfile").append(b);
         },
         error:function (data) {
@@ -31,13 +31,19 @@ function findLoginUserId() {
         contentType:"application/json",
         success:function (data) {
             loginUserId=data;
+            if (loginUserId){
+                showCommentBox(loginUserId);
+            }
+
         },
         error:function (data) {
         }
     });
 };
-findLoginUserId();
+
 function showArticle() {
+    findLoginUserId();
+
     $("#comment-box").css("display","block");
     $("#blog-content").empty();
     $.ajax({
@@ -60,21 +66,25 @@ function showArticle() {
         error:function (data) {
         }
     });
+    $("#blog-content").css("display","block");
+};
 
+function showCommentBox(loginUserId) {
+    $("#blog-content").empty();
+    $("#blog-content").css("display","block");
     $.ajax({
         type:"post",
         dataType:"JSON",
         url:"/showCommentBox?loginUserId="+loginUserId,
         contentType:"application/json",
         success:function (data) {
-            var b="<a id=\"commentsedit\"></a><div class=\"user-img\"><a><img class=\"show_loginbox\" src=\"image/"+data.url+"\"></a></div><textarea class=\"comment-content\" name=\"comment_content\" id=\"comment_content\" placeholder=\"想对作者说点什么\"></textarea><div><div><span id=\"tip_comment\" class=\"tip\">还能输入<em>1000</em>个字符</span><a class=\"btn btn-sm btn-red btn-comment\" value=\"发表评论\" onclick=addComment()></a></div></div>\n";
-            $("#comment-edit-box").append(b);
+            var b="<div class=\"comment-edit-box d-flex\" id=\"comment-edit-box\"><a id=\"commentsedit\"></a><div class=\"user-img\"><img class=\"show_loginbox\" src=\"image/"+data.url+"\"></div><textarea class=\"comment-content\" name=\"comment_content\" id=\"comment_content\" placeholder=\"想对作者说点什么\"></textarea><div><div><span id=\"tip_comment\" class=\"tip\">还能输入<em>1000</em>个字符</span><input  type='button' class=\"btn btn-sm btn-red btn-comment\" value=\"发表评论\" onclick=addComment()></input></div></div></div>"
+            $("#comment-box").append(b);
         },
         error:function (data) {
         }
     });
-    $("#blog-content").css("display","block");
-};
+}
 function defaultStyle(){
     if (blogId==null){
         showBlog();
@@ -84,17 +94,19 @@ function defaultStyle(){
 }
 defaultStyle();
 function addComment() {
+    var content = $("#comment_content").val();
     $.ajax({
         type:"post",
         dataType:"JSON",
         url:"/addComment",
         contentType:"application/json",
         data:JSON.stringify({
-            "comment_content":$("#comment_content").val(),
-            "user_id":loginUserId,
-            "blog_Id":blogId
+            "content":$("#comment_content").val(),
+            "userId":loginUserId,
+            "blogId":blogId
         }),
         success:function (data) {
+            window.location.href="bk_list.html?userId="+userId+"&blogId="+blogId;
         },
         error:function (data) {
         }
@@ -308,3 +320,40 @@ function spilt(content,title) {
         return s.replace("<p>","");
     }
 };
+
+function vipUserImg() {
+    $.ajax({
+        type:"post",
+        dataType:"JSON",
+        url:"/isVipById",
+        contentType:"application/json",
+        data:JSON.stringify({
+            "user_id":userId
+        }),
+        success:function (data) {
+            if (data!=false){
+                $("#vipImg").css("display","block");
+            }
+        },
+        error:function (data) {
+        }
+    });
+};
+vipUserImg();
+
+function showCommentByBlogId() {
+    $.ajax({
+        type:"post",
+        dataType:"JSON",
+        url:"/showCommentByBlogId",
+        contentType:"application/json",
+        data:JSON.stringify({
+            "blogId":blogId
+        }),
+        success:function (data) {
+
+        },
+        error:function (data) {
+        }
+    });
+}

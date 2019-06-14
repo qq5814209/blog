@@ -168,7 +168,12 @@ public class BlogController {
         return userDto;
     }
 
-
+    @ResponseBody
+    @RequestMapping(value = "/showCommentByBlogId")
+    public Object showCommentByBlogId(@RequestParam int blogId){
+        List<Comment> commentList = blogService.showCommentByBlogId(blogId);
+        return commentList;
+    }
     /**
      * 添加举报信息
      * @param reportVo

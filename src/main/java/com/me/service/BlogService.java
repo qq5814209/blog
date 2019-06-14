@@ -95,7 +95,7 @@ public interface BlogService {
      */
     UserDto findUserDto(int userId);
 
-
+    List<Comment> showCommentByBlogId(int blogId);
     /**
      * 添加举报信息
      * @param reportVo
