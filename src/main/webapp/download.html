@@ -114,14 +114,14 @@
     function init(file_Id) {
         $.ajax({
             url:"islogin",
-            type:"POST",
+            type:"GET",
             contentType:"application/json",
             data: JSON.stringify({
             }),
             dataType:"json",
             success:function(resp){
                 console.log(resp);
-                $("#mycbi").html(item.cbis);
+                $("#mycbi").html(resp.cbis);
             },
             error:function () {
             }
@@ -153,23 +153,26 @@
 
 
     function downloads() {
-        $.ajax({
-            url:"fileDown",
-            type:"POST",
-            contentType:"application/json",
-            data: JSON.stringify({
-                "file_id":file_Id
-            }),
-            dataType:"json",
-            success:function(resp){
-               if (resp==false){
-                    alert("你的C币不足");
-               }
-            },
-            error:function () {
-                alert("失败");
-            }
-        });
+        window.location.href="fileDown?file_id="+file_Id
+        // $.ajax({
+        //     url:"fileDown",
+        //     type:"POST",
+        //     contentType:"application/json",
+        //     data: JSON.stringify({
+        //         "file_id":file_Id
+        //     }),
+        //     dataType:"json",
+        //     success:function(resp){
+        //         console.log(resp);
+        //        if (resp==false){
+        //             alert("你的C币不足");
+        //        }
+        //     },
+        //     error:function (resp) {
+        //         console.log(resp);
+        //         alert("失败");
+        //     }
+        // });
     }
 
 

@@ -8,6 +8,7 @@ import com.me.config.PayProperties;
 import com.me.dto.UserCbiDto;
 import com.me.dto.UserVipDto;
 import com.me.mapper.CbiMapper;
+import com.me.mapper.LevelValueMapper;
 import com.me.mapper.OrderMapper;
 import com.me.mapper.VipMapper;
 import com.me.pojo.Cbi;
@@ -15,6 +16,7 @@ import com.me.pojo.Order;
 import com.me.pojo.UserInfo;
 import com.me.pojo.Vip;
 import com.me.service.OrderService;
+import com.me.vo.LevelValueVo;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -43,6 +45,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     VipMapper vipMapper;
+
+    @Autowired
+    LevelValueMapper levelValueMapper;
 
 
     /**
@@ -94,9 +99,13 @@ public class OrderServiceImpl implements OrderService {
             cbiMapper.addUserCbi(userCbiDto);
         }
 
+        //增加经验值
+        LevelValueVo levelValueVo = new LevelValueVo();
+        levelValueVo.setUser_id(order2.getUser_id());
+        levelValueVo.setValue(100);
+        int i3 = levelValueMapper.addValue(levelValueVo);
         try {
             request.getRequestDispatcher("/vip_center.html").forward(request,response);
-            return;
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -136,7 +145,7 @@ public class OrderServiceImpl implements OrderService {
         long time = date.getTime();
         sb.append(time);
         for (int i=0;i<4;i++){
-            sb.append(ra.nextInt(10)+1);
+            sb.append(ra.nextInt(9));
         }
         String cbi_id = request.getParameter("cbi_id");
         String vip_id = request.getParameter("vip_id");

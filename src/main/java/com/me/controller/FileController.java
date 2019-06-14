@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
-
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @Controller
@@ -43,14 +45,14 @@ public class FileController {
 
     /**
      * 文件下载
-     * @param file
+     * @param file_id
      * @param request
      * @return
      */
     @ResponseBody
-    @RequestMapping(value ="fileDown",method = RequestMethod.POST)
-    public Object fileDown(@RequestBody Files file,  HttpServletRequest request) {
-        return fileService.fileDown(file,request);
+    @RequestMapping(value ="fileDown",method = RequestMethod.GET)
+    public Object fileDown(String file_id, HttpServletRequest request, HttpServletResponse resp) {
+        return fileService.fileDown(file_id,request,resp);
     }
 
 
@@ -58,6 +60,14 @@ public class FileController {
     @RequestMapping(value ="getFiles",method = RequestMethod.POST)
     public Object getFiles(@RequestBody(required = false) Files file) {
         return fileService.getFiles(file);
+    }
+
+
+
+    @ResponseBody
+    @RequestMapping(value ="getFilesById",method = RequestMethod.POST)
+    public Object getFilesById(HttpSession session) {
+        return fileService.getFilesById(session);
     }
 
 
