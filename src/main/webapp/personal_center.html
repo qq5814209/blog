@@ -266,7 +266,7 @@
                 "                            <div data-v-0d738edb=\"\" class=\"right_info\">" +
                 "                                <div data-v-0d738edb=\"\" class=\"id_card\">" +
                 "                                    <span data-v-0d738edb=\"\" class=\"id_name\">ID：" + data.userInfo.user_name + "</span>" +
-                "                                       <img src='image/vip.png' id='viptouxiang' style='display: none'/><span id='daoqishijian' style='display: none'>会员到期时间：2019-06-27</span>"+
+                "                                       <img src='image/vip.png' id='viptouxiang' style='display: none'/><span id='daoqishijian' style='display: none'></span>"+
                 "                                    <a data-v-0d738edb=\"\" href=\"personalHomepage.html?userId="+data.userInfo.user_id+"\" target=\"_blank\" class=\"user_home\">个人主页</a>" +
                 "                                </div>" +
                 "                            </div>" +
@@ -301,6 +301,7 @@
                     console.log(data);
                     if(data != false){
                         $("#viptouxiang").css("display","block");
+                        $("#daoqishijian").text("会员到期时间："+data.end_time)
                         $("#daoqishijian").css("display","block");
                     }
                 }
