@@ -107,7 +107,9 @@ public class InquireServiceImpl implements InquireService{
 
     @Override
     public List<ShowDto> showComment(ShowVo showVo) {
+        System.out.println("================");
         List<ShowDto> showDtos = inquireMapper.showComment(showVo);
+        System.out.println("==================");
         return showDtos;
     }
 

@@ -231,13 +231,14 @@ public class InquireController {
     @ResponseBody
     @RequestMapping("showComment")
     public Object showComment(@RequestBody(required = false) ShowVo showVo,HttpSession session){
+        System.out.println("-------------"+showVo);
         UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
         showVo.setUser_id(user_id);
         PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
         List<ShowDto> showDtos = inquireService.showComment(showVo);
+        System.out.println(showDtos+"=============");
         PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
-
         return showDtoPageInfo;
     }
 

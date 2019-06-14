@@ -32,10 +32,10 @@
             <div class="main-nav-tabs">
                 <ul class="nav nav-pills" id="pills-tab" role="tablist">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active" role="tab" onclick="mycomment()">我的文章评论</a>
+                        <a href="#" class="nav-link active" role="tab" onclick="mycomment()" id="p1">我的文章评论</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link " role="tab" onclick="mycomment2()">我发表的评论</a>
+                        <a href="#" class=" " role="tab" onclick="mycomment2()" id="p2">我发表的评论</a>
                     </li>
                 </ul>
             </div>
@@ -143,7 +143,7 @@
         var uri = "showMyComment";
 
     $(function () {
-        inital(uri,1, 2);
+        inital(uri,1, 5);
     });
 
 
@@ -162,6 +162,7 @@
                     "pageSize":pageSize
                 }),
                 success: function(data){
+                    console.log(data)
                     //循环
                     var tabObj2 = $("#feedlist_id");
                     tabObj2.empty();
@@ -174,7 +175,7 @@
                             "                                    <div class=\"title\">\n" +
                             "                                        <span class=\"user-name\">"+ data.list[i].name+"</span>\n" +
                             "                                        <span class=\"date\"><time datetime=\"\" title=\"\">"+data.list[i].comment_time+"</time></span>回复了你的文章\n" +
-                            "                                        <a class=\"article-title c-blue\" target=\"_blank\" href=\"https://blog.csdn.net/qq_39381892/article/details/89214710\">"+data.list[i].blog_title+"</a>\n" +
+                            "                                        <a class=\"article-title c-blue\" target=\"_self\"  onclick=toJump2(" + data.list[i].user_id + "," + data.list[i].blog_id + ")>"+data.list[i].blog_title+"</a>\n" +
                             "                                        <div class=\"opt-box clearfix\">\n" +
                             "                                            <a class=\"btn-txt c-blue icon-split btn-triggle-reply\">快速回复</a>\n" +
                             "                                            <a class=\"btn-txt c-red\" data-blog-user=\"万岁爷的悲伤\" data-blog-username=\"qq_39381892\" data-id=\"9591370\" data-aid=\"89214710\" onclick=delComment("+data.list[i].comment_id+")>删除</a>\n" +
@@ -253,13 +254,13 @@
     function goto() {
         $("#feedlist_id").empty("");
         $("#btns").find("button").remove();
-        inital(uri,$("#t").val(), 2);
+        inital(uri,$("#t").val(), 5);
     }
 
     function goNormal(n) {
         $("#feedlist_id").empty("");
         $("#btns").find("button").remove();
-        inital(uri,n, 2);
+        inital(uri,n, 5);
     }
 
 
@@ -290,12 +291,22 @@
     * 我的评论
     * */
     function mycomment() {
-        inital(uri,1, 2);
+        inital(uri,1, 5);
     }
 
     function mycomment2() {
+        alert("234")
+        $("p2").addClass("nav-link active");
+        $("p1").removeClass("nav-link active");
         uri = "showComment";
-        inital(uri,1, 2);
+        inital(uri,1, 5);
+    }
+
+    /*
+   * 跳转到bk_list.html
+   * */
+    function toJump2(a,b) {
+        window.location.href="bk_list.html?userId="+a+"&blogId="+b;
     }
 </script>
 </html>

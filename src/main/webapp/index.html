@@ -756,13 +756,16 @@
         str = type_name;
         uri = "getBlogsByTypeName";
 
-        inital(uri,str,1, 2);
+        inital(uri,str,1, 7);
     }
 
+    /*
+    * 首頁初始化
+    * */
     $(function () {
         uri = "getAllBlogs";
         str = "";
-        inital(uri,str,1, 2);
+        inital(uri,str,1, 7);
     });
 
 
@@ -920,7 +923,7 @@
         $("#feedlist_id").empty("");
         $("#btns").find("button").remove();
         // uri = "getBlogsByTypeName";
-        inital(uri,str,$("#t").val(), 2);
+        inital(uri,str,$("#t").val(), 7);
     }
 
     /*
@@ -930,7 +933,7 @@
         $("#feedlist_id").empty("");
         $("#btns").find("button").remove();
         // uri = "getBlogsByTypeName";
-        inital(uri,str,n, 2);
+        inital(uri,str,n, 7);
     }
 
     /*
@@ -951,7 +954,7 @@
             var str2 = $("#search").val();
 
             uri ="searchBlogs";
-            inital(uri,str2,1, 2);
+            inital(uri,str2,1, 7);
         }
     });
 
