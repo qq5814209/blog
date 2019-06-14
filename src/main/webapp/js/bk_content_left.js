@@ -67,7 +67,7 @@ function showArticle() {
         url:"/showCommentBox?loginUserId="+loginUserId,
         contentType:"application/json",
         success:function (data) {
-            var b="<a id=\"commentsedit\"></a><div class=\"user-img\"><a><img class=\"show_loginbox\" src=\"image/"+data.url+"\"></a></div><form id=\"commentform\"><textarea class=\"comment-content\" name=\"comment_content\" id=\"comment_content\" placeholder=\"想对作者说点什么\"></textarea><div><div><span id=\"tip_comment\" class=\"tip\">还能输入<em>1000</em>个字符</span><a class=\"btn btn-sm btn-red btn-comment\" value=\"发表评论\" onclick=addComment()></a></div></div></form>\n";
+            var b="<a id=\"commentsedit\"></a><div class=\"user-img\"><a><img class=\"show_loginbox\" src=\"image/"+data.url+"\"></a></div><textarea class=\"comment-content\" name=\"comment_content\" id=\"comment_content\" placeholder=\"想对作者说点什么\"></textarea><div><div><span id=\"tip_comment\" class=\"tip\">还能输入<em>1000</em>个字符</span><a class=\"btn btn-sm btn-red btn-comment\" value=\"发表评论\" onclick=addComment()></a></div></div>\n";
             $("#comment-edit-box").append(b);
         },
         error:function (data) {
@@ -95,7 +95,6 @@ function addComment() {
             "blog_Id":blogId
         }),
         success:function (data) {
-
         },
         error:function (data) {
         }

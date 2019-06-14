@@ -90,6 +90,19 @@ public class UserInfoController {
         return user_id;
     }
 
+    /**
+     * 获取验证码图片
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    @RequestMapping(value = "/captcha", method = RequestMethod.GET)
+    @ResponseBody
+    public void captcha(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        CaptchaUtil.outputCaptcha(request, response);
+    }
+
 }
 
 
