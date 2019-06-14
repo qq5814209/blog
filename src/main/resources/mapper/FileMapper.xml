@@ -1,0 +1,39 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.mapper.FileMapper">
+
+    <!--用户文件上传-->
+    <insert id="fileUpLoad" parameterType="com.me.pojo.Files" >
+       insert into files (user_id,file_name,file_time,file_cbi,file_intro)
+        values (#{user_id},#{file_name},now(),#{file_cbi},#{file_intro});
+    </insert>
+
+
+    <!--文件下载扣除C币-->
+    <update id="fileDown" parameterType="com.me.pojo.Files" >
+        update userinfo set cbis =cbis-#{file_cbi}  where user_id=#{user_id};
+    </update>
+
+
+    <!--查询用户是否能下载文件-->
+    <select id="selectCbiIs" parameterType="com.me.pojo.Files" resultType="com.me.dto.IsDownDto">
+        SELECT f.file_cbi,u.cbis,f.file_name from files f, userinfo u where u.user_id=f.user_id and f.file_id=#{file_id}
+    </select>
+
+
+    <!--查询文件列表-->
+    <select id="getFiles" parameterType="com.me.pojo.Files" resultType="com.me.pojo.Files">
+        SELECT f.*, u.user_name from files f, userinfo u  where  u.user_id = f.user_id
+        <if test="file_id != null and file_id != ''">
+            and file_id = #{file_id}
+        </if>
+        <if test="user_id != null and user_id != ''">
+            and user_id = #{user_id}
+        </if>
+        <if test="file_name != null and file_name !='' ">
+            and  file_name  LIKE '%${file_name}%'
+        </if>
+    </select>
+
+</mapper>

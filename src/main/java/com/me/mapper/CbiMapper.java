@@ -1,6 +1,9 @@
 package com.me.mapper;
 
+import com.me.dto.UserCbiDto;
 import com.me.pojo.Cbi;
+import com.me.pojo.Order;
+import com.me.pojo.UserInfo;
 import com.me.pojo.Vip;
 
 import java.util.List;
@@ -20,4 +23,10 @@ public interface CbiMapper {
      * @return
      */
     public Cbi getCbiById(String Cbi_id);
+
+    /**
+     * 购买C币后给用户添加C币数
+     */
+    public void addUserCbi(UserCbiDto userCbiDto);
+
 }
