@@ -19,7 +19,7 @@ public interface InquireService {
 
     public List<ShowDto> showMyComment(ShowVo showVo);
     public boolean delComment(ShowVo showVo);
-
+    public List<ShowDto> getAllBigType();
 
     /**
      * 写博客

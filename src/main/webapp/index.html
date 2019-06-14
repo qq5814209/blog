@@ -742,6 +742,7 @@
         $("#csdn-toolbar").load("module/bk_header.html");
     };
 
+
     var str="";
     var type_name;
     var uri;
@@ -757,6 +758,7 @@
 
     $(function () {
         uri = "getBlogsByTypeName";
+
         inital(uri,str,1, 2);
     });
 
@@ -764,6 +766,7 @@
     function inital(uri,str,currentPage,pageSize) {
         $("#btns").find("button").remove();
         $("#feedlist_id").empty("");
+
         $.ajax({
             type: 'POST',
             url: uri,

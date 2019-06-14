@@ -202,5 +202,15 @@ public class InquireController {
         return BaseResult.success("博客发表成功");
     }
 
+    /*
+    * 获取所有类别
+    * */
+    @ResponseBody
+    @RequestMapping(value = "getAllBigType")
+    public Object getAllBigType(){
+        List<ShowDto> showDtos = inquireService.getAllBigType();
+        System.out.println(showDtos+"1111111111111111111111111");
+        return showDtos;
+    }
 
 }
