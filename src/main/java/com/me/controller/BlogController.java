@@ -186,7 +186,7 @@ public class BlogController {
      * */
     @ResponseBody
     @RequestMapping(value = "getPraise")
-    public Object getPraise(@RequestBody(required = false) ShowVo showVo, HttpSession session){
+    public Object getPraise(@RequestBody(required = false) ShowVo showVo,HttpSession session){
         UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
         showVo.setUser_id(user_id);
@@ -215,8 +215,9 @@ public class BlogController {
         UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
         showVo.setUser_id(user_id);
-        ShowDto showDto = blogService.getBrowse(showVo);
-        return showDto;
+        System.out.println(showVo+"1111111111111");
+        int count = blogService.addBrowse(showVo);
+        return count;
     }
 
 }

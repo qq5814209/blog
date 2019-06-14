@@ -62,7 +62,7 @@
         <div class="tool-box" style="right: 52.3403px; display: block; top: 250px;">
             <ul class="meau-list">
                 <li class="btn-like-box ">
-                    <button class=" low-height hover-box btn-like " title="点赞">
+                    <button class=" low-height hover-box btn-like " title="点赞" onclick="onPraise()">
                         <svg class="icon active hover-hide" aria-hidden="true">
                             <use xlink:href="#csdnc-thumbsup-ok">
                                 <svg id="csdnc-thumbsup-ok" viewBox="0 0 1024 1024" width="100%" height="100%">
@@ -81,7 +81,7 @@
 					<span class="no-active">点赞</span>
 					<span class="active">取消点赞</span>
 				</span>
-                        <p>0</p>
+                        <p id="p"></p>
                     </button>
                 </li>
                 <li class="">
@@ -185,6 +185,87 @@
             alert("请输入举报原因")
         }
     }
+
+
+    var user_id = window.location.search.split("=")[1].split("&")[0];
+    var blog_id = window.location.search.split("&")[1].split("=")[1];
+    /*
+    * 点赞
+    * */
+    function onPraise() {
+
+        $.ajax({
+            type: 'POST',
+            async: false,
+            url: "getPraise",
+            contentType:"application/json;charse=UTF-8",
+            data: JSON.stringify({
+                "blog_id":blog_id,
+                "user_id":user_id
+            }),
+            success: function(data){
+                alert("嘎嘎嘎");
+                if(data == 2) {
+                    alert("已点赞");
+                }else {
+                    alert("取消点赞");
+                }
+
+            },
+            error:function (data) {
+                console.error(data);
+            },
+            dataType: "json"
+        });
+
+        $.ajax({
+            type: 'POST',
+            async: false,
+            url: "selectPraise2",
+            contentType:"application/json;charse=UTF-8",
+            data: JSON.stringify({
+                "blog_id":blog_id,
+                "user_id":user_id
+            }),
+            success: function(data){
+                $("#p").text("");
+                $("#p").text(data.praise_number)
+
+            },
+            error:function (data) {
+                console.error(data);
+            },
+            dataType: "json"
+        });
+
+    }
+
+
+    inital3();
+    /*
+    * 初始化方法
+    * */
+    function inital3() {
+        $.ajax({
+            type: 'POST',
+            url: "getBrowse",
+            contentType:"application/json;charse=UTF-8",
+            data: JSON.stringify({
+                "blog_id":blog_id,
+                "user_id":user_id
+            }),
+            success: function(data){
+                    if(data == 1) {
+                        alert("浏览量加1")
+                    }
+            },
+            error:function (data) {
+                console.error(data);
+            },
+            dataType: "json"
+        });
+    }
+
 
 </script>
 <!--<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->

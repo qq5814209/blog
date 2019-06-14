@@ -107,11 +107,11 @@ public interface BlogService {
 
     public ShowDto selectPraise1(ShowVo showVo);
 
-    public int updatePraise(ShowVo showVo);
+    public int xiuGaiPraise(ShowVo showVo);
 
     public ShowDto selectPraise2(ShowVo showVo);
 
-    public ShowDto getBrowse(ShowVo showVo);
+//    public ShowDto getBrowse(ShowVo showVo);
 
     public int addBrowse(ShowVo showVo);
 
