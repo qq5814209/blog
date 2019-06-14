@@ -41,7 +41,7 @@ public class CbiController {
 
 
     @ResponseBody
-    @RequestMapping(value ="getCbi",method = RequestMethod.POST)
+    @RequestMapping(value ="getCbiById",method = RequestMethod.POST)
     public Object getCbiById(HttpSession session){
         return cbiService.getCbiById(session);
     }

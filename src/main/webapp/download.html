@@ -113,7 +113,7 @@
     init(file_Id);
     function init(file_Id) {
         $.ajax({
-            url:"getUserCbi",
+            url:"getCbiById",
             type:"POST",
             contentType:"application/json",
             success:function(resp){

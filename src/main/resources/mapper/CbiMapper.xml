@@ -26,7 +26,7 @@
 
 
     <!--查看用户C比-->
-    <select id="getUserCbi" parameterType="com.me.pojo.UserInfo" >
+    <select id="getUserCbi" parameterType="com.me.pojo.UserInfo" resultType="com.me.pojo.UserInfo">
         select * from  userinfo where user_id = #{user_id} and `status` =1
     </select>
 
