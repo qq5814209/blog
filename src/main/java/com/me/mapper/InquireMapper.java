@@ -20,6 +20,7 @@ public interface InquireMapper {
 
     public List<ShowDto> showMyComment(ShowVo showVo);
     public int delComment(ShowVo showVo);
+    public List<ShowDto> getAllBigType();
 
 
     /**
