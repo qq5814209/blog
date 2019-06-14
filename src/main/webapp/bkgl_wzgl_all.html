@@ -188,7 +188,9 @@
 
 
 
-
+    /*
+    * 页面初始化并展示
+    * */
     function begin(currentPage,pageSize) {
         $("#btns").find("button").remove();
         $("#feedlist_id").empty("");
@@ -296,19 +298,27 @@
         });
     }
 
+    /*
+    * 跳转到哪一页
+    * */
     function goto() {
         $("#feedlist_id").empty("");
         $("#btns").find("button").remove();
         begin($("#t").val(), 2);
     }
 
-
+    /*
+    * 下一页
+    * */
     function goNormal(n) {
         $("#feedlist_id").empty("");
         $("#btns").find("button").remove();
         begin(n,2);
     }
 
+    /*
+    * 删除博客
+    * */
     function delblog(blog_id) {
         $.ajax({
             type: 'POST',
@@ -330,6 +340,10 @@
         });
     }
 
+
+    /*
+    * 跳转到bk_list.html
+    * */
     function toJump(a,b) {
         window.location.href="bk_list.html?userId="+a+"&blogId="+b;
     }

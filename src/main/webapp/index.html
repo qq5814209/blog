@@ -746,6 +746,7 @@
     var type_name;
     var uri;
 
+
     function toShowBlog(a) {
         //获取被点击标签的文本
         type_name = a.text;
@@ -903,7 +904,9 @@
     }
 
 
-
+    /*
+    * 跳转到第几页
+    * */
     function goto() {
         $("#feedlist_id").empty("");
         $("#btns").find("button").remove();
@@ -911,19 +914,28 @@
         inital(uri,str,$("#t").val(), 2);
     }
 
-
+    /*
+    * 下一页
+    * */
     function goNormal(n) {
         $("#feedlist_id").empty("");
         $("#btns").find("button").remove();
         uri = "getBlogsByTypeName";
         inital(uri,str,n, 2);
     }
+
+    /*
+    * 跳转到bk_list.html页面
+    * */
     function toJump(a,b) {
         window.location.href="bk_list.html?userId="+a+"&blogId="+b;
     }
 
 
 
+    /*
+    * 回车键触发事件，搜索栏搜索
+    * */
     $(document).keyup(function(event){
         if(event.keyCode ==13){
             $("#submit").trigger("click");

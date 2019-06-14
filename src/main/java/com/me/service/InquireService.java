@@ -16,10 +16,10 @@ public interface InquireService {
     public List<ShowDto> searchBlogs(ShowVo showvo);
     public boolean deleteBlogbyBlog_id(ShowVo showVo);
     public List<ShowDto> getBlogsByUserId(ShowVo showVo);
-<<<<<<< HEAD
+
     public List<ShowDto> showMyComment(ShowVo showVo);
     public boolean delComment(ShowVo showVo);
-=======
+
 
     /**
      * 写博客
@@ -44,5 +44,5 @@ public interface InquireService {
     List<Blog_TypeDto> selectBlogType();
 
 
->>>>>>> ed08ecc593e8420e0833c40d3cce59ab674d35dd
+
 }

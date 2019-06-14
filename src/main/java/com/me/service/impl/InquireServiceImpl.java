@@ -111,7 +111,7 @@ public class InquireServiceImpl implements InquireService{
         return showDtos;
     }
 
-<<<<<<< HEAD
+
     @Transactional
     public boolean delComment(ShowVo showVo) {
         int count = inquireMapper.delComment(showVo);
@@ -121,7 +121,7 @@ public class InquireServiceImpl implements InquireService{
         return false;
     }
 
-=======
+
     /**
      * 写博客
      * @param user_id
@@ -183,5 +183,4 @@ public class InquireServiceImpl implements InquireService{
     }
 
 
->>>>>>> ed08ecc593e8420e0833c40d3cce59ab674d35dd
 }

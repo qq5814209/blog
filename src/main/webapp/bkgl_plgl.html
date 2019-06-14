@@ -146,6 +146,10 @@
         inital(uri,1, 2);
     });
 
+
+        /*
+        *页面加载并展示评论
+        * */
         function inital(uri,currentPage,pageSize) {
             $("#btns").find("button").remove();
             $("#feedlist_id").empty("");
@@ -259,7 +263,9 @@
     }
 
 
-
+    /*
+    * 删除评论
+    * */
     function delComment(a) {
         var comment_id= a;
         $.ajax({
@@ -280,6 +286,9 @@
         });
     }
 
+    /*
+    * 我的评论
+    * */
     function mycomment() {
         inital(uri,1, 2);
     }

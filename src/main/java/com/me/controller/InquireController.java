@@ -134,6 +134,9 @@ public class InquireController {
     }
 
 
+    /*
+    * 展示我文章的评论
+    * */
     @ResponseBody
     @RequestMapping("showMyComment")
     public Object showMyComment(@RequestBody(required = false) ShowVo showVo,HttpSession session){
@@ -148,7 +151,9 @@ public class InquireController {
     }
 
 
-
+    /*
+    * 删除文章的评论
+    * */
     @ResponseBody
     @RequestMapping("delComment")
     public Object delComment(@RequestBody(required = false) ShowVo showVo){

@@ -17,10 +17,10 @@ public interface InquireMapper {
     public List<ShowDto> searchBlogs(ShowVo showvo);
     public int deleteBlogbyBlog_id(ShowVo showVo);
     public List<ShowDto> getBlogsByUserId(ShowVo showVo);
-<<<<<<< HEAD
+
     public List<ShowDto> showMyComment(ShowVo showVo);
     public int delComment(ShowVo showVo);
-=======
+
 
     /**
      * 写博客
@@ -53,6 +53,6 @@ public interface InquireMapper {
      */
     List<Blog_TypeDto> selectBlogType();
 
->>>>>>> ed08ecc593e8420e0833c40d3cce59ab674d35dd
+
 
 }
