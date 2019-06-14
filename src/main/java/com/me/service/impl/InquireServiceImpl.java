@@ -105,6 +105,12 @@ public class InquireServiceImpl implements InquireService{
         return showDtos;
     }
 
+    @Override
+    public List<ShowDto> showComment(ShowVo showVo) {
+        List<ShowDto> showDtos = inquireMapper.showComment(showVo);
+        return showDtos;
+    }
+
     public List<ShowDto> showMyComment(ShowVo showVo) {
         List<ShowDto> showDtos = inquireMapper.showMyComment(showVo);
         return showDtos;

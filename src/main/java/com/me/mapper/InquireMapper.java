@@ -17,7 +17,7 @@ public interface InquireMapper {
     public List<ShowDto> searchBlogs(ShowVo showvo);
     public int deleteBlogbyBlog_id(ShowVo showVo);
     public List<ShowDto> getBlogsByUserId(ShowVo showVo);
-
+    public List<ShowDto> showComment(ShowVo showVo);
     public List<ShowDto> showMyComment(ShowVo showVo);
     public int delComment(ShowVo showVo);
     public List<ShowDto> getAllBigType();

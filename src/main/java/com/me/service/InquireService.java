@@ -16,7 +16,7 @@ public interface InquireService {
     public List<ShowDto> searchBlogs(ShowVo showvo);
     public boolean deleteBlogbyBlog_id(ShowVo showVo);
     public List<ShowDto> getBlogsByUserId(ShowVo showVo);
-
+    public List<ShowDto> showComment(ShowVo showVo);
     public List<ShowDto> showMyComment(ShowVo showVo);
     public boolean delComment(ShowVo showVo);
     public List<ShowDto> getAllBigType();

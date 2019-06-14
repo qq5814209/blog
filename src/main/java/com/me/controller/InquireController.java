@@ -225,4 +225,21 @@ public class InquireController {
         return showDtos;
     }
 
+    /*
+     * 展示我的评论
+     * */
+    @ResponseBody
+    @RequestMapping("showComment")
+    public Object showComment(@RequestBody(required = false) ShowVo showVo,HttpSession session){
+        UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
+        int user_id = userInfo.getUser_id();
+        showVo.setUser_id(user_id);
+        PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
+        List<ShowDto> showDtos = inquireService.showComment(showVo);
+        PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
+
+        return showDtoPageInfo;
+    }
+
+
 }
