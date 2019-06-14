@@ -39,7 +39,6 @@ public class InquireServiceImpl implements InquireService{
     public boolean addPersonalCategory(ShowVo showVo) {
         System.out.println("1232312+");
         int count = inquireMapper.addPersonalCategory(showVo);
-        System.out.println("count++++++++++"+count);
         if(count>0) {
             return true;
         }else{
@@ -124,6 +123,17 @@ public class InquireServiceImpl implements InquireService{
     @Override
     public List<ShowDto> getAllBigType() {
         List<ShowDto> showDtos = inquireMapper.getAllBigType();
+        return showDtos;
+    }
+
+    @Override
+    public List<ShowDto> getAllBlogs(ShowVo showVo) {
+        List<ShowDto> showDtos = inquireMapper.getAllBlogs(showVo);
+        for(ShowDto showDto : showDtos){
+            String str = showDto.getBlog_content().substring(0,5);
+            System.out.println(showDto);
+            showDto.setBlog_content(str);
+        }
         return showDtos;
     }
 

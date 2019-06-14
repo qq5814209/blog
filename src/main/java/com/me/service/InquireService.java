@@ -20,6 +20,7 @@ public interface InquireService {
     public List<ShowDto> showMyComment(ShowVo showVo);
     public boolean delComment(ShowVo showVo);
     public List<ShowDto> getAllBigType();
+    public List<ShowDto> getAllBlogs(ShowVo showVo);
 
     /**
      * 写博客

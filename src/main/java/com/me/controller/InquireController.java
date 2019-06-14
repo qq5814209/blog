@@ -26,13 +26,26 @@ public class InquireController {
     InquireService inquireService;
 
     /*
-    * 根据博客类别名查询blog或者查所有blog
-    * */
+     * 根据博客类别名查询blog或者查所有blog
+     * */
     @ResponseBody
     @RequestMapping("getBlogsByTypeName")
     public Object getBlogsByTypeName(@RequestBody(required = false) ShowVo showVo){
         PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
         List<ShowDto> showDtos = inquireService.getBlogsByTypeName(showVo);
+        PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
+        return showDtoPageInfo;
+    }
+
+    /*
+     * 查询所有blog
+     * */
+    @ResponseBody
+    @RequestMapping("getAllBlogs")
+    public Object getAllBlogs(@RequestBody(required = false) ShowVo showVo){
+        System.out.println("54yyhjbjfkdnf");
+        PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
+        List<ShowDto> showDtos = inquireService.getAllBlogs(showVo);
         PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
         return showDtoPageInfo;
     }
@@ -209,7 +222,6 @@ public class InquireController {
     @RequestMapping(value = "getAllBigType")
     public Object getAllBigType(){
         List<ShowDto> showDtos = inquireService.getAllBigType();
-        System.out.println(showDtos+"1111111111111111111111111");
         return showDtos;
     }
 
