@@ -49,11 +49,12 @@ public class Md5 {
 
 
     public static String getMD5(String pwd){
-        String md5 = pwd+pwd;
-        String newPwd = null;
-        newPwd = Md5.MD5Encode(md5,"UTF-8");
-        System.out.println(newPwd);
-        return newPwd;
+        return Md5.MD5Encode(pwd,"UTF-8");
+    }
+
+    public static void main(String[] args) {
+        String s = Md5.MD5Encode("123456", "UTF-8");
+        System.out.println(s);
     }
 
 }

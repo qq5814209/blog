@@ -38,7 +38,7 @@ public interface InquireService {
      * 查询个人分类类型
      * @return
      */
-    List<Person_TypeDto> selectPersonType();
+    List<Person_TypeDto> selectPersonType(int user_id);
 
     /**
      * 查询博客类型

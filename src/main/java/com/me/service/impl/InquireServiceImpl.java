@@ -160,10 +160,29 @@ public class InquireServiceImpl implements InquireService{
         writeBlogVo.setUser_id(user_id);
         writeBlogVo.setTxtTitle(txtTitle);
         writeBlogVo.setContent(content);
-        writeBlogVo.setTypeSpan(typeSpan);
         writeBlogVo.setBlogType(blogType);
 
-
+        //判断新增分类是否已存在
+        String persontype_id = inquireMapper.isExist(typeSpan);
+        //如果已存在
+        if(persontype_id != null){
+            System.out.println(persontype_id + "一");
+            writeBlogVo.setTypeSpan(persontype_id);
+            System.out.println(writeBlogVo.getTypeSpan() + "二");
+        }
+        //如果不存在
+        else {
+            WriteBlogVo writeBlogVo2 = new WriteBlogVo();
+            writeBlogVo2.setUser_id(user_id);
+            writeBlogVo2.setTypeSpan(typeSpan);
+            //把新增的分类插入个人分类表
+            inquireMapper.insertPerson_Type(writeBlogVo2);
+            //查询出刚刚插入最新的分类id
+            String newPt_id  = inquireMapper.getPt_Id();
+            System.out.println(newPt_id + "三");
+            writeBlogVo.setTypeSpan(newPt_id);
+        }
+        
         //1、博客内容表插入数据
         int i1 = inquireMapper.writeBlog(writeBlogVo);
         System.out.println(i1 + "11111");
@@ -174,12 +193,15 @@ public class InquireServiceImpl implements InquireService{
         //3、用户_博客中间表插入数据
         int i2 = inquireMapper.insertUser_Blog(writeBlogVo);
         System.out.println(i2 + "22222");
-        //4、增加经验值
+        //4、博客分类_个人分类中间表插入数据
+        int i3 = inquireMapper.insertPbt_Middle(writeBlogVo);
+        System.out.println(i3 + "33333");
+        //5、增加经验值
         LevelValueVo levelValueVo = new LevelValueVo();
         levelValueVo.setUser_id(user_id);
         levelValueVo.setValue(50);
-        int i3 = levelValueMapper.addValue(levelValueVo);
-        System.out.println(i3 + "33333");
+        int i4 = levelValueMapper.addValue(levelValueVo);
+        System.out.println(i4 + "44444");
 
         //成功
         if(i1 == 1 && i2 == 1){
@@ -193,8 +215,8 @@ public class InquireServiceImpl implements InquireService{
      * @return
      */
     @Override
-    public List<Person_TypeDto> selectPersonType() {
-        return inquireMapper.selectPersonType();
+    public List<Person_TypeDto> selectPersonType(int user_id) {
+        return inquireMapper.selectPersonType(user_id);
     }
 
     /**

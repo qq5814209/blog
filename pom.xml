@@ -182,8 +182,6 @@
             <version>1.1.1</version>
         </dependency>
 
-        <!--验证码-->
-
     </dependencies>
 
 </project>

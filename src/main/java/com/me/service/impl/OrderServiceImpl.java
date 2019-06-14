@@ -98,11 +98,11 @@ public class OrderServiceImpl implements OrderService {
             userCbiDto.setUser_id(order2.getUser_id());
             cbiMapper.addUserCbi(userCbiDto);
         }
-        //4、增加经验值
-        LevelValueVo levelValueVo = new LevelValueVo();
 
+        //增加经验值
+        LevelValueVo levelValueVo = new LevelValueVo();
         levelValueVo.setUser_id(order2.getUser_id());
-        levelValueVo.setValue(Integer.parseInt(order2.getPrice())/10);
+        levelValueVo.setValue(100);
         int i3 = levelValueMapper.addValue(levelValueVo);
         try {
             request.getRequestDispatcher("/vip_center.html").forward(request,response);

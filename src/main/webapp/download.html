@@ -114,14 +114,14 @@
     function init(file_Id) {
         $.ajax({
             url:"islogin",
-            type:"POST",
+            type:"GET",
             contentType:"application/json",
             data: JSON.stringify({
             }),
             dataType:"json",
             success:function(resp){
                 console.log(resp);
-                $("#mycbi").html(item.cbis);
+                $("#mycbi").html(resp.cbis);
             },
             error:function () {
             }

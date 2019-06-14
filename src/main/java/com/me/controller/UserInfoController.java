@@ -2,9 +2,12 @@ package com.me.controller;
 
 import com.me.pojo.UserInfo;
 import com.me.service.UserInfoService;
+import com.me.util.BaseResult;
 import com.me.util.CaptchaUtil;
+import com.me.util.Md5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,7 +36,10 @@ public class UserInfoController {
     @ResponseBody
     @RequestMapping(value = "userLogin",method = RequestMethod.POST)
     public Object login(String user, String password, HttpSession session){
-        UserInfo userInfo = userInfoService.login(user,password);
+        UserInfo userInfo = userInfoService.login(user, Md5.getMD5(password));
+        if(userInfo == null){
+            return BaseResult.fail("账号或密码错误，请重新登录");
+        }
         System.out.println(userInfo);
         session.setAttribute("userInfo",userInfo);
         return userInfo;
@@ -62,8 +68,39 @@ public class UserInfoController {
     @RequestMapping(value = "userRegiester",method = RequestMethod.POST)
     public Object regiester(String user_name,String email,String password){
         System.out.println(user_name + " : " + email + " : " + password);
-        return userInfoService.regiester(user_name,email,password);
+        return userInfoService.regiester(user_name,email,Md5.getMD5(password));
     }
+
+    /**
+     * 判断新注册账号是否存在
+     * @param user_name
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "user_nameIsExist",method = RequestMethod.GET)
+    public Object user_nameIsExist(String user_name){
+        System.out.println(user_name);
+        if(user_name != null && user_name != ""){
+            UserInfo userInfo = userInfoService.user_nameIsExist(user_name);
+            if(userInfo != null){
+                return BaseResult.fail("该账号已被注册");
+            }
+            return BaseResult.fail("该账号可以被使用");
+        }
+        return null;
+    }
+
+    /**
+     * 更改用户激活状态
+     * @param user_id
+     * @return
+     */
+    @RequestMapping(value = "activate",method = RequestMethod.GET)
+    public Object activate(String user_id){
+        userInfoService.updateStatus(user_id);
+        return "login";
+    }
+
 
     /**
      * 退出
@@ -101,6 +138,19 @@ public class UserInfoController {
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CaptchaUtil.outputCaptcha(request, response);
     }
+
+
+    /**
+     * 用户名检测
+     * @param user_name
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/cheUsername", method = RequestMethod.POST)
+    public boolean cheUsername(String user_name){
+       return userInfoService.cheUsername(user_name);
+    }
+
 }
 
 

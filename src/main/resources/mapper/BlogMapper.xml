@@ -11,7 +11,7 @@
         INNER JOIN user_blog d
         on d.blog_id=p.blog_id and d.user_id=#{userId}
         INNER JOIN person_type e
-        on p.bt_id=e.pt_id
+        on p.pt_id=e.pt_id
         GROUP BY p.pid,d.ub_id
     </select>
 
@@ -52,7 +52,7 @@
         from bloginfo o
         INNER JOIN user_blog g on g.user_id=#{userId} and g.blog_id=o.blog_id
 		INNER JOIN pbt_middle t on t.blog_id=o.blog_id
-		INNER JOIN person_type f on f.pt_id=t.bt_id and f.pt_id=#{classId}
+		INNER JOIN person_type f on f.pt_id=t.pt_id and f.pt_id=#{classId}
         LEFT JOIN browse b on b.blog_id=o.blog_id and b.user_id=g.user_id
         GROUP BY o.blog_id) m
         LEFT JOIN comment1 c on c.blog_id=m.blog_id and m.user_id=c.user_id
