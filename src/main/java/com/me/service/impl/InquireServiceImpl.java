@@ -121,6 +121,12 @@ public class InquireServiceImpl implements InquireService{
         return false;
     }
 
+    @Override
+    public List<ShowDto> getAllBigType() {
+        List<ShowDto> showDtos = inquireMapper.getAllBigType();
+        return showDtos;
+    }
+
 
     /**
      * 写博客
