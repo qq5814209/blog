@@ -84,7 +84,7 @@
         SELECT any_value(m.blog_id) id,any_value(m.blog_title) title,any_value(m.blog_content) content,any_value(m.create_time) time,any_value(m.user_id) userId,any_value(m.seeNum) seeNum,case when any_value(c.comment_id) is null then 0 else COUNT(*) end commentNum from
         (SELECT any_value(o.blog_id) blog_id,any_value(o.blog_title) blog_title,any_value(o.blog_content) blog_content,any_value(o.create_time) create_time,any_value(b.browse_id) browse_id,any_value(b.browse_time) browse_time,any_value(g.user_id) user_id,case when any_value(b.browse_id) is null then 0 else COUNT(*) end seeNum
         from bloginfo o
-        INNER JOIN user_blog g on g.user_id=1 and g.blog_id=o.blog_id
+        INNER JOIN user_blog g on g.user_id=#{userId} and g.blog_id=o.blog_id
         LEFT JOIN browse b on b.blog_id=o.blog_id and b.user_id=g.user_id
         GROUP BY o.blog_id) m
         LEFT JOIN comment1 c on c.blog_id=m.blog_id and m.user_id=c.user_id
