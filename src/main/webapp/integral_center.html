@@ -18,10 +18,11 @@
     <link rel="stylesheet" href="./css/mini.css">
     <link rel="stylesheet" href="./css/my_c_coin.css">
     <link rel="stylesheet" type="text/css" href="./css/pub-footer.css">
+    <script src="jquery/jquery-2.1.1.min.js"></script>
 </head>
 <body>
 <div id="head" class="csdn-toolbar tb_disnone  csdn-toolbar-skin-black "></div>
-
+<img src="image/vip.jpg" height="25" width="45"/>
 <div class="c-main clearfix" style="margin-top: 10px;">
 
     <div class="c-aside" id="left">
@@ -34,22 +35,49 @@
             <table class="datatable">
                 <thead>
                 <tr>
-                    <th width="15%">C币/积分</th>
-                    <th width="20%">来源</th>
-                    <th>原因</th>
+                    <th width="15%">C币数</th>
+                    <th width="20%">价格</th>
+                    <th>订单号</th>
                     <th width="20%">日期</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="biaoge">
 
                 </tbody>
             </table>
         </div>
         <div class="fenye">
-            <div class="csdn-pagination hide-set"></div>
+            <div class="csdn-pagination hide-set">
+            </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    init();
+    function init() {
+        $.ajax({
+            url: "getOrderBy",
+            type: "GET",
+            contentType: "application/json",
+            dataType: 'json',
+            success:function (data) {
+                console.log(data);
+                $(data).each(function (index, item) {
+                    $("#biaoge").append("<tr>\n" +
+                        "        <td>"+item.cbi_number+"</td>\n" +
+                        "        <td>"+item.price+"</td>\n" +
+                        "        <td>"+item.order_number+"</td>\n" +
+                        "        <td>"+item.order_time+"</td>\n" +
+                        "        </tr>")
+                })
+            },
+            error:function () {
+                alert("失败")
+            }
+        });
+    }
+
+</script>
 
 <div style="position:fixed; top:0; left:0; overflow:hidden;">
     <input style="position:absolute; left:-300px;" type="text" value="" id="focus_retriever" readonly="true">
@@ -61,10 +89,14 @@
 <div class="bottom-pub-footer footer-box pub_fo" id="foot"></div>
 
 </body>
-<script src="jquery/jquery-2.1.1.min.js"></script>
+
 <script>
     $("#head").load("module/bk_header.html");
     $("#left").load("module/integral_left.html");
     $("#foot").load("module/personal_foot.html");
+
 </script>
+
+
+
 </html>

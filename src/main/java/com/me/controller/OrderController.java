@@ -3,27 +3,27 @@ package com.me.controller;
 
 import com.me.config.PayProperties;
 
+import com.me.pojo.Order;
+import com.me.pojo.UserInfo;
 import com.me.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Enumeration;
+
 
 @Controller
 public class OrderController {
 
     @Autowired
     OrderService orderService;
-
-    @Autowired
-    PayProperties payProperties;
 
 
     /**
@@ -33,8 +33,9 @@ public class OrderController {
      * @return
      */
     @RequestMapping(value ="setOrder",method = RequestMethod.GET)
-    public Object setOrder(HttpServletRequest request, HttpServletResponse response) {
-        return orderService.SetOrder(request,response);
+    public void setOrder(HttpServletRequest request, HttpServletResponse response) {
+        orderService.SetOrder(request,response);
+        return;
     }
 
     /**
@@ -44,8 +45,23 @@ public class OrderController {
      */
     @RequestMapping(value ="callback",method = RequestMethod.GET)
     public void callback( HttpServletRequest request, HttpServletResponse response){
-        orderService.upOrder(request,response);
+        System.out.println("---进入正常流程---");
+       orderService.upOrder(request,response);
+
     }
+
+    /**
+     * 根据用户查订单
+     * @param session
+     */
+    @ResponseBody
+    @RequestMapping(value ="getOrderBy",method = RequestMethod.GET)
+    public Object getOrderBy(HttpSession session){
+        return orderService.getOrderBy(session);
+
+    }
+
+
 
 
     /**
