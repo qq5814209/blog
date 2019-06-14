@@ -21,7 +21,7 @@
 
     <!--用户添加C币数-->
     <update id="addUserCbi" parameterType="com.me.dto.UserCbiDto" >
-        update userinfo set cbis =cbis + #{cbi_number} where #{user_id};
+        update userinfo set cbis =cbis + #{cbi_number} where user_id = #{user_id};
     </update>
 
 

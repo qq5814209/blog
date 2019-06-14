@@ -162,8 +162,8 @@
             }),
             dataType:"json",
             success:function(resp){
-               if (resp){
-
+               if (resp==false){
+                    alert("你的C币不足");
                }
             },
             error:function () {

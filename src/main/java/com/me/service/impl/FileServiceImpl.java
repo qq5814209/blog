@@ -5,6 +5,7 @@ import com.me.mapper.FileMapper;
 import com.me.pojo.Files;
 import com.me.pojo.UserInfo;
 import com.me.service.FileService;
+import com.sun.deploy.net.URLEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -72,10 +73,13 @@ public class FileServiceImpl implements FileService {
         IsDownDto isDownDto = fileMapper.selectCbiIs(file2);
         UserInfo userinfo =(UserInfo) request.getSession().getAttribute("userInfo");
         file2.setUser_id(userinfo.getUser_id());
+        System.out.println("传入的："+file2);
+        System.out.println("返回的文件："+isDownDto);
+        System.out.println("文件所需的c币："+isDownDto.getFile_cbi());
         file2.setFile_cbi(isDownDto.getFile_cbi());
         if (isDownDto.getCbis()>isDownDto.getFile_cbi()){
             //创建文件
-            File fileDown = new File(request.getSession().getServletContext().getRealPath("/"+isDownDto.getFile_name()));
+            File fileDown = new File(request.getSession().getServletContext().getRealPath("/file/"+isDownDto.getFile_name()));
             byte[] body = null;
             //创建输入流(从硬盘读取数据)
             InputStream is = null;
@@ -93,6 +97,7 @@ public class FileServiceImpl implements FileService {
                 //创建响应实体对象
                 ResponseEntity<byte[]> entity = new ResponseEntity<byte[]>(body, headers, statusCode);
                 fileMapper.fileDown(file2);
+                System.out.println(entity);
                 return entity;
 
             } catch (FileNotFoundException e) {
