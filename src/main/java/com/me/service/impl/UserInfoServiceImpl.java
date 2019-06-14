@@ -52,7 +52,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         //查询最新user_id
         int newUserId = userInfoMapper.selectMaxId();
         //发送邮件
-        String emailMsg = "注册成功，请<a href='http://localhost:8080/activate?user_id="+newUserId+"'>点击这里</a>激活并回到登录页面";
+        String emailMsg = "注册成功，请<a href='http://localhost:8080/blog/activate?user_id="+newUserId+"'>点击这里</a>激活并回到登录页面";
         SendJMail.sendMail(email, emailMsg);
         return i;
     }
@@ -80,10 +80,10 @@ public class UserInfoServiceImpl implements UserInfoService {
     public boolean cheUsername(String user_name) {
 
         UserInfo userInfo = userInfoMapper.cheUsername(user_name);
-        if (userInfo==null){
-            return true;
+        if (userInfo != null){
+            return false;
         }
-        return false;
+        return true;
     }
 
 }

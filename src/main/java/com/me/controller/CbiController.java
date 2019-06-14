@@ -40,4 +40,10 @@ public class CbiController {
     }
 
 
+    @ResponseBody
+    @RequestMapping(value ="getCbiById",method = RequestMethod.POST)
+    public Object getCbiById(HttpSession session){
+        return cbiService.getCbiById(session);
+    }
+
 }
