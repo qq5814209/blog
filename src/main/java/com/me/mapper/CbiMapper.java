@@ -1,5 +1,6 @@
 package com.me.mapper;
 
+import com.me.dto.IsDownDto;
 import com.me.dto.UserCbiDto;
 import com.me.pojo.Cbi;
 import com.me.pojo.Order;
@@ -30,4 +31,11 @@ public interface CbiMapper {
     public void addUserCbi(UserCbiDto userCbiDto);
 
     public UserInfo getUserCbi(UserInfo userInfo);
+
+    /**
+     * 获取用户C币消费记录
+     * @param userInfo
+     * @return
+     */
+    public List<IsDownDto> getCbiXiao(UserInfo userInfo);
 }

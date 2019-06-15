@@ -12,4 +12,6 @@ public interface CbiService {
     public List<Cbi> getCbi(Cbi cbi);
 
     public UserInfo getCbiById(HttpSession session);
+
+    public Object getCbiXiao(HttpSession session);
 }

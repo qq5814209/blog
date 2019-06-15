@@ -10,11 +10,16 @@ public interface FileMapper {
     public int fileUpLoad(Files file);
 
     /*文件下载*/
-    public int fileDown(Files file);
+    public int fileDown(IsDownDto isDownDto);
 
     /*查询是否能下载*/
     public IsDownDto selectCbiIs(String file_id);
 
     /*获取文件列表*/
     public List<Files> getFiles(Files file);
+
+
+    /*文件下载添加c币*/
+    public int fileDownAdd(IsDownDto isDownDto);
+
 }
