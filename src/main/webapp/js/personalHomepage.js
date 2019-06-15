@@ -168,10 +168,6 @@ $.ajax({
             "                            <span>"+data.sum_comment+"</span>\n" +
             "                            <strong>总评论</strong>\n" +
             "                        </li>\n" +
-            "                        <li>\n" +
-            "                            <span>1370544</span>\n" +
-            "                            <strong>排名</strong>\n" +
-            "                        </li>\n" +
             "                    </ul>"
 
         $("#sumCount").append(html);
