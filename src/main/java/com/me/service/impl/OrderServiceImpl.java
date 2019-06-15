@@ -80,12 +80,10 @@ public class OrderServiceImpl implements OrderService {
         UserVipDto userVip =new UserVipDto();
         UserCbiDto userCbiDto =new UserCbiDto();
         String out_trade_no = request.getParameter("out_trade_no");
-        System.out.println("订单号为："+out_trade_no);
         order.setOrder_number(out_trade_no);
         order.setStatus(1);
         orderMapper.upOrder(order);
         Order order2 = orderMapper.getOrderByNum(order);
-        System.out.println("订单实体为："+order2);
         if (order2.getVip_id()!=null){
             userVip.setVip_id(order2.getVip_id());
             userVip.setEnd_time(order2.getVip_time());
@@ -149,8 +147,6 @@ public class OrderServiceImpl implements OrderService {
         }
         String cbi_id = request.getParameter("cbi_id");
         String vip_id = request.getParameter("vip_id");
-        System.out.println("cbi_id:"+cbi_id);
-        System.out.println("vip_id:"+vip_id);
         if (cbi_id!=null){
             Cbi cbi1 = cbiMapper.getCbiById(cbi_id);
             price = cbi1.getCbi_price();

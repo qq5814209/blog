@@ -45,7 +45,6 @@ public class OrderController {
      */
     @RequestMapping(value ="callback",method = RequestMethod.GET)
     public void callback( HttpServletRequest request, HttpServletResponse response){
-        System.out.println("---进入正常流程---");
        orderService.upOrder(request,response);
 
     }
@@ -81,8 +80,6 @@ public class OrderController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("错误完完完完");
-
     }
 
 

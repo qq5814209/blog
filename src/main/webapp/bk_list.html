@@ -147,6 +147,8 @@
     $.getScript("js/bk_content_left.js", function () {
     });
 
+
+
     //添加举报信息
     function report() {
         var reportMessage = prompt("请输入举报原因");
@@ -175,6 +177,8 @@
 
     var user_id = window.location.search.split("=")[1].split("&")[0];
     var blog_id = window.location.search.split("&")[1].split("=")[1];
+
+
     /*
     * 点赞
     * */
@@ -190,7 +194,6 @@
                 "user_id":user_id
             }),
             success: function(data){
-                alert("嘎嘎嘎");
                 if(data == 2) {
                     alert("已点赞");
                 }else {
@@ -199,7 +202,7 @@
 
             },
             error:function (data) {
-                console.error(data);
+                console.log(data);
             },
             dataType: "json"
         });
@@ -219,7 +222,7 @@
 
             },
             error:function (data) {
-                console.error(data);
+                console.log(data);
             },
             dataType: "json"
         });
@@ -242,11 +245,10 @@
             }),
             success: function(data){
                     if(data == 1) {
-                        alert("浏览量加1")
                     }
             },
             error:function (data) {
-                console.error(data);
+                console.log(data);
             },
             dataType: "json"
         });

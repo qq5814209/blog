@@ -176,9 +176,9 @@ public class BlogController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/addSpan")
-    public Object addSpan(@RequestParam int userId){
-        int num = blogService.addSpan(userId);
+    @RequestMapping(value = "addSpan",method = RequestMethod.POST)
+    public Object addSpan(String blogId){
+        int num = blogService.addSpan(Integer.parseInt(blogId));
         return num;
     }
     /**

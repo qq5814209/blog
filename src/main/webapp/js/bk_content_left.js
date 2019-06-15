@@ -61,6 +61,22 @@ function showArticle() {
                 $("#title-box").append(d);
                 var b= "<div class=\"article-header-box\"><div class=\"article-header\"><div class=\"article-title-box\"><span class=\"article-type type-1 float-left\">原</span><h1 class=\"title-article\">"+item.title+"</h1></div><div class=\"article-info-box\"><div class=\"article-bar-top\" style=\"height: 56px;\"><span class=\"time\">"+item.time+"</span><a class=\"follow-nickName\" href=\"#\" >"+item.name+"</a><span class=\"read-count\" id=\"read-count\"></span></div><div class=\"operating\"></div></div></div></div><article class=\"baidu_pl\"><div  class=\"article_content clearfix csdn-tracking-statistics\" data-pid=\"blog\" data-mod=\"popu_307\" data-dsm=\"post\"><div class=\"article-copyright\">版权声明：本博客由【"+item.name+"】独家发布</div><div class=\"htmledit_views\" id=\"content_views\"><p>&nbsp;"+item.content+"</p></div></div></article>\n";
                 $("#blog-content").append(b);
+
+                $.ajax({
+                    type:"post",
+                    url:"addSpan",
+                    data:{
+                        "blogId":blogId
+                    },
+                    success:function (data) {
+                        console.log(data + "111");
+                        var s="阅读数："+data;
+                        console.log($("#read-count"));
+                        $("#read-count").html(s);
+                    },
+                    error:function (data) {
+                    }
+                });
             })
         },
         error:function (data) {
@@ -69,7 +85,11 @@ function showArticle() {
     $("#blog-content").css("display","block");
 };
 
-function addSpan() {
+/*$(function () {
+    alert(1);
+
+});*/
+/*function addSpan() {
 
     $.ajax({
         type:"post",
@@ -77,9 +97,10 @@ function addSpan() {
         url:"/addSpan",
         contentType:"application/json",
         data:JSON.stringify({
-            "userId":userId
+            "blogId":blogId
         }),
         success:function (data) {
+            console.log(data);
             var s="阅读数："+data;
             $("#read-count").html(s);
         },
@@ -88,7 +109,7 @@ function addSpan() {
     });
 
 
-}
+}*/
 
 function showCommentBox(loginUserId) {
     $("#blog-content").empty();

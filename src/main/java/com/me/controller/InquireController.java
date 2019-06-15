@@ -43,7 +43,6 @@ public class InquireController {
     @ResponseBody
     @RequestMapping("getAllBlogs")
     public Object getAllBlogs(@RequestBody(required = false) ShowVo showVo){
-        System.out.println("54yyhjbjfkdnf");
         PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
         List<ShowDto> showDtos = inquireService.getAllBlogs(showVo);
         PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
@@ -119,7 +118,6 @@ public class InquireController {
         int user_id = userInfo.getUser_id();
         showVo.setUser_id(user_id);
         boolean flag = inquireService.updatePersonalCategory(showVo);
-        System.out.println(flag+"flag來了");
         return flag;
     }
 
@@ -205,10 +203,6 @@ public class InquireController {
     @ResponseBody
     @RequestMapping(value = "writeBlog",method = RequestMethod.POST)
     public Object writeBlog(HttpSession httpSession,String txtTitle,String content,String typeSpan,String blogType){
-        System.out.println(txtTitle);
-        System.out.println(content);
-        System.out.println(typeSpan);
-        System.out.println(blogType);
         UserInfo userInfo = (UserInfo)httpSession.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
         int i = inquireService.writeBlog(user_id,txtTitle,content,typeSpan,blogType);
@@ -234,13 +228,11 @@ public class InquireController {
     @ResponseBody
     @RequestMapping("showComment")
     public Object showComment(@RequestBody(required = false) ShowVo showVo,HttpSession session){
-        System.out.println("-------------"+showVo);
         UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
         int user_id = userInfo.getUser_id();
         showVo.setUser_id(user_id);
         PageHelper.startPage(showVo.getCurrentPage(), showVo.getPageSize());
         List<ShowDto> showDtos = inquireService.showComment(showVo);
-        System.out.println(showDtos+"=============");
         PageInfo<ShowDto> showDtoPageInfo = new PageInfo<ShowDto>(showDtos);
         return showDtoPageInfo;
     }

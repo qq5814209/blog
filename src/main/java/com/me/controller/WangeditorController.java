@@ -33,7 +33,6 @@ public class WangeditorController {
         InetAddress ia=null;
         try {
             ia = ia.getLocalHost();
-            System.out.println(ia.getHostAddress());
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
@@ -66,7 +65,6 @@ public class WangeditorController {
 
         // 获取服务端路径
         String serverPath = String.format("%s://%s:%s%s%s", request.getScheme(), ia.getHostAddress(), request.getServerPort(), request.getContextPath(), UPLOAD_PATH);
-        System.out.println(serverPath);
         // 返回给 wangEditor 的数据格式
         result.put("errno", 0);
         result.put("data", new String[]{serverPath + file.getName()});
