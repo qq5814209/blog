@@ -144,7 +144,7 @@
     </select>
 
     <select id="getAllBlogs" parameterType="com.me.vo.ShowVo" resultType="com.me.dto.ShowDto">
-        SELECT * from ( SELECT any_value(m.blog_id) blog_id,any_value(m.blog_title) blog_title,any_value(m.blog_content) blog_content,
+        SELECT any_value(m.blog_id) blog_id,any_value(m.blog_title) blog_title,any_value(m.blog_content) blog_content,
             any_value(m.create_time) create_time,any_value(m.user_id) user_id,any_value(m.name) name,any_value(m.user_name) user_name,
             any_value(m.bnumber) bnumber,case when any_value(c.comment_id) is null then 0 else COUNT(*) end cnumber from
             (SELECT any_value(o.blog_id) blog_id,any_value(o.blog_title) blog_title,any_value(o.blog_content) blog_content,
@@ -157,7 +157,7 @@
             LEFT JOIN browse b on b.blog_id=o.blog_id and b.user_id=g.user_id
             GROUP BY o.blog_id) m
             LEFT JOIN comment1 c on c.blog_id=m.blog_id and m.user_id=c.user_id
-            GROUP BY m.blog_id  ) tb5 ORDER BY tb5.create_time desc
+            GROUP BY m.blog_id
     </select>
 
     <select id="showComment" resultType="com.me.dto.ShowDto" parameterType="com.me.vo.ShowVo">

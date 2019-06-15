@@ -6,13 +6,13 @@
     <!--通过用户id查询用户的所有个人博客分类-->
     <select id="findClass" parameterType="int" resultType="com.me.dto.ClassificationDto">
 
-       SELECT e.pt_id classId,d.user_id userId,e.type_name className,COUNT(*) classNum
-        from pbt_middle p
-        INNER JOIN user_blog d
-        on d.blog_id=p.blog_id and d.user_id=#{userId}
-        INNER JOIN person_type e
-        on p.pt_id=e.pt_id
-        GROUP BY p.pid,d.ub_id
+       SELECT m.classId classId,m.userId userId,m.className className,COUNT(*) classNum from
+ (SELECT  e.pt_id classId,d.user_id userId,e.type_name className
+ from pbt_middle p
+ INNER JOIN user_blog d
+ on d.blog_id=p.blog_id and d.user_id=#{userId}
+ INNER JOIN person_type e on p.pt_id=e.pt_id) m
+ GROUP BY  m.classId
     </select>
 
     <!--通过用户 id查询某年某月更新博客数量-->
