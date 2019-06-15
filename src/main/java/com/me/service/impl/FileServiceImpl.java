@@ -74,13 +74,11 @@ public class FileServiceImpl implements FileService {
     public Object fileDown(String file_id, HttpServletRequest request, HttpServletResponse resp) {
         IsDownDto isDownDto = fileMapper.selectCbiIs(file_id);
         UserInfo userinfo =(UserInfo) request.getSession().getAttribute("userInfo");
-        Files file2 = new Files();
-        file2.setFile_id(Integer.parseInt(file_id));
-        file2.setUser_id(userinfo.getUser_id());
-        System.out.println("传入的："+file2);
-        System.out.println("返回的文件："+isDownDto);
-        System.out.println("文件所需的c币："+isDownDto.getFile_cbi());
-        file2.setFile_cbi(isDownDto.getFile_cbi());
+//        Files file2 = new Files();
+//        file2.setFile_id(Integer.parseInt(file_id));
+//        file2.setUser_id(userinfo.getUser_id());
+        isDownDto.setDu_id(userinfo.getUser_id());
+        System.out.println(isDownDto);
         if (isDownDto.getCbis()>isDownDto.getFile_cbi()){
             //创建文件
             File fileDown = new File(request.getSession().getServletContext().getRealPath("/file/"+isDownDto.getFile_name()));
@@ -100,7 +98,8 @@ public class FileServiceImpl implements FileService {
                 HttpStatus statusCode = HttpStatus.OK;
                 //创建响应实体对象
                 ResponseEntity<byte[]> entity = new ResponseEntity<byte[]>(body, headers, statusCode);
-                fileMapper.fileDown(file2);
+                fileMapper.fileDown(isDownDto);
+                fileMapper.fileDownAdd(isDownDto);
                 System.out.println(entity);
                 return entity;
 

@@ -1,5 +1,6 @@
 package com.me.service.impl;
 
+import com.me.dto.IsDownDto;
 import com.me.mapper.CbiMapper;
 import com.me.pojo.Cbi;
 import com.me.pojo.Order;
@@ -33,6 +34,12 @@ public class CbiServiceImpl implements CbiService {
     public UserInfo getCbiById(HttpSession session) {
         UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
         return cbiMapper.getUserCbi(userInfo);
+    }
+
+    @Override
+    public Object getCbiXiao(HttpSession session) {
+        UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
+        return cbiMapper.getCbiXiao(userInfo);
     }
 
 

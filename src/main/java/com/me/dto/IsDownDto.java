@@ -4,14 +4,10 @@ public class IsDownDto {
     private int file_cbi;
     private int cbis;
     private String file_name;
-
-    public String getFile_name() {
-        return file_name;
-    }
-
-    public void setFile_name(String file_name) {
-        this.file_name = file_name;
-    }
+    private int file_id;
+    private int du_id;
+    private int user_id;
+    private String down_time;
 
     public int getFile_cbi() {
         return file_cbi;
@@ -29,12 +25,43 @@ public class IsDownDto {
         this.cbis = cbis;
     }
 
-    @Override
-    public String toString() {
-        return "IsDownDto{" +
-                "file_cbi=" + file_cbi +
-                ", cbis=" + cbis +
-                ", file_name='" + file_name + '\'' +
-                '}';
+    public String getFile_name() {
+        return file_name;
+    }
+
+    public void setFile_name(String file_name) {
+        this.file_name = file_name;
+    }
+
+    public int getFile_id() {
+        return file_id;
+    }
+
+    public void setFile_id(int file_id) {
+        this.file_id = file_id;
+    }
+
+    public int getDu_id() {
+        return du_id;
+    }
+
+    public void setDu_id(int du_id) {
+        this.du_id = du_id;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getDown_time() {
+        return down_time;
+    }
+
+    public void setDown_time(String down_time) {
+        this.down_time = down_time;
     }
 }

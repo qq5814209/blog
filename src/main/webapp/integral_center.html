@@ -53,7 +53,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    init();
+
     function init() {
         $.ajax({
             url: "getOrderBy",
@@ -62,6 +62,7 @@
             dataType: 'json',
             success:function (data) {
                 console.log(data);
+                $("#biaoge").empty("");
                 $(data).each(function (index, item) {
                     $("#biaoge").append("<tr>\n" +
                         "        <td>"+item.cbi_number+"</td>\n" +
@@ -76,6 +77,31 @@
             }
         });
     }
+
+    function dianji() {
+        $("#biaoge").empty("");
+        $.ajax({
+            url: "getCbiXiao",
+            type: "POST",
+            contentType: "application/json",
+            dataType: 'json',
+            success:function (data) {
+                console.log(data);
+                $(data).each(function (index, item) {
+                    $("#biaoge").append("<tr>\n" +
+                        "        <td>"+item.file_name+"</td>\n" +
+                        "        <td>"+item.file_name+"</td>\n" +
+                        "        <td>"+item.file_cbi+"</td>\n" +
+                        "        <td>"+item.down_time+"</td>\n" +
+                        "        </tr>")
+                })
+            },
+            error:function () {
+                alert("失败")
+            }
+        });
+    }
+
 
 </script>
 

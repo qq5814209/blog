@@ -46,4 +46,10 @@ public class CbiController {
         return cbiService.getCbiById(session);
     }
 
+    @ResponseBody
+    @RequestMapping(value ="getCbiXiao",method = RequestMethod.POST)
+    public Object getCbiXiao(HttpSession session){
+        return cbiService.getCbiXiao(session);
+    }
+
 }
