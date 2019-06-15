@@ -107,7 +107,6 @@ public class PersonalServiceImpl implements PersonalService {
         List<String> uf_ids = new ArrayList<String>();
         for (UserInfo userInfo : userInfos) {
             uf_ids.add(String.valueOf(userInfo.getUser_id()));
-            System.out.println(userInfo);
         }
         //判断是否有新增关注的人和已经关注的人是否有重复的，重复就不再执行添加操作
         if(!uf_ids.contains(uf_id) || uf_ids.isEmpty()){

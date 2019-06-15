@@ -105,38 +105,28 @@ public class BlogServiceImpl implements BlogService {
      * */
     @Override
     public int getPraise(ShowVo showVo) {
-        System.out.println(showVo + "------");
         //根据user_id and blog_id查询有无赞记录
         ShowDto showDto = blogMapper.selectPraise1(showVo);
-        System.out.println(showDto);
         int status;
-        System.out.println("===========");
         //showDto不为空，就有赞记录
         if(showDto != null) {
             //获取赞记录的状态
             status = showDto.getStatus();
-            System.out.println("................");
-            System.out.println("status"+status);
             //状态为1的时候设置为0,删除赞
             if(status == 1) {
-                System.out.println(" showVo.setStatus(0);");
                 showVo.setStatus(0);
-                System.out.println(0);
                 int i = blogMapper.xiuGaiPraise(showVo);
-                System.out.println("11111111111111111");
                 return i;//i为取消点赞
 
                 //状态为0的时候设置为1,点赞
             }else if(status == 0) {
                 showVo.setStatus(1);
                 int i = blogMapper.xiuGaiPraise(showVo);
-                System.out.println("22222222222222222222222");
                 return i+1;
             }
         }
         //showDto为空，插入赞记录,并设置状态为1,点赞
         int i = blogMapper.getPraise(showVo);
-        System.out.println("-=-=-=-=-=-=-=-=");
         return i+1;//i为2点赞
     }
 
@@ -154,9 +144,7 @@ public class BlogServiceImpl implements BlogService {
      * */
     @Override
     public int xiuGaiPraise(ShowVo showVo) {
-        System.out.println("showVo"+showVo+"------");
         int count = blogMapper.xiuGaiPraise(showVo);
-        System.out.println(count+"count");
         return count;
     }
 
@@ -209,8 +197,8 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public int addSpan(int userId) {
-        int num = blogMapper.addSpan(userId);
+    public int addSpan(int blogId) {
+        int num = blogMapper.addSpan(blogId);
         return num;
     }
 

@@ -40,7 +40,6 @@ public class UserInfoController {
         if(userInfo == null){
             return BaseResult.fail("账号或密码错误，请重新登录");
         }
-        System.out.println(userInfo);
         session.setAttribute("userInfo",userInfo);
         return userInfo;
     }
@@ -67,7 +66,6 @@ public class UserInfoController {
     @ResponseBody
     @RequestMapping(value = "userRegiester",method = RequestMethod.POST)
     public Object regiester(String user_name,String email,String password){
-        System.out.println(user_name + " : " + email + " : " + password);
         return userInfoService.regiester(user_name,email,Md5.getMD5(password));
     }
 
@@ -79,7 +77,6 @@ public class UserInfoController {
     @ResponseBody
     @RequestMapping(value = "user_nameIsExist",method = RequestMethod.GET)
     public Object user_nameIsExist(String user_name){
-        System.out.println(user_name);
         if(user_name != null && user_name != ""){
             UserInfo userInfo = userInfoService.user_nameIsExist(user_name);
             if(userInfo != null){
